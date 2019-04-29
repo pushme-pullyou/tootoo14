@@ -129,7 +129,7 @@ MNU.getNavHeader = function() {
 
 	const htm  =
 	`
-	<div class=navSubMenu >
+	<div class=navSubMenunn >
 		<h3>
 		<a href="${ MNU.homeUrl }" title="${ MNU.homeTitle }" target="_top">
 		${ MNU.homeText }
@@ -144,6 +144,7 @@ MNU.getNavHeader = function() {
 		</a>
 		${ MNU.appText ? '&raquo;' : '' }
 		</h3>
+
 		<h2>
 			<a href=${ MNU.urlSourceCode } ${ MNU.footerTarget } title="Source code on GitHub" >
 			${ MNU.urlSourceCodeIcon }
@@ -153,6 +154,9 @@ MNU.getNavHeader = function() {
 			<a id=mnuCore class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuCore,MNU.currentStatusCore);"
 				title="Current status: core module" >&nbsp; ? &nbsp;
 			</a>
+
+			<button id=butTitle onclick="MNU.setPopupShowHide(butTitle,'README.md');" style=float:right; >?</button>
+
 		</h3>
 
 		<p>
@@ -177,7 +181,7 @@ MNU.getNavFooter = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<a id=mnuFoot class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuFoot,MNU.currentStatusMenu);" >&nbsp; ? &nbsp;</a>
+				<button id=butFoot onclick="MNU.setPopupShowHide(butFoot,MNU.currentStatusMenu);" style=float:right; >?</button>
 			</summary>
 
 			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
@@ -199,6 +203,7 @@ MNU.getNavFooter = function() {
 
 };
 
+// 				<a id=mnuFoot class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuFoot,MNU.currentStatusMenu);" >&nbsp; ? &nbsp;</a>
 
 MNU.showFps = function(){
 
@@ -271,7 +276,7 @@ MNU.setPopupShowHide = function( id, text ) {
 
 		navPopup.hidden = false;
 
-		if ( text.toLowerCase().endsWith( ".md" ) ) { requestFile( text, divPopupData ); }
+		if ( text.toLowerCase().endsWith( ".md" ) ) { MNU.requestFile( text, divPopupData ); }
 
 		const htm =
 			`
@@ -280,12 +285,12 @@ MNU.setPopupShowHide = function( id, text ) {
 			`;
 		divPopupData.innerHTML = popupId.classList.contains( 'active' ) ? htm : '';
 
-		divContents.addEventListener( 'click', onClickContainer, false );
-		divContents.addEventListener( 'touchstart', onClickContainer, false );
+		divContents.addEventListener( 'click', MNU.onClickContainer, false );
+		divContents.addEventListener( 'touchstart', MNU.onClickContainer, false );
 
 	} else {
 
-		onClickContainer();
+		MNU.onClickContainer();
 
 	}
 
@@ -298,7 +303,36 @@ MNU.onClickContainer = function() {
 	navPopup.hidden = true;
 	popupId.classList.remove( "active" );
 	divPopupData.innerHTML = "";
-	divContents.removeEventListener( 'click', onClickContainer, false );
-	divContents.removeEventListener( 'touchstart', onClickContainer, false );
+	divContents.removeEventListener( 'click', MNU.onClickContainer, false );
+	divContents.removeEventListener( 'touchstart', MNU.onClickContainer, false );
 
 }
+
+
+
+MNU.requestFile = function( url, target ) {
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( 'GET', url, true );
+	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
+	//xhr.onprogress = ( xhr ) => console.log( 'loaded', xhr.loaded );
+	xhr.onload = ( xhr ) => MNU.callbackMarkdown( xhr.target.response, target );
+	xhr.send( null );
+
+};
+
+
+
+MNU.callbackMarkdown = function( markdown, target ) {
+	//console.log( '', markdown );
+
+	showdown.setFlavor('github');
+	const converter = new showdown.Converter();
+	const html = converter.makeHtml( markdown );
+
+	target.innerHTML = html;
+	//console.log( '', html );
+
+	window.scrollTo( 0, 0 );
+
+};

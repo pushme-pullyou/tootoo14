@@ -1,12 +1,9 @@
-
-
-[Markdown Cheat Sheet]( #utilities/markdown-cheat-sheet.md )
-===
+# [Markdown Cheat Sheet]( #utilities/markdown-cheat-sheet.md )
 
 Interesting things you can do with Markdown.
 
 
-### Links of Interest
+## Links of Interest
 
 * <https://github.com/showdownjs/showdown>
 * <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
