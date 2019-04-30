@@ -1,56 +1,52 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-04-27" >
-<meta name = "release" content = "14.0.0" >
+<meta name = "date" content = "2019-04-29" >
+<meta name = "release" content = "14.0.0">
 <title>TooToo</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="js-14-0/style.css">
 </head>
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
-<script src="js-14-0/mnu-menu.js" ></script>
+<script src="js-14-0/mnu-menu/mnu-menu.js" ></script>
 
 	<nav id="navPanel">
 
-		<header>
-
-			<div id="MNUdivHeader" ></div>
-
-		</header>
-<!--
-
-	<header>
-
-		<h1>
-			<a href="https://github.com/pushme-pullyou-tootoo13/tree/master/sandbox/template-html/template-html.html" title="Source on GitHub" >
-				<img src="https://pushme-pullyou.github.io/github-mark-64.png" style=height:1rem;opacity:0.8; ></a>
-				<a href="" title="Click to reload this page" >
-					<script> document.write( document.title ); </script>
-				</a>
-				<button id=butId onclick="MNU.setPopupShowHide(butId,'README.md');" style=float:right; >?</button>
-			</h1>
-
-			<section><i>
-				<script> document.write( document.head.querySelector( "[ name=description ]" ).content ); </script>
-			</i></section>
-
-			<button id="expandButton" onclick=navPanel.classList.toggle('collapsed'); >☰</button>
-
-		</header>
--->
-
-
 		<section id="secContent" >
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+
+			<details open >
+
+				<summary class=sumMenuTitle >File Menu</summary>
+
+				<div id=SFMsecPrototypes ></div>
+
+				<div id="FGAsecMenuRepoFilesFolders" ></div>
+
+				<div id="GATsecGithubAccessToken" ></div>
+
+				<div id=FOBsecFileOpenBasic ></div>
+
+				<div id=FILdivFileSave ></div>
+
+			</details>
+
 
 			<details>
 
-				<summary>Test 1
-					<button id=butTest1 onclick="MNU.setPopupShowHide(butTest1,'Hello, World!');" style=float:right; >?</button>
+				<summary>Test Text
+					<button class=butHelp id=butTestText onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" >?</button>
 				</summary>
 
 				<p>
@@ -66,7 +62,9 @@
 
 			<details>
 
-				<summary>Test 2</summary>
+				<summary>Test HTML Element Style
+					<button class=butHelp id=butTestStyles onclick="MNU.setPopupShowHide(butTestStyles,'Hello, World of style!');" >?</button>
+				</summary>
 
 				<p><a href="" >breadcrumb</a> &raquo; </p>
 
@@ -116,11 +114,12 @@
 
 			<details>
 
-				<summary>Markdown Help</summary>
+				<summary>Test Load External File</summary>
 
 				<div id=divMarkdown></div>
 
 			</details>
+
 
 			<footer>
 
@@ -162,7 +161,6 @@
 	</nav>
 
 
-
 <script>
 
 // For main menu header
@@ -199,88 +197,14 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-
 	MNU.requestFile( "pages/markdown-help.md", divMarkdown );
 
 	butViewSource.style.display = "block";
-	butViewSource.href = "https://github.com/pushme-pullyou-tootoo14/";
+	butViewSource.href = MNU.urlSourceCode;
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 }
-
-
-function vvvsetPopupShowHide( id, text ) {
-	//console.log( 'id', id );
-
-	popupId = id;
-
-	popupId.classList.toggle( "active" );
-
-	if ( popupId.classList.contains( 'active' ) ) {
-
-		navPopup.hidden = false;
-
-		if ( text.toLowerCase().endsWith( ".md" ) ) { requestFile( text, divPopupData ); }
-
-		const htm =
-			`
-				<div style=text-align:right; ><button onclick=setPopupShowHide(popupId,""); >×</button></div>
-				${ text }
-			`;
-		divPopupData.innerHTML = popupId.classList.contains( 'active' ) ? htm : '';
-
-		main.addEventListener( 'click', onClickContainer, false );
-		main.addEventListener( 'touchstart', onClickContainer, false );
-
-	} else {
-
-		onClickContainer();
-
-	}
-
-}
-
-
-
-function vvvvonClickContainer() {
-
-	navPopup.hidden = true;
-	popupId.classList.remove( "active" );
-	divPopupData.innerHTML = "";
-	main.removeEventListener( 'click', onClickContainer, false );
-	main.removeEventListener( 'touchstart', onClickContainer, false );
-
-}
-
-
-
-function vvvrequestFile( url, target ) {
-
-	const xhr = new XMLHttpRequest();
-	xhr.open( 'GET', url, true );
-	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
-	xhr.onprogress = ( xhr ) => console.log( 'loaded', xhr.loaded );
-	xhr.onload = ( xhr ) => callbackMarkdown( xhr.target.response, target );
-	xhr.send( null );
-
-};
-
-
-
-function callbackMarkdown( markdown, target ) {
-	//console.log( '', markdown );
-
-	showdown.setFlavor('github');
-	const converter = new showdown.Converter();
-	const html = converter.makeHtml( markdown );
-
-	target.innerHTML = html;
-	//console.log( '', html );
-
-	window.scrollTo( 0, 0 );
-
-};
 
 
 </script>

@@ -42,13 +42,13 @@ TMP.getMenuTemplate = function() {
 
 	const htm =
 		`
-			<details ontoggle="TMPdivSurface.innerHTML=TMP.getTemplate();" >
+			<details ontoggle="TMPdivTmp1.innerHTML=TMP.getTemplate();" >
 
-				<summary id=TMPsumSurfaces class=sumHeader >Template
-					<a id=TMPsum class=helpItem href="JavaScript:MNU.setPopupShowHide(TMPsum,TMP.currentStatus);" >&nbsp; ? &nbsp;</a>
+				<summary id=TMPsumSurfaces >Template
+					<button id=butTemplate class=butHelp onclick="MNU.setPopupShowHide(butTestText,'README.md');" style=float:right; >?</button>
 				</summary>
 
-				<div id=TMPdivSurface ></div>
+				<div id=TMPdivTmp1 ></div>
 
 				<div id=TMPdivSurfaceData ></div>
 

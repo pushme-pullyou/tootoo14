@@ -1,3 +1,5 @@
+/* Copyright 2019 pushMe-pullYou authors. MIT License */
+/* 2019-04-29 r14.0 */
 
 * { box-sizing: border-box; }
 
@@ -5,7 +7,7 @@
 
 html { height: 100%; }
 
-body {background-color: #ffffff; color: #555; font-family: 'inconsolata'; font-size: 15px; height: 100%;
+body { background-color: #ffffff; color: #555; font-family: 'inconsolata'; font-size: 15px; height: 100%;
 	line-height: 18px; margin: 0px; overflow: hidden; }
 
 h1 { margin-top: 30px; margin-bottom: 5px; font-size: 25px; font-weight: normal; }
@@ -13,14 +15,17 @@ h1 { margin-top: 30px; margin-bottom: 5px; font-size: 25px; font-weight: normal;
 h2 { font-size: 20px; font-weight: normal; }
 
 a { color: rgb(206, 33, 33); text-decoration: none; }
+a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
 
-blockquote, pre { background-color: #eee; padding: 10px; }
+blockquote, pre { background-color: #eee; padding: 5px; }
 
 button, input[ type=button ] { background-color: #ddd; border: 1px solid #ccc; border-radius: 2px;
 	color: #322; cursor: pointer; outline: none; padding: 3px 5px; }
 
 button:hover, input[ type=button ]:hover{ background: #ccc;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.3); color: #f00 }
+
+code { background-color: #eee; }
 
 input[ type = range ] { -webkit-appearance: none; -moz-appearance: none; background-color: #ddd; width: 90%; }
 input[ type = range ]::-moz-range-thumb { background-color: rgb(228, 225, 225); border-radius: 0; width: 10px; }
@@ -31,6 +36,7 @@ main { border: 0px; height: 100%; left: var( --mnu-width ); margin: 0; overflow:
 
 summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
+section { padding: 0px 8px 20px 20px; }
 
 #butViewSource { position: fixed; bottom: 20px; right: 20px; padding: 8px; color: #fff;
 	background-color: #555; opacity: 0.7; }
@@ -40,10 +46,9 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 #divContents { border: 0px solid red; margin: 0 auto; max-width: 50rem; }
 
+
 #navPanel { background: #fafafa; height: 100%; left: 0px; overflow: auto; position: fixed;
 	width: var( --mnu-width ); }
-
-#navPanel header { padding: 0px 8px 0px 20px; }
 
 #navPanel section { padding: 0px 8px 20px 20px; }
 
@@ -54,17 +59,21 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 #navPanel #secContent a:active, #navPanel #secContent a:focus { color: #ff0000; }
 
 
-/* #navPopup { background-color: #eee; border: 1px solid #aaa;  border-radius: 8px; max-height: 90%;
-	opacity: 0.95;  overflow: auto; padding: 0 1rem 1rem 1rem; z-index: 100;
-	left: 50%; margin-right: -50%; position: absolute; top: 40%; transform: translate(-50%, -40%);
-	box-shadow: 10px 10px 25px rgba(0,0,0,0.3), 6px 6px 6px rgba(0,0,0,0.5); }
-*/
-
 #navPopup { background-color: #eee; border: 1px solid #aaa;  border-radius: 8px; max-height: 45%;
 	max-width: 45%; opacity: 0.95;  overflow: auto; padding: 0 1rem 1rem 1rem; position: absolute;
 	right: 5%;  top: 10%;
 	box-shadow: 10px 10px 25px rgba(0,0,0,0.3), 6px 6px 6px rgba(0,0,0,0.5); }
 
+
+.attributeTitle { font-style: italic; }
+.attributeValue { color: blue; }
+.butHelp { padding: 0 0.5rem; float:right; }
+.dragDropArea { border: 1px dashed gray; margin: 0.5rem  0; padding: 0 0.5rem; }
+.helpItem { float: right; clear: both; }
+.highlight {background-color: lightgreen }
+.navSubMenu { /* background-color: yellow; */ padding: 0 0.5rem; }
+.sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
+.sumHeader { font-size:1.3rem; }
 
 
 /* mobile */

@@ -7,28 +7,48 @@
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-04-27" >
 <meta name = "release" content = "14.0.0" >
-<title>TooToo</title>
+<title>TooToo Template</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="../../js-14-0/style.css">
 </head>
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
-<script src="../../js-14-0/mnu-menu.js" ></script>
+<script src="../../js-14-0/mnu-menu/mnu-menu.js" ></script>
+<script src="../../js-14-0/tmp-template/tmp-template.js" ></script>
 
 	<nav id="navPanel">
 
-		<header>
-
-			<div id="MNUdivHeader" ></div>
-
-		</header>
-
 		<section id="secContent" >
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+			<details open >
+
+				<summary class=sumMenuTitle >File Menu</summary>
+
+				<div id=SFMsecPrototypes ></div>
+
+				<div id="FGAsecMenuRepoFilesFolders" ></div>
+
+				<div id="GATsecGithubAccessToken" ></div>
+
+				<div id=FOBsecFileOpenBasic ></div>
+
+				<div id=FILdivFileSave ></div>
+
+			</details>
+
+
+			<div id=TMPdivTemplate ></div>
 
 			<details>
 
-				<summary>Test 1
-					<button id=butTest1 onclick="MNU.setPopupShowHide(butTest1,'Hello, World!');" style=float:right; >?</button>
+				<summary>Test Text
+					<button id=butTestText onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" style=float:right; >?</button>
 				</summary>
 
 				<p>
@@ -100,9 +120,6 @@ MNU.appTitle = ""; //"Basic html content management script with sliding menu, cs
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
 
-
-let popupId;
-
 init();
 
 
@@ -118,88 +135,14 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-
-	//MNU.requestFile( "pages/markdown-help.md", divMarkdown );
+	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 	butViewSource.style.display = "block";
-	butViewSource.href = "https://github.com/pushme-pullyou-tootoo14/";
+	butViewSource.href = MNU.urlSourceCode;
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 }
-
-
-function vvvsetPopupShowHide( id, text ) {
-	//console.log( 'id', id );
-
-	popupId = id;
-
-	popupId.classList.toggle( "active" );
-
-	if ( popupId.classList.contains( 'active' ) ) {
-
-		navPopup.hidden = false;
-
-		if ( text.toLowerCase().endsWith( ".md" ) ) { requestFile( text, divPopupData ); }
-
-		const htm =
-			`
-				<div style=text-align:right; ><button onclick=setPopupShowHide(popupId,""); >×</button></div>
-				${ text }
-			`;
-		divPopupData.innerHTML = popupId.classList.contains( 'active' ) ? htm : '';
-
-		main.addEventListener( 'click', onClickContainer, false );
-		main.addEventListener( 'touchstart', onClickContainer, false );
-
-	} else {
-
-		onClickContainer();
-
-	}
-
-}
-
-
-
-function vvvvonClickContainer() {
-
-	navPopup.hidden = true;
-	popupId.classList.remove( "active" );
-	divPopupData.innerHTML = "";
-	main.removeEventListener( 'click', onClickContainer, false );
-	main.removeEventListener( 'touchstart', onClickContainer, false );
-
-}
-
-
-
-function vvvrequestFile( url, target ) {
-
-	const xhr = new XMLHttpRequest();
-	xhr.open( 'GET', url, true );
-	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
-	xhr.onprogress = ( xhr ) => console.log( 'loaded', xhr.loaded );
-	xhr.onload = ( xhr ) => callbackMarkdown( xhr.target.response, target );
-	xhr.send( null );
-
-};
-
-
-
-function callbackMarkdown( markdown, target ) {
-	//console.log( '', markdown );
-
-	showdown.setFlavor('github');
-	const converter = new showdown.Converter();
-	const html = converter.makeHtml( markdown );
-
-	target.innerHTML = html;
-	//console.log( '', html );
-
-	window.scrollTo( 0, 0 );
-
-};
 
 
 </script>

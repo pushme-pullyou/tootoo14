@@ -97,9 +97,10 @@ ___
 	line of code
 	line of code
 
+```
 text with `back quote` characters
-
-text text text
+```
+text `text` text
 
 
 ### Quotes
@@ -117,15 +118,15 @@ text text text
 
 ### Images
 
-* uses [picsum.photos]( https://picsum.photos ) to gather random images
+* Uses [picsum.photos]( https://picsum.photos ) to gather random images
 
-````
+```
 	![External Link Icon]( https://picsum.photos/800/600/?random =100x100 )
 
 	![ text ]( http://picsum.photos/800/600/?random  =400x300 )
 
 	![ text ]( http://picsum.photos/800/600/?random  =200x150 )
-````
+```
 
 ![External Link Icon]( https://picsum.photos/800/600/?random =100x100 )
 
@@ -136,40 +137,26 @@ text text text
 
 ### Figures
 
+```
 <figure style=display:inline-block; >
 <a href=http://google.com >
 <img src="http:///picsum.photos/200/200/" >
 <figcaption>Fig1. - A view of image 1</figcaption>
 <a>
 </figure>
+```
 
 <figure style=display:inline-block; >
-<a href=http://google.com ><img src="http://picsum.photos/200/200/" >
-<figcaption>Fig2. - A view of the caption</figcaption>
-</a>
+	<a href=http://google.com >
+		<img src="http:///picsum.photos/200/200/" >
+		<figcaption>Fig1. - A view of image 1</figcaption>
+	<a>
 </figure>
 
+<figure style=display:inline-block; >
+	<a href=http://google.com >
+		<img src="http://picsum.photos/200/200/" >
+		<figcaption>Fig2. - A view of the caption</figcaption>
+	</a>
+</figure>
 
-
-### Footers
-
-<br>
-
-***
-
-<center title="dingbat" >
-
-# <a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >❦</a>
-</center>
-
-<center title="dingbat" >
-# <span onclick=window.scrollTo(0,0); style=cursor:pointer; >❦</span>
-</center>
-
-<center title="dingbat" >
-## <a href=javascript:content.scrollTop=0; >❦</a>
-</center>
-
-<center title="dingbat" >
-# <a href=javascript:window.scrollTop=0; style=text-decoration:none; >❦</a>
-</center>

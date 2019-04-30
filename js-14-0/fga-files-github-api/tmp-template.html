@@ -14,7 +14,7 @@
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="../../js-14-0/mnu-menu/mnu-menu.js" ></script>
-<script src="../../js-14-0/tmp-template/tmp-template.js" ></script>
+<script src="../../js-14-0/fga-files-github-api/fga-files-github-api.js" ></script>
 
 	<nav id="navPanel">
 
@@ -43,12 +43,12 @@
 			</details>
 
 
-			<div id=TMPdivTemplate ></div>
+			<div id=FGAdivFilesGithubApi ></div>
 
 			<details>
 
 				<summary>Test Text
-					<button id=butTestText class=butHelp onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" style=float:right; >?</button>
+					<button id=butTestText onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" style=float:right; >?</button>
 				</summary>
 
 				<p>
@@ -135,7 +135,8 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
+	FGAdivFilesGithubApi.innerHTML = FGA.getMenuFilesGithubApi();
+	FGA.getFiles();
 
 	butViewSource.style.display = "block";
 	butViewSource.href = MNU.urlSourceCode;

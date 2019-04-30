@@ -131,18 +131,18 @@ MNU.getNavHeader = function() {
 	`
 	<div class=navSubMenunn >
 		<h3>
-		<a href="${ MNU.homeUrl }" title="${ MNU.homeTitle }" target="_top">
-		${ MNU.homeText }
-		</a>
-		${ MNU.homeText ? '&raquo;' : '' }
-		<a href="${ MNU.repoUrl }" title="${ MNU.repoTitle }" target="_top">
-		${ MNU.repoText }
-		</a>
-		${ MNU.repoText ? '&raquo;' : '' }
-		<a href="${ MNU.appUrl }" title="${ MNU.appTitle }" >
-		${ MNU.appText }
-		</a>
-		${ MNU.appText ? '&raquo;' : '' }
+			<a href="${ MNU.homeUrl }" title="${ MNU.homeTitle }" target="_top">
+				${ MNU.homeText }
+			</a>
+			${ MNU.homeText ? '&raquo;' : '' }
+			<a href="${ MNU.repoUrl }" title="${ MNU.repoTitle }" target="_top">
+				${ MNU.repoText }
+			</a>
+			${ MNU.repoText ? '&raquo;' : '' }
+			<a href="${ MNU.appUrl }" title="${ MNU.appTitle }" >
+				${ MNU.appText }
+			</a>
+			${ MNU.appText ? '&raquo;' : '' }
 		</h3>
 
 		<h2>
@@ -151,16 +151,14 @@ MNU.getNavHeader = function() {
 			</a>
 			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ document.head.querySelector( '[ name=release ]' ).content }</span></a>
 
-			<a id=mnuCore class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuCore,MNU.currentStatusCore);"
-				title="Current status: core module" >&nbsp; ? &nbsp;
-			</a>
+			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,'README.md');" style=float:right; >?</button>
 
-			<button id=butTitle onclick="MNU.setPopupShowHide(butTitle,'README.md');" style=float:right; >?</button>
-
-		</h3>
+		</h2>
 
 		<p>
-			${ MNU.description } <a id=mnuHead class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuHead,MNU.currentStatusMenu);"
+			${ MNU.description }
+
+			<a id=mnuHead class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuHead,MNU.currentStatusMenu);"
 				title="Current status" >&nbsp; ? &nbsp;
 			</a>
 		</p>
@@ -181,7 +179,7 @@ MNU.getNavFooter = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=butFoot onclick="MNU.setPopupShowHide(butFoot,MNU.currentStatusMenu);" style=float:right; >?</button>
+				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.currentStatusMenu);" style=float:right; >?</button>
 			</summary>
 
 			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
@@ -203,7 +201,10 @@ MNU.getNavFooter = function() {
 
 };
 
-// 				<a id=mnuFoot class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuFoot,MNU.currentStatusMenu);" >&nbsp; ? &nbsp;</a>
+// call using:
+//<a id=mnuFoot class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuFoot,MNU.currentStatusMenu);" >&nbsp; ? &nbsp;</a>
+
+
 
 MNU.showFps = function(){
 
@@ -229,6 +230,7 @@ MNU.showFps = function(){
 	}
 
 };
+
 
 
 MNU.rateLimits = function() {
@@ -280,7 +282,7 @@ MNU.setPopupShowHide = function( id, text ) {
 
 		const htm =
 			`
-				<div style=text-align:right; ><button onclick=setPopupShowHide(popupId,""); >×</button></div>
+				<div style=text-align:right; ><button onclick=MNU.setPopupShowHide(popupId,""); >×</button></div>
 				${ text }
 			`;
 		divPopupData.innerHTML = popupId.classList.contains( 'active' ) ? htm : '';
