@@ -104,6 +104,8 @@ MNU.currentStatusCore =
 
 
 
+MNU.info = "README.md";
+
 // For main menu header
 MNU.homeText  = "homeText";
 MNU.homeTitle = "homeTitle";
@@ -151,7 +153,7 @@ MNU.getNavHeader = function() {
 			</a>
 			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ document.head.querySelector( '[ name=release ]' ).content }</span></a>
 
-			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,'README.md');" style=float:right; >?</button>
+			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.info);" style=float:right; >?</button>
 
 		</h2>
 
@@ -270,11 +272,11 @@ MNU.rateLimits = function() {
 MNU.setPopupShowHide = function( id, text ) {
 	//console.log( 'id', id );
 
-	popupId = id;
+	MNU.popupId = id;
 
-	popupId.classList.toggle( "active" );
+	MNU.popupId.classList.toggle( "active" );
 
-	if ( popupId.classList.contains( 'active' ) ) {
+	if ( MNU.popupId.classList.contains( 'active' ) ) {
 
 		navPopup.hidden = false;
 
@@ -282,10 +284,10 @@ MNU.setPopupShowHide = function( id, text ) {
 
 		const htm =
 			`
-				<div style=text-align:right; ><button onclick=MNU.setPopupShowHide(popupId,""); >×</button></div>
+				<div style=text-align:right; ><button onclick=MNU.setPopupShowHide(MNU.popupId,""); >×</button></div>
 				${ text }
 			`;
-		divPopupData.innerHTML = popupId.classList.contains( 'active' ) ? htm : '';
+		divPopupData.innerHTML = MNU.popupId.classList.contains( 'active' ) ? htm : '';
 
 		divContents.addEventListener( 'click', MNU.onClickContainer, false );
 		divContents.addEventListener( 'touchstart', MNU.onClickContainer, false );
@@ -303,7 +305,7 @@ MNU.setPopupShowHide = function( id, text ) {
 MNU.onClickContainer = function() {
 
 	navPopup.hidden = true;
-	popupId.classList.remove( "active" );
+	MNU.popupId.classList.remove( "active" );
 	divPopupData.innerHTML = "";
 	divContents.removeEventListener( 'click', MNU.onClickContainer, false );
 	divContents.removeEventListener( 'touchstart', MNU.onClickContainer, false );
