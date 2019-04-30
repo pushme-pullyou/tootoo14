@@ -1,7 +1,7 @@
-# [MNU Menu Read Me]( #xxxxx/README.md )
+# [Template Read Me]( #xxxxx/README.md )
 
-<details open>
-<summary>Concept<summary>
+<details style>
+<summary>Concept</summary>
 
 </details>
 <details>
@@ -17,7 +17,7 @@
 <details>
 <summary>Change Log</summary>
 
-### XXX
+### 2019-04-30 ~ Theo
 
 * First commit
 
