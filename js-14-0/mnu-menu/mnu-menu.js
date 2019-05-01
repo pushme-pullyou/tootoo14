@@ -280,14 +280,15 @@ MNU.setPopupShowHide = function( id, text ) {
 
 		navPopup.hidden = false;
 
-		if ( text.toLowerCase().endsWith( ".md" ) ) { MNU.requestFile( text, divPopupData ); }
+		if ( text.toLowerCase().endsWith( ".md" ) ) {
 
-		const htm =
-			`
-				<div style=text-align:right; ><button onclick=MNU.setPopupShowHide(MNU.popupId,""); >×</button></div>
-				${ text }
-			`;
-		divPopupData.innerHTML = MNU.popupId.classList.contains( 'active' ) ? htm : '';
+			MNU.requestFile( text, MNUdivPopupData );
+
+		} else {
+
+			MNUdivPopupData.innerHTML = text;
+
+		}
 
 		divContents.addEventListener( 'click', MNU.onClickContainer, false );
 		divContents.addEventListener( 'touchstart', MNU.onClickContainer, false );
@@ -304,11 +305,15 @@ MNU.setPopupShowHide = function( id, text ) {
 
 MNU.onClickContainer = function() {
 
-	navPopup.hidden = true;
-	MNU.popupId.classList.remove( "active" );
-	divPopupData.innerHTML = "";
-	divContents.removeEventListener( 'click', MNU.onClickContainer, false );
-	divContents.removeEventListener( 'touchstart', MNU.onClickContainer, false );
+	if ( MNU.popupId.classList.contains( 'active' ) === false ) {
+
+		navPopup.hidden = true;
+		MNU.popupId.classList.remove( "active" );
+		MNUdivPopupData.innerHTML = "";
+		divContents.removeEventListener( 'click', MNU.onClickContainer, false );
+		divContents.removeEventListener( 'touchstart', MNU.onClickContainer, false );
+
+	}
 
 }
 
@@ -318,7 +323,7 @@ MNU.requestFile = function( url, target ) {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open( 'GET', url, true );
-	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
+	//xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
 	//xhr.onprogress = ( xhr ) => console.log( 'loaded', xhr.loaded );
 	xhr.onload = ( xhr ) => MNU.callbackMarkdown( xhr.target.response, target );
 	xhr.send( null );
@@ -334,9 +339,9 @@ MNU.callbackMarkdown = function( markdown, target ) {
 	const converter = new showdown.Converter();
 	const html = converter.makeHtml( markdown );
 
-	target.innerHTML = html;
+	target.innerHTML = html
 	//console.log( '', html );
 
-	window.scrollTo( 0, 0 );
+	//window.scrollTo( 0, 0 );
 
 };
