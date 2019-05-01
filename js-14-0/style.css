@@ -85,10 +85,10 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 	main { height: calc(100% - var( --headerHeight )); padding: 0 1rem; position: absolute; left: 0; top: var( --headerHeight ); width: 100%; }
 
-	#navPanel { border-bottom: 1px solid #dedede; height: 480px; left: 0; overflow: hidden;
+	#navPanel { border-bottom: 1px solid #dedede; height: 480px; left: 0; /* overflow: hidden; */
 		position: absolute; right: 0; top: 0; width: 100%; }
 
-	#navPanel.collapsed { height: var( --headerHeight ); }
+	#navPanel.collapsed { height: var( --headerHeight ); overflow: hidden; }
 
 	#expandButton { display: block; }
 
