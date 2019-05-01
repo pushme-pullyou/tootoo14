@@ -3,7 +3,7 @@
 
 * { box-sizing: border-box; }
 
-:root { --mnu-width: 22rem; --screen-width: calc( 100vw ); --headerHeight: 5rem; }
+:root { --mnu-width: 22rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
 
 html { height: 100%; }
 
