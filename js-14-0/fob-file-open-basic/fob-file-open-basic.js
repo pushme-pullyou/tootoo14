@@ -27,8 +27,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	window.addEventListener ( 'hashchange', FOB.onHashChange, false );
 
-	FOBsecFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
-	FOBsecFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
+	FOBdivFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
+	FOBdivFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
 
 	FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
 	FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
@@ -39,8 +39,9 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		<details id=FOBdetFileOpen class=detSubMenu open >
 
 			<summary>Open file
-				<a id=FOBsum class=helpItem href="JavaScript:MNU.setPopupShowHide(FOBsum);" >&nbsp; ? &nbsp;</a>
-			</summary>
+
+				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,'README.md');" >?</button>
+				</summary>
 
 			<div class="dragDropArea" >
 
@@ -231,7 +232,6 @@ FOB.onDrop = function( event ) {
 
 FOB.onProgress = function( size = 0, note = '' ) {
 
-
 	const timeToLoad = ( performance.now() - FOB.timeStart ).toLocaleString();
 
 	let htm =
@@ -288,6 +288,7 @@ FOB.callbackOtherToTextarea = function( text ){
 	FOB.target.innerHTML = `<textarea style="${ FOB.contentsCss }" >${ text }</textarea>`;
 
 };
+
 
 
 FOB.updateDefaultFilePath = function() {

@@ -1,184 +1,130 @@
-<!doctype html>
-<html lang = "en" >
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset = "utf-8" >
-<meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-02-07" >
-<title></title>
-<style>
-
-	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
-	a { color: crimson; text-decoration: none; }
-	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
-
-	button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
-	button:hover { background: #ccc; color: #fff }
-
-	.sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
-	.sumHeader { font-size:1.3rem; }
-
-	.dragDropArea { border: 1px dashed gray; box-sizing: border-box; margin: 10px; padding: 0 10px; }
-
-	#navMenu { background-color: #eee; left: 0; margin: 20px; max-width: 300px; padding: 0 10px;
-		position: fixed; top: 0; }
-
-	#navPopUp { background-color: #eee; border-radius: 8px; display: block; max-height: 95%; max-width: 25%;
-		opacity: 0.95; overflow: auto; padding: 0 5px 10px 5px; position: fixed;
-		resize: both; right: 1rem; top: 1rem; z-index: 10; }
-
-#viewSrcButton { background-color: #555; bottom: 20px; color: #f00; opacity: 0.7; padding: 8px;
-		position: fixed; right: 20px; z-index: 10; }
-
-#viewSrcButton:hover { cursor: pointer; opacity: 1; }
-
-</style>
+<meta name = "date" content = "2019-04-30" >
+<meta name = "release" content = "14.0.0" >
+<title>fob-file-open-basic</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="../../js-14-0/style.css">
 </head>
 <body>
-<script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
-
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+<script src="../../js-14-0/mnu-menu/mnu-menu.js" ></script>
 <script src="fob-file-open-basic.js" ></script>
-<script src="tmp-template.js" ></script>
 
-	<nav id="navMenu" >
+	<nav id="navPanel">
 
-		<div id="divTitle" ></div>
+		<section id="secContent" >
 
-		<details class=navSubMenu open >
+			<header>
 
-			<summary class=sumMenuTitle >File menu</summary>
+				<div id="MNUdivHeader" ></div>
 
-			<section id="FOBsecFileOpenBasic"></section>
+			</header>
 
-			<section id="FOBsecFileSaveBasic"></section>
+			<details open >
 
-		</details>
+				<summary class=sumMenuTitle >File Menu</summary>
 
-		<details class=navSubMenu open >
+				<div id=FOBdivFileOpenBasic ></div>
 
-				<summary class=sumMenuTitle >Template menu</summary>
-
-				<section id="TMPdivTemplate"></section>
+				<div id=FOBdivFileSaveBasic ></div>
 
 			</details>
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >../../README.md</button>
-		</p>
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >../../favicon.ico</button>
-		</p>
+			<div id=TMPdivTemplate ></div>
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >../../index.html</button>
-		</p>
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >../../LICENSE</button>
-		</p>
+			<footer>
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml</button>
-		</p>
+				<div id="MNUdivFooter" ></div>
 
+				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
+
+			</footer>
+
+		</section>
 
 	</nav>
 
-	<nav id="navPopUp" >
 
-		<div id="divPopUpData" ></div>
+	<main id=main >
+
+		<div id=divContents ></div>
+
+	</main>
+
+
+	<nav>
+
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
+
+	<nav id="navPopup" hidden >
+
+		<div id="divPopupData" ></div>
 
 		<div id="divMessage" ></div>
 
 	</nav>
 
-	<nav id="viewSrcButton" >
-
-		<a id=aViewSource target=_blank >View source</a>
-
-	</nav>
-
-
-	<div id="divContents" ></div>
 
 
 <script>
 
-const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
-const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
+FOB.urlDefaultFile = 'README.md'
 
+// For main menu header
+MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
 
-FOB.urlDefaultFile = "README.md"
+MNU.homeText  = "pushMe-pullYou";
+MNU.homeTitle = "Very simple JavaScript files to help you explore and build new tools on GitHub.";
+MNU.homeUrl   = "https://pushme-pullyou.github.io";
+
+MNU.repoText  = "TooToo14";
+MNU.repoTitle = "Basic html templates with sliding menu, css selection, markdown capability and frequently used pages";
+MNU.repoUrl   = "https://pushme-pullyou.github.io/tootoo14";
+
+MNU.appText  = ""; // "CMS";
+MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
+MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
+
 
 init();
 
 
-
 function init() {
 
-	divTitle.innerHTML = getTitle();
+	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
 
-	FOBsecFileOpenBasic.innerHTML=FOB.getMenuFileOpenBasic();
+		divContents.style.width = getComputedStyle( divContents ).width;
+		divContents.style.height = getComputedStyle( divContents ).height;
+		divContents.setAttribute( 'scrolling', 'no' );
 
-	//FOBsecFileSaveBasic.innerHTML=FOB.getMenuFileSaveBasic();
+	}
 
-	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	const thrFilePath=localStorage.getItem( 'thrFilePath' ) || '';
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
 
-	FOBinpFilePath.value = thrFilePath;
+	//FOBdivFileSaveBasic.innerHTML=FOB.getMenuFileSaveBasic();
 
-	FOB.urlDefaultFile = thrFilePath || FOB.urlDefaultFile;
 
-	//location.hash = location.hash || FOB.urlDefaultFile;
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
+
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
-
 }
 
-
-const MNU = {};
-
-
-MNU.setPopupShowHide = function( id, url = "README.md" ) {
-	//console.log( 'id', id );
-
-	id.classList.toggle( "active" );
-
-	FOB.target = divPopUpData;
-
-	FOB.requestFile( url );
-
-	//divPopUpData.innerHTML = id.classList.contains( 'active' ) ? text : '';
-
-};
-
-
-
-function getTitle() {
-
-	document.title = document.title ? document.title : location.pathname.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
-
-	const htm =
-	`
-		<h2>
-			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
-				<img src=${ urlSourceCodeIcon } height=18 >
-			</a>
-			<a href="" title="Click to reload this page" >${ document.title }</a>
-		</h2>
-
-		<p>
-			${ TMP.description }
-		</p>
-	`;
-
-	return htm;
-
-}
 
 </script>
 </body>
