@@ -1,14 +1,64 @@
-
+// Copyright 2019 pushMe-pullYou authors. MIT License
 /* global THREE * /
 /* jshint esversion: 6 */
 
 
-const MNU = {
-	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"release": "R13.2",
-	"date": "2019-03-04",
-	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones"
-};
+const MNU = { "release": "R13.2", "date": "2019-03-04" };
+
+
+MNU.description =
+	`
+		TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones
+	`;
+
+////////// currentStatus items are for the question marks in the main HTML document
+
+	MNU.currentStatusMenu =
+	`
+		<h3>TooToo Menu (MNU) ${ MNU.release} ~ ${ MNU.date }</h3>
+
+		<p>${ MNU.description }</p>
+
+		<p>
+			Concept
+			<ul>
+				<li>Creates default menu header and footer content and code</li>
+				<li>Code for hamburger sliding menu</li>
+				<li>Code for pop-up window</li>
+				<li>Code to add and select and load theme stylesheets</li>
+			</ul>
+
+		</p>
+
+		<p>This module is ready for light testing.</p>
+
+		<p><a href="https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/mnu-menu/README.md" target="_blank" >TooToo Menu Read Me</a></p>
+
+		<details>
+
+			<summary>Change log</summary>
+
+			<ul>
+				<li>2019-03-04 ~ 15.0 ~ update github mark</li>
+				<li>2019-02-13 ~ Add rate limits popup closer</li>
+				<li>2019-02-07 ~ R13/1.0 ~ refactor styles / code cleanup</li>
+				<li>2019-01-15 ~ Add MNU.description text content and code</li>
+				<li>2019-01-14 ~ Update text content</li>
+				<li>2019-01-12 ~ Add MNUdetFooter id and set to open in test HTML</li>
+				<li>2019-01-11 ~ Add close button to status pop-up and improve pop-up toggling</li>
+				<li>2019-01-09 ~ Content update and minor code fixes</li>
+				<li>2019-01-09 ~ Add vars: MNU.descriptionTooToo, MNU.footerUrl, MNU.footerTarget, MNU.footerIssues</li>
+				<li>2018-12-29 ~ Add helpItem class</li>
+				<li>2018-12-28 ~ Current Status link changed to question mark</li>
+				<li>2018-12-28 ~ Content displayed in the Pop-Up</li>
+				<li>2018-12-22 ~ Themes added</li>
+				<li>2018-12-22 ~ Update subtext</li>
+				<!-- <li></li>
+				-->
+			</ul>
+
+		</details>
+	`;
 
 
 ////////// boilerplate for downstream users
@@ -110,9 +160,9 @@ MNU.getNavHeader = function() {
 		<p>
 			${ MNU.description }
 
-			<button class=butHelp id=butMenu onclick="MNU.setPopupShowHide(butMenu,'README.md');" style=float:right; >?</button>
-
-
+			<a id=mnuHead class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuHead,MNU.currentStatusMenu);"
+				title="Current status" >&nbsp; ? &nbsp;
+			</a>
 		</p>
 
 	</div>
@@ -131,7 +181,7 @@ MNU.getNavFooter = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,'README.md');" style=float:right; >?</button>
+				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.currentStatusMenu);" style=float:right; >?</button>
 			</summary>
 
 			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
