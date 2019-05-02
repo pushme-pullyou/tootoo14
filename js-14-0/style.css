@@ -58,9 +58,9 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 #navPanel #secContent a:active, #navPanel #secContent a:focus { color: #ff0000; }
 
 
-#navPopup { background-color: #eee; border: 1px solid #aaa;  border-radius: 8px; max-height: 45%;
-	max-width: 45%; opacity: 0.95;  overflow: auto; padding: 0 1rem 1rem 1rem; position: absolute;
-	right: 5%;  top: 10%;
+#navPopup { background-color: #eee; border: 1px solid #aaa; border-radius: 8px;
+	max-width: 45%; opacity: 0.95;  overflow: auto; padding: 0 1rem 1rem 1rem; position: fixed;
+	resize: both; left: 50%;  top: 10%;
 	box-shadow: 10px 10px 25px rgba(0,0,0,0.3), 6px 6px 6px rgba(0,0,0,0.5); }
 
 

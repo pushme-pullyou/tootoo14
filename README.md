@@ -19,8 +19,9 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 ### Stable Release: https://pushme-pullyou.github.io/tootoo14/
 
+<details>
 
-## Concept
+<summary style="font-size: 1.5rem;" >Concept</summary>
 
 _TooToo is a collection of very simple, plain-vanilla JavaScript scripts and test files to help you manage content on both GitHub branches and GitHub pages._
 
@@ -38,6 +39,7 @@ Current set of modules:
 
 Much more information, objectives and background is available in [About TooToo]( #pages/about-tootoo.md )
 
+</details>
 <details>
 
 <summary style="font-size: 1.5rem;" >To do / wish list</summary>
