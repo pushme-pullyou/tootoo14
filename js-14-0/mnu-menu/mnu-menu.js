@@ -132,7 +132,7 @@ MNU.getNavFooter = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,'README.md');" style=float:right; >?</button>
+				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
 			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
