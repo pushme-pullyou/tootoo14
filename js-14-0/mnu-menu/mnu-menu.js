@@ -20,10 +20,11 @@ MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo13/tree/master/js-t
 
 MNU.descriptionTooToo =
 	`
+		<i>The menu and user interface used here are built on:</i>
 		<h3>
 			<a href="https://github.com/pushme-pullyou/tootoo13" target="_blank">${ MNU.urlSourceCodeIcon }</a>
 			<a href="https://pushme-pullyou.github.io#tootoo13/README.md" target="_blank">
-				TooToo13 Read Me
+				TooToo14
 			</a>
 		</h3>
 
