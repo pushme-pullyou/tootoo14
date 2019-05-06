@@ -1,14 +1,14 @@
-
-/* global THREE * /
+/* global Stats, MNUbutRateLimits, navPopup, MNUdivPopupData, divContents, showdown */
 /* jshint esversion: 6 */
 
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"release": "R13.2",
-	"date": "2019-03-04",
+	"release": "R14.1",
+	"date": "2019-03-06",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones"
 };
+
 
 
 ////////// boilerplate for downstream users
@@ -110,7 +110,7 @@ MNU.getNavHeader = function() {
 		<p>
 			${ MNU.description }
 
-			<button class=butHelp id=butMenu onclick="MNU.setPopupShowHide(butMenu,'README.md');" style=float:right; >?</button>
+			<button class=butHelp id=butMenu onclick="MNU.setPopupShowHide(butMenu,MNU.descriptionTooToo);" style=float:right; >?</button>
 
 
 		</p>
@@ -170,7 +170,7 @@ MNU.showFps = function(){
 
 		loop();
 
-	}
+	};
 
 	script.src='https://rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
 
@@ -213,7 +213,7 @@ MNU.rateLimits = function() {
 
 	}
 
-}
+};
 
 
 
@@ -249,7 +249,7 @@ MNU.setPopupShowHide = function( id, text ) {
 
 	}
 
-}
+};
 
 
 
@@ -265,7 +265,7 @@ MNU.onClickContainer = function() {
 
 	}
 
-}
+};
 
 
 
@@ -289,7 +289,7 @@ MNU.callbackMarkdown = function( markdown, target ) {
 	const converter = new showdown.Converter();
 	const html = converter.makeHtml( markdown );
 
-	target.innerHTML = html
+	target.innerHTML = html;
 	//console.log( '', html );
 
 	//window.scrollTo( 0, 0 );
