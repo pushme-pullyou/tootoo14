@@ -118,12 +118,6 @@ FOB.requestFile = function( url ) { // from a button
 
 		FOB.requestFileText( url );
 
-/* 		FOB.xhr.open( 'GET', url, true );
-		FOB.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
-		//xhr.onprogress = function( xhr ) { console.log(  'bytes loaded: ' + xhr.loaded.toLocaleString() ) }; /// or something
-		FOB.xhr.onload = FOB.callbackDecider;
-		FOB.xhr.send( null ); */
-
 	}
 
 };

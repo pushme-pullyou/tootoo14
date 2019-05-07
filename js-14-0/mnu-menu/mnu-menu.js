@@ -223,9 +223,14 @@ MNU.rateLimits = function() {
 MNU.setPopupShowHide = function( id, text ) {
 	//console.log( 'id', id );
 
-	MNU.popupId = id;
+	if ( id ) {
 
-	MNU.popupId.classList.toggle( "active" );
+		MNU.popupId = id;
+
+		MNU.popupId.classList.toggle( "active" );
+
+	}
+
 
 	if ( MNU.popupId.classList.contains( 'active' ) ) {
 
