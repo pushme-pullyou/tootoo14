@@ -4,19 +4,16 @@
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"release": "R14.1",
-	"date": "2019-03-06",
-	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones"
+	"release": "R14.1.1",
+	"date": "2019-05-09",
+	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
+	"helpFile": "README.md",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/"
 };
 
 
 
 ////////// boilerplate for downstream users
-
-MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
-MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
-MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo13/tree/master/js-tootoo13-1";
-
 
 MNU.descriptionTooToo =
 	`
@@ -44,18 +41,11 @@ MNU.descriptionTooToo =
 	`;
 
 
-MNU.currentStatusCore =
-	`
-		<h3>MNU.currentStatusCore</h3>
+//////////
 
-		<p>This web page is built with:</p>
+MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
+MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
-		${ MNU.descriptionTooToo }
-	`;
-
-
-
-MNU.info = "README.md";
 
 // For main menu header
 MNU.homeText  = "homeText";
@@ -99,12 +89,13 @@ MNU.getNavHeader = function() {
 		</h3>
 
 		<h2>
+
 			<a href=${ MNU.urlSourceCode } ${ MNU.footerTarget } title="Source code on GitHub" >
 			${ MNU.urlSourceCodeIcon }
 			</a>
 			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ ( document.head.querySelector( '[ name=release ]' ) || "" ).content }</span></a>
 
-			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.info);" style=float:right; >?</button>
+			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" style=float:right; >?</button>
 
 		</h2>
 
@@ -112,7 +103,6 @@ MNU.getNavHeader = function() {
 			${ MNU.description }
 
 			<button class=butHelp id=butMenu onclick="MNU.setPopupShowHide(butMenu,MNU.descriptionTooToo);" style=float:right; >?</button>
-
 
 		</p>
 
@@ -153,10 +143,6 @@ MNU.getNavFooter = function() {
 	return htm;
 
 };
-
-// call using:
-//<a id=mnuFoot class=helpItem href="JavaScript:MNU.setPopupShowHide(mnuFoot,MNU.currentStatusMenu);" >&nbsp; ? &nbsp;</a>
-
 
 
 MNU.showFps = function(){
