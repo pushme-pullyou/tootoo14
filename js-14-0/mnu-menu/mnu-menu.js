@@ -15,6 +15,10 @@ const MNU = {
 
 ////////// boilerplate for downstream users
 
+MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
+MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
+
+
 MNU.descriptionTooToo =
 	`
 		<i>The menu and user interface used here are built on:</i>
@@ -43,8 +47,6 @@ MNU.descriptionTooToo =
 
 //////////
 
-MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
-MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
 
 // For main menu header
@@ -143,6 +145,7 @@ MNU.getNavFooter = function() {
 	return htm;
 
 };
+
 
 
 MNU.showFps = function(){
