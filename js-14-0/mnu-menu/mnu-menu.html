@@ -68,6 +68,8 @@
 
 				<div id="MNUdivFooter" ></div>
 
+				<div id="MNUdivFooterPopup" ></div>
+
 				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
 
 			</footer>
@@ -145,7 +147,9 @@ function init() {
 	butViewSource.style.display = "block";
 	butViewSource.href = MNU.urlSourceCode;
 
-	MNUdivFooter.innerHTML = MNU.getNavFooterPopup();
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 }
 
