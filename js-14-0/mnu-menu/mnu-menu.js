@@ -18,7 +18,6 @@ const MNU = {
 MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
 MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
-
 MNU.descriptionTooToo =
 	`
 		<i>The menu and user interface used here are built on:</i>
@@ -48,7 +47,6 @@ MNU.descriptionTooToo =
 //////////
 
 
-
 // For main menu header
 MNU.homeText  = "homeText";
 MNU.homeTitle = "homeTitle";
@@ -64,7 +62,7 @@ MNU.appUrl   = "";
 
 MNU.footerUrl    = "#";
 MNU.footerTarget = ""; //"target=_blank";
-MNU.footerIssues = "https://github.com/pushme-pullyou/pushme-pullyou.github.io/issues";
+MNU.footerIssues = "https://github.com/pushme-pullyou/tootoo14/issues";
 
 
 
@@ -95,6 +93,7 @@ MNU.getNavHeader = function() {
 			<a href=${ MNU.urlSourceCode } ${ MNU.footerTarget } title="Source code on GitHub" >
 			${ MNU.urlSourceCodeIcon }
 			</a>
+
 			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ ( document.head.querySelector( '[ name=release ]' ) || "" ).content }</span></a>
 
 			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" style=float:right; >?</button>
@@ -147,6 +146,37 @@ MNU.getNavFooter = function() {
 };
 
 
+MNU.getNavFooterPopup = function() {
+
+
+	const htm  =
+	`
+		<details id=MNUdetFooter >
+
+			<summary class=sumMenuTitle >Help menu
+				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.descriptionTooToo);" style=float:right; >?</button>
+			</summary>
+
+			<p><button id=MNUbutTooToo onclick="MNU.setPopupShowHide(MNUbutTooToo,'https://www.ladybug.tools/spider/pages/about-tootoo.md');" >About TooToo</button></p>
+			<p><button id=MNUbutCredits onclick="MNU.setPopupShowHide(MNUbutCredits,'https://www.ladybug.tools/spider/pages/credits.md');" >Credits</button></p>
+			<p><button id=MNUbutCode onclick="MNU.setPopupShowHide(MNUbutContribute,'https://www.ladybug.tools/spider/pages/code-of-conduct.md');" >Code of Coduct</button></p>
+			<p><button id=MNUbutContribute onclick="MNU.setPopupShowHide(MNUbutContribute,'https://www.ladybug.tools/spider/pages/contributing.md');" >Contributing via GitHub</button></p>
+			<p><button id=MNUbutLicense onclick="MNU.setPopupShowHide(MNUbutLicense,'https://www.ladybug.tools/spider/pages/license.md');" >MIT License</button></p>
+			<p><button id=MNUbutMarkdown onclick="MNU.setPopupShowHide(MNUbutMarkdown,'https://www.ladybug.tools/spider/pages/markdown-help.md');" >Markdown help</button></p>
+			<p><button id=MNUbutThemes onclick="MNU.setPopupShowHide(MNUbutThemes,'https://www.ladybug.tools/spider/pages/themes.md');" >Themes help</button></p>
+			<p><button onclick=MNU.showFps() >Show frames/second statistics</button></p>
+			<p><button id=MNUbutRateLimits onclick=MNU.rateLimits(); >View GitHub API rate limits</button></p>
+
+			<p>&raquo; <a title='Need help' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></p>
+
+			<hr>
+
+		</details>
+	`;
+
+	return htm;
+
+};
 
 MNU.showFps = function(){
 
