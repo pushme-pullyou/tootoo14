@@ -10,16 +10,24 @@ Interesting things you can do with Markdown.
 
 ### Text
 
-	_italics_
+	_italics_ *italics*
 
-_italics_
+_italics_ *italics*
 
-	**Bold**
+	**bold**
 
-**Bold**
+**bold**
 
+	***bold and italics***
 
+***bold and italics***
 
+### Strike through
+
+```
+~~Strike through~~
+```
+~~Strike through~~
 
 ### Horizontal rules
 
@@ -36,14 +44,17 @@ _italics_
 ___
 
 
+### Links
 
-### Strike through
-
+``` Markdown
+[Example.com]( https://example.com "title" )
 ```
-~~Strike through~~
-```
-~~Strike through~~
 
+[Example.com]( https://example.com "title" )
+
+text [^1] not
+
+[^1]: footnote
 
 
 ### Tables
@@ -82,10 +93,9 @@ ___
 
 
 
-
-
 ### Code
-```
+
+``` Markdown
 	```
 	line of code with 3 backquote characters
 	line of code
@@ -93,11 +103,15 @@ ___
 	```
 ```
 
+``` Markdown
+
 	line of code
 	line of code
 	line of code
 
 ```
+
+``` Markdown
 text with `back quote` characters
 ```
 text `text` text
@@ -105,7 +119,7 @@ text `text` text
 
 ### Quotes
 
-```
+``` markdown
 > quote
 > quote
 > quote

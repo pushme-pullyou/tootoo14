@@ -13,7 +13,7 @@ body { background-color: #ffffff; color: #555; font-family: 'inconsolata'; font-
 a { color: rgb(206, 33, 33); text-decoration: none; }
 a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
 
-blockquote, pre { background-color: #eee; padding: 5px; }
+blockquote, pre { background-color: #ddd; padding: 5px; }
 
 button, input[ type=button ] { background-color: #ddd; border: 1px solid #ccc; border-radius: 2px;
 	color: #322; cursor: pointer; outline: none; padding: 3px 5px; }
@@ -21,7 +21,7 @@ button, input[ type=button ] { background-color: #ddd; border: 1px solid #ccc; b
 button:hover, input[ type=button ]:hover{ background: #ccc;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.3); color: #f00 }
 
-code { background-color: #eee; }
+code { background-color: #ddd; }
 
 input[ type = range ] { -webkit-appearance: none; -moz-appearance: none; background-color: #ddd; width: 90%; }
 input[ type = range ]::-moz-range-thumb { background-color: rgb(228, 225, 225); border-radius: 0; width: 10px; }

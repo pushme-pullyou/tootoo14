@@ -4,10 +4,10 @@
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"release": "R14.1.1",
 	"date": "2019-05-09",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
+	"release": "R14.1.1",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/"
 };
 
@@ -61,9 +61,11 @@ MNU.appTitle = "appTitle";
 MNU.appUrl   = "";
 
 MNU.footerUrl    = "#";
+
 MNU.footerTarget = ""; //"target=_blank";
 MNU.footerIssues = "https://github.com/pushme-pullyou/tootoo14/issues";
 
+MNU.footerPopupUrl = "";
 
 
 //////////
@@ -148,7 +150,6 @@ MNU.getNavFooter = function() {
 
 MNU.getNavFooterPopup = function() {
 
-
 	const htm  =
 	`
 		<details id=MNUdetFooter >
@@ -157,13 +158,13 @@ MNU.getNavFooterPopup = function() {
 				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
-			<p><button id=MNUbutTooToo onclick="MNU.setPopupShowHide(MNUbutTooToo,'https://www.ladybug.tools/spider/pages/about-tootoo.md');" >About TooToo</button></p>
-			<p><button id=MNUbutCredits onclick="MNU.setPopupShowHide(MNUbutCredits,'https://www.ladybug.tools/spider/pages/credits.md');" >Credits</button></p>
-			<p><button id=MNUbutCode onclick="MNU.setPopupShowHide(MNUbutContribute,'https://www.ladybug.tools/spider/pages/code-of-conduct.md');" >Code of Coduct</button></p>
-			<p><button id=MNUbutContribute onclick="MNU.setPopupShowHide(MNUbutContribute,'https://www.ladybug.tools/spider/pages/contributing.md');" >Contributing via GitHub</button></p>
-			<p><button id=MNUbutLicense onclick="MNU.setPopupShowHide(MNUbutLicense,'https://www.ladybug.tools/spider/pages/license.md');" >MIT License</button></p>
-			<p><button id=MNUbutMarkdown onclick="MNU.setPopupShowHide(MNUbutMarkdown,'https://www.ladybug.tools/spider/pages/markdown-help.md');" >Markdown help</button></p>
-			<p><button id=MNUbutThemes onclick="MNU.setPopupShowHide(MNUbutThemes,'https://www.ladybug.tools/spider/pages/themes.md');" >Themes help</button></p>
+			<p><button id=MNUbutTooToo onclick="MNU.setPopupShowHide(MNUbutTooToo,'${ MNU.footerPopupUrl }pages/about-tootoo.md');" >About TooToo</button></p>
+			<p><button id=MNUbutCredits onclick="MNU.setPopupShowHide(MNUbutCredits,'${ MNU.footerPopupUrl }pages/credits.md');" >Credits</button></p>
+			<p><button id=MNUbutCode onclick="MNU.setPopupShowHide(MNUbutContribute,'${ MNU.footerPopupUrl }pages/code-of-conduct.md');" >Code of Coduct</button></p>
+			<p><button id=MNUbutContribute onclick="MNU.setPopupShowHide(MNUbutContribute,'${ MNU.footerPopupUrl }pages/contributing.md');" >Contributing via GitHub</button></p>
+			<p><button id=MNUbutLicense onclick="MNU.setPopupShowHide(MNUbutLicense,'${ MNU.footerPopupUrl }pages/license.md');" >MIT License</button></p>
+			<p><button id=MNUbutMarkdown onclick="MNU.setPopupShowHide(MNUbutMarkdown,'${ MNU.footerPopupUrl }pages/markdown-help.md');" >Markdown help</button></p>
+			<p><button id=MNUbutThemes onclick="MNU.setPopupShowHide(MNUbutThemes,'${ MNU.footerPopupUrl }pages/themes.md');" >Themes help</button></p>
 			<p><button onclick=MNU.showFps() >Show frames/second statistics</button></p>
 			<p><button id=MNUbutRateLimits onclick=MNU.rateLimits(); >View GitHub API rate limits</button></p>
 
