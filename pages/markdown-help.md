@@ -6,8 +6,10 @@ Interesting things you can do with Markdown.
 ## Links of Interest
 
 * <https://github.com/showdownjs/showdown>
+* <https://guides.github.com/features/mastering-markdown/>
 * <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
-
+* <https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md>
+* <https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf>
 ### Text
 
 	_italics_ *italics*
