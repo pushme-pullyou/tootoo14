@@ -6,14 +6,16 @@
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-04-29" >
-<meta name = "release" content = "14.0.0">
+<meta name = "release" content = "14.0.0" >
 <title>TooToo</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="js-14-0/style.css">
+<link rel="stylesheet" href="js-14-0/style.css" >
 </head>
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="js-14-0/mnu-menu/mnu-menu.js" ></script>
+<script src="js-14-0/fga-files-github-api/fga-files-github-api.js" ></script>
+<script src="js-14-0/fob-file-open-basic/fob-file-open-basic.js" ></script>
 
 	<nav id="navPanel">
 
@@ -34,13 +36,13 @@
 
 				<div id=SFMsecPrototypes ></div>
 
-				<div id="FGAsecMenuRepoFilesFolders" ></div>
+				<div id="FGAdivMenuRepoFilesFolders" ></div>
 
 				<div id="GATsecGithubAccessToken" ></div>
 
-				<div id=FOBsecFileOpenBasic ></div>
+				<div id=FOBdivFileOpenBasic ></div>
 
-				<div id=FILdivFileSave ></div>
+				<div id=FOBdivFileSave ></div>
 
 			</details>
 
@@ -80,6 +82,8 @@
 
 				<div id="MNUdivFooter" ></div>
 
+				<div id="MNUdivFooterPopup" ></div>
+
 				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
 
 			</footer>
@@ -109,6 +113,12 @@
 		<div id="MNUdivPopupData" ></div>
 
 		<div id="MNUdivPopupMessage" ></div>
+
+	</nav>
+
+	<nav>
+
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
 
@@ -174,6 +184,9 @@
 
 <script>
 
+FGA.urlGitHubPage = "";
+FGA.uriDefaultFile = "README.md";
+
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
 
@@ -205,18 +218,7 @@ function init() {
 		divContents.setAttribute( 'scrolling', 'no' );
 
 	}
-
-	MNUdivHeader.innerHTML = MNU.getNavHeader();
-
-	MNU.requestFile( "pages/markdown-help.md", divMarkdown );
-
-	butViewSource.style.display = "block";
-	butViewSource.href = MNU.urlSourceCode;
-
-	MNUdivFooter.innerHTML = MNU.getNavFooter();
-
-	divSampleHtml.innerHTML = tmpSampleHtml.innerHTML;
-
+/*
 	divContents.innerHTML =
 		`
 			<h1>Sample HTML</h1>
@@ -224,6 +226,30 @@ function init() {
 			${ tmpSampleHtml.innerHTML }
 			${ txts }
 		`;
+ */
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+	FGA.getFiles();
+
+	//if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
+
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+
+	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+
+	MNU.requestFile( "pages/markdown-help.md", divMarkdown );
+
+
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
+
+	divSampleHtml.innerHTML = tmpSampleHtml.innerHTML;
+
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
+
 
 }
 

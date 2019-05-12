@@ -4,9 +4,9 @@
 
 
 const TMP = {
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-04-30",
 	"description": "template",
-	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"release": "1.0.0",
 };
 

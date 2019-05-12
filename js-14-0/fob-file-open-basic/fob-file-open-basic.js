@@ -1,8 +1,13 @@
-// Copyright 2019 pushMe pullYou authors. MIT License
 // jshint esversion: 6
 /* globals navMenu, showdown, divContents, FOBsecFileOpenBasic */
 
-const FOB = { "release": "R1.0.0", "date": "2019-04-13" };
+const FOB = {
+
+	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
+	"date": "2019-04-13",
+	"release": "R1.0.0"
+
+};
 
 FOB.description =
 	`
@@ -10,6 +15,8 @@ FOB.description =
 		select, open and display local files using the file dialog box, drag and drop or URL.
 	`;
 
+
+FOB.urlDefaultFile = 'README.md';
 
 FOB.reader = new FileReader();
 FOB.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
@@ -39,9 +46,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		<details id=FOBdetFileOpen class=detSubMenu open >
 
 			<summary>Open file
-
-				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,'README.md');" >?</button>
-				</summary>
+				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,'js-14-0/fob-file-open-basic/README.md');" >?</button>
+			</summary>
 
 			<div class="dragDropArea" >
 

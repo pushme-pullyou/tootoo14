@@ -1,23 +1,28 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FGA = { "release": "1.0.0", "date": "2019-04-13" };
+const FGA = {
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-04-13",
+	"release": "1.0.0"
+};
 
 
 FGA.description =
 	`
 		Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files
-	`;
+		`;
 
-FGA.uriDefaultFile = "README.md";
+FGA.helpFile = "js-14-0/fga-files-github-api/README.md";
+
+FGA.branch = '/master/';
 FGA.user = 'pushme-pullyou';
 FGA.repo = 'tootoo14';
 FGA.pathRepo = '';
-FGA.branch = '/master/';
 FGA.urlGitHubPage = "../../";
+FGA.uriDefaultFile = "README.md";
 
 FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
@@ -28,8 +33,6 @@ FGA.regexImages = /\.(jpe?g|png|gif|webp|ico|svg|bmp)$/i;
 FGA.regexHtml = /\.(htm?l)$/i;
 
 FGA.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
-
-
 
 
 FGA.getMenuFilesGithubApi = function() {
@@ -43,7 +46,7 @@ FGA.getMenuFilesGithubApi = function() {
 			<details open >
 
 				<summary id=FGAsumSurfaces  >All folders and files
-					<a id=FGAsum class=helpItem href="JavaScript:MNU.setPopupShowHide(FGAsum,'README.md');" >&nbsp; ? &nbsp;</a>
+					<button id=butFGA class=butHelp onclick="MNU.setPopupShowHide(butFGA,FGA.helpFile);" style=float:right; >?</button>
 				</summary>
 
 				<div id = "FGAdivFilesGithubApi" ></div>
@@ -101,11 +104,11 @@ FGA.setMenuGitHubPathFileNames = function( path = '' ) {
 
 FGA.requestFile = function( url ) {
 
-	xhr = new XMLHttpRequest();
+	const xhr = new XMLHttpRequest();
 	xhr.open( 'GET', url, true );
 	xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	//xhr.onprogress = function( xhr ) { console.log(  'bytes loaded: ' + xhr.loaded.toLocaleString() ) }; /// or something
-	xhr.onload = FGA.callbackGitHubPathFileNames
+	xhr.onload = FGA.callbackGitHubPathFileNames;
 	xhr.send( null );
 
 };
