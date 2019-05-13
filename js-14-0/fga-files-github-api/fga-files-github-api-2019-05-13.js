@@ -1,4 +1,4 @@
-/* globals FOB, FGAdivMenuItems, FGAdivBreadcrumbs */
+/* globals FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -41,9 +41,7 @@ FGA.getMenuFilesGithubApi = function() {
 	FGA.urlGitHubApiContents = 'https://api.github.com/repos/' + FGA.user + "/" + FGA.repo + '/contents/' + FGA.pathRepo;
 	FGA.accessToken = localStorage.getItem( 'githubAccessToken' ) || '';
 
-	FOB.xhr.addEventListener( 'load', FGA.onLoadFile, false );
-	FOB.reader.addEventListener( 'load', FGA.onLoadFile, false );
-	document.body.addEventListener( 'onZipFileParse', FGA.onLoadFile, false );
+	FOB.xhr.addEventListener( 'load', FGA.onLoad, false );
 
 	const htm =
 		`
@@ -71,7 +69,7 @@ FGA.getMenuFilesGithubApi = function() {
 
 FGA.getFiles = function() {
 
-	//const timeStart = performance.now();
+	const timeStart = performance.now();
 
 	const url = !location.hash ? FGA.uriDefaultFile : location.hash.slice( 1 );
 	FGA.url = url;
@@ -182,6 +180,21 @@ FGA.getFoldersFromContents = function( items ) {
 };
 
 
+FGA.onLoad = function() {
+
+	console.log( 'FGA', FOB.name );
+
+	tds = FGAdivMenuItems.querySelectorAll( "td" );
+
+	for ( let item of tds ) {
+
+		console.log( 'td', item );
+		item.style.backgroundColor = 'pink';
+
+	}
+
+};
+
 
 FGA.getFilesFromContents = function( items ) {
 
@@ -201,17 +214,17 @@ FGA.getFilesFromContents = function( items ) {
 
 			const str = item.path.endsWith( "html" ) ? `<a href="${ FGA.urlGitHubPage }${ FGA.pathRepo }${ itemPath }" >&#x2750;</a>` : "";
 
-			const stl = item.name === name ? "yellow" : "";
+			const stl = item.name === name ? "green" : "";
 
 			htm += // try grid or flexbox??
 			`
-				<table id=${ item.name } style=background-color:${ stl }; ><tr>
+				<table ><tr>
 					<td>
 						<a href="${ FGA.urlGitHubSource }/blob${ FGA.branch }${ itemPath }" target=_top >
 							${ FGA.iconInfo }
 						</a>
 					</td>
-					<td>
+					<td style=background-color:${ stl }; >
 						<a href=#${ FGA.urlGitHubPage }${ FGA.pathRepo }${ itemPath } title="${ item.size.toLocaleString() } bytes" >
 							${ item.name }
 						</a>
@@ -234,16 +247,6 @@ FGA.getFilesFromContents = function( items ) {
 	}
 
 	return htm;
-
-};
-
-
-
-FGA.onLoadFile = function() {
-
-	const tables = FGAdivMenuItems.querySelectorAll( "table" );
-
-	tables.forEach( table => table.style.backgroundColor = table.id === FOB.name ? "yellow" : "" );
 
 };
 
