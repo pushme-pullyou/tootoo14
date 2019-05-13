@@ -4,10 +4,10 @@
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-05-09",
+	"date": "2019-05-13",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
-	"release": "R14.1.1",
+	"release": "0.1.1",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-0/mnu-menu"
 };
 
@@ -168,7 +168,7 @@ MNU.getNavFooterPopup = function() {
 			<p><button onclick=MNU.showFps() >Show frames/second statistics</button></p>
 			<p><button id=MNUbutRateLimits onclick=MNU.rateLimits(); >View GitHub API rate limits</button></p>
 
-			<p>&raquo; <a title='Need help' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></p>
+			<p>&raquo; <a title='Need help?' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></p>
 
 			<hr>
 
