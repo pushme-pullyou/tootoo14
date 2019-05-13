@@ -56,14 +56,22 @@ See read me files in each module folder for to do items
 
 <summary>Issues</summary>
 
-* 2019-01-28 ~ Theo ~ Add ability to store styles for individual instances - not just single localStorage var
-* 2019-01-24 ~ Theo ~ Footer buttons need closers
+* 2019-05-13 ~ Not reloading ICO file
 
 </details>
 
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-13 ~ Theo
+
+* Many fixes / see commit messages
+
+Dealt with
+
+* 2019-01-28 ~ Theo ~ Add ability to store styles for individual instances - not just single localStorage var
+* 2019-01-24 ~ Theo ~ Footer buttons need closers
 
 ### 2019-04-14 ~ Theo
 
