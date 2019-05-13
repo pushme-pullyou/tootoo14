@@ -21,7 +21,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 <details>
 
-<summary style="font-size: 1.5rem;" >Concept</summary>
+<summary>Concept</summary>
 
 _TooToo is a collection of very simple, plain-vanilla JavaScript scripts and test files to help you manage content on both GitHub branches and GitHub pages._
 
@@ -42,7 +42,7 @@ Much more information, objectives and background is available in [About TooToo](
 </details>
 <details>
 
-<summary style="font-size: 1.5rem;" >To do / wish list</summary>
+<summary>To do / wish list</summary>
 
 See read me files in each module folder for to do items
 
@@ -54,7 +54,7 @@ See read me files in each module folder for to do items
 
 <details>
 
-<summary style="font-size: 1.5rem;" >Issues</summary>
+<summary>Issues</summary>
 
 * 2019-01-28 ~ Theo ~ Add ability to store styles for individual instances - not just single localStorage var
 * 2019-01-24 ~ Theo ~ Footer buttons need closers
@@ -63,7 +63,7 @@ See read me files in each module folder for to do items
 
 <details>
 
-<summary style="font-size: 1.5rem;" >Change Log</summary>
+<summary>Change Log</summary>
 
 ### 2019-04-14 ~ Theo
 

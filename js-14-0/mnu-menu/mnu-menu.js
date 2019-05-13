@@ -22,8 +22,8 @@ MNU.descriptionTooToo =
 	`
 		<i>The menu and user interface used here are built on:</i>
 		<h3>
-			<a href="https://github.com/pushme-pullyou/tootoo13" target="_blank">${ MNU.urlSourceCodeIcon }</a>
-			<a href="https://pushme-pullyou.github.io#tootoo13/README.md" target="_blank">
+			<a href="https://github.com/pushme-pullyou/tootoo14" target="_blank">${ MNU.urlSourceCodeIcon }</a>
+			<a href="https://pushme-pullyou.github.io#tootoo14/README.md" target="_blank">
 				TooToo14
 			</a>
 		</h3>
@@ -60,13 +60,13 @@ MNU.appText  = "appText";
 MNU.appTitle = "appTitle";
 MNU.appUrl   = "";
 
-MNU.footerUrl    = "#";
+MNU.footerUrl		= "#";
+MNU.footerPopupUrl	= "";
+MNU.footerTarget	= ""; //"target=_blank";
+MNU.footerIssues	= "https://github.com/pushme-pullyou/tootoo14/issues";
 
-MNU.footerTarget = ""; //"target=_blank";
-MNU.footerIssues = "https://github.com/pushme-pullyou/tootoo14/issues";
-
-MNU.footerPopupUrl = "";
-
+//MNU.description = ZZZ.description
+MNU.description = document.head.querySelector( '[ name=description ]' ).content;
 
 //////////
 
@@ -98,7 +98,7 @@ MNU.getNavHeader = function() {
 
 			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ ( document.head.querySelector( '[ name=release ]' ) || "" ).content }</span></a>
 
-			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" style=float:right; >?</button>
+			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
 		</h2>
 
@@ -178,6 +178,8 @@ MNU.getNavFooterPopup = function() {
 	return htm;
 
 };
+
+
 
 MNU.showFps = function(){
 

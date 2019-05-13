@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "description" content = "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-01" >
-<meta name = "release" content = "14.0.0" >
+<meta name = "date" content = "2019-05-13" >
+<meta name = "release" content = "0.1.0" >
 <title>TooToo Menu MNU</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="../../js-14-0/style.css">
@@ -81,11 +81,7 @@
 
 	<main id=main >
 
-		<div id=divContents >
-			<p>
-				lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-			</p>
-		</div>
+		<div id=divContents ></div>
 
 	</main>
 
@@ -145,12 +141,14 @@ function init() {
 
 	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
-	butViewSource.style.display = "block";
-	butViewSource.href = MNU.urlSourceCode;
-
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
+
+	divContents.innerHTML = MNU.requestFile( "README.md", divContents );
+
+	butViewSource.style.display = "block";
+	butViewSource.href = MNU.urlSourceCode;
 
 }
 
