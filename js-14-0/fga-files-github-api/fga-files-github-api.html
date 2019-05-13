@@ -84,24 +84,14 @@
 
 	<main id=main >
 
-		<div id=divContents >
-			<p>
-				lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-			</p>
-		</div>
+		<div id=divContents ></div>
 
 	</main>
 
 
-	<nav>
-
-		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
-
-	</nav>
-
 	<nav id="navPopup" hidden >
 
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');" title="bye bye" >×</button></div>
 
 		<div id="MNUdivPopupData" ></div>
 
@@ -110,7 +100,12 @@
 	</nav>
 
 
+	<nav>
 
+		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
+	
 <script>
 
 FGA.helpFile = "README.md";
@@ -149,10 +144,12 @@ function init() {
 	FGAdivFilesGithubApi.innerHTML = FGA.getMenuFilesGithubApi();
 	FGA.getFiles();
 
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
+
+	MNU.requestFile( FGA.uriDefaultFile, divContents );
+
 	butViewSource.style.display = "block";
 	butViewSource.href = MNU.urlSourceCode;
-
-	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 }
 

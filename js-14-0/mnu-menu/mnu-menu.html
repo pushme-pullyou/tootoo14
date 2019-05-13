@@ -145,7 +145,7 @@ function init() {
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	divContents.innerHTML = MNU.requestFile( MNU.helpFile, divContents );
+	MNU.requestFile( MNU.helpFile, divContents );
 
 	butViewSource.style.display = "block";
 	butViewSource.href = MNU.urlSourceCode;
