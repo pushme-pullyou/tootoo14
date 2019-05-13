@@ -8,7 +8,7 @@ const MNU = {
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
 	"release": "R14.1.1",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/"
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-0/mnu-menu"
 };
 
 
@@ -125,7 +125,7 @@ MNU.getNavFooter = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.descriptionTooToo);" style=float:right; >?</button>
+				<button id=MNUbutFooter class=butHelp onclick="MNU.setPopupShowHide(MNUbutFooter,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
 			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
@@ -155,7 +155,7 @@ MNU.getNavFooterPopup = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=butFoot class=butHelp onclick="MNU.setPopupShowHide(butFoot,MNU.descriptionTooToo);" style=float:right; >?</button>
+				<button id=MNUbutFooterPopup class=butHelp onclick="MNU.setPopupShowHide(MNUbutFooterPopup,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
 			<p><button id=MNUbutTooToo onclick="MNU.setPopupShowHide(MNUbutTooToo,'${ MNU.footerPopupUrl }pages/about-tootoo.md');" >About TooToo</button></p>
