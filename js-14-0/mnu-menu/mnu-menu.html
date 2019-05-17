@@ -18,6 +18,9 @@
 
 	<nav id="navPanel">
 
+			<button id="expandButton" onclick="navPanel.classList.toggle('collapsed');" >☰</button>
+
+
 		<section id="secContent" >
 
 			<header>
@@ -88,7 +91,7 @@
 
 	<nav>
 
-		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
 
@@ -108,7 +111,7 @@
 <script>
 
 // For main menu header
-MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
+MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-0/mnu-menu";
 
 MNU.homeText  = "pushMe-pullYou";
 MNU.homeTitle = "Very simple JavaScript files to help you explore and build new tools on GitHub.";
@@ -147,8 +150,8 @@ function init() {
 
 	MNU.requestFile( MNU.helpFile, divContents );
 
-	butViewSource.style.display = "block";
-	butViewSource.href = MNU.urlSourceCode;
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
 
 }
 
