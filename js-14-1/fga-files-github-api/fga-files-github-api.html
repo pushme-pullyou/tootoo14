@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name = "description" content = "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files. Display a breadcrumb menu to display the current path" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "date" content = "2019-05-13" >
+<meta name = "release" content = "0.1.0" >
+<title>Files GitHub API FGA </title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="../../js-14-0/style.css">
+</head>
+<body>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+<script src="../../js-14-0/mnu-menu/mnu-menu.js" ></script>
+<script src="fga-files-github-api.js" ></script>
+
+	<nav id="navPanel">
+
+		<section id="secContent" >
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+			<details open >
+
+				<summary class=sumMenuTitle >File Menu</summary>
+
+				<div id=SFMsecPrototypes ></div>
+
+				<div id="FGAsecMenuRepoFilesFolders" ></div>
+
+				<div id="GATsecGithubAccessToken" ></div>
+
+				<div id=FOBsecFileOpenBasic ></div>
+
+				<div id=FILdivFileSave ></div>
+
+			</details>
+
+
+			<details open >
+
+				<summary class=sumMenuTitle >Files GitHub API </summary>
+
+				<div id="FGAdivFilesGithubApi" ></div>
+
+			</details>
+
+
+			<details>
+
+				<summary>Test Text
+					<button id=butTestText class=butHelp onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" style=float:right; >?</button>
+				</summary>
+
+				<p>
+					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur</div>
+				</p>
+
+				<p>
+					<a href="" >lorem ipsum</a>, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+				</p>
+
+			</details>
+
+
+			<footer>
+
+				<div id="MNUdivFooter" ></div>
+
+				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
+
+			</footer>
+
+		</section>
+
+	</nav>
+
+
+	<main id=main >
+
+		<div id=divContents ></div>
+
+	</main>
+
+
+	<nav id="navPopup" hidden >
+
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');" title="bye bye" >×</button></div>
+
+		<div id="MNUdivPopupData" ></div>
+
+		<div id="MNUdivPopupMessage" ></div>
+
+	</nav>
+
+
+	<nav>
+
+		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
+	
+<script>
+
+FGA.helpFile = "README.md";
+
+// For main menu header
+MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/js-14-0/fga-files-github-api/";
+
+MNU.homeText  = "pushMe-pullYou";
+MNU.homeTitle = "Very simple JavaScript files to help you explore and build new tools on GitHub.";
+MNU.homeUrl   = "https://pushme-pullyou.github.io";
+
+MNU.repoText  = "TooToo14";
+MNU.repoTitle = "Basic html templates with sliding menu, css selection, markdown capability and frequently used pages";
+MNU.repoUrl   = "https://pushme-pullyou.github.io/tootoo14";
+
+MNU.appText  = ""; // "CMS";
+MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
+MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
+
+
+init();
+
+
+function init() {
+
+	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
+
+		divContents.style.width = getComputedStyle( divContents ).width;
+		divContents.style.height = getComputedStyle( divContents ).height;
+		divContents.setAttribute( 'scrolling', 'no' );
+
+	}
+
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	FGAdivFilesGithubApi.innerHTML = FGA.getMenuFilesGithubApi();
+	FGA.getFiles();
+
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
+
+	MNU.requestFile( FGA.uriDefaultFile, divContents );
+
+	butViewSource.style.display = "block";
+	butViewSource.href = MNU.urlSourceCode;
+
+}
+
+
+</script>
+</body>
+</html>
