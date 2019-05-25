@@ -5,8 +5,10 @@
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-05-17",
-	"revision": "14.1-0"
+	"date": "2019-05-23",
+	"helpFile": "fob-file-open-basic/README.md",
+	"version": "0.14.1-2",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/README.md"
 
 };
 
@@ -46,7 +48,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		<details id=FOBdetFileOpen class=detSubMenu open >
 
 			<summary>Open file
-				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,'README.md');" >?</button>
+				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,FOB.helpFile);" >?</button>
 			</summary>
 
 			<div class="dragDropArea" >

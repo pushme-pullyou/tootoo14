@@ -9,12 +9,13 @@
 <meta name = "release" content = "0.1.0" >
 <title>Files GitHub API FGA </title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="../../js-14-0/style.css">
+<link rel="stylesheet" href="../../js-14-1/style.css">
 </head>
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
-<script src="../../js-14-0/mnu-menu/mnu-menu.js" ></script>
-<script src="fga-files-github-api.js" ></script>
+<script src="../../js-14-1/mnu-menu/mnu-menu.js" ></script>
+<script src="../../js-14-1/fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src="../../js-14-1/fga-files-github-api/fga-files-github-api.js" ></script>
 
 	<nav id="navPanel">
 
@@ -36,7 +37,7 @@
 
 				<div id="GATsecGithubAccessToken" ></div>
 
-				<div id=FOBsecFileOpenBasic ></div>
+				<div id=FOBdivFileOpenBasic ></div>
 
 				<div id=FILdivFileSave ></div>
 
@@ -71,7 +72,7 @@
 
 			<footer>
 
-				<div id="MNUdivFooter" ></div>
+				<div id="MNUdivFooterPopup" ></div>
 
 				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
 
@@ -91,21 +92,22 @@
 
 	<nav id="navPopup" hidden >
 
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');" title="bye bye" >×</button></div>
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
 
 		<div id="MNUdivPopupData" ></div>
 
-		<div id="MNUdivPopupMessage" ></div>
+		<div id="MNUdivMessage" ></div>
 
 	</nav>
 
 
 	<nav>
 
-		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
-	
+
+
 <script>
 
 FGA.helpFile = "README.md";
@@ -125,6 +127,7 @@ MNU.appText  = ""; // "CMS";
 MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
+MNU.footerPopupUrl = "../../";
 
 init();
 
@@ -144,12 +147,18 @@ function init() {
 	FGAdivFilesGithubApi.innerHTML = FGA.getMenuFilesGithubApi();
 	FGA.getFiles();
 
-	MNUdivFooter.innerHTML = MNU.getNavFooter();
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	MNU.requestFile( FGA.uriDefaultFile, divContents );
 
-	butViewSource.style.display = "block";
-	butViewSource.href = MNU.urlSourceCode;
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
+
+
+	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
+
 
 }
 

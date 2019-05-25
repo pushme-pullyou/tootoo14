@@ -5,8 +5,9 @@
 
 const FGA = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-04-13",
-	"release": "1.0.0"
+	"date": "2019-05-23",
+	"helpFile": "fga-files-github-api/README.md",
+	"version": "0.14.1-2"
 };
 
 
@@ -15,7 +16,6 @@ FGA.description =
 		Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files
 		`;
 
-FGA.helpFile = "js-14-0/fga-files-github-api/README.md";
 
 FGA.branch = '/master/';
 FGA.user = 'pushme-pullyou';

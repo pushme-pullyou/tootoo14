@@ -97,7 +97,7 @@ MNU.getNavHeader = function() {
 			${ MNU.urlSourceCodeIcon }
 			</a>
 
-			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ ( document.head.querySelector( '[ name=revision ]' ) || "" ).content }</span></a>
+			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
 
 			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
@@ -185,8 +185,7 @@ MNU.getNavFooterPopup = function() {
 
 MNU.getDivPopup = function() {
 
-
-	const revision = document.head.querySelector( '[ name=revision ]' ).content;
+	const version = document.head.querySelector( '[ name=version ]' ).content;
 
 	const date = document.head.querySelector( '[ name=date ]' ).content;
 
@@ -196,7 +195,7 @@ MNU.getDivPopup = function() {
 
 		<div id="MNUdivPopupData" ></div>
 
-		<div id="MNUdivMessage" ><p>R${ revision } - ${ date }</p></div>
+		<div id="MNUdivMessage" ><p>R${ version } - ${ date }</p></div>
 	`;
 
 	return htm;

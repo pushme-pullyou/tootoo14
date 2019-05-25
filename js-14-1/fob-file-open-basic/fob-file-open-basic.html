@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-17" >
-<meta name = "revision" content = "14.1-0" >
+<meta name = "date" content = "2019-05-23" >
+<meta name = "version" content = "0.14.1-0" >
 <title>fob-file-open-basic</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="../style.css">
@@ -14,7 +14,7 @@
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="../mnu-menu/mnu-menu.js" ></script>
-<script src="fob-file-open-basic.js" ></script>
+<script src="../fob-file-open-basic/fob-file-open-basic.js" ></script>
 
 	<nav id="navPanel">
 
@@ -62,12 +62,6 @@
 	</main>
 
 
-	<nav>
-
-		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
-
-	</nav>
-
 	<nav id="navPopup" hidden >
 
 		<div id="MNUdivPopup" ></div>
@@ -75,6 +69,11 @@
 	</nav>
 
 
+	<nav>
+
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
 
 <script>
 
@@ -117,11 +116,11 @@ function init() {
 
 	//FOBdivFileSaveBasic.innerHTML=FOB.getMenuFileSaveBasic();
 
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	aViewSource.style.display = "block";
-	aViewSource.href = MNU.urlSourceCode;
+	aViewSource.href = FOB.urlSourceCode;
 
-	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 

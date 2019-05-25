@@ -5,6 +5,7 @@ const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
 	"date": "2019-04-13",
+	"helpFile": "js-14-0/fob-file-open-basic/README.md",
 	"release": "R1.0.0"
 
 };
@@ -46,7 +47,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		<details id=FOBdetFileOpen class=detSubMenu open >
 
 			<summary>Open file
-				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,'js-14-0/fob-file-open-basic/README.md');" >?</button>
+				<button id=butFOB class=butHelp onclick="MNU.setPopupShowHide(butFOB,FOB.helpFile);" >?</button>
 			</summary>
 
 			<div class="dragDropArea" >

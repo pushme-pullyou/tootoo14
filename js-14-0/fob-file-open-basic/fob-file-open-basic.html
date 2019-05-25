@@ -42,7 +42,7 @@
 
 			<footer>
 
-				<div id="MNUdivFooter" ></div>
+				<div id="MNUdivFooterPopup" ></div>
 
 				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
 
@@ -66,15 +66,16 @@
 
 	</nav>
 
+
 	<nav id="navPopup" hidden >
 
-		<div id="divPopupData" ></div>
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
 
-		<div id="divMessage" ></div>
+		<div id="MNUdivPopupData" ></div>
+
+		<div id="MNUdivMessage" ></div>
 
 	</nav>
-
-
 
 <script>
 
@@ -95,6 +96,7 @@ MNU.appText  = ""; // "CMS";
 MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
+MNU.footerPopupUrl = "../../";
 
 init();
 
@@ -115,11 +117,12 @@ function init() {
 
 	//FOBdivFileSaveBasic.innerHTML=FOB.getMenuFileSaveBasic();
 
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
 
-	MNUdivFooter.innerHTML = MNU.getNavFooter();
+
 
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
