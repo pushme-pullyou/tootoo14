@@ -103,7 +103,7 @@ FOB.requestFile = function( url ) { // from a button
 
 	FOB.name = url.split( '/').pop();
 
-	aViewSource.href = MNU.urlSourceCode + "blob/master/" + url;
+	butViewSource.href = MNU.urlSourceCode + "blob/master/" + url;
 
 	if ( FOB.regexHtml.test( url ) ) {
 

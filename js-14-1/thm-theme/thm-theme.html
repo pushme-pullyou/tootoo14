@@ -3,23 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "description" content = "Select Theme" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-17" >
-<meta name = "release" content = "14.1.0" >
+<meta name = "date" content = "2019-05-26" >
+<meta name = "version" content = "0.14.1-0" >
 <title>TooToo Template</title>
-<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<!--
+
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+
+-->
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="../mnu-menu/mnu-menu.js" ></script>
 <script src="../tmp-template/tmp-template.js" ></script>
+<script src="../thm-theme/thm-theme.js" ></script>
 
-	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
+	<button id="expandButton" onclick="navPanel.classList.toggle('collapsed');" >☰</button>
 
 	<nav id="navPanel">
-
 
 		<section id="secContent" >
 
@@ -46,7 +50,15 @@
 			</details>
 
 
-			<div id=TMPdivTemplate ></div>
+			<details open >
+
+				<summary class=sumMenuTitle >Settings</summary>
+
+				<div id=THMdivMenuThemeSelect ></div>
+
+				<div id=TMPdivTemplate ></div>
+
+			</details>
 
 
 			<details>
@@ -141,27 +153,25 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+
 	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
-	butViewSource.style.display = "block";
-	butViewSource.href = MNU.urlSourceCode;
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
+	THM.init();
+
+
 	const txt = "<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
 	const txts = Array( 10 ).fill( txt ).join( "" );
+
 	divContents.innerHTML = `<h1><a href="" >template main contents</a></h1>${ txts }`;
 
-}
-
-
-function toggleNavPanel() {
-
-	expandButton.classList.toggle( 'collapsed' );
-	navPanel.classList.toggle( 'collapsed' );
-	main.classList.toggle( 'collapsed' );
+	butViewSource.style.display = "block";
+	butViewSource.href = MNU.urlSourceCode;
 
 }
 
