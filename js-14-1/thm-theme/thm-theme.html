@@ -21,7 +21,8 @@
 <script src="../tmp-template/tmp-template.js" ></script>
 <script src="../thm-theme/thm-theme.js" ></script>
 
-	<button id="expandButton" onclick="navPanel.classList.toggle('collapsed');" >☰</button>
+
+	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
 	<nav id="navPanel">
 
@@ -119,6 +120,8 @@
 
 <script>
 
+THM.cssBasic = "../style.css"; // set in HTML file
+
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -175,6 +178,15 @@ function init() {
 
 }
 
+
+
+function toggleNavPanel() {
+
+	expandButton.classList.toggle( 'collapsed' );
+	navPanel.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
+
+}
 
 </script>
 </body>

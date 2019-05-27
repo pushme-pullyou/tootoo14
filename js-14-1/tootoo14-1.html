@@ -14,8 +14,9 @@
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="./mnu-menu/mnu-menu.js" ></script>
-<script src="fga-files-github-api/fga-files-github-api.js" ></script>
-<script src="fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src="./fga-files-github-api/fga-files-github-api.js" ></script>
+<script src="./fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src="./thm-theme/thm-theme.js" ></script>
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
@@ -74,6 +75,17 @@
 				<summary>Test Load External File</summary>
 
 				<div id=divMarkdown></div>
+
+			</details>
+
+
+			<details>
+
+				<summary class=sumMenuTitle >Settings</summary>
+
+				<div id=THMdivMenuThemeSelect ></div>
+
+				<div id=TMPdivTemplate ></div>
 
 			</details>
 
@@ -226,11 +238,15 @@ function init() {
 
 	MNU.requestFile( "../pages/markdown-help.md", divMarkdown );
 
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	divSampleHtml.innerHTML = tmpSampleHtml.innerHTML;
+
+	THM.init();
 
 	butViewSource.style.display = "block";
 	butViewSource.href = MNU.urlSourceCode;

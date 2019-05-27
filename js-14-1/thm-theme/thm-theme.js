@@ -59,8 +59,8 @@ THM.currentStatus =
 
 // THM.description = THM.description || document.head.querySelector( "[ name=description ]" ).content;
 
-THM.themeUrlStorage = 'tootooCookbookThemeUrl'; // set for each instance in HTML file
-THM.cssBasic = "../style.css"; // set in HTML file
+THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
+THM.cssBasic = "./style.css"; // set in HTML file
 
 THM.cssW3schools = "https://www.w3schools.com/lib/w3-theme-red.css";
 THM.themeBootswatch = 'https://bootswatch.com/_vendor/bootstrap/dist/css/bootstrap.css';
