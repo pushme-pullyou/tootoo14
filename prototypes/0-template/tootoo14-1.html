@@ -1,0 +1,268 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "date" content = "2019-05-23" >
+<meta name = "version" content = "0.14.1-2" >
+<title>TooToo</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/fga-files-github-api/fga-files-github-api.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/thm-theme/thm-theme.js" ></script>
+
+	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
+
+	<nav id="navPanel">
+
+		<section id="secContent" >
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+
+			<details open >
+
+				<summary class=sumMenuTitle >File Menu</summary>
+
+				<div id=SFMsecPrototypes ></div>
+
+				<div id="FGAdivMenuRepoFilesFolders" ></div>
+
+				<div id="GATsecGithubAccessToken" ></div>
+
+				<div id=FOBdivFileOpenBasic ></div>
+
+				<div id=FOBdivFileSave ></div>
+
+			</details>
+
+
+			<details>
+
+				<summary>Test Text
+					<button class=butHelp id=butTestText onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" >?</button>
+				</summary>
+
+				<p>
+					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur</div>
+				</p>
+
+				<p>
+					<a href="" >lorem ipsum</a>, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+				</p>
+
+			</details>
+
+
+			<button class=butHelp id=butTestStyles onclick="MNU.setPopupShowHide(butTestStyles,'Hello, World of style!');" >?</button>
+
+			<div id=divSampleHtml ></div>
+
+
+			<details>
+
+				<summary>Test Load External File</summary>
+
+				<div id=divMarkdown></div>
+
+			</details>
+
+
+			<details>
+
+				<summary class=sumMenuTitle >Settings</summary>
+
+				<div id=THMdivMenuThemeSelect ></div>
+
+				<div id=TMPdivTemplate ></div>
+
+			</details>
+
+
+			<footer>
+
+				<div id="MNUdivFooter" ></div>
+
+				<div id="MNUdivFooterPopup" ></div>
+
+				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
+
+			</footer>
+
+		</section>
+
+	</nav>
+
+
+
+	<main id=main >
+
+		<div id=divContents ></div>
+
+	</main>
+
+
+	<nav id="navPopup" hidden >
+
+		<div id="MNUdivPopup" ></div>
+
+	</nav>
+
+
+	<nav>
+
+		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
+
+
+	<template id=tmpSampleHtml >
+
+		<details>
+
+			<summary>Test HTML Element Styles</summary>
+
+			<h1>H1 Header ABC abs 123</h1>
+
+			<h2>H1 Header ABC abs 123 </h2>
+
+			<h3>H1 Header ABC abs 123</h3>
+
+			<p><a href="" >breadcrumb</a> &raquo; </p>
+
+			<h2><a href="" >Title H2</a></h2>
+
+			<div id=divRowButtonsStyle ></div>
+
+			<p>abc <code>def</code ghi ><i>111 222 <mark>333 444</mark> 555</i></p>
+
+			<div>
+				text in a div aaa bbb ccc ddd eee fff
+			</div>
+
+			<p>
+				<label><b>Last Name</b></label>
+				<input type="text" style=width:100px; >
+			</p>
+
+			<p>
+				<output id=outId >50</output ><br>
+				<input type=range oninput=outId.value=this.value >
+			</p>
+
+			<p><button >button 1</button></p>
+
+			<p><button >button 2</button></p>
+
+			<select size=3 >
+				<option value="" disabled selected>Choose your option</option>
+				<option value="1">Option 1</option>
+				<option value="2">Option 2</option>
+				<option value="3">Option 3</option>
+			</select>
+
+			<blockquote>
+
+				Blockquote<br>Conceptualizing random endpoints in a access matrix provides reach extensions enterprise wide. Respective divisions historically insignificant, upscale trend lines in a management inventory analysis survivability format.
+
+			</blockquote>
+
+			<p>
+				<code>lorem</code> ipsum, <a href="https://example.com" target="_blank">quia dolor sit</a>, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+			</p>
+
+		</details>
+
+	</template>
+
+<script>
+
+FOB.urlDefaultFile = '../README.md';
+
+FGA.urlGitHubPage = "../";
+
+// For main menu header
+MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
+
+MNU.homeText  = "pushMe-pullYou";
+MNU.homeTitle = "Very simple JavaScript files to help you explore and build new tools on GitHub.";
+MNU.homeUrl   = "https://pushme-pullyou.github.io";
+
+MNU.repoText  = "TooToo14";
+MNU.repoTitle = "Basic html templates with sliding menu, css selection, markdown capability and frequently used pages";
+MNU.repoUrl   = "https://pushme-pullyou.github.io/tootoo14";
+
+MNU.appText  = ""; // "CMS";
+MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
+MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
+
+MNU.footerPopupUrl	= "../";
+
+const txt = "<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
+const txts = Array( 10 ).fill( txt ).join( "" );
+
+init();
+
+
+function init() {
+
+	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
+
+		divContents.style.width = getComputedStyle( divContents ).width;
+		divContents.style.height = getComputedStyle( divContents ).height;
+		divContents.setAttribute( 'scrolling', 'no' );
+
+	}
+
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+	FGA.getFiles();
+
+	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
+
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+
+	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+
+	MNU.requestFile( "../pages/markdown-help.md", divMarkdown );
+
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
+
+	divSampleHtml.innerHTML = tmpSampleHtml.innerHTML;
+
+	THM.init();
+
+	butViewSource.style.display = "block";
+	butViewSource.href = MNU.urlSourceCode;
+
+}
+
+
+
+function toggleNavPanel() {
+
+	expandButton.classList.toggle( 'collapsed' );
+	navPanel.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
+
+}
+
+</script>
+</body>
+</html>
