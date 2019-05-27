@@ -1,23 +1,23 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-27" >
-<meta name = "version" content = "0.14.1-3" >
-<title>TooToo</title>
+<meta name = "date" content = "2019-05-17" >
+<meta name = "version" content = "14.1.0" >
+<title>TooToo Template</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="style.css" >
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
-<script src="./mnu-menu/mnu-menu.js" ></script>
-<script src="./fga-files-github-api/fga-files-github-api.js" ></script>
-<script src="./fob-file-open-basic/fob-file-open-basic.js" ></script>
-<script src="./thm-theme/thm-theme.js" ></script>
-<script src="./tmp-template/tmp-template.js" ></script>
+<script src="../mnu-menu/mnu-menu.js" ></script>
+
+
+
+<script src="../tmp-template/tmp-template.js" ></script>
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
@@ -34,7 +34,7 @@
 
 			<details open >
 
-				<summary class=sumMenuTitle >File Mmnu</summary>
+				<summary class=sumMenuTitle >File Menu</summary>
 
 				<div id=SFMsecPrototypes ></div>
 
@@ -44,18 +44,27 @@
 
 				<div id=FOBdivFileOpenBasic ></div>
 
-				<div id=FOBdivFileSaveBasic ></div>
+				<div id=FOBdivFileSave ></div>
 
 			</details>
 
 
+			<div id=TMPdivTemplate ></div>
+
+
 			<details>
 
-				<summary class=sumMenuTitle >Settings menu</summary>
+				<summary>Test Text
+					<button id=butTestText class=butHelp onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" style=float:right; >?</button>
+				</summary>
 
-				<div id=THMdivMenuThemeSelect ></div>
+				<p>
+					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur</div>
+				</p>
 
-				<div id=TMPdivTemplate ></div>
+				<p>
+					<a href="" >lorem ipsum</a>, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+				</p>
 
 			</details>
 
@@ -91,19 +100,13 @@
 
 	<nav>
 
-		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
+		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
 
 
 <script>
 
-THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
-THM.cssBasic = "./style.css"; // set in HTML file
-
-FOB.urlDefaultFile = './README.md';
-
-FGA.urlGitHubPage = "./";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -120,7 +123,7 @@ MNU.appText  = ""; // "CMS";
 MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
-MNU.footerPopupUrl	= "../";
+MNU.footerPopupUrl = "../../";
 
 
 init();
@@ -136,29 +139,24 @@ function init() {
 
 	}
 
-	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
-	THM.init();
-
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
-	FGA.getFiles();
-
-	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
-
-	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
-
-	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	aViewSource.style.display = "block";
-	aViewSource.href = MNU.urlSourceCode;
+	butViewSource.style.display = "block";
+	butViewSource.href = MNU.urlSourceCode;
+
+
+	const txt = "<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
+	const txts = Array( 10 ).fill( txt ).join( "" );
+
+	divContents.innerHTML = `<h1><a href="" >template main contents</a></h1>${ txts }`;
 
 }
-
 
 
 function toggleNavPanel() {
@@ -168,6 +166,7 @@ function toggleNavPanel() {
 	main.classList.toggle( 'collapsed' );
 
 }
+
 
 </script>
 </body>

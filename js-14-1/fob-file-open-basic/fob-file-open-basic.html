@@ -5,16 +5,21 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-23" >
-<meta name = "version" content = "0.14.1-0" >
+<meta name = "date" content = "2019-05-27" >
+<meta name = "version" content = "0.14.1-1" >
 <title>fob-file-open-basic</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="../mnu-menu/mnu-menu.js" ></script>
+<script src="../fga-files-github-api/fga-files-github-api.js" ></script>
 <script src="../fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src="../thm-theme/thm-theme.js" ></script>
+<script src="../tmp-template/tmp-template.js" ></script>
+
+	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
 	<nav id="navPanel">
 
@@ -26,9 +31,16 @@
 
 			</header>
 
+
 			<details open >
 
-				<summary class=sumMenuTitle >File Menu</summary>
+				<summary class=sumMenuTitle >File Mmnu</summary>
+
+				<div id=SFMsecPrototypes ></div>
+
+				<div id="FGAdivMenuRepoFilesFolders" ></div>
+
+				<div id="GATsecGithubAccessToken" ></div>
 
 				<div id=FOBdivFileOpenBasic ></div>
 
@@ -37,7 +49,15 @@
 			</details>
 
 
-			<div id=TMPdivTemplate ></div>
+			<details>
+
+				<summary class=sumMenuTitle >Settings menu</summary>
+
+				<div id=THMdivMenuThemeSelect ></div>
+
+				<div id=TMPdivTemplate ></div>
+
+			</details>
 
 
 			<footer>
@@ -75,9 +95,16 @@
 
 	</nav>
 
+
 <script>
 
-//FOB.urlDefaultFile = '../../README.md';
+THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
+THM.cssBasic = "../style.css"; // set in HTML file
+
+FOB.urlDefaultFile = '../README.md';
+FOB.helpFile = "README.md"
+
+FGA.urlGitHubPage = "../../";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -110,22 +137,38 @@ function init() {
 
 	}
 
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	THM.init();
+
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+	FGA.getFiles();
+
+	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
 	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
 
-	//FOBdivFileSaveBasic.innerHTML=FOB.getMenuFileSaveBasic();
+	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+
+	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	aViewSource.style.display = "block";
 	aViewSource.href = FOB.urlSourceCode;
 
-
-	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
-
 }
 
+
+
+function toggleNavPanel() {
+
+	expandButton.classList.toggle( 'collapsed' );
+	navPanel.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
+
+}
 
 </script>
 </body>

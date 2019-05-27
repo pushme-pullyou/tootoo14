@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-26" >
+<meta name = "date" content = "2019-05-27" >
 <meta name = "version" content = "0.14.1-template" >
 <title>TooToo</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
@@ -17,7 +17,7 @@
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/fga-files-github-api/fga-files-github-api.js" ></script>
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/fob-file-open-basic.js" ></script>
-
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/tmp-template/tmp-template.js" ></script>
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
@@ -34,7 +34,7 @@
 
 			<details open >
 
-				<summary class=sumMenuTitle >File Menu</summary>
+				<summary class=sumMenuTitle >File Mmnu</summary>
 
 				<div id=SFMsecPrototypes ></div>
 
@@ -44,45 +44,14 @@
 
 				<div id=FOBdivFileOpenBasic ></div>
 
-				<div id=FOBdivFileSave ></div>
+				<div id=FOBdivFileSaveBasic ></div>
 
 			</details>
 
 
 			<details>
 
-				<summary>Test Text
-					<button class=butHelp id=butTestText onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" >?</button>
-				</summary>
-
-				<p>
-					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur</div>
-				</p>
-
-				<p>
-					<a href="" >lorem ipsum</a>, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-				</p>
-
-			</details>
-
-
-			<button class=butHelp id=butTestStyles onclick="MNU.setPopupShowHide(butTestStyles,'Hello, World of style!');" >?</button>
-
-			<div id=divSampleHtml ></div>
-
-
-			<details>
-
-				<summary>Test Load External File</summary>
-
-				<div id=divMarkdown></div>
-
-			</details>
-
-
-			<details>
-
-				<summary class=sumMenuTitle >Settings</summary>
+				<summary class=sumMenuTitle >Settings menu</summary>
 
 				<div id=THMdivMenuThemeSelect ></div>
 
@@ -106,7 +75,6 @@
 	</nav>
 
 
-
 	<main id=main >
 
 		<div id=divContents ></div>
@@ -123,73 +91,18 @@
 
 	<nav>
 
-		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
 
 
-	<template id=tmpSampleHtml >
-
-		<details>
-
-			<summary>Test HTML Element Styles</summary>
-
-			<h1>H1 Header ABC abs 123</h1>
-
-			<h2>H1 Header ABC abs 123 </h2>
-
-			<h3>H1 Header ABC abs 123</h3>
-
-			<p><a href="" >breadcrumb</a> &raquo; </p>
-
-			<h2><a href="" >Title H2</a></h2>
-
-			<div id=divRowButtonsStyle ></div>
-
-			<p>abc <code>def</code ghi ><i>111 222 <mark>333 444</mark> 555</i></p>
-
-			<div>
-				text in a div aaa bbb ccc ddd eee fff
-			</div>
-
-			<p>
-				<label><b>Last Name</b></label>
-				<input type="text" style=width:100px; >
-			</p>
-
-			<p>
-				<output id=outId >50</output ><br>
-				<input type=range oninput=outId.value=this.value >
-			</p>
-
-			<p><button >button 1</button></p>
-
-			<p><button >button 2</button></p>
-
-			<select size=3 >
-				<option value="" disabled selected>Choose your option</option>
-				<option value="1">Option 1</option>
-				<option value="2">Option 2</option>
-				<option value="3">Option 3</option>
-			</select>
-
-			<blockquote>
-
-				Blockquote<br>Conceptualizing random endpoints in a access matrix provides reach extensions enterprise wide. Respective divisions historically insignificant, upscale trend lines in a management inventory analysis survivability format.
-
-			</blockquote>
-
-			<p>
-				<code>lorem</code> ipsum, <a href="https://example.com" target="_blank">quia dolor sit</a>, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-			</p>
-
-		</details>
-
-	</template>
-
 <script>
 
+THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
+THM.cssBasic = "../../js-14-1/style.css"; // set in HTML file
+
 FOB.urlDefaultFile = '../../README.md';
+FOB.helpFile = "README.md"
 
 FGA.urlGitHubPage = "../../";
 
@@ -210,8 +123,6 @@ MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburg
 
 MNU.footerPopupUrl	= "../";
 
-const txt = "<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
-const txts = Array( 10 ).fill( txt ).join( "" );
 
 init();
 
@@ -226,6 +137,9 @@ function init() {
 
 	}
 
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	THM.init();
+
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
@@ -237,20 +151,12 @@ function init() {
 
 	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
 
-	MNU.requestFile( "../../pages/markdown-help.md", divMarkdown );
-
-	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
-
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	divSampleHtml.innerHTML = tmpSampleHtml.innerHTML;
-
-	//THM.init();
-
-	butViewSource.style.display = "block";
-	butViewSource.href = MNU.urlSourceCode;
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
 
 }
 

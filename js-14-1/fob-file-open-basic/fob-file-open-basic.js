@@ -39,9 +39,6 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 	FOBdivFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
 	FOBdivFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
 
-	FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
-	FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
-	document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
 
 	const htm =
 	`
@@ -103,7 +100,7 @@ FOB.requestFile = function( url ) { // from a button
 
 	FOB.name = url.split( '/').pop();
 
-	butViewSource.href = MNU.urlSourceCode + "blob/master/" + url;
+	aViewSource.href = MNU.urlSourceCode + "blob/master/" + url;
 
 	if ( FOB.regexHtml.test( url ) ) {
 
@@ -115,14 +112,17 @@ FOB.requestFile = function( url ) { // from a button
 
 	} else if ( FOB.name.toLowerCase().endsWith( '.xml' ) ) {
 
+		FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
 		FOB.requestFileText( url );
 
 	} else if ( FOB.name.toLowerCase().endsWith( '.zip' )) {
 
+		document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
 		FOB.xhrRequestFileZip( url, FOB.callbackUrlUtf16 );
 
-	} else {
+	} else { // let
 
+		FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
 		FOB.requestFileText( url );
 
 	}
@@ -152,6 +152,8 @@ FOB.onInputFileOpen = function( files ) {
 
 	const file = files.files[ 0 ];
 
+	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
+
 	FOB.reader.onload = function( event ) {
 		//console.log( 'FOB.reader', FOB.reader );
 
@@ -167,7 +169,11 @@ FOB.onInputFileOpen = function( files ) {
 
 		} else if ( FOB.regexHtml.test( file.name ) ) { // html mucks things up
 
-			FOB.target.innerHTML = `<iframe srcdoc="${ FOB.reader.result }" style=${ FOB.contentsCss } ></iframe>`;
+			//FOB.target.innerHTML = `<iframe srcdoc="${ FOB.reader.result }" style=${ FOB.contentsCss } ></iframe>`;
+
+			//FOB.target.innerText = FOB.reader.result;
+
+			FOB.callbackOtherToTextarea( FOB.reader.result );
 
 		} else {
 
