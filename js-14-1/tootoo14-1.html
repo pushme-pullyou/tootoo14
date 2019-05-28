@@ -15,6 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="./mnu-menu/mnu-menu.js" ></script>
 <script src="./fga-files-github-api/fga-files-github-api.js" ></script>
+<script src="./gat-github-access-token/gat-github-access-token.js" ></script>
 <script src="./fob-file-open-basic/fob-file-open-basic.js" ></script>
 <script src="./thm-theme/thm-theme.js" ></script>
 <script src="./tmp-template/tmp-template.js" ></script>
@@ -23,7 +24,7 @@
 
 	<nav id="navPanel">
 
-		<section id="secContent" >
+		<section class="secContent" >
 
 			<header>
 
@@ -40,7 +41,7 @@
 
 				<div id="FGAdivMenuRepoFilesFolders" ></div>
 
-				<div id="GATsecGithubAccessToken" ></div>
+				<div id="GATdivGithubAccessToken" ></div>
 
 				<div id=FOBdivFileOpenBasic ></div>
 
@@ -89,7 +90,7 @@
 			<div id="MNUdivPopup" ></div>
 
 		</section>
-		
+
 	</nav>
 
 
@@ -106,7 +107,7 @@ THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
 THM.cssBasic = "./style.css"; // set in HTML file
 
 FOB.urlDefaultFile = './README.md';
-FOB.helpFile = "README.md"
+
 
 FGA.urlGitHubPage = "../";
 
@@ -148,6 +149,8 @@ function init() {
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
 	FGA.getFiles();
+
+	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 

@@ -5,28 +5,26 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Select Theme" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-26" >
-<meta name = "version" content = "0.14.1-0" >
-<title>TooToo Template</title>
-<!--
-
-	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-
--->
+<meta name = "date" content = "2019-05-28" >
+<meta name = "version" content = "0.14.1-1" >
+<title>TooToo Theme</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script src="../mnu-menu/mnu-menu.js" ></script>
-<script src="../tmp-template/tmp-template.js" ></script>
+<script src="../fga-files-github-api/fga-files-github-api.js" ></script>
+<script src="../gat-github-access-token/gat-github-access-token.js" ></script>
+<script src="../fob-file-open-basic/fob-file-open-basic.js" ></script>
 <script src="../thm-theme/thm-theme.js" ></script>
-
+<script src="../tmp-template/tmp-template.js" ></script>
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
 	<nav id="navPanel">
 
-		<section id="secContent" >
+		<section class="secContent" >
 
 			<header>
 
@@ -34,47 +32,31 @@
 
 			</header>
 
+
 			<details open >
 
 				<summary class=sumMenuTitle >File Menu</summary>
 
 				<div id=SFMsecPrototypes ></div>
 
-				<div id="FGAsecMenuRepoFilesFolders" ></div>
+				<div id="FGAdivMenuRepoFilesFolders" ></div>
 
-				<div id="GATsecGithubAccessToken" ></div>
+				<div id="GATdivGithubAccessToken" ></div>
 
-				<div id=FOBsecFileOpenBasic ></div>
+				<div id=FOBdivFileOpenBasic ></div>
 
-				<div id=FILdivFileSave ></div>
+				<div id=FOBdivFileSaveBasic ></div>
 
 			</details>
 
 
 			<details open >
 
-				<summary class=sumMenuTitle >Settings</summary>
+				<summary class=sumMenuTitle >Settings menu</summary>
 
 				<div id=THMdivMenuThemeSelect ></div>
 
 				<div id=TMPdivTemplate ></div>
-
-			</details>
-
-
-			<details>
-
-				<summary>Test Text
-					<button id=butTestText class=butHelp onclick="MNU.setPopupShowHide(butTestText,'Hello, World!');" style=float:right; >?</button>
-				</summary>
-
-				<p>
-					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur</div>
-				</p>
-
-				<p>
-					<a href="" >lorem ipsum</a>, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-				</p>
 
 			</details>
 
@@ -101,6 +83,17 @@
 	</main>
 
 
+	<nav id="navPopup" hidden >
+
+		<section class="secContent" >
+
+			<div id="MNUdivPopup" ></div>
+
+		</section>
+
+	</nav>
+
+
 	<nav>
 
 		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
@@ -108,20 +101,16 @@
 	</nav>
 
 
-	<nav id="navPopup" hidden >
-
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
-
-		<div id="MNUdivPopupData" ></div>
-
-		<div id="MNUdivMessage" ></div>
-
-	</nav>
-
 <script>
 
+THM.themeUrlStorage = 'tootoo14ThemeUrlTheme'; // set for each instance in HTML file
 THM.cssBasic = "../style.css"; // set in HTML file
 
+FOB.urlDefaultFile = '../../js-14-1/thm-theme/README.md';
+
+THM.helpFile = "README.md";
+
+FGA.urlGitHubPage = "../../";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -154,27 +143,31 @@ function init() {
 
 	}
 
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	THM.init();
+
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+
+	FGA.getFiles();
+
+	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
+
+	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
+
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+
+	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
 
 	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
-
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	THM.init();
-
-
-	const txt = "<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
-	const txts = Array( 10 ).fill( txt ).join( "" );
-
-	divContents.innerHTML = `<h1><a href="" >template main contents</a></h1>${ txts }`;
-
 	aViewSource.style.display = "block";
-	aViewSource.href = MNU.urlSourceCode;
+	aViewSource.href = THM.urlSourceCode;
 
 }
 

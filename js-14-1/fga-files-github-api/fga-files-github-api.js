@@ -17,7 +17,8 @@ FGA.user = 'pushme-pullyou';
 FGA.repo = 'tootoo14';
 FGA.pathRepo = '';
 FGA.urlGitHubPage = "../../";
-FGA.uriDefaultFile = "README.md";
+
+//FOB.urlDefaultFile = "LICENSE";
 
 FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
@@ -68,7 +69,7 @@ FGA.getFiles = function() {
 
 	//const timeStart = performance.now();
 
-	const url = !location.hash ? FGA.uriDefaultFile : location.hash.slice( 1 );
+	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
 	FGA.url = url;
 
 	//const ulc = url.toLowerCase();

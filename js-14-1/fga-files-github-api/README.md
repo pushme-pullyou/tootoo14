@@ -1,4 +1,4 @@
-# [Files GitHub API (FGA) Read Me]( #js-14-0/fga-files-github-api//README.md )
+# Files GitHub API (FGA) Read Me
 
 <details open>
 
@@ -36,7 +36,7 @@ The script makes and API call and reads the data one folder at a time. This may 
 
 ### 2019-05-28 ~ Theo
 
-* F - FOB.js: add tooltips to file menu
+* F - FGA.js: add tooltips to file menu
 
 ### 2019-05-11 ~ Theo
 

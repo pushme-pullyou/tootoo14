@@ -35,7 +35,7 @@
 
 			<details open >
 
-				<summary class=sumMenuTitle >File Menu</summary>
+				<summary class=sumMenuTitle >File menu</summary>
 
 				<div id=SFMsecPrototypes ></div>
 
@@ -106,7 +106,8 @@
 THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
 THM.cssBasic = "../style.css"; // set in HTML file
 
-FOB.urlDefaultFile = '../README.md';
+FOB.urlDefaultFile = '../../js-14-1/tmp-template/README.md';
+
 TMP.helpFile = "README.md";
 
 FGA.urlGitHubPage = "../../";
@@ -128,6 +129,7 @@ MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburg
 
 MNU.footerPopupUrl = "../../";
 
+
 init();
 
 
@@ -147,6 +149,7 @@ function init() {
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+
 	FGA.getFiles();
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
@@ -164,7 +167,7 @@ function init() {
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	aViewSource.style.display = "block";
-	aViewSource.href = MNU.urlSourceCode;
+	aViewSource.href = TMP.urlSourceCode;
 
 }
 

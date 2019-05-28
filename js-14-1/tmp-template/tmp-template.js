@@ -56,4 +56,3 @@ TMP.getTemplate = function() {
 	return htm;
 
 };
-

@@ -2,7 +2,14 @@
 // jshint esversion: 6
 /* globals navMenu, divW3Schools, divBootswatch, THMcssCurrent, THMcssW3schools, THMcssBootswatch */
 
-const THM = { "release": "R13.5", "date": "2019-01-15" };
+const THM = {
+
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-28",
+
+	"helpFile": "thm-theme/README.md",
+	"release": "0.14.0-1",
+};
 
 THM.description =
 	`
@@ -10,7 +17,7 @@ THM.description =
 	`;
 
 
-THM.currentStatus =
+THM.zzzcurrentStatus =
 	`
 		<h3>TooToo Theme Select (THM) ${ THM.release} -  ${ THM.date }</h3>
 
@@ -102,7 +109,7 @@ THM.getMenuThemeSelect = function() {
 		<details class=detSubMenu >
 
 			<summary>Select Theme
-				<a id=thmSum class=helpItem href="JavaScript:MNU.setPopupShowHide(thmSum,THM.currentStatus);" >&nbsp; ? &nbsp;</a>
+				<button id=butTHM class=butHelp onclick="MNU.setPopupShowHide(butTHM,THM.helpFile);" style=float:right; >?</button>
 			</summary>
 
 			<div>

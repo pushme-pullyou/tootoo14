@@ -5,7 +5,7 @@
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-05-23",
+	"date": "2019-05-28",
 	"helpFile": "fob-file-open-basic/README.md",
 	"version": "0.14.1-2",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/README.md"
@@ -19,7 +19,7 @@ FOB.description =
 	`;
 
 
-FOB.urlDefaultFile = 'README.md';
+FOB.urlDefaultFile = "../../js-14-1/fob-file-open-basic/README.md";
 
 FOB.reader = new FileReader();
 FOB.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
