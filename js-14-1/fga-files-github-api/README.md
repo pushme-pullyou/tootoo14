@@ -34,6 +34,10 @@ The script makes and API call and reads the data one folder at a time. This may 
 
 <summary>Change Log</summary>
 
+### 2019-05-28 ~ Theo
+
+* F - FOB.js: add tooltips to file menu
+
 ### 2019-05-11 ~ Theo
 
 * Fix many issues

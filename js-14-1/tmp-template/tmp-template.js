@@ -5,9 +5,10 @@
 
 const TMP = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-04-30",
+	"date": "2019-05-28",
 	"description": "template",
-	"release": "1.0.0",
+	"helpFile": "tmp-template/README.md",
+	"release": "0.14.0-1",
 };
 
 
@@ -19,7 +20,7 @@ TMP.getMenuTemplate = function() {
 			<details ontoggle="TMPdivTmp1.innerHTML=TMP.getTemplate();" >
 
 				<summary id=TMPsumSurfaces >Template
-					<button id=butTemplate class=butHelp onclick="MNU.setPopupShowHide(butTestText,'README.md');" style=float:right; >?</button>
+					<button id=butTemplate class=butHelp onclick="MNU.setPopupShowHide(butTemplate,TMP.helpFile);" style=float:right; >?</button>
 				</summary>
 
 				<div id=TMPdivTmp1 ></div>

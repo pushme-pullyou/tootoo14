@@ -5,16 +5,11 @@
 
 const FGA = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-23",
+	"date": "2019-05-28",
+	"description": "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
 	"helpFile": "fga-files-github-api/README.md",
-	"version": "0.14.1-2"
+	"version": "0.14.1-3"
 };
-
-
-FGA.description =
-	`
-		Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files
-		`;
 
 
 FGA.branch = '/master/';
@@ -199,7 +194,7 @@ FGA.getFilesFromContents = function( items ) {
 
 			const itemPath = encodeURI( item.path.slice( len ) );
 
-			const str = item.path.endsWith( "html" ) ? `<a href="${ FGA.urlGitHubPage }${ FGA.pathRepo }${ itemPath }" >&#x2750;</a>` : "";
+			const str = item.path.endsWith( "html" ) ? `<a href="${ FGA.urlGitHubPage }${ FGA.pathRepo }${ itemPath }" title="Open file in new tab" >&#x2750;</a>` : "";
 
 			const stl = item.name === name ? "yellow" : "";
 
@@ -207,7 +202,7 @@ FGA.getFilesFromContents = function( items ) {
 			`
 				<table id=${ item.name } style=background-color:${ stl }; ><tr>
 					<td>
-						<a href="${ FGA.urlGitHubSource }/blob${ FGA.branch }${ itemPath }" target=_top >
+						<a href="${ FGA.urlGitHubSource }/blob${ FGA.branch }${ itemPath }" target=_top title="View or edit source code" >
 							${ FGA.iconInfo }
 						</a>
 					</td>

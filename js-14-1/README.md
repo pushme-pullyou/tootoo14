@@ -46,6 +46,7 @@ Much more information, objectives and background is available in [About TooToo](
 
 See read me files in each module folder for to do items
 
+* 2019-05-28 ~ Theo ~ Load any file in its own tab
 * 2019-01-23 ~ Theo ~ Add carousel / Add script gallery
 * 2019-01-15 ~ Theo ~ file save to file & save to ZIP module
 * 2019-01-15 ~ Theo ~ file open ZIP, select and display contents module
@@ -63,6 +64,12 @@ See read me files in each module folder for to do items
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-28 ~ Theo
+
+* F - GAT: first commit
+* F - TMP: Add to menu
+
 
 ### 2019-05-13 ~ Theo
 

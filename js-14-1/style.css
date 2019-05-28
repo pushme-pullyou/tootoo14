@@ -56,7 +56,7 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 #navPanel h2 { font-size: 20px; font-weight: normal; }
 
-#navPanel section { padding: 0px 8px 20px 20px; }
+
 
 #navPanel #secContent a { color: #2194CE; text-decoration: none; cursor: pointer; }
 
@@ -80,6 +80,8 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 .highlight {background-color: lightgreen }
 .navSubMenu { /* background-color: yellow; */ padding: 0 0.5rem; }
 .sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
+
+.secContent { padding: 0px 8px 20px 20px; }
 .sumHeader { font-size:1.3rem; }
 
 #expandButton.collapsed { left: 0; }

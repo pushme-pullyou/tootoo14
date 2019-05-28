@@ -5,11 +5,11 @@
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-05-13",
+	"date": "2019-05-28",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
-	"revision": "0.1.1",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-0/mnu-menu"
+	"revision": "0.14.1-2",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1/mnu-menu"
 };
 
 
@@ -138,7 +138,7 @@ MNU.getNavFooter = function() {
 			<div><a href=${ MNU.footerUrl }pages/themes.md ${ MNU.footerTarget } >Themes help</a></div>
 			<div>&raquo; <a title='Need help' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></div>
 			<div><button onclick=MNU.showFps() >Show frames/second statistics</button></div>
-			<div><button id=MNUbutRateLimits onclick=MNU.rateLimits(); >View GitHub API rate limits</button>
+			<div><button id=MNUbutRateLimits onclick=MNU.rateLimits(MNUbutRateLimits); >View GitHub API rate limits</button>
 			<hr>
 
 		</details>
@@ -168,7 +168,7 @@ MNU.getNavFooterPopup = function() {
 			<p><button id=MNUbutMarkdown onclick="MNU.setPopupShowHide(MNUbutMarkdown,'${ MNU.footerPopupUrl }pages/markdown-help.md');" >Markdown help</button></p>
 			<p><button id=MNUbutThemes onclick="MNU.setPopupShowHide(MNUbutThemes,'${ MNU.footerPopupUrl }pages/themes.md');" >Themes help</button></p>
 			<p><button onclick=MNU.showFps() >Show frames/second statistics</button></p>
-			<p><button id=MNUbutRateLimits onclick=MNU.rateLimits(); >View GitHub API rate limits</button></p>
+			<p><button id=MNUbutRateLimitsPopup onclick=MNU.rateLimits(MNUbutRateLimitsPopup); >View GitHub API rate limits</button></p>
 
 			<p>&raquo; <a title='Need help?' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></p>
 
@@ -231,7 +231,8 @@ MNU.showFps = function(){
 
 
 
-MNU.rateLimits = function() {
+MNU.rateLimits = function( button ) {
+	//console.log( 'button', button );
 
 	const url = "https://api.github.com/rate_limit";
 
@@ -255,7 +256,7 @@ MNU.rateLimits = function() {
 			<pre> ${ xhr.target.response } </pre>
 		`;
 
-		MNU.setPopupShowHide( MNUbutRateLimits, text );
+		MNU.setPopupShowHide( button, text );
 
 	}
 

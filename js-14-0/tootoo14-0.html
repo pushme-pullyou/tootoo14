@@ -9,13 +9,13 @@
 <meta name = "release" content = "14.0.1" >
 <title>TooToo</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="js-14-0/style.css" >
+<link rel="stylesheet" href="./style.css" >
 </head>
 <body>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
-<script src="js-14-0/mnu-menu/mnu-menu.js" ></script>
-<script src="js-14-0/fga-files-github-api/fga-files-github-api.js" ></script>
-<script src="js-14-0/fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src="./mnu-menu/mnu-menu.js" ></script>
+<script src="./fga-files-github-api/fga-files-github-api.js" ></script>
+<script src="./fob-file-open-basic/fob-file-open-basic.js" ></script>
 
 	<nav id="navPanel">
 
@@ -179,7 +179,7 @@
 <script>
 
 FGA.urlGitHubPage = "";
-FGA.uriDefaultFile = "README.md";
+FGA.uriDefaultFile = "../README.md";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -197,9 +197,6 @@ MNU.appTitle = ""; //"Basic html content management script with sliding menu, cs
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
 
-const txt = "<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
-const txts = Array( 10 ).fill( txt ).join( "" );
-
 init();
 
 
@@ -212,15 +209,7 @@ function init() {
 		divContents.setAttribute( 'scrolling', 'no' );
 
 	}
-/*
-	divContents.innerHTML =
-		`
-			<h1>Sample HTML</h1>
-			<button class=butHelp id=butSampleHtml onclick="MNU.setPopupShowHide(butSampleHtml,'README.md');" >?</button>
-			${ tmpSampleHtml.innerHTML }
-			${ txts }
-		`;
- */
+
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
@@ -232,7 +221,7 @@ function init() {
 
 	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
 
-	MNU.requestFile( "pages/markdown-help.md", divMarkdown );
+	MNU.requestFile( "../pages/markdown-help.md", divMarkdown );
 
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
