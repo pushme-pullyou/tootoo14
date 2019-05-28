@@ -293,14 +293,38 @@ FOB.callbackMarkdown = function( markdown ) {
 
 
 
-FOB.callbackJson = function( html ) {
+FOB.callbackJson = function( obj ) {
 
-	//const data = obj.target ? obj.target.response : obj;
+	const data = obj.target ? obj.target.response : obj;
 
-	FOB.target.innerHTML = html;
-	window.scrollTo( 0, 0 );
+
+	FOB.jsonLines = [];
+
+	FOB.lines = data.split(/\r\n|\n/);
+
+	for ( let line of FOB.lines ) {
+		//console.log( 'line', line );
+
+		if ( line.slice( 0, 1 ) !== "{" ) { continue; }
+
+		//console.log( 'line', line );
+
+		const jsonl = JSON.parse( line );
+		//console.log( 'jsonl', jsonl );
+
+		FOB.jsonLines.push( jsonl );
+
+	}
+
+	console.log( 'FOB.jsonLines', FOB.jsonLines );
+
+	let event = new Event( "bingo", {"bubbles": true, "cancelable": false, detail: true } );
+
+	window.dispatchEvent( event );
 
 };
+
+
 
 FOB.callbackOtherToTextarea = function( text ){
 
