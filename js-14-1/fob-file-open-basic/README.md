@@ -28,6 +28,15 @@
 
 <summary>Change log</summary>
 
+
+### 2019-05-29 ~ Theo
+
+* D - FOB.html: Add load jsZip
+* C - FOB: Update readme / description
+* F - FOB.js: Add unzip to text
+
+### Previuosly
+
 * 2019-02-07 ~ Simplify: remove content editable / save file - will re-add elsewhere
 * 2019-01-15 ~ Add FOB.description variable and text
 * 2019-01-15 ~ Add display FOB.description in pop-up and in test file

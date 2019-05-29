@@ -8,7 +8,7 @@ const FOB = {
 	"date": "2019-05-28",
 	"helpFile": "fob-file-open-basic/README.md",
 	"version": "0.14.1-2",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/README.md"
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js"
 
 };
 
@@ -152,6 +152,9 @@ FOB.onInputFileOpen = function( files ) {
 
 	const file = files.files[ 0 ];
 
+	const type = file.type;
+	//console.log( 'type', type );
+
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
 
 	FOB.reader.onload = function( event ) {
@@ -174,6 +177,10 @@ FOB.onInputFileOpen = function( files ) {
 			//FOB.target.innerText = FOB.reader.result;
 
 			FOB.callbackOtherToTextarea( FOB.reader.result );
+
+		} else if ( type === "application/x-zip-compressed" ) {
+
+			FOB.fileOpenZip( files );
 
 		} else {
 
@@ -318,3 +325,75 @@ FOB.updateDefaultFilePath = function() {
 	localStorage.setItem( 'thrFilePath', thrFilePath );
 
 };
+
+
+//////////
+
+
+FOB.fileOpenZip = function( files ) {
+	//console.log( 'files', files.files[0] );
+
+	const zip = new JSZip();
+	const decoder = new TextDecoder( "utf-8" );
+	const names = [];
+
+	zip.loadAsync( files.files[ 0 ] )
+
+	.then( zip => {
+		//console.log( 'zip', zip );
+
+		zip.forEach( ( relativePath, zipEntry ) => names.push( zipEntry.name ) );
+		FOB.name = names[ 0 ];
+		console.log( 'FOB.name', FOB.name );
+
+		const arrTemp = zip.files[ FOB.name].async(
+			"uint8array",
+			metadata => FOB.onProgress( metadata.percent.toFixed(2) + '%', FOB.note )
+		);
+
+		return arrTemp;
+
+	}, ( err ) =>  FILdivProgress.innerHTML += err.message )
+
+	.then( ( uint8array ) => {
+		//console.log( 'uint8array', uint8array );
+
+		if ( uint8array[ 0 ] !== 255 ||  uint8array[ 0 ] === 239 || uint8array[ 0 ] === 60 ) {
+
+			FOB.text = decoder.decode( uint8array );
+
+		} else {
+
+			let arr = new Uint8Array( uint8array.length / 2 );
+			let index = 0;
+
+			for ( let i = 0; i < uint8array.length; i++ ) {
+
+				if ( i % 2 === 0 ) { arr[ index++ ] = uint8array[ i ]; }
+
+			}
+
+			FOB.text = decoder.decode( arr );
+
+		}
+
+
+		FOB.onProgress( FOB.text.length, "load complete" ); // creates event
+
+		const event = new Event( 'FOBonZipFileLoad' );
+
+		document.body.addEventListener( 'FOBonZipFileLoad', setStats, false );
+
+		document.body.dispatchEvent( event );
+
+
+	} );
+
+
+	function setStats() {
+
+		console.log( 'bytes', FOB.text.length );
+	}
+
+};
+
