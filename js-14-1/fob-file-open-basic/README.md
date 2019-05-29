@@ -7,11 +7,11 @@
 
 <summary>Concept</summary>
 
-* Creates the HTML for the user interface<
-* Opens local files with JavaScript FileReader() or XMLHttpRequest() objects</
+* Creates the HTML for the user interface
+* Opens local files with JavaScript FileReader() or XMLHttpRequest() object
 * Converts Markdown to HTML
-* Provides default current status text template
-
+* Un-compresses ZIP files and creates custom event
+* Displays images as images
 
 <details>
 
@@ -19,7 +19,6 @@
 
 * 2019-05-17 ~ Add create onload event
 * 2019-01-15 ~ Theo ~ file save to file & save to ZIP module
-* 2019-01-15 ~ Theo ~ file open ZIP, select and display contents module
 
 
 </details>
@@ -34,6 +33,9 @@
 * D - FOB.html: Add load jsZip
 * C - FOB: Update readme / description
 * F - FOB.js: Add unzip to text
+
+Dealt wih
+* 2019-01-15 ~ Theo ~ file open ZIP, select and display contents module
 
 ### Previuosly
 
