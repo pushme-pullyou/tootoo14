@@ -1,25 +1,10 @@
-
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://pushme-pullyou.github.io/tootoo14/#README.md "View file as a web page." ) </span>
-
-<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href='https://github.com/pushme-pullyou/tootoo14';
-value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
-
-<br>
-
 # [TooToo14 Repo Read Me]( #README.md )
 
-<!--
-<iframe src=https://pushme-pullyou.github.io/tootoo-templates/hamburger-theme-cms/r2/tootoo-cms.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
-
-## Full Screen: [TooToo13]( https://pushme-pullyou.github.io/tootoo13/ )
-<
-### Development Release: https://pushme-pullyou.github.io/tootoo14/tootoo13-dev.html
-
--->
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://pushme-pullyou.github.io/tootoo14/ "View file as a web page." ) </span>
 
 ### Stable Release: https://pushme-pullyou.github.io/tootoo14/
 
-<details>
+<details open>
 
 <summary>Concept</summary>
 
@@ -30,12 +15,11 @@ _The collection title is a play on the [Dr Dolittle]( https://en.wikipedia.org/w
 Current set of modules:
 
 * **[Files GitHub API (FGA)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#fga-files-github-api/README.md )** Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files
-* **[File Open Basic (FOB)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/fob-file-open-basic/README.md )** provides HTML and JavaScript to select, open and display local files using the file dialog box, drag and drop or URL
-* **[GitHub Access Token]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/gat-github-access-token/README.md )** gets GitHub API Access Token / overcomes the sixty requests per hour rate limit
-* **[Menu (MNU)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/mnu-menu/README.md )** generates standard HTML TooToo header and footer menu panel code and content and code that works on computers, tablets and phones
-* **[TooToo Selected Files Markdown (SFM)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/sfrm-selected-files-markdown/README.md )** provides HTML and JavaScript to open and read a Markdown file given an URL, convert the markdown to HTML and return the result to the calling function
-* **[TooToo Theme Select (THM)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/thm-theme-select/README.md )** creates HTML menus and provides JavaScript code to add, select and load themes based on industry-standard CSS stylesheets
-* **[TooToo Template (TMP)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/tmp-template/README.md )** provides HTML and JavaScript 'boilerplate' to create a typical TooToo menus
+* **[File Open Basic (FOB)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/fob-file-open-basic/README.md )** provides HTML and JavaScript to select, open and display local files using the file dialog box, drag and drop or URL
+* **[GitHub Access Token (GAT)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/gat-github-access-token/README.md )** gets GitHub API Access Token / overcomes the sixty requests per hour rate limit
+* **[Menu (MNU)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/mnu-menu/README.md )** generates standard HTML TooToo header and footer menu panel code and content and code that works on computers, tablets and phones <!-- * **[TooToo Selected Files Markdown (SFM)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/sfrm-selected-files-markdown/README.md )** provides HTML and JavaScript to open and read a Markdown file given an URL, convert the markdown to HTML and return the result to the calling function -->
+* **[Theme Select (THM)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/thm-theme/README.md )** creates HTML menus and provides JavaScript code to add, select and load themes based on industry-standard CSS stylesheets
+* **[Template (TMP)](https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/tmp-template/README.md )** provides HTML and JavaScript 'boilerplate' to create a typical TooToo menus
 
 Much more information, objectives and background is available in [About TooToo]( #pages/about-tootoo.md )
 
@@ -44,11 +28,10 @@ Much more information, objectives and background is available in [About TooToo](
 
 <summary>To do / wish list</summary>
 
-See read me files in each module folder for to do items
+See read me files in each module folder for more to do items
 
 * 2019-01-23 ~ Theo ~ Add carousel / Add script gallery
-* 2019-01-15 ~ Theo ~ file save to file & save to ZIP module
-* 2019-01-15 ~ Theo ~ file open ZIP, select and display contents module
+
 
 </details>
 
@@ -56,13 +39,20 @@ See read me files in each module folder for to do items
 
 <summary>Issues</summary>
 
-* 2019-05-13 ~ Not reloading ICO file
+
 
 </details>
 
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-29 ~ Theo
+
+* B - TT14.1: Update readme / links
+
+Dealt with
+* 2019-05-13 ~ Not reloading ICO file
 
 ### 2019-05-13 ~ Theo
 
