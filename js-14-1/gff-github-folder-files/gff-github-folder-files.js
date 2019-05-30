@@ -1,4 +1,4 @@
-/* globals FIL */
+/* globals GFFdivFileInfo, GFFdivGithubFoldersFiles */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -13,7 +13,7 @@ const GFF = {
 };
 
 
-GFF.iconGitHubMark = "https://pushme-pullyou.github.io/github-mark-64.png"
+GFF.iconGitHubMark = "https://pushme-pullyou.github.io/github-mark-64.png";
 GFF.iconInfo = `<img src=${GFF.iconGitHubMark} height=14 style=opacity:0.5 >`;
 
 GFF.items = [
@@ -58,9 +58,10 @@ GFF.items = [
 
 GFF.getMenuGithubFoldersFiles = function() {
 
-	htm = "";
-	index = 0;
-	for( item of GFF.items ) {
+	let  htm = "";
+	let index = 0;
+
+	for( let item of GFF.items ) {
 
 		htm += GFF.getDetails( item, index++ );
 
@@ -88,12 +89,11 @@ GFF.getDetails = function( item, index ){
 	return htm;
 
 
-}
+};
+
 
 
 GFF.getGithubFoldersFiles = function( index ) {
-
-	const timeStart = performance.now();
 
 	const item = GFF.items[ index ];
 
