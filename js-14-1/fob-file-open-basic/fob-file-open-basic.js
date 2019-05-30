@@ -117,8 +117,8 @@ FOB.requestFile = function( url ) { // from a button
 
 	} else if ( FOB.name.toLowerCase().endsWith( '.zip' )) {
 
-		document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
 		FOB.xhrRequestFileZip( url, FOB.callbackUrlUtf16 );
+
 
 	} else { // let
 
@@ -329,6 +329,110 @@ FOB.updateDefaultFilePath = function() {
 
 //////////
 
+FOB.xhrRequestFileZip = function( url ) {
+
+	FOB.timeStart = performance.now();
+
+	const xhr = new XMLHttpRequest();
+	xhr.responseType = 'blob';
+	xhr.open( 'GET', url, true );
+	xhr.onerror = function( xhr ) { console.log( 'error:', xhr ); };
+	xhr.onprogress = function( xhr ) { FOB.onProgress( xhr.loaded, FOB.note ); };
+	xhr.onload = FOB.callbackUrlUtf16;
+	xhr.send( null );
+
+};
+
+
+
+FOB.callbackUrlUtf16 = function( xhr ) {
+
+	const response = xhr.target.response;
+	//console.log( 'response', response );
+
+	const zip = new JSZip();
+	const names = [];
+
+	zip.loadAsync( response )
+
+	.then( function( zip ) {
+		//console.log( 'zip', zip );
+
+		zip.forEach( ( relativePath, zipEntry ) => names.push( zipEntry.name ) );
+
+		// Read first file from the zip file!
+		const uint8array = zip.file( names[ 0 ] ).async( "uint8array" );
+		//console.log( 'names[ 0 ]', names[ 0 ] );
+
+		FOB.name = names[ 0 ];
+
+		return uint8array;
+
+	} )
+
+	.then( function( uint8array ) {
+		//console.log( 'uint8array', uint8array[ 0 ] );
+
+		let text = '';
+
+		if ( uint8array[ 0 ] !== 255 ||  uint8array[ 0 ] === 239 || uint8array[ 0 ] === 60 ) {
+
+			text = new TextDecoder( "utf-8" ).decode( uint8array );
+			//console.log( 'text', text );
+
+		} else {
+
+			const arr = new Uint8Array( uint8array.length / 2 );
+			let index = 0;
+
+			// console.log( 'uint8array', uint8array );
+
+			for ( let i = 0; i < uint8array.length; i++ ) {
+
+				if ( i % 2 === 0 ) {
+
+					arr[ index++ ] = uint8array[ i ];
+
+				}
+
+			}
+			//console.log( 'arr', arr );
+
+			text = new TextDecoder( "utf-8" ).decode( arr );
+
+		}
+		//console.log( 'text', text );
+
+		return text;
+
+	} )
+
+	.then(
+
+		function success( text) {
+
+			FOB.text = text;
+
+			const event = new Event( 'onZipFileParse' );
+
+			document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
+
+			document.body.dispatchEvent( event );
+
+			FOB.onProgress( text.length, "load complete" );
+
+		},
+
+		function error( e ) { FILdivProgress.append( `error ${ e } ` ); }
+
+	);
+
+};
+
+
+
+
+
 
 FOB.fileOpenZip = function( files ) {
 	//console.log( 'files', files.files[0] );
@@ -382,18 +486,18 @@ FOB.fileOpenZip = function( files ) {
 
 		const event = new Event( 'FOBonZipFileLoad' );
 
-		document.body.addEventListener( 'FOBonZipFileLoad', setStats, false );
+		document.body.addEventListener( 'FOBonZipFileLoad', FOB.onFileZipLoad, false );
 
 		document.body.dispatchEvent( event );
 
 
 	} );
 
-
-	function setStats() {
-
-		console.log( 'bytes', FOB.text.length );
-	}
-
 };
 
+
+FOB.onFileZipLoad = function() {
+
+	console.log( 'bytes', FOB.text.length );
+
+};

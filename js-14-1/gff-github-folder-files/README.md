@@ -1,11 +1,12 @@
-# ZZZZZ Read Me
+# GitHub Folders & Files (GFF) Read Me
 
-[Source code]( ZZZZZ )
+[Source code]()
 
 <details open >
 
 <summary>Concept</summary>
 
+Get and display GitHub folders and files
 
 </details>
 
@@ -27,7 +28,7 @@
 
 <summary>Change Log</summary>
 
-## ZZZ
+## 2019-05-29 ~ Theo
 
 * F - First commit
 
