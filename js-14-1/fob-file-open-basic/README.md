@@ -28,6 +28,13 @@
 <summary>Change log</summary>
 
 
+### 2019-06-01 ~ Theo
+
+* F - FOB.js: Add Json decider handler
+* F - FOB.js: Add xml handler
+* F - FOB.js: Add save to file
+
+
 ### 2019-05-29 ~ Theo
 
 * D - FOB.html: Add load jsZip

@@ -12,44 +12,13 @@ const BLBF = {
 };
 
 
-
 BLBF.onLoad = function() {
 
 
-	//const data = obj.target ? obj.target.response : obj;
-
-
-	FOB.jsonLines = [];
-
-	FOB.lines = FOB.text.split(/\r\n|\n/);
-
-	for ( let line of FOB.lines ) {
-		//console.log( 'line', line );
-
-		if ( line.slice( 0, 1 ) !== "{" ) { continue; }
-
-		//console.log( 'line', line );
-
-		const jsonl = JSON.parse( line );
-		//console.log( 'jsonl', jsonl );
-
-		FOB.jsonLines.push( jsonl );
-
-	}
-
-	//console.log( 'FOB.jsonLines', FOB.jsonLines.length );
-
-	let event = new Event( "bingo", {"bubbles": true, "cancelable": false, detail: true } );
-
-	//window.dispatchEvent( event );
-
 	BLBF.bookmarks = FOB.jsonLines;
-	
 	BLBF.setMenuItemsByUrl();
 
-};
-
-
+}
 
 BLBF.setMenuItemsByUrl = function( ){
 	// https://stackoverflow.com/questions/8498592/extract-hostname-name-from-string
@@ -193,6 +162,5 @@ BLBF.filterBookmarks = function ( input ) {
 
 }
 
-document.body.addEventListener( 'FOBonJsonFileLoad', BLBF.onLoad, false );
 
 window.addEventListener( "onBookmarksParsed", BLBF.setMenuItemsByUrl, false );

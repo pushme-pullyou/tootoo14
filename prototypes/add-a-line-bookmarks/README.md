@@ -1,26 +1,34 @@
-# ZZZZZ Read Me
+# Add-a-line Bookmarks Read Me
 
+[Source Code ]()
 
-## Concept
+<details open>
 
-<details open >
+<summary>Concept</summary>
+
+Basic bookmark manager
+
+</details>
+
+<details>
+
 <summary>To Do / Wish List</summary>
 
 
 </details>
 
 <details>
+
 <summary>Issues</summary>
-
-
 
 
 </details>
 
 <details>
+
 <summary>Change Log</summary>
 
-### XXX
+### 2019-06-01 ~ Theo
 
 * First commit
 

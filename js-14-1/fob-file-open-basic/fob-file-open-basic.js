@@ -1,15 +1,15 @@
-/* globals navMenu, showdown, divContents, FOBsecFileOpenBasic */
+/* globals FOB, MNU, JSZip, showdown, divContents, aViewSource, FOBdivFileOpenBasic */
 // jshint esversion: 6
 /* jshint loopfunc: true */
 
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-05-28",
+	"date": "2019-06-01",
 	"helpFile": "fob-file-open-basic/README.md",
-	"version": "0.14.1-2",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js"
-
+	"version": "0.14.1-4-fixer",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js",
+	"users": ["spider-gbxml-fixer", "add-aline-bookmarks"]
 };
 
 FOB.description =
@@ -84,18 +84,61 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 
 
-FOB.onHashChange = function() {
+FOB.getMenuFileSaveBasic = function() {
 
-	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
-	//console.log( 'url', url );
+	const htm =
+	`
+	<details>
 
-	FOB.requestFile( url );
+		<summary>Save file
+			<button id=butFILSave class=butHelp onclick="MNU.setPopupShowHide(butFILSave,FOB.helpFile);" >?</button>
+		</summary>
+
+		<p>
+			<button onclick=FOB.butSaveFile(); >Save file as gbXML</button>
+		</p>
+		<p>
+			<button onclick=FOB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
+		</p>
+
+		<hr>
+
+	</details>
+
+	`;
+
+	return htm;
+
+};
+
+
+//////////
+
+FOB.updateDefaultFilePath = function() {
+
+	location.hash = FOBinpFilePath.value;
+
+	const thrFilePath = FOBinpFilePath.value;
+	localStorage.setItem( 'thrFilePath', thrFilePath );
 
 };
 
 
 
-FOB.requestFile = function( url ) { // from a button
+//////////
+
+FOB.onHashChange = function() {
+
+	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
+	//console.log( 'url', url );
+
+	FOB.requestFileDecider( url );
+
+};
+
+
+
+FOB.requestFileDecider = function( url ) { // from a button
 	//console.log( 'url', url );
 
 	FOB.name = url.split( '/').pop();
@@ -110,19 +153,14 @@ FOB.requestFile = function( url ) { // from a button
 
 		FOB.target.innerHTML = `<img src=${ url } >`;
 
-	} else if ( FOB.name.toLowerCase().endsWith( '.xml' ) ) {
-
-		FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
-		FOB.requestFileText( url );
-
 	} else if ( FOB.name.toLowerCase().endsWith( '.zip' )) {
 
 		FOB.xhrRequestFileZip( url, FOB.callbackUrlUtf16 );
 
-
 	} else { // let
 
-		FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
+		//FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
+
 		FOB.requestFileText( url );
 
 	}
@@ -138,22 +176,24 @@ FOB.requestFileText = function( url ) {
 	FOB.xhr.open( 'GET', url, true );
 	FOB.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	FOB.xhr.onprogress = function( xhr ) { FOB.onProgress( xhr.loaded, FOB.note ); };
-	FOB.xhr.onload = function( xhr ) { FOB.onProgress( xhr.loaded ); };
+	FOB.xhr.onload = function( xhr ) { FOB.onProgress( xhr.loaded ); FOB.callbackDecider( xhr ); };
 	FOB.xhr.send( null );
 
 };
 
 
 
+//////////
+
 FOB.onInputFileOpen = function( files ) {
 
-	FOB.files = files;
 	FOB.timeStart = performance.now();
+	FOB.files = files;
 
 	const file = files.files[ 0 ];
-
 	const type = file.type;
 	//console.log( 'type', type );
+	FOB.name = file.name;
 
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
 
@@ -164,7 +204,7 @@ FOB.onInputFileOpen = function( files ) {
 
 		if ( name.endsWith('.md' ) ) {
 
-			FOB.callbackMarkdown( FOB.reader.result );
+			FOB.setTargetWithMarkdownAsHtml( FOB.reader.result );
 
 		} else if ( FOB.regexImages.test( file.name )  ) {
 
@@ -178,6 +218,10 @@ FOB.onInputFileOpen = function( files ) {
 
 			FOB.callbackOtherToTextarea( FOB.reader.result );
 
+		} else if ( type === "text/xml" ) {
+
+			FOB.fileOpenXml( FOB.reader.result );
+
 		} else if ( type === "application/x-zip-compressed" ) {
 
 			FOB.fileOpenZip( files );
@@ -188,7 +232,7 @@ FOB.onInputFileOpen = function( files ) {
 
 		}
 
-	};
+	}
 
 	if ( FOB.regexImages.test( file.name ) ) {
 
@@ -200,14 +244,18 @@ FOB.onInputFileOpen = function( files ) {
 
 	}
 
-		//function onRequestFileProgress( event ) {
+};
 
-			//divLog.innerHTML =
-			//	fileAttributes.name + ' bytes loaded: ' + event.loaded.toLocaleString() +
-			//	//( event.lengthComputable ? ' of ' + event.total.toLocaleString() : '' ) +
-			//'';
 
-		//}
+
+FOB.fileOpenXml = function( text ) {
+	//console.log( 'file', files.files[ 0 ] );
+
+		FOB.text = text;
+
+		const eventLoad = new Event( 'FOBonXmlFileLoad' );
+		//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
+		document.body.dispatchEvent( eventLoad );
 
 };
 
@@ -221,6 +269,8 @@ FOB.reloadFile = function() {
 
 
 
+//////////
+
 FOB.onDrop = function( event ) {
 
 	console.log( '', event );
@@ -229,7 +279,7 @@ FOB.onDrop = function( event ) {
 
 	if ( dropUrl ) {
 
-		FOB.requestFile( dropUrl );
+		FOB.requestFileDecider( dropUrl );
 
 	} else {
 
@@ -262,6 +312,8 @@ FOB.onProgress = function( size = 0, note = '' ) {
 
 };
 
+
+
 //////////
 
 FOB.callbackDecider = function ( xhr ) {
@@ -271,11 +323,15 @@ FOB.callbackDecider = function ( xhr ) {
 
 	if ( ulc.endsWith( '.md' ) ) {
 
-		FOB.callbackMarkdown( xhr.target.response );
+		FOB.setTargetWithMarkdownAsHtml( xhr.target.response );
 
 	} else if ( ulc.endsWith( '.json' ) ) {
 
-			FOB.callbackJson( xhr.target.response );
+		FOB.callbackJson( xhr.target.response );
+
+	} else if ( ulc.endsWith( '.xml' ) ) {
+
+		FOB.callbackXml( xhr.target.response );
 
 	} else {
 
@@ -287,7 +343,49 @@ FOB.callbackDecider = function ( xhr ) {
 
 
 
-FOB.callbackMarkdown = function( markdown ) {
+FOB.callbackXml = function( text ) {
+
+	FOB.onProgress( text.length, "load complete" );
+
+	FOB.text = text;
+
+	const eventLoad = new Event( 'FOBonXmlFileLoad' );
+	document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
+	document.body.dispatchEvent( eventLoad );
+
+
+};
+
+
+
+FOB.callbackJson = function( text ) {
+
+	//const data = obj.target ? obj.target.response : obj;
+
+	//FOB.target.innerHTML = html;
+	//window.scrollTo( 0, 0 );
+
+	FOB.onProgress( text.length, "load complete" );
+
+	FOB.text = text;
+
+	const eventLoad = new Event( 'FOBonJsonFileLoad' );
+	document.body.addEventListener( 'FOBonJsonFileLoad', () => { console.log( '', 23 ) }, false );
+	document.body.dispatchEvent( eventLoad );
+
+};
+
+
+
+FOB.callbackOtherToTextarea = function( text ){
+
+	FOB.target.innerHTML = `<textarea style="${ FOB.contentsCss }" >${ text }</textarea>`;
+
+};
+
+
+
+FOB.setTargetWithMarkdownAsHtml = function( markdown ) {
 
 	showdown.setFlavor('github');
 	const converter = new showdown.Converter();
@@ -298,33 +396,6 @@ FOB.callbackMarkdown = function( markdown ) {
 
 };
 
-
-
-FOB.callbackJson = function( html ) {
-
-	//const data = obj.target ? obj.target.response : obj;
-
-	FOB.target.innerHTML = html;
-	window.scrollTo( 0, 0 );
-
-};
-
-FOB.callbackOtherToTextarea = function( text ){
-
-	FOB.target.innerHTML = `<textarea style="${ FOB.contentsCss }" >${ text }</textarea>`;
-
-};
-
-
-
-FOB.updateDefaultFilePath = function() {
-
-	location.hash = FOBinpFilePath.value;
-
-	const thrFilePath = FOBinpFilePath.value;
-	localStorage.setItem( 'thrFilePath', thrFilePath );
-
-};
 
 
 //////////
@@ -415,7 +486,7 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 
 			const event = new Event( 'onZipFileParse' );
 
-			document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
+			//document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
 
 			document.body.dispatchEvent( event );
 
@@ -428,9 +499,6 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 	);
 
 };
-
-
-
 
 
 
@@ -486,7 +554,7 @@ FOB.fileOpenZip = function( files ) {
 
 		const event = new Event( 'FOBonZipFileLoad' );
 
-		document.body.addEventListener( 'FOBonZipFileLoad', FOB.onFileZipLoad, false );
+		//document.body.addEventListener( 'FOBonZipFileLoad', FOB.onFileZipLoad, false );
 
 		document.body.dispatchEvent( event );
 
@@ -496,8 +564,49 @@ FOB.fileOpenZip = function( files ) {
 };
 
 
+
 FOB.onFileZipLoad = function() {
 
 	console.log( 'bytes', FOB.text.length );
+
+};
+
+
+////////// File Save
+
+// better way than using GBX.text?
+
+FOB.butSaveFile = function() {
+
+	const name = FOB.name.replace( /\.xml/i, "-spifix.xml" );
+	const blob = new Blob( [ GBX.text ] );
+	let a = document.body.appendChild( document.createElement( 'a' ) );
+	a.href = window.URL.createObjectURL( blob );
+	a.download = name;
+	a.click();
+	a = null;
+
+};
+
+
+
+FOB.butSaveFileZip = function() {
+
+	const name = FOB.name.replace( /\.xml/i, "-spifix.zip" );
+	const zip = new JSZip();
+
+	zip.file( FOB.name, GBX.text );
+
+	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
+
+	.then( function( blob ) {
+
+		let a = document.body.appendChild( document.createElement( 'a' ) );
+		a.href = window.URL.createObjectURL( blob );
+		a.download = name;
+		a.click();
+		a = null;
+
+	});
 
 };
