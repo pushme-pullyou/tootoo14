@@ -1,78 +1,70 @@
-  <!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lan = "en">
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name = "copyright" content ="Ladybug Tools authors" >
+<meta name = "date" content = "2019-06-02" >
 <meta name = "description" content = "Basic bookmark manager" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-06-01" >
 <meta name = "version" content = "0.5.0-0" >
+<meta name = "viewport" content = "width=device-width, initial-scale=1" >
+
 <title>Add-a-line Bookmarks</title>
-<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
+
+<link rel = ”canonical” href = ”https://pushme-pullyou.github.io” />
+<link rel = "license" href="https://creativecommons.org/licenses/by/4.0/">
+<link rel = "stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"  >
+<link rel = "stylesheet" href="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/style.css" >
+
 <style>
 
+.container { display: grid; grid-template-columns: 7rem 4fr; grid-gap: 20px; margin-bottom: 1rem; }
 
-.container {
-	display: grid;
-	grid-template-columns: 7rem 4fr;
-	grid-gap: 20px;
-	margin-bottom: 1rem;
-
-}
-
-.container > div {
-	border-radius: 5px;
-	padding: 10px;
-	background-color: rgb(207,232,220);
-	border: 2px solid rgb(79,185,227);
-
-}
+.container > div { border-radius: 5px; padding: 10px; background-color: rgb(207,232,220);
+	border: 2px solid rgb(79,185,227); }
 
 .container4 {
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr 3fr;
 	grid-gap: 20px;
-	margin-bottom: 1rem;
-
-}
+	margin-bottom: 1rem; }
 
 .container4 > div {
 	border-radius: 5px;
 	padding: 10px;
 	background-color: rgb(207,232,220);
-	border: 2px solid rgb(79,185,227);
-
-}
-
+	border: 2px solid rgb(79,185,227); }
 
 .container > div > input, .container > div > textarea { width: 100% }
 .container4 > div > input, .container4 > div > textarea { width: 100% }
 
 </style>
 </head>
-<!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
+
 <body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
 <!-- menus generally -->
-
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
 
 <!-- File menu panel -->
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/fga-files-github-api/fga-files-github-api.js" ></script>
-<script src="fob-file-open-basic.js" ></script>
+<script src="js/fob-file-open-basic.js" ></script>
 
 <!-- Edit Menu -->
 
-<!-- Settings menu -->
+<!-- Settings menu
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/thm-theme/thm-theme.js" ></script>
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/tmp-template/tmp-template.js" ></script>
+-->
 
-<script src="blbf-bookmarks-list-by-find.js" ></script>
-<script src="bm-bookmarks.js" ></script>
-<script src="tag-tags.js" ></script>
+<script src="js/blbf-bookmarks-list-by-find.js" ></script>
+<script src="js/bm-bookmarks.js" ></script>
+<script src="js/tag-tags.js" ></script>
 
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
@@ -132,7 +124,7 @@
 				<div id="MNUdivFooterPopup" ></div>
 
 				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
-					 ❦
+					❦
 				</h1>
 
 			</footer>
@@ -215,7 +207,7 @@
 
 	</template>
 
-	<template id=tmpTagset >
+	<template id=tmpTagSet >
 
 		<details>
 
@@ -279,8 +271,8 @@
 
 <script>
 
-THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
-THM.cssBasic = "../../js-14-1/style.css"; // set in HTML file
+//THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
+//THM.cssBasic = "../../js-14-1/style.css"; // set in HTML file
 
 FOB.urlDefaultFile = 'bookmarks.json';
 FOB.helpFile = "README.md"
@@ -318,7 +310,7 @@ function init() {
 
 	}
 
-	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
 	//THM.init();
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
@@ -337,7 +329,6 @@ function init() {
 
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
-
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
 
@@ -345,7 +336,7 @@ function init() {
 
 	BMdivBookmarks.innerHTML = tmpNewBookmark.innerHTML;
 
-	TAGdivTagSet.innerHTML = tmpTagset.innerHTML;
+	TAGdivTagSet.innerHTML = tmpTagSet.innerHTML;
 
 }
 

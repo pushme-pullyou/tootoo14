@@ -1,9 +1,11 @@
-# [ZZZZZ Read Me]( #xxxxx/README.md )
+# Prototypes Read Me
 
 [tt14]( ./prototypes/0-template/tootoo14-1.html )
 
-## Concept
+<details>
+<summary>Concept</summary>
 
+</details>
 <details>
 <summary>To Do / Wish List</summary>
 
@@ -19,9 +21,10 @@
 </details>
 
 <details>
+
 <summary>Change Log</summary>
 
-### XXX
+### 2019-06-02 ~ Theo
 
 * First commit
 

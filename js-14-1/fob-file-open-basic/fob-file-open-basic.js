@@ -9,7 +9,7 @@ const FOB = {
 	"helpFile": "fob-file-open-basic/README.md",
 	"version": "0.14.1-4-fixer",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js",
-	"users": ["spider-gbxml-fixer", "add-aline-bookmarks"]
+	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };
 
 FOB.description =
@@ -350,7 +350,7 @@ FOB.callbackXml = function( text ) {
 	FOB.text = text;
 
 	const eventLoad = new Event( 'FOBonXmlFileLoad' );
-	document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
+	//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
 	document.body.dispatchEvent( eventLoad );
 
 
@@ -370,7 +370,7 @@ FOB.callbackJson = function( text ) {
 	FOB.text = text;
 
 	const eventLoad = new Event( 'FOBonJsonFileLoad' );
-	document.body.addEventListener( 'FOBonJsonFileLoad', () => { console.log( '', 23 ) }, false );
+	//document.body.addEventListener( 'FOBonJsonFileLoad', () => { console.log( '', 23 ) }, false );
 	document.body.dispatchEvent( eventLoad );
 
 };

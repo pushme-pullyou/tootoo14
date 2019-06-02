@@ -5,11 +5,11 @@
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-05-31",
+	"date": "2019-06-01",
 	"helpFile": "fob-file-open-basic/README.md",
-	"version": "0.14.1-3-fixer",
+	"version": "0.14.1-4-fixer",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js",
-	"users": ["spider-gbxml-fixer"]
+	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };
 
 FOB.description =
