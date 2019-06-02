@@ -5,17 +5,13 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name = "description" content = "Basic bookmark manager" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-27" >
-<meta name = "version" content = "0.4.0-template" >
+<meta name = "date" content = "2019-06-01" >
+<meta name = "version" content = "0.5.0-0" >
 <title>Add-a-line Bookmarks</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
 <style>
 
-.full-width { width: 100%; }
-.inp90 { width: 88%; float:right; }
-.set-width { width: 18rem; }
-.set-inp {float: right; width: 12rem; }
 
 .container {
 	display: grid;
@@ -76,6 +72,7 @@
 
 <script src="blbf-bookmarks-list-by-find.js" ></script>
 <script src="bm-bookmarks.js" ></script>
+<script src="tag-tags.js" ></script>
 
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
@@ -147,7 +144,15 @@
 
 	<main id=main >
 
-		<div id=divContents ></div>
+		<div id=divContents>
+
+
+			<div id=BMdivBookmarks></div>
+
+
+			<div id=TAGdivTagSet ></div>
+
+		</div>
 
 	</main>
 
@@ -208,44 +213,48 @@
 
 		</details>
 
+	</template>
+
+	<template id=tmpTagset >
+
 		<details>
 
 			<summary>Comments</summary>
 
 		</details>
 
-		<details>
+		<details open >
 
 			<summary>Edit Tag Sets</summary>
 
 			<div class=container >
 
-					<div>name </div><div><input id=inpName ></div>
+					<div>name </div><div><input id=TAGinpName ></div>
 
 				</div>
 
 				<div class=container4 >
 
-					<div>date add </div><div><input id=inpDateAdd ></div>
+					<div>date add </div><div><input id=TAGinpDateAdd ></div>
 
-					<div>update </div><div><input id=inpDateUpdate ></div>
+					<div>update </div><div><input id=TAGinpDateUpdate ></div>
 
-					<div>id </div><div><input id=inpId ></div>
+					<div>id </div><div><input id=TAGinpId ></div>
 
-					<div>type </div><div><input id=inpType ></div>
+					<div>type </div><div><input id=TAGinpType ></div>
 
 				</div>
 
 				<div class=container >
 
-					<div>tags </div><div><input id=inpTags ></div>
+					<div>tags </div><div><input id=TAGinpTags ></div>
 
-					<div>description </div><div><textarea id=txtDescription ></textarea></div>
+					<div>description </div><div><textarea id=TAGtxtDescription ></textarea></div>
 
 				</div>
 
 				<p>
-					<button onclick=BM.setNewTagset>Add new tag set</button>
+					<button onclick=TAG.setTagSetNew(); >Add new tag set</button>
 
 					<button>Add tag set to JSON file in memory</button>
 
@@ -334,7 +343,9 @@ function init() {
 
 	window.addEventListener( "bingo", BLBF.onLoad, false );
 
-	divContents.innerHTML = tmpNewBookmark.innerHTML;
+	BMdivBookmarks.innerHTML = tmpNewBookmark.innerHTML;
+
+	TAGdivTagSet.innerHTML = tmpTagset.innerHTML;
 
 }
 
