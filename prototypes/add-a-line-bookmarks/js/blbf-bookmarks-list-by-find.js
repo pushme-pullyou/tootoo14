@@ -5,47 +5,9 @@
 const BLBF = {
 
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-05-27",
+	"date": "2019-06-02",
 	"description": "Display bookmarks by finding a host",
-	"version": "0.5.0-1",
-
-};
-
-
-
-BLBF.onLoad = function() {
-
-
-	//const data = obj.target ? obj.target.response : obj;
-
-
-	FOB.jsonLines = [];
-
-	FOB.lines = FOB.text.split(/\r\n|\n/);
-
-	for ( let line of FOB.lines ) {
-		//console.log( 'line', line );
-
-		if ( line.slice( 0, 1 ) !== "{" ) { continue; }
-
-		//console.log( 'line', line );
-
-		const jsonl = JSON.parse( line );
-		//console.log( 'jsonl', jsonl );
-
-		FOB.jsonLines.push( jsonl );
-
-	}
-
-	//console.log( 'FOB.jsonLines', FOB.jsonLines.length );
-
-	let event = new Event( "bingo", {"bubbles": true, "cancelable": false, detail: true } );
-
-	//window.dispatchEvent( event );
-
-	BLBF.bookmarks = FOB.jsonLines;
-	
-	BLBF.setMenuItemsByUrl();
+	"version": "0.5.0-2",
 
 };
 
@@ -54,13 +16,15 @@ BLBF.onLoad = function() {
 BLBF.setMenuItemsByUrl = function( ){
 	// https://stackoverflow.com/questions/8498592/extract-hostname-name-from-string
 
-	bookmarks = BLBF.bookmarks;
+	bookmarks = BM.jsonLines;
 	let sites = [];
 	const a = document.createElement( 'a' );
 	const subdomains = ["www.", "m.", "en." ];
 
 	for ( let bookmark of bookmarks ) {
 
+		if ( ! bookmark.url ) { continue; }
+		
 		a.href = bookmark.url;
 		let site = a.hostname;
 
@@ -193,6 +157,5 @@ BLBF.filterBookmarks = function ( input ) {
 
 }
 
-document.body.addEventListener( 'FOBonJsonFileLoad', BLBF.onLoad, false );
 
-window.addEventListener( "onBookmarksParsed", BLBF.setMenuItemsByUrl, false );
+//window.addEventListener( "onBookmarksParsed", BLBF.setMenuItemsByUrl, false );
