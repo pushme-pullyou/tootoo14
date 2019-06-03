@@ -1,18 +1,19 @@
 <!doctype html>
-<html lang = "en" >
+<html lan = "en">
 <head>
 
-<meta charset = "utf-8">
+<meta charset="utf-8">
 <meta name = "copyright" content ="Ladybug Tools authors" >
 <meta name = "date" content = "2019-06-02" >
 <meta name = "description" content = "Basic bookmark manager" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "date" content = "2019-06-01" >
 <meta name = "version" content = "0.5.0-0" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>Add-a-line Bookmarks</title>
 
-<link rel = "canonical" href = "https://pushme-pullyou.github.io" />
+<link rel = ”canonical” href = ”https://pushme-pullyou.github.io” />
 <link rel = "license" href="https://creativecommons.org/licenses/by/4.0/">
 <link rel = "stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"  >
 <link rel = "stylesheet" href="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/style.css" >
@@ -58,7 +59,6 @@
 
 <!-- menus generally -->
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
-<script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/gat-github-access-token/gat-github-access-token.js" ></script>
 
 <!-- File menu panel -->
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/fga-files-github-api/fga-files-github-api.js" ></script>
@@ -110,7 +110,7 @@
 
 				<div id="FGAdivMenuRepoFilesFolders" ></div>
 
-				<div id="GATdivGithubAccessToken" ></div>
+				<div id="GATsecGithubAccessToken" ></div>
 
 				<div id=FOBdivFileOpenBasic ></div>
 
@@ -181,19 +181,19 @@
 
 	<nav>
 
-		<a href="" id="aViewSource" target="_blank"; hidden >view source</a>
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
-
 
 <script>
 
 //THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
-//THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css";
+//THM.cssBasic = "../../js-14-1/style.css"; // set in HTML file
 
 FOB.urlDefaultFile = 'bookmarks.json';
+FOB.helpFile = "README.md"
 
-FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
+FGA.urlGitHubPage = "../../";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -210,7 +210,7 @@ MNU.appText  = ""; // "CMS";
 MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
-MNU.footerPopupUrl	= "https://pushme-pullyou.github.io/";
+MNU.footerPopupUrl	= "../";
 
 
 init();
@@ -235,20 +235,15 @@ function init() {
 
 	FGA.getFiles();
 
-	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
-
 	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
 
 	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
-
-	//TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
-
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;

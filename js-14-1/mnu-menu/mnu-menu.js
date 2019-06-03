@@ -5,10 +5,10 @@
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-05-28",
+	"date": "2019-06-03",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
-	"revision": "0.14.1-2",
+	"version": "0.14.1-2",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1/mnu-menu"
 };
 
@@ -97,7 +97,7 @@ MNU.getNavHeader = function() {
 			${ MNU.urlSourceCodeIcon }
 			</a>
 
-			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >R${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
+			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >V${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
 
 			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
