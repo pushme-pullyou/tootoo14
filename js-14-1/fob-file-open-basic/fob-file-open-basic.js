@@ -1,16 +1,18 @@
-/* globals FOB, MNU, JSZip, showdown, divContents, aViewSource, FOBdivFileOpenBasic */
+/* globals GBX, MNU, JSZip, showdown, divContents, aViewSource, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
 // jshint esversion: 6
 /* jshint loopfunc: true */
 
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-06-01",
-	"helpFile": "fob-file-open-basic/README.md",
-	"version": "0.14.1-4-fixer",
+	"date": "2019-06-03",
+	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/README.md",
+	"version": "0.14.1-5-fixer",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js",
 	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };
+
+FOB.urlDefaultFile = "README.md";
 
 FOB.description =
 	`
@@ -19,7 +21,6 @@ FOB.description =
 	`;
 
 
-FOB.urlDefaultFile = "../../js-14-1/fob-file-open-basic/README.md";
 
 FOB.reader = new FileReader();
 FOB.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
@@ -232,7 +233,7 @@ FOB.onInputFileOpen = function( files ) {
 
 		}
 
-	}
+	};
 
 	if ( FOB.regexImages.test( file.name ) ) {
 
