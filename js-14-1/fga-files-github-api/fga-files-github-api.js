@@ -18,6 +18,7 @@ FGA.repo = 'tootoo14';
 FGA.pathRepo = '';
 FGA.urlGitHubPage = "../../";
 
+FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ]; // turn into global
 //FOB.urlDefaultFile = "LICENSE";
 
 FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
@@ -69,7 +70,7 @@ FGA.getFiles = function() {
 
 	//const timeStart = performance.now();
 
-	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
+	const url = ""; //!location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
 	FGA.url = url;
 
 	//const ulc = url.toLowerCase();
@@ -153,11 +154,11 @@ FGA.getFoldersFromContents = function( items ) {
 
 	const len = FGA.pathRepo.length;
 
-	const ignoreFolders = [ "0-templates-readme","archive","data",".github" ]; // turn into global
+
 
 	for ( let item of items ) {
 
-		if ( item.type === "dir" && !ignoreFolders.includes( item.name ) ) {
+		if ( item.type === "dir" && !FGA.ignoreFolders.includes( item.name ) ) {
 
 			// why does this not work? item.path.split( "/" ).pop()
 			htm +=
@@ -217,13 +218,13 @@ FGA.getFilesFromContents = function( items ) {
 			`;
 
 			// how to simplify
-			if ( ( !location.hash || location.hash.toLowerCase().endsWith( 'readme.md' ) )
+/* 			if ( ( !location.hash || location.hash.toLowerCase().endsWith( 'readme.md' ) )
 
 				&& ( item.name.toLowerCase() === 'readme.md' ) ) {
 
-				location.hash = FGA.urlGitHubPage + FGA.pathRepo + itemPath;
+				//location.hash = FGA.urlGitHubPage + FGA.pathRepo + itemPath;
 
-			}
+			} */
 
 		}
 

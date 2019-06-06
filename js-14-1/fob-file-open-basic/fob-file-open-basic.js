@@ -12,7 +12,7 @@ const FOB = {
 	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };
 
-FOB.urlDefaultFile = "README.md";
+//FOB.urlDefaultFile = "README.md";
 
 FOB.description =
 	`
@@ -117,7 +117,7 @@ FOB.getMenuFileSaveBasic = function() {
 
 FOB.updateDefaultFilePath = function() {
 
-	location.hash = FOBinpFilePath.value;
+	//location.hash = FOBinpFilePath.value;
 
 	const thrFilePath = FOBinpFilePath.value;
 	localStorage.setItem( 'thrFilePath', thrFilePath );
@@ -129,9 +129,10 @@ FOB.updateDefaultFilePath = function() {
 //////////
 
 FOB.onHashChange = function() {
+	console.log( 'FOB.urlDefaultFile', FOB.urlDefaultFile );
+	console.log( 'location.hash', location.hash );
 
 	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
-	//console.log( 'url', url );
 
 	FOB.requestFileDecider( url );
 

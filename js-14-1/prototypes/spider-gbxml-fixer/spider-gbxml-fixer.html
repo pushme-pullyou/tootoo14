@@ -3,18 +3,35 @@
 <head>
 
 <meta charset = "utf-8">
-<meta name = "date" content = "2019-06-02" >
+<meta name = "copyright" content ="PushMe-PullYou authors" >
+<meta name = "date" content = "2019-06-05" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.1-5dev" >
+<meta name = "version" content = "0.14.1-6threejs" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
-<title>TooToo</title>
+<title>TooToo Template Three.js</title>
 
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" />
+<link rel = "license" href="https://creativecommons.org/licenses/by/4.0/">
 <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Inconsolata"  >
 <link rel = "stylesheet" href = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
 
+<base href="file:///D:/Dropbox/Public/git-repos/pushme-pullyou-tootoo14/js-14-1/">
+<!--
+
+<base href="https://github.com/pushme-pullyou/tootoo14/js-14-1/" /.
+-->
+<style>
+
+body { margin: 0; padding: 0; overflow: hidden; }
+
+#divContents { border: 1px solid red; height: 100%; max-width: 100%; }
+
+#navPanel { background-color: #eee; }
+/* #navPopup { background-color: #eee; } */
+
+</style>
 </head>
 
 <body>
@@ -22,19 +39,25 @@
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
+<!-- Three.js -->
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r105/build/three.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r105/examples/js/controls/OrbitControls.js" ></script>
+<script src="prototypes/spider-gbxml-fixer/thr-threejs.js" ></script>
+<script src="prototypes/spider-gbxml-fixer/thru-threejs-utilities.js" ></script>
+
 <!-- Menus generally -->
-<script src = "./mnu-menu/mnu-menu.js" ></script>
-<script src = "./gat-github-access-token/gat-github-access-token.js" ></script>
+<script src = "mnu-menu/mnu-menu.js" ></script>
+<script src = "gat-github-access-token/gat-github-access-token.js" ></script>
 
 <!-- File menu panel -->
-<script src = "./fga-files-github-api/fga-files-github-api.js" ></script>
-<script src = "./fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src = "fga-files-github-api/fga-files-github-api.js" ></script>
+<script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
 
 <!-- Edit Menu -->
 
 <!-- Settings menu -->
-<script src = "./thm-theme/thm-theme.js" ></script>
-<script src = "./tmp-template/tmp-template.js" ></script>
+<script src = "thm-theme/thm-theme.js" ></script>
+<script src = "tmp-template/tmp-template.js" ></script>
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
@@ -84,7 +107,7 @@
 				<div id="MNUdivFooterPopup" ></div>
 
 				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
-					 ❦
+					❦
 				</h1>
 
 			</footer>
@@ -121,12 +144,12 @@
 
 <script>
 
-THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
-THM.cssBasic = "./style.css";
+THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
+THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css";
 
-FOB.urlDefaultFile = "README.md";
+//FOB.urlDefaultFile = ""; //"README.md";
 
-FGA.urlGitHubPage = "../";
+FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -143,11 +166,13 @@ MNU.appText  = ""; // "CMS";
 MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
-MNU.footerPopupUrl	= "../";
+MNU.footerPopupUrl	= "https://pushme-pullyou.github.io/";
+MNU.footerTarget = "target=_blank";
+MNU.footerIssues = "https://github.com/pushme-pullyou.github.io/tootoo14/issues";
 
 
 init();
-
+THR.animate();
 
 function init() {
 
@@ -159,8 +184,14 @@ function init() {
 
 	}
 
-	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
-	THM.init();
+	THR.getThreejs();
+
+	THRU.setHelpers();
+
+	THRU.addSomeLights2();
+
+	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	//THM.init();
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
@@ -176,12 +207,14 @@ function init() {
 
 	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
-	MNUdivFooter.innerHTML = MNU.getNavFooter();
+	//MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	//if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
+	mesh = THRU.getGeometry();
+	THR.scene.add( mesh );
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
@@ -195,6 +228,8 @@ function toggleNavPanel() {
 	expandButton.classList.toggle( 'collapsed' );
 	navPanel.classList.toggle( 'collapsed' );
 	main.classList.toggle( 'collapsed' );
+
+	THR.onWindowResize();
 
 }
 
