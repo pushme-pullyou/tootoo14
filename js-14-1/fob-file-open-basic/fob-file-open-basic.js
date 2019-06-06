@@ -12,7 +12,7 @@ const FOB = {
 	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };
 
-//FOB.urlDefaultFile = "README.md";
+FOB.urlDefaultFile = "README.md";
 
 FOB.description =
 	`

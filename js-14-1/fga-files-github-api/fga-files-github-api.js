@@ -19,7 +19,7 @@ FGA.pathRepo = '';
 FGA.urlGitHubPage = "../../";
 
 FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ]; // turn into global
-FOB.urlDefaultFile = "README.md";
+
 
 FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
