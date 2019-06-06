@@ -129,8 +129,8 @@ FOB.updateDefaultFilePath = function() {
 //////////
 
 FOB.onHashChange = function() {
-	console.log( 'FOB.urlDefaultFile', FOB.urlDefaultFile );
-	console.log( 'location.hash', location.hash );
+	//console.log( 'FOB.urlDefaultFile', FOB.urlDefaultFile );
+	//console.log( 'location.hash', location.hash );
 
 	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
 

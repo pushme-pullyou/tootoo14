@@ -5,10 +5,10 @@
 
 const FGA = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-28",
+	"date": "2019-06-05",
 	"description": "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
 	"helpFile": "fga-files-github-api/README.md",
-	"version": "0.14.1-3"
+	"version": "0.14.1-4"
 };
 
 
@@ -19,7 +19,7 @@ FGA.pathRepo = '';
 FGA.urlGitHubPage = "../../";
 
 FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ]; // turn into global
-//FOB.urlDefaultFile = "LICENSE";
+FOB.urlDefaultFile = "README.md";
 
 FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
