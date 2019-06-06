@@ -249,15 +249,6 @@ FGA.onLoadFile = function() {
 FGA.setBreadcrumbs = function( path ) {
 	//console.log( 'path', path );
 
-	const htmHome =
-	`
-		<b>
-			<a href=JavaScript:FGA.setMenuGitHubPathFileNames(); title="home folder" >
-				${ ( FGA.pathRepo ? FGA.pathRepo : "<span style=font-size:28px >&#x2302</span>" ) }
-			</a> &raquo;
-		</b>
-	`;
-
 	const folders = path ? path.split( '/' ) : [] ;
 
 	let htmFolders = "";
@@ -271,6 +262,14 @@ FGA.setBreadcrumbs = function( path ) {
 
 	}
 
-	FGAdivBreadcrumbs.innerHTML = htmHome + htmFolders;
+	FGAdivBreadcrumbs.innerHTML =
+	`<p>
+		<b>
+			<a href=JavaScript:FGA.setMenuGitHubPathFileNames(); title="home folder" >
+				${ ( FGA.pathRepo ? FGA.pathRepo : "<span style=font-size:28px >&#x2302</span>" ) }
+			</a> &raquo;
+		</b>
+		${ htmFolders }
+	</p>`;
 
 };

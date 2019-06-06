@@ -34,6 +34,10 @@ The script makes and API call and reads the data one folder at a time. This may 
 
 <summary>Change Log</summary>
 
+### 2019-06-06 ~ Theo
+
+* F - FGS.js: breadcrumbs into a p tag
+
 ### 2019-05-28 ~ Theo
 
 * F - FGA.js: add tooltips to file menu

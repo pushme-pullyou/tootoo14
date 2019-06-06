@@ -257,6 +257,7 @@ FOB.fileOpenXml = function( text ) {
 
 		const eventLoad = new Event( 'FOBonXmlFileLoad' );
 		//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
+		
 		document.body.dispatchEvent( eventLoad );
 
 };
