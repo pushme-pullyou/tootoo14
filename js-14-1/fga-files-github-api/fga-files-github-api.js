@@ -4,11 +4,11 @@
 
 
 const FGA = {
-	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-06-05",
+	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
+	"date": "2019-06-08",
 	"description": "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
-	"helpFile": "fga-files-github-api/README.md",
-	"version": "0.14.1-4"
+	"helpFile": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fga-files-github-api/README.md",
+	"version": "0.14.1-5"
 };
 
 
