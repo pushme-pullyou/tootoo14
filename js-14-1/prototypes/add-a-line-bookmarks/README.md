@@ -39,6 +39,12 @@ Basic bookmark manager
 
 <summary>Change Log</summary>
 
+### 2019-06-08 ~ Theo
+
+* F - BTG.js: Add bookmarks by tag
+* F - BDM.js: Add bookmarks by domain
+* R - AAL: refactor all
+
 ### 2019-06-03 ~ Theo
 
 * Added four modules or seven total or something

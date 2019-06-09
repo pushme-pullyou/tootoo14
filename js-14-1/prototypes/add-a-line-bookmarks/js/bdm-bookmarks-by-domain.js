@@ -2,29 +2,55 @@
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
-const BLBF = {
+const BDM = {
 
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-02",
-	"description": "Display bookmarks by finding a host",
-	"version": "0.5.0-2",
+	"date": "2019-06-08",
+	"description": "Display bookmarks by domain",
+	"version": "0.5.0-0",
 
 };
 
 
+BDM.getMenuBookmarksDomain = function() {
 
-BLBF.setMenuItemsByUrl = function( ){
+	const htm =
+	`
+	<details id=BDMdet ontoggle=BDM.setMenuItemsByUrl() >
+
+		<summary>Bookmarks by domain</summary>
+
+		<p>${ BDM.description }</p>
+
+		<p>
+			Search: <input type=search name="q" oninput=BDM.filterBookmarks(this) ;>
+		</p>
+
+		<div id=BDMdivBookmarksDomain ></div>
+
+		<hr>
+
+	</details>
+	`;
+
+	return htm;
+
+}
+
+
+BDM.setMenuItemsByUrl = function( bookmarks = BM.jsonLines ){
 	// https://stackoverflow.com/questions/8498592/extract-hostname-name-from-string
 
-	bookmarks = BM.jsonLines;
-	let sites = [];
+	//const bookmarks = BM.jsonLines;
 	const a = document.createElement( 'a' );
 	const subdomains = ["www.", "m.", "en." ];
+
+	let sites = [];
 
 	for ( let bookmark of bookmarks ) {
 
 		if ( ! bookmark.url ) { continue; }
-		
+
 		a.href = bookmark.url;
 		let site = a.hostname;
 
@@ -43,25 +69,6 @@ BLBF.setMenuItemsByUrl = function( ){
 
 	sites = sites.sort();
 	//console.log( 'sites', sites );
-
-	if ( menuItems.innerText.includes( "Search" ) === false ) {
-
-		const inputHtm =
-		`
-			<p>
-				${ BLBF.description }
-			</p>
-
-			<p>
-				Search: <input type=search name="q" oninput=BLBF.filterBookmarks(this) ;>
-			</p>
-
-			<div id=divResults ></div>
-		`;
-
-		menuItems.innerHTML = inputHtm;
-
-	}
 
 	let siteHtm = `${ bookmarks.length } links`;
 
@@ -98,41 +105,41 @@ BLBF.setMenuItemsByUrl = function( ){
 			</details>
 		`;
 
-
 	}
 
-	divResults.innerHTML = siteHtm;
+	BDMdivBookmarksDomain.innerHTML = siteHtm;
 
 };
 
 
 
-BLBF.filterBookmarks = function ( input ) {
+BDM.filterBookmarks = function ( input ) {
 
 	const str = input.value;
 	//console.log( 'str', str );
+	const a = document.createElement( 'a' );
 
-	BLBF.bookmarks = [];
+	BDM.bookmarks = [];
 
 	if ( str === "" ) {
 
-		for ( let line of FOB.lines ) {
+		for ( let line of BM.lines ) {
 			//console.log( 'line', line );
 
-			if ( line.slice( 0, 1 ) !== "{" ) { continue; }
+			//if ( line.slice( 0, 1 ) !== "{" ) { continue; }
 
 			const jsonl = JSON.parse( line );
 			//console.log( 'jsonl', jsonl );
 
-			if ( jsonl.type === "url" ) { BLBF.bookmarks.push( jsonl ); }
+			if ( jsonl.type === "url" ) { BDM.bookmarks.push( jsonl ); }
 
 		}
 
 	} else {
 
-		for ( let line of FOB.lines ) {
+		for ( let line of BM.lines ) {
 
-			if ( line.slice( 0, 1 ) !== "{" ) { continue; }
+			//if ( line.slice( 0, 1 ) !== "{" ) { continue; }
 			//console.log( 'line', line );
 
 			const jsonl = JSON.parse( line );
@@ -140,12 +147,11 @@ BLBF.filterBookmarks = function ( input ) {
 
 			if ( jsonl.url ) {
 
-				const a = document.createElement( 'a' );
 				a.href = jsonl.url;
 				const site = a.hostname;
 				//console.log( 'site', site );
 
-				if ( site.includes( str ) ) { BLBF.bookmarks.push( jsonl ); }
+				if ( site.includes( str ) ) { BDM.bookmarks.push( jsonl ); }
 
 			}
 
@@ -153,9 +159,6 @@ BLBF.filterBookmarks = function ( input ) {
 
 	}
 
-	BLBF.setMenuItemsByUrl( BLBF.bookmarks );
+	BDM.setMenuItemsByUrl( BDM.bookmarks );
 
 }
-
-
-//window.addEventListener( "onBookmarksParsed", BLBF.setMenuItemsByUrl, false );

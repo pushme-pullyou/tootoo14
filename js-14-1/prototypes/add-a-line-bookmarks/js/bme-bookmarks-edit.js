@@ -6,9 +6,9 @@
 BME = {
 
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-02",
+	"date": "2019-06-08",
 	"description": "Edit bookmark data above then view and save or delete here",
-	"version": "0.5.0-0",
+	"version": "0.5.0-1",
 
 };
 
@@ -19,9 +19,9 @@ BME.getMenuBookmarkEdit = function() {
 	//<button onclick=BME.setTagSetsNew(); >Add new bookmark</button>
 	const htm =
 	`
-		<details>
+		<details ontoggle=>
 
-			<summary>Bookmark Edit ~ V ${ BME.version } ~ ${ BME.date }</summary>
+			<summary>Bookmark Edit ~ BME V ${ BME.version } ~ ${ BME.date }</summary>
 
 			<p>${ BME.description }</p>
 

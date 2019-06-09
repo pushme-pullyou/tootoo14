@@ -208,6 +208,10 @@ FOB.onInputFileOpen = function( files ) {
 
 			FOB.setTargetWithMarkdownAsHtml( FOB.reader.result );
 
+		} else if ( name.endsWith('.json' ) ) {
+
+			FOB.callbackJson( FOB.reader.result );
+
 		} else if ( FOB.regexImages.test( file.name )  ) {
 
 			FOB.target.innerHTML = `<img src=${ FOB.reader.result } >`;
@@ -257,7 +261,7 @@ FOB.fileOpenXml = function( text ) {
 
 		const eventLoad = new Event( 'FOBonXmlFileLoad' );
 		//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
-		
+
 		document.body.dispatchEvent( eventLoad );
 
 };

@@ -6,11 +6,12 @@
 const BM = {
 
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-02",
+	"date": "2019-06-08",
 	"description": "Display data of bookmark selected from left menu or drag and drop a URL here",
-	"version": "0.5.0-3",
+	"version": "0.5.0-4",
 
 };
+
 
 
 BM.getMenuBookmarks = function() {
@@ -51,6 +52,8 @@ BM.getMenuBookmarks = function() {
 
 				<div>description </div><div><textarea id=BMtxtDescription ></textarea></div>
 
+				<div>comment </div><div><textarea id=BMtxtComment ></textarea></div>
+
 			</div>
 
 		</details>
@@ -81,7 +84,9 @@ BM.onLoad = function() {
 	}
 	//console.log( 'BM.jsonLines', BM.jsonLines.length );
 
-	BLBF.setMenuItemsByUrl();
+	BDMdet.open = true;
+
+	//BLBF.setMenuItemsByUrl();
 
 };
 
@@ -89,7 +94,7 @@ BM.onLoad = function() {
 
 BM.parseJson = function( index ) {
 
-	BMdivBookmark.innerHTML = BM.getMenuBookmarks();
+	//BMdivBookmark.innerHTML = BM.getMenuBookmarks();
 
 	const bookmark = BM.bookmark = BM.jsonLines[ index ];
 	//console.log( 'bookmark', bookmark );
@@ -105,11 +110,25 @@ BM.parseJson = function( index ) {
 
 	BMtxtDescription.value = bookmark.description;
 
-	BMdivUrl.innerHTML = "url ❐".link( bookmark.url );
+	BMdivUrl.innerHTML = `<a href="${  bookmark.url }" target="_blank">url ❐</a>`;
 
-	const comments = BM.lines.filter( line => line.includes( bookmark.id ) && line.includes( `"type":"comment"` ) );
+	BM.comments = BM.lines.filter( line => line.includes( bookmark.id ) && line.includes( `"type":"comment"` ) );
 
-	console.log( 'comments', comments );
+	//console.log( 'comments', BM.comments );
+
+	if ( BM.comments.length ) {
+
+		const comment = JSON.parse( BM.comments[ 0 ] );
+		BMtxtComment.value = comment.text;
+
+	} else {
+
+		BMtxtComment.value = "";
+
+	}
+
+	BMEtxtJson.value = "";
+	COM.onToggle();
 
 };
 

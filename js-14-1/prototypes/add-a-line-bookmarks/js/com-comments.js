@@ -6,9 +6,9 @@
 const COM = {
 
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-02",
+	"date": "2019-06-08",
 	"description": "Add your comments to a bookmark",
-	"version": "0.5.0-0",
+	"version": "0.5.0-1",
 
 };
 
@@ -20,7 +20,7 @@ COM.getMenuCommentAdd = function() {
 	`
 	<details ontoggle=COM.onToggle(); >
 
-		<summary>Comment Add ~ V ${ COM.version } ~ ${ COM.date }</summary>
+		<summary>Comment Add/Edit ~ V ${ COM.version } ~ ${ COM.date }</summary>
 
 			<p>${ COM.description }</p>
 
@@ -73,9 +73,26 @@ COM.getMenuCommentAdd = function() {
 
 COM.onToggle = function() {
 
-	COM.setBookmarkNew();
+	if ( BM.comments && BM.comments.length ) {
+
+		const comment = JSON.parse( BM.comments[ 0 ] );
+
+		COMinpBookmarkId.value = comment.bookmarkId;
+		COMinpAuthor.value = comment.author;
+		COMinpDateAdd.value = comment.dateAdd;
+		COMinpDateUpdate.value = new Date().toISOString();
+		COMinpId.value = comment.id;
+		COMinpType.value = "comment";
+		COMtxtComments.value = comment.text;
+
+	} else {
+
+		COM.setBookmarkNew();
+
+	}
 
 };
+
 
 
 COM.setBookmarkNew = function() {
