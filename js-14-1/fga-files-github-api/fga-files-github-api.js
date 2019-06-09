@@ -18,7 +18,7 @@ FGA.repo = 'tootoo14';
 FGA.pathRepo = '';
 FGA.urlGitHubPage = "../../";
 
-FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ]; // turn into global
+FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ];
 
 
 FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
