@@ -1,4 +1,4 @@
-# TooToo File Open Basic (FOB) V0.14.1
+# TooToo File Open Basic (FOB) V 0.14.1
 
 [Source code]( https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js )
 
@@ -8,7 +8,7 @@
 <summary>Concept</summary>
 
 * Creates the HTML for the user interface
-* Opens local files with JavaScript FileReader() or XMLHttpRequest() object
+* Opens local files with JavaScript FileReader() or XMLHttpRequest() object or by drag & drop
 * Converts Markdown to HTML
 * Un-compresses ZIP files and creates custom event
 * Displays images as images
@@ -17,6 +17,8 @@
 
 <summary>Wish list / To do</summary>
 
+* 2019-06-10 ~ Theo ~ Add display PDF files
+* 2019-06-10 ~ Theo ~ Add new file capability
 * 2019-05-17 ~ Add create onload event
 * 2019-01-15 ~ Theo ~ file save to file & save to ZIP module
 

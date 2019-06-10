@@ -48,6 +48,8 @@ BM.getMenuBookmarks = function() {
 
 				<div>images </div><div><input id=BMinpImages ></div>
 
+				<div>favicon </div><div><input id=BMinpFavicon ></div>
+
 				<div>tags </div><div><input id=BMinpTags ></div>
 
 				<div>description </div><div><textarea id=BMtxtDescription ></textarea></div>
@@ -105,12 +107,13 @@ BM.parseJson = function( index ) {
 	BMinpDateUpdate.value = bookmark.dateUpdate;
 	BMinpId.value = bookmark.id;
 	BMinpType.value = bookmark.type;
-	BMinpImages.value = bookmark.images;
+	BMinpImages.value = bookmark.images || "";
+	BMinpFavicon.value = bookmark.favicon;
 	BMinpTags.value = bookmark.tags;
 
 	BMtxtDescription.value = bookmark.description;
 
-	BMdivUrl.innerHTML = `<a href="${  bookmark.url }" target="_blank">url ❐</a>`;
+	BMdivUrl.innerHTML = `<a href="${  bookmark.url }" target="_blank"><img src="${ bookmark.favicon }" height=32></a>`;
 
 	BM.comments = BM.lines.filter( line => line.includes( bookmark.id ) && line.includes( `"type":"comment"` ) );
 

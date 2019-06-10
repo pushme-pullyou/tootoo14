@@ -5,43 +5,18 @@
 <meta charset = "utf-8">
 <meta name = "copyright" content ="PushMe-PullYou authors" >
 <meta name = "date" content = "2019-06-08" >
-<meta name = "description" content = "Basic bookmark manager" >
+<meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.5.0-1" >
+<meta name = "version" content = "0.0.0" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
-<title>Add-a-line Bookmarks</title>
+<title>Add-a-line Bookmark Scrape</title>
 
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" />
-<link rel = "license" href="https://creativecommons.org/licenses/by/4.0/">
-<link rel = "stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"  >
+<link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/">
+<link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Inconsolata"  >
 <link rel = "stylesheet" href = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
 
-<style>
-
-.container { display: grid; grid-template-columns: 7rem 4fr; grid-gap: 20px; margin-bottom: 1rem; }
-
-.container > div { border-radius: 5px; padding: 10px; background-color: rgb(207,232,220);
-	border: 2px solid rgb(79,185,227); }
-
-.container4 { display: grid; grid-template-columns: 1fr 3fr 1fr 3fr; grid-gap: 20px; margin-bottom: 1rem; }
-
-.container4 > div { border-radius: 5px; padding: 10px; background-color: rgb(207,232,220);
-	border: 2px solid rgb(79,185,227); }
-
-.container > div > input { width: 100% }
-.container > div > textarea { height: 5rem; width: 100% }
-.container4 > div > input { width: 100% }
-
-#TAGtxtJson, #BMEtxtJson, #COMtxtJson { height: 10rem; width: 100%; }
-
-#BMNdivDrop { border: 1px dotted #aaaaaa; height: 3rem; padding: 1rem; width: 100%; }
-
-#divContents { border: 0px solid red; margin: 0 auto; max-width: 50rem; width: 90%; }
-
-[contentEditable=true]:empty:not(:focus):before{ content:attr( data-text) }
-
-</style>
 </head>
 
 <body>
@@ -59,20 +34,11 @@
 
 <!-- Edit Menu -->
 
-<!-- Settings menu
+<!-- Settings menu -->
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/thm-theme/thm-theme.js" ></script>
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/tmp-template/tmp-template.js" ></script>
--->
 
-<script src = "js/bm-bookmarks.js" ></script>
-<script src = "js/bme-bookmarks-edit.js" ></script>
-<script src = "js/bmn-bookmarks-new.js" ></script>
-<script src = "js/tga-tags-add.js" ></script>
-<script src = "js/tag-tags.js" ></script>
-<script src = "js/com-comments.js" ></script>
-
-<script src = "js/bdm-bookmarks-by-domain.js" ></script>
-<script src = "js/btg-bookmarks-by-tag.js" ></script>
+<script src = "scr-scrape.js" ></script>
 
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
@@ -88,17 +54,7 @@
 			</header>
 
 
-			<details open >
-
-				<summary class=sumMenuTitle >Bookmarks menu</summary>
-
-				<div id=BDMdivMenuBookmarksDomain ></div>
-
-				<div id=BTGdivMenuBookmarksTag ></div>
-
-				<div id=menuvvvItems ></div>
-
-			</details>
+			<div id=SCRdivMenuScrape ></div>
 
 
 			<details open >
@@ -148,21 +104,7 @@
 
 	<main id=main >
 
-		<div id=divContents>
-
-			<div id=BMdivBookmark></div>
-
-			<div id=BMEdivBookmarkEdit></div>
-
-			<div id=BMNdivBookmarkNew ></div>
-
-			<div id=COMdivCommentAdd ></div>
-
-			<div id=TGAdivTagsAdd ></div>
-
-			<div id=TAGdivTagSets ></div>
-
-		</div>
+		<div id=divContents ></div>
 
 	</main>
 
@@ -187,15 +129,25 @@
 
 <script>
 
-//THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
-//THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css";
+THM.themeUrlStorage = 'tootoo14ThemeUrlTemplate'; // set for each instance in HTML file
+THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css";
 
-FOB.urlDefaultFile = 'bookmarks.json';
+FOB.urlDefaultFile = "bookmarks.json";
 
-FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
+
+FGA.branch = '/master/';
+FGA.user = 'pushme-pullyou';
+FGA.repo = 'pushme-pullyou.github.io';
+FGA.pathRepo = '';
+FGA.urlGitHubPage = "../../";
+FGA.urlGitHubPage = "https://pushme-pullyou.github.io/";
+
+FGA.ignoreFolders = [ "archive","data",".github" ];
 
 // For main menu header
-MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1/prototypes/add-a-line-bookmarks";
+//MNU.description = `Very simple JavaScript files to help you explore and build new tools on <a href="https://github.com" target="_blank">GitHub</a>.`;
+
+MNU.urlSourceCode = "https://github.com/pushme-pullyou/";
 
 MNU.homeText  = "pushMe-pullYou";
 MNU.homeTitle = "Very simple JavaScript files to help you explore and build new tools on GitHub.";
@@ -227,8 +179,8 @@ function init() {
 
 	}
 
-	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
-	//THM.init();
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	THM.init();
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
@@ -238,44 +190,22 @@ function init() {
 
 	//GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
-	BDMdivMenuBookmarksDomain.innerHTML = BDM.getMenuBookmarksDomain();
-
-	BTGdivMenuBookmarksTag.innerHTML = BTG.getMenuBookmarksTag();
+	SCRdivMenuScrape.innerHTML = SCR.getMenuScrape();
 
 	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
 
-	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+	FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
 
-	//TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
+	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 	//MNUdivFooter.innerHTML = MNU.getNavFooter();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-
-
-	//window.addEventListener( "bingo", BLBF.onLoad, false );
-
-	BMdivBookmark.innerHTML = BM.getMenuBookmarks();
-
-	BMNdivBookmarkNew.innerHTML = BMN.getMenuBookmarkNew();
-
-	BMEdivBookmarkEdit.innerHTML = BME.getMenuBookmarkEdit();
-
-	COMdivCommentAdd.innerHTML = COM.getMenuCommentAdd();
-
-	TGAdivTagsAdd.innerHTML = TGA.getMenuTagsAdd();
-
-	TAGdivTagSets.innerHTML = TAG.getMenuTagSets();
-
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
-
-	document.body.addEventListener( 'FOBonJsonFileLoad', BM.onLoad, false );
-
-	BMNdivDrop.addEventListener( "input", BMN.onInput, false);
 
 }
 

@@ -80,9 +80,9 @@ TAG.getMenuTagSets = function() {
 TAG.onToggle = function() {
 
 	const lines = BM.lines.filter( line => line.includes( `\"tagset\"` ) );
-	//console.log( 'lines', lines );
+	console.log( 'lines', lines );
 
-	names = lines.map( line => line.match( /\"name\":\"(.*?)\"/ )[ 1 ] );
+	names = lines.map( line => line.match( /\"name\": \"(.*?)\"/i )[ 1 ] );
 	console.log( 'names', names );
 
 	TAGselTagset.innerHTML = `<option>select</option>` + names.map( name => `<option>${ name }</option>` );
@@ -95,7 +95,7 @@ TAG.onSelectChange = function() {
 
 	const name = TAGselTagset.value;
 
-	const line = BM.lines.find( line => line.includes( `\"name\":"${ name}"` ) );
+	const line = BM.lines.find( line => line.includes( `\"name\": "${ name}"` ) );
 	console.log( 'line', line );
 
 	const json = JSON.parse( line )
