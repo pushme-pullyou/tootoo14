@@ -183,27 +183,6 @@ MNU.getNavFooterPopup = function() {
 
 
 
-MNU.getDivPopup = function() {
-
-	const version = document.head.querySelector( '[ name=version ]' ).content;
-
-	const date = document.head.querySelector( '[ name=date ]' ).content;
-
-	const htm =
-	`
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
-
-		<div id="MNUdivPopupData" ></div>
-
-		<div id="MNUdivMessage" ><p>R${ version } - ${ date }</p></div>
-	`;
-
-	return htm;
-
-};
-
-
-
 MNU.showFps = function(){
 
 	const script = document.body.appendChild( document.createElement('script') );
@@ -266,40 +245,60 @@ MNU.rateLimits = function( button ) {
 
 //////////
 
-MNU.setPopupShowHide = function( id, text ) {
+MNU.getDivPopup = function() {
+
+	const version = document.head.querySelector( '[ name=version ]' ).content;
+
+	const date = document.head.querySelector( '[ name=date ]' ).content;
+
+	const htm =
+	`
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide();" >×</button></div>
+
+		<div id="MNUdivPopupData" ></div>
+
+		<div id="MNUdivMessage" ><p>R${ version } - ${ date }</p></div>
+	`;
+
+	return htm;
+
+};
+
+
+
+MNU.setPopupShowHide = function( id = MNU.popupId, text = "" ) {
 	//console.log( 'id', id );
 
-	if ( id ) {
+	//if ( id ) {
 
 		MNU.popupId = id;
 
 		MNU.popupId.classList.toggle( "active" );
 
-	}
+	//}
 
 
 	if ( MNU.popupId.classList.contains( 'active' ) ) {
 
-		navPopup.hidden = false;
+		if ( MNUdivPopup.innerHTML === "" ) { MNUdivPopup.innerHTML = MNU.getDivPopup(); }
 
-		MNUdivPopup.innerHTML = MNU.getDivPopup();
-
-		if ( text.toLowerCase().endsWith( ".md" ) ) {
+		if ( text &&  text.toLowerCase().endsWith( ".md" ) ) {
 
 			MNU.requestFile( text, MNUdivPopupData );
 
 		} else {
 
 			MNUdivPopupData.innerHTML = text;
+			navPopup.hidden = false;
 
 		}
 
-		divContents.addEventListener( 'click', MNU.onClickContainer, false );
-		divContents.addEventListener( 'touchstart', MNU.onClickContainer, false );
+		divContents.addEventListener( 'click', MNU.onClickClose, false );
+		divContents.addEventListener( 'touchstart', MNU.onClickClose, false );
 
 	} else {
 
-		MNU.onClickContainer();
+		MNU.onClickClose();
 
 	}
 
@@ -307,15 +306,15 @@ MNU.setPopupShowHide = function( id, text ) {
 
 
 
-MNU.onClickContainer = function() {
+MNU.onClickClose = function() {
 
 	if ( MNU.popupId.classList.contains( 'active' ) === false ) {
 
 		navPopup.hidden = true;
 		MNU.popupId.classList.remove( "active" );
 		MNUdivPopupData.innerHTML = "";
-		divContents.removeEventListener( 'click', MNU.onClickContainer, false );
-		divContents.removeEventListener( 'touchstart', MNU.onClickContainer, false );
+		divContents.removeEventListener( 'click', MNU.onClickClose, false );
+		divContents.removeEventListener( 'touchstart', MNU.onClickClose, false );
 
 	}
 
@@ -347,5 +346,7 @@ MNU.callbackMarkdown = function( markdown, target ) {
 	//console.log( '', html );
 
 	//window.scrollTo( 0, 0 );
+
+	navPopup.hidden = false;
 
 };
