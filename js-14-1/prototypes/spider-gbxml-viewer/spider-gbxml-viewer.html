@@ -30,6 +30,7 @@ body { margin: 0; padding: 0; overflow: hidden; }
 #navPanel { background-color: #eee; }
 
 #navPopup { display: block; left: auto; max-width: 25%; right: 1rem; top: 1rem; }
+/* #navPopup { background-color: #eee; } */
 
 
 #VSTdivSurfaceType button  { background-color: #ddd; border: 2px solid white; color: white; cursor: pointer;
@@ -39,10 +40,6 @@ body { margin: 0; padding: 0; overflow: hidden; }
 
 button.active { border-color: black; font-style: italic; font-weight: bold; margin-left: 1rem;
 	box-shadow: 2px 2px #888; }
-
-
-/* #navPopup { background-color: #eee; } */
-
 
 </style>
 </head>
@@ -71,29 +68,29 @@ button.active { border-color: black; font-style: italic; font-weight: bold; marg
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/thm-theme/thm-theme.js" ></script>
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-1/tmp-template/tmp-template.js" ></script>
 
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/thr-threejs.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/thru-threejs-utilities.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/thr-threejs.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/thru-threejs-utilities.js" ></script>
 <script src = "pop-up-text-parser.js" ></script>
 
 <!-- File menu panel -->
 <script src = "gff-github-folder-files/gff-github-folder-files.js" ></script>
 
 <script src = "gbx-gbxml-text-parser.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gbxu-gbxml-utilities.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/gbxu-gbxml-utilities.js" ></script>
 
 
 <!-- Edit Menu -->
 
 <!-- View menu -->
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/vst-view-surface-types.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/vbsu-view-by-surfaces.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/vbs-view-by-storeys.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/vbsp-view-by-spaces.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/vbz-view-by-zones.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/vst-view-surface-types.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/vbsu-view-by-surfaces.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/vbs-view-by-storeys.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/vbsp-view-by-spaces.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/vbz-view-by-zones.js" ></script>
 
 <!-- Settings menu -->
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/set-settings.js" ></script>
-<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/cut-section-cut.js"></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/set-settings.js" ></script>
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-16-0/js/cut-section-cut.js"></script>
 
 
 
@@ -220,9 +217,9 @@ button.active { border-color: black; font-style: italic; font-weight: bold; marg
 
 			<div id="MNUdivPopup" ></div>
 
-			<div id="divPopUpData" ></div>
+			<div id="divPopupData" ></div>
 
-			<div id="divMessage" >ccc</div>
+			<div id="divMessage" ></div>
 
 		</section>
 
@@ -341,6 +338,8 @@ function init() {
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
+	MNUdivPopup.innerHTML = MNU.getDivPopup();
+
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
 
@@ -355,6 +354,8 @@ function init() {
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
+
+	MNU.requestFile( "popup.md", MNUdivPopupData );
 
 }
 
