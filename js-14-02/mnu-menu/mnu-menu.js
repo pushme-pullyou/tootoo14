@@ -97,16 +97,16 @@ MNU.getNavHeader = function() {
 			${ MNU.urlSourceCodeIcon }
 			</a>
 
-			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >V${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
+			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >V ${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
 
-			<button class=butHelp id=butTitle onclick="MNU.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
+			<button class=butHelp id=butTitle onclick="POP.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
 		</h2>
 
 		<p>
 			${ MNU.description }
 
-			<button class=butHelp id=butMenu onclick="MNU.setPopupShowHide(butMenu,MNU.descriptionTooToo);" style=float:right; >?</button>
+			<button class=butHelp id=butMenu onclick="POP.setPopupShowHide(butMenu,MNU.descriptionTooToo);" style=float:right; >?</button>
 
 		</p>
 
@@ -126,7 +126,7 @@ MNU.getNavFooter = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=MNUbutFooter class=butHelp onclick="MNU.setPopupShowHide(MNUbutFooter,MNU.descriptionTooToo);" style=float:right; >?</button>
+				<button id=MNUbutFooter class=butHelp onclick="POP.setPopupShowHide(MNUbutFooter,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
 			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
@@ -157,16 +157,16 @@ MNU.getNavFooterPopup = function() {
 		<details id=MNUdetFooter >
 
 			<summary class=sumMenuTitle >Help menu
-				<button id=MNUbutFooterPopup class=butHelp onclick="MNU.setPopupShowHide(MNUbutFooterPopup,MNU.descriptionTooToo);" style=float:right; >?</button>
+				<button id=MNUbutFooterPopup class=butHelp onclick="POP.setPopupShowHide(MNUbutFooterPopup,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
-			<p><button id=MNUbutTooToo onclick="MNU.setPopupShowHide(MNUbutTooToo,'${ MNU.footerPopupUrl }pages/about-tootoo.md');" >About TooToo</button></p>
-			<p><button id=MNUbutCredits onclick="MNU.setPopupShowHide(MNUbutCredits,'${ MNU.footerPopupUrl }pages/credits.md');" >Credits</button></p>
-			<p><button id=MNUbutCode onclick="MNU.setPopupShowHide(MNUbutContribute,'${ MNU.footerPopupUrl }pages/code-of-conduct.md');" >Code of Coduct</button></p>
-			<p><button id=MNUbutContribute onclick="MNU.setPopupShowHide(MNUbutContribute,'${ MNU.footerPopupUrl }pages/contributing.md');" >Contributing via GitHub</button></p>
-			<p><button id=MNUbutLicense onclick="MNU.setPopupShowHide(MNUbutLicense,'${ MNU.footerPopupUrl }pages/license.md');" >MIT License</button></p>
-			<p><button id=MNUbutMarkdown onclick="MNU.setPopupShowHide(MNUbutMarkdown,'${ MNU.footerPopupUrl }pages/markdown-help.md');" >Markdown help</button></p>
-			<p><button id=MNUbutThemes onclick="MNU.setPopupShowHide(MNUbutThemes,'${ MNU.footerPopupUrl }pages/themes.md');" >Themes help</button></p>
+			<p><button id=MNUbutTooToo onclick="POP.setPopupShowHide(MNUbutTooToo,'${ MNU.footerPopupUrl }pages/about-tootoo.md');" >About TooToo</button></p>
+			<p><button id=MNUbutCredits onclick="POP.setPopupShowHide(MNUbutCredits,'${ MNU.footerPopupUrl }pages/credits.md');" >Credits</button></p>
+			<p><button id=MNUbutCode onclick="POP.setPopupShowHide(MNUbutContribute,'${ MNU.footerPopupUrl }pages/code-of-conduct.md');" >Code of Coduct</button></p>
+			<p><button id=MNUbutContribute onclick="POP.setPopupShowHide(MNUbutContribute,'${ MNU.footerPopupUrl }pages/contributing.md');" >Contributing via GitHub</button></p>
+			<p><button id=MNUbutLicense onclick="POP.setPopupShowHide(MNUbutLicense,'${ MNU.footerPopupUrl }pages/license.md');" >MIT License</button></p>
+			<p><button id=MNUbutMarkdown onclick="POP.setPopupShowHide(MNUbutMarkdown,'${ MNU.footerPopupUrl }pages/markdown-help.md');" >Markdown help</button></p>
+			<p><button id=MNUbutThemes onclick="POP.setPopupShowHide(MNUbutThemes,'${ MNU.footerPopupUrl }pages/themes.md');" >Themes help</button></p>
 			<p><button onclick=MNU.showFps() >Show frames/second statistics</button></p>
 			<p><button id=MNUbutRateLimitsPopup onclick=MNU.rateLimits(MNUbutRateLimitsPopup); >View GitHub API rate limits</button></p>
 
@@ -235,7 +235,7 @@ MNU.rateLimits = function( button ) {
 			<pre> ${ xhr.target.response } </pre>
 		`;
 
-		MNU.setPopupShowHide( button, text );
+		POP.setPopupShowHide( button, text );
 
 	}
 
@@ -253,7 +253,7 @@ MNU.getDivPopup = function() {
 
 	const htm =
 	`
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide();" >×</button></div>
+		<div style=text-align:right; ><button onclick="POP.setPopupShowHide();" >×</button></div>
 
 		<div id="MNUdivPopupData" ></div>
 
@@ -266,7 +266,7 @@ MNU.getDivPopup = function() {
 
 
 
-MNU.setPopupShowHide = function( id = MNU.popupId, text = "" ) {
+MNU.xxxsetPopupShowHide = function( id = MNU.popupId, text = "" ) {
 	//console.log( 'id', id );
 
 	//if ( id ) {

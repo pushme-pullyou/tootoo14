@@ -109,7 +109,7 @@ THM.getMenuThemeSelect = function() {
 		<details class=detSubMenu >
 
 			<summary>Select Theme
-				<button id=butTHM class=butHelp onclick="MNU.setPopupShowHide(butTHM,THM.helpFile);" style=float:right; >?</button>
+				<button id=butTHM class=butHelp onclick="POP.setPopupShowHide(butTHM,THM.helpFile);" style=float:right; >?</button>
 			</summary>
 
 			<div>

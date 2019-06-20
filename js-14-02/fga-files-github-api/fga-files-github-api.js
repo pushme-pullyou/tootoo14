@@ -47,7 +47,7 @@ FGA.getMenuFilesGithubApi = function() {
 			<details open >
 
 				<summary id=FGAsumSurfaces  >All folders and files
-					<button id=butFGA class=butHelp onclick="MNU.setPopupShowHide(butFGA,FGA.helpFile);" style=float:right; >?</button>
+					<button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.helpFile);" style=float:right; >?</button>
 				</summary>
 
 				<div id = "FGAdivFilesGithubApi" ></div>

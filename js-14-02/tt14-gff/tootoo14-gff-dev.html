@@ -30,7 +30,7 @@
 <script src = "../gat-github-access-token/gat-github-access-token.js" ></script>
 
 <!-- File menu panel -->
-<script src = "../fga-files-github-api/fga-files-github-api.js" ></script>
+<script src = "../gff-github-folder-files/gff-github-folder-files.js" ></script>
 <script src = "../fob-file-open-basic/fob-file-open-basic.js" ></script>
 
 <!-- Edit Menu -->
@@ -52,15 +52,23 @@
 			</header>
 
 
+			<details open>
+
+					<summary class=sumMenuTitle >GitHub Folders & Files</summary>
+
+					<div id=GFFdivGithubFoldersFiles ></div>
+
+					<div id=GFFdivFileInfo></div>
+
+					<div id="GATdivGithubAccessToken" ></div>
+
+				</details>
+
 			<details open >
 
 				<summary class="sumMenuTitle" >File menu</summary>
 
-				<div id=SFMsecPrototypes ></div>
 
-				<div id="FGAdivMenuRepoFilesFolders" ></div>
-
-				<div id="GATdivGithubAccessToken" ></div>
 
 				<div id=FOBdivFileOpenBasic ></div>
 
@@ -129,7 +137,7 @@ THM.cssBasic = "../style.css";
 
 FOB.urlDefaultFile = "../README.md";
 MNU.helpFile = "../README.md";
-FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
+
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/";
@@ -169,9 +177,7 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
-
-	FGA.getFiles(); // move to js
+	GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles();
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 

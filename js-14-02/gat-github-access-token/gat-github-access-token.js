@@ -52,7 +52,7 @@ GAT.getMenuGitHubAccessToken = function() {
 		<details>
 
 			<summary>GitHub API Access Token
-				<button id=butGAT class=butHelp onclick="MNU.setPopupShowHide(butGAT,GAT.helpFile);" style=float:right; >?</button>
+				<button id=butGAT class=butHelp onclick="POP.setPopupShowHide(butGAT,GAT.helpFile);" style=float:right; >?</button>
 			</summary>
 
 			<p>

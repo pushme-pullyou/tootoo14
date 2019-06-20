@@ -20,7 +20,7 @@ TMP.getMenuTemplate = function() {
 			<details ontoggle="TMPdivTmp1.innerHTML=TMP.getTemplate();" >
 
 				<summary id=TMPsumSurfaces >Template
-					<button id=butTemplate class=butHelp onclick="MNU.setPopupShowHide(butTemplate,TMP.helpFile);" style=float:right; >?</button>
+					<button id=butTemplate class=butHelp onclick="POP.setPopupShowHide(butTemplate,TMP.helpFile);" style=float:right; >?</button>
 				</summary>
 
 				<div id=TMPdivTmp1 ></div>
