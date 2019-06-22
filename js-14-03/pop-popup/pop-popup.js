@@ -1,4 +1,4 @@
-/* global Stats, POPbutRateLimits, navPopup, POPdivPopupData, divContents, showdown */
+/* global Stats, POPbutRateLimits, navPopup, POPdivPopupData, main, showdown */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -63,8 +63,8 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "" ) {
 
 		}
 
-		divContents.addEventListener( 'click', POP.onClickClose, false );
-		divContents.addEventListener( 'touchstart', POP.onClickClose, false );
+		main.addEventListener( 'click', POP.onClickClose, false );
+		main.addEventListener( 'touchstart', POP.onClickClose, false );
 
 	} else {
 
@@ -78,15 +78,15 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "" ) {
 
 POP.onClickClose = function() {
 
-	if ( POP.popupId.classList.contains( 'active' ) === false ) {
+	//if ( POP.popupId.classList.contains( 'active' ) === false ) {
 
 		navPopup.hidden = true;
 		POP.popupId.classList.remove( "active" );
 		POPdivPopupData.innerHTML = "";
-		divContents.removeEventListener( 'click', POP.onClickClose, false );
-		divContents.removeEventListener( 'touchstart', POP.onClickClose, false );
+		main.removeEventListener( 'click', POP.onClickClose, false );
+		main.removeEventListener( 'touchstart', POP.onClickClose, false );
 
-	}
+	//}
 
 };
 
