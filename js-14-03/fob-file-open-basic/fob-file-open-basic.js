@@ -175,6 +175,8 @@ FOB.requestFileDecider = function( url ) { // from a button
 
 FOB.requestFileText = function( url ) {
 
+	if ( !url ) { return; }
+
 	FOB.timeStart = performance.now();
 
 	FOB.xhr.open( 'GET', url, true );
