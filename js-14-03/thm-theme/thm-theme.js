@@ -16,13 +16,13 @@ THM.description =
 		TooToo Theme Select (THM) creates HTML menus and provides JavaScript code to add, select and load themes based on industry-standard CSS stylesheets
 	`;
 
-THM.backgroundColor = "#eef";
+THM.backgroundColor = "#eee";
 
 THM.themeUrlStorage = "tootoo14ThemeUrl"; // set for each instance in HTML file
 //THM.cssBasic = "https://www.w3schools.com/lib/w3-theme-red.css";
 THM.cssBasic = "./style.css"; // set in HTML file
 
-THM.cssW3schools = "https://www.w3schools.com/lib/w3-theme-red.css";
+THM.cssW3schools = "https://www.w3schools.com/lib/w3-theme-black.css";
 THM.themeBootswatch = "https://bootswatch.com/_vendor/bootstrap/dist/css/bootstrap.css";
 
 
@@ -114,8 +114,7 @@ THM.linksRemove = function() {
 	} );
 
 	const cssBasic = document.head.appendChild( document.createElement( "link" ) );
-	cssBasic.rel = "stylesheet";
-	//cssBasic.id = "THMcssBasic";
+	cssBasic.rel = "stylesheet";;
 	cssBasic.href = THM.cssBasic;
 
 	THM.toggleTagsClassListW3schools( "remove" );
@@ -171,6 +170,8 @@ THM.toggleTagsClassListW3schools= function( action = "add" ) {
 	//document.body.querySelectorAll( "nav" )
 	//.forEach( item => item.classList[ action ]( "w3-theme-l5" ) );
 
+	navPanel.style.backgroundColor = THM.backgroundColor;
+
 	document.body.querySelectorAll( "a" )
 	.forEach( item => item.classList[ action ]( "w3-text-theme", "w3-medium", "w3-hover-shadow" ) );
 
@@ -178,10 +179,10 @@ THM.toggleTagsClassListW3schools= function( action = "add" ) {
 	.forEach( item => item.classList[ action ]( "w3-container", "w3-text-theme", "w3-small" ) );
 
 	document.body.querySelectorAll( "summary" )
-	.forEach( item => item.classList[ action ]( "w3-bar-item", "w3-theme-l2", "w3-small", "w3-hover-shadow"  ) );
+	.forEach( item => item.classList[ action ]( "w3-bar-item", "w3-theme-l2", "w3-hover-shadow"  ) );
 
 	document.body.querySelectorAll( "button" )
-	.forEach( item => item.classList[ action ]( "w3-button", "w3-theme-l3", "w3-small", "w3-round" ) );
+	.forEach( item => item.classList[ action ]( "w3-theme-l3", "w3-small", "w3-round" ) );
 
 	document.body.querySelectorAll( "input" )
 	.forEach( item => item.classList[ action ]( "w3-input", "w3-theme-l4", "w3-small", "w3-round", "w3-border", "w3-hover-theme" ) );

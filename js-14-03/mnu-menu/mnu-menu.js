@@ -75,7 +75,7 @@ MNU.getNavHeader = function() {
 
 	const htm  =
 	`
-	<div class=navSubMenunn >
+	<div>
 		<h3>
 			<a href="${ MNU.homeUrl }" title="${ MNU.homeTitle }" target="_top">
 				${ MNU.homeText }
@@ -97,7 +97,7 @@ MNU.getNavHeader = function() {
 			${ MNU.urlSourceCodeIcon }
 			</a>
 
-			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >V ${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
+			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >v${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
 
 			<button class=butHelp id=butTitle onclick="POP.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
