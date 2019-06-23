@@ -3,20 +3,21 @@
 
 <br>
 
-# [TooToo Theme Select (THM) Read Me]( #cookbook/thm-theme-select/README.md )
+# TooToo Theme Select (THM) Read Me
 
 
 ## Concept
 
 * Creates HTML menus and provides JavaScript code to add, select and load themes based on industry-standard CSS stylesheets
 
+The themes effort is very much a work-in-progress. It is not meant to be a finished product. We hope it is merely a launching point to help you adapt the CSS to the needs of you organization.
+
 ### Mission
 
 * This module allows you to load:
-	* Basic Spider style sheet
-
-	* Style sheet from [W3Schools]( https://www.w3schools.com/w3css/ )
-		* colors from [W3Schools Color Themes]( https://www.w3schools.com/w3css/w3css_color_themes.asp )
+	* Basic pushMe-pullYou style sheet
+* Style sheet from [W3Schools]( https://www.w3schools.com/w3css/ )
+	* colors from [W3Schools Color Themes]( https://www.w3schools.com/w3css/w3css_color_themes.asp )
 	* Style sheet from [Bootswatch]( https://bootswatch.com/ ) a supplier of free themes for Bootstrap
 * Switch themes at any time
 * Current them choice is saved between sessions in local storage
