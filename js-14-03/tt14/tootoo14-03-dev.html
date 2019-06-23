@@ -4,10 +4,10 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-06-22" >
+<meta name = "date" content = "2019-06-23" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.03-0dev" >
+<meta name = "version" content = "0.14.03-1dev" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -88,10 +88,14 @@
 
 			<footer>
 
-				<div id="MNUdivFooter" ></div>
+				<details>
 
-				<div id="MNUdivFooterPopup" ></div>
+					<summary class=sumMenuTitle >Help menu</summary>
 
+					<div id="MNUdivFooterPopup" ></div>
+
+				</details>
+				
 				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
 					❦
 				</h1>
@@ -129,9 +133,13 @@
 
 
 <script>
-	
+
 THM.themeUrlStorage = 'tootoo14ThemeUrlDev'; // set for each instance in HTML file
 THM.cssBasic = "../style.css";
+
+FOB.urlDefaultFile = "../../README.md";
+
+FGA.urlGitHubPage = "../../";
 
 init();
 
@@ -153,7 +161,7 @@ function init() {
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
 
-	FGA.getFiles(); // move to js
+	FGA.getFiles(); // move to js?
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
@@ -169,6 +177,7 @@ function init() {
 
 	POPdivPopup.innerHTML = POP.getMenuDivPopup();
 
+	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
 	aViewSource.style.display = "block";
@@ -176,6 +185,7 @@ function init() {
 
 	POP.setPopupShowHide( butPopClose, "../popup.md" );
 
+	// move to js?
 	butPopClose.classList.remove( 'active' );
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );

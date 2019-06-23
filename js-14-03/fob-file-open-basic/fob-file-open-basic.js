@@ -5,9 +5,9 @@
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-06-20",
+	"date": "2019-06-22",
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/README.md",
-	"version": "0.14.1-6",
+	"version": "0.14.1-7",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-2/fob-file-open-basic/fob-file-open-basic.js",
 	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };

@@ -5,11 +5,11 @@
 
 const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-22",
+	"date": "2019-06-23",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
-	"version": "0.14.1-3",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1/mnu-menu"
+	"version": "0.14.03-4",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/mnu-menu"
 };
 
 
@@ -154,11 +154,7 @@ MNU.getNavFooterPopup = function() {
 
 	const htm  =
 	`
-		<details id=MNUdetFooter >
-
-			<summary class=sumMenuTitle >Help menu
-				<button id=MNUbutFooterPopup class=butHelp onclick="POP.setPopupShowHide(MNUbutFooterPopup,MNU.descriptionTooToo);" style=float:right; >?</button>
-			</summary>
+			<button id=MNUbutFooterPopup class=butHelp onclick="POP.setPopupShowHide(MNUbutFooterPopup,MNU.descriptionTooToo);" style=float:right; >?</button>
 
 			<p><button id=MNUbutTooToo onclick="POP.setPopupShowHide(MNUbutTooToo,'${ MNU.footerPopupUrl }pages/about-tootoo.md');" >About TooToo</button></p>
 			<p><button id=MNUbutCredits onclick="POP.setPopupShowHide(MNUbutCredits,'${ MNU.footerPopupUrl }pages/credits.md');" >Credits</button></p>
@@ -173,8 +169,6 @@ MNU.getNavFooterPopup = function() {
 			<p>&raquo; <a title='Need help?' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></p>
 
 			<hr>
-
-		</details>
 	`;
 
 	return htm;

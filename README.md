@@ -47,6 +47,12 @@ See read me files in each module folder for more to do items
 
 <summary>Change Log</summary>
 
+### 2019-06-23 ~ Theo
+
+TT14 v0.14.03-01
+
+* B - MNU/COR/THM: bug fixes
+
 ### 2019-05-29 ~ Theo
 
 * B - TT14.1: Update readme / links

@@ -4,11 +4,11 @@
 
 
 const TMP = {
-	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-28",
+	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
+	"date": "2019-06-23",
 	"description": "template",
 	"helpFile": "tmp-template/README.md",
-	"release": "0.14.0-1",
+	"version": "0.14.03-0",
 };
 
 
