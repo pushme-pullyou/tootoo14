@@ -175,7 +175,7 @@ MNU.getNavFooterPopup = function() {
 
 };
 
-POP.setPopupShowHide(MNUbutTooToo,'https://pushme-pullyou.github.io/pages/about-tootoo.md');
+
 
 MNU.showFps = function(){
 
