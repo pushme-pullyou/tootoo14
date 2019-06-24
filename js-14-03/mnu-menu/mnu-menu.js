@@ -61,8 +61,8 @@ MNU.appText  = "appText";
 MNU.appTitle = "appTitle";
 MNU.appUrl   = "";
 
-MNU.footerUrl		= "#";
-MNU.footerPopupUrl	= "";
+MNU.footerUrl		= "#tootoo14/";
+MNU.footerPopupUrl	= "tootoo14/";
 MNU.footerTarget	= ""; //"target=_blank";
 MNU.footerIssues	= "https://github.com/pushme-pullyou/tootoo14/issues";
 
@@ -129,8 +129,8 @@ MNU.getNavFooter = function() {
 				<button id=MNUbutFooter class=butHelp onclick="POP.setPopupShowHide(MNUbutFooter,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
-			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
-			<div title='many thanks!' ><a href=${ MNU.footerUrl }pages/credits.md ${ MNU.footerTarget } >Credits</a></div>
+			<div><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
+			<div><a href=${ MNU.footerUrl }pages/credits.md ${ MNU.footerTarget } >Credits</a></div>
 			<div><a href=${ MNU.footerUrl }pages/code-of-conduct.md ${ MNU.footerTarget } >Code of conduct</a></div>
 			<div><a href=${ MNU.footerUrl }pages/contributing.md ${ MNU.footerTarget } >Contributing via GitHub</a></div>
 			<div><a href=${ MNU.footerUrl }pages/license.md ${ MNU.footerTarget } >MIT License</a></div>
@@ -175,7 +175,7 @@ MNU.getNavFooterPopup = function() {
 
 };
 
-
+POP.setPopupShowHide(MNUbutTooToo,'https://pushme-pullyou.github.io/pages/about-tootoo.md');
 
 MNU.showFps = function(){
 

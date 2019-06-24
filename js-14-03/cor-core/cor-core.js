@@ -37,6 +37,6 @@ MNU.appText  = ""; // "CMS";
 MNU.appTitle = ""; //"Basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more";
 MNU.appUrl   = ""; //"https://pushme-pullyou.github.io/#tootoo-templates/hamburger-theme-cms/README.md";
 
-MNU.footerPopupUrl	= "https://pushme-pullyou.github.io/";
+MNU.footerPopupUrl	= "https://pushme-pullyou.github.io/tootoo14/";
 MNU.footerTarget = "target=_blank";
 MNU.footerIssues = "https://github.com/pushme-pullyou.github.io/tootoo14/issues";

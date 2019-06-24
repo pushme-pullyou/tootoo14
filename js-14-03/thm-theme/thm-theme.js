@@ -22,7 +22,7 @@ THM.themeUrlStorage = "tootoo14ThemeUrl"; // set for each instance in HTML file
 //THM.cssBasic = "https://www.w3schools.com/lib/w3-theme-red.css";
 THM.cssBasic = "./style.css"; // set in HTML file
 
-THM.cssW3schools = "https://www.w3schools.com/lib/w3-theme-black.css";
+THM.cssW3schools = "https://www.w3schools.com/lib/w3-theme-red.css";
 THM.themeBootswatch = "https://bootswatch.com/_vendor/bootstrap/dist/css/bootstrap.css";
 
 
@@ -68,7 +68,7 @@ THM.getMenuThemeSelect = function() {
 
 				<p>
 					Current stylesheet:<br>
-					<input id=THMcssCurrent >
+					<input id=THMcssCurrent style=width:100%; >
 				</p>
 
 				<p>

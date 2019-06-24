@@ -7,7 +7,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <br>
 
 
-# [About TooToo]( #pages/about-tootoo.md )
+# About TooToo
 
 **TL;DR**
 
