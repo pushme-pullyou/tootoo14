@@ -4,10 +4,10 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-06-23" >
+<meta name = "date" content = "2019-06-25" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.03-1" >
+<meta name = "version" content = "0.14.03-3" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -95,7 +95,7 @@
 					<div id="MNUdivFooterPopup" ></div>
 
 				</details>
-				
+
 				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
 					❦
 				</h1>
@@ -116,7 +116,7 @@
 
 	<nav id="navPopup" hidden >
 
-		<section class="secContent" >
+		<section class="secPOP" >
 
 			<div id="POPdivPopup" ></div>
 
@@ -184,11 +184,6 @@ function init() {
 	aViewSource.href = MNU.urlSourceCode;
 
 	POP.setPopupShowHide( butPopClose, "https://pushme-pullyou.github.io/tootoo14/js-14-03/popup.md" );
-
-	// move to js?
-	butPopClose.classList.remove( 'active' );
-	main.addEventListener( 'click', POP.onClickClose, false );
-	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
 }
 
