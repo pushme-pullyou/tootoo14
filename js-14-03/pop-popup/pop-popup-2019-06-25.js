@@ -5,11 +5,11 @@
 
 const POP = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-25",
-	"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
+	"date": "2019-06-22",
+	"description": "TooToo Menu (POP) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
 	"helpFile": "README.md",
-	"version": "0.14.03-1pop",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
+	"version": "0.14.02-1",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-02/pop-popup"
 };
 
 
@@ -17,13 +17,9 @@ const POP = {
 
 POP.getMenuDivPopup = function() {
 
-	main.addEventListener( 'click', POP.onClickClose, false );
-	main.addEventListener( 'touchstart', POP.onClickClose, false );
+	const version = document.head.querySelector( '[ name=version ]' ).content;
 
-	POP.appVersion = document.head.querySelector( '[ name=version ]' ).content;
-	POP.appDate = document.head.querySelector( '[ name=date ]' ).content;
-
-	POP.footer = `v${ POP.appVersion } - ${ POP.appDate }`;
+	const date = document.head.querySelector( '[ name=date ]' ).content;
 
 	const htm =
 	`
@@ -31,7 +27,7 @@ POP.getMenuDivPopup = function() {
 
 		<div id="POPdivPopupData" ></div>
 
-		<div id="POPdivMessage" ></div>
+		<div id="POPdivMessage" ><p>R${ version } - ${ date }</p></div>
 	`;
 
 	return htm;
@@ -40,12 +36,17 @@ POP.getMenuDivPopup = function() {
 
 
 
-POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
+POP.setPopupShowHide = function( id = POP.popupId, text = "" ) {
 	//console.log( 'id', id );
 
-	POP.popupId = id;
+	//if ( id ) {
 
-	POP.popupId.classList.toggle( "active" );
+		POP.popupId = id;
+
+		POP.popupId.classList.toggle( "active" );
+
+	//}
+
 
 	if ( POP.popupId.classList.contains( 'active' ) ) {
 
@@ -55,23 +56,15 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
 
 			POP.requestFile( text, POPdivPopupData );
 
-
-		} else if ( text ) {
+		} else {
 
 			POPdivPopupData.innerHTML = text;
 			navPopup.hidden = false;
 
-		} else {
-
-			POPdivPopupData.innerHTML = text;
-			navPopup.hidden = true;
-
 		}
 
-		POPdivMessage.innerHTML = footer || POP.footer;
-
-		divContents.addEventListener( 'click', POP.onClickClose, false );
-		divContents.addEventListener( 'touchstart', POP.onClickClose, false );
+		main.addEventListener( 'click', POP.onClickClose, false );
+		main.addEventListener( 'touchstart', POP.onClickClose, false );
 
 	} else {
 
@@ -85,11 +78,15 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
 
 POP.onClickClose = function() {
 
-	navPopup.hidden = true;
-	POP.popupId.classList.remove( "active" );
-	POPdivPopupData.innerHTML = "";
-	main.removeEventListener( 'click', POP.onClickClose, false );
-	main.removeEventListener( 'touchstart', POP.onClickClose, false );
+	//if ( POP.popupId.classList.contains( 'active' ) === false ) {
+
+		navPopup.hidden = true;
+		POP.popupId.classList.remove( "active" );
+		POPdivPopupData.innerHTML = "";
+		main.removeEventListener( 'click', POP.onClickClose, false );
+		main.removeEventListener( 'touchstart', POP.onClickClose, false );
+
+	//}
 
 };
 
@@ -116,7 +113,10 @@ POP.callbackMarkdown = function( markdown, target ) {
 	const html = converter.makeHtml( markdown );
 
 	target.innerHTML = html;
-	//console.log( 'html', html );
+	//console.log( '', html );
+
+	//window.scrollTo( 0, 0 );
 
 	navPopup.hidden = false;
+
 };
