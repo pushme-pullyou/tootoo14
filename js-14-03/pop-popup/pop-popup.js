@@ -70,8 +70,8 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
 
 		POPdivMessage.innerHTML = footer || POP.footer;
 
-		divContents.addEventListener( 'click', POP.onClickClose, false );
-		divContents.addEventListener( 'touchstart', POP.onClickClose, false );
+		//main.addEventListener( 'click', POP.onClickClose, false );
+		//main.addEventListener( 'touchstart', POP.onClickClose, false );
 
 	} else {
 
@@ -88,8 +88,8 @@ POP.onClickClose = function() {
 	navPopup.hidden = true;
 	POP.popupId.classList.remove( "active" );
 	POPdivPopupData.innerHTML = "";
-	main.removeEventListener( 'click', POP.onClickClose, false );
-	main.removeEventListener( 'touchstart', POP.onClickClose, false );
+	main.removeEventListener( 'click', POP.onClickClose );
+	main.removeEventListener( 'touchstart', POP.onClickClose );
 
 };
 
@@ -118,5 +118,6 @@ POP.callbackMarkdown = function( markdown, target ) {
 	target.innerHTML = html;
 	//console.log( 'html', html );
 
-	navPopup.hidden = false;
+	navPopup.hidden = false; // wait until loaded before showing
+
 };
