@@ -35,6 +35,7 @@ Objective: make it easy for you to adapt the style of this viewer to the needs s
 
 ## To Do / Wish List
 
+* 2019-06-25 ~ Theo ~ Allow for add-on instance customization style sheet
 
 ## Issues
 

@@ -1,14 +1,14 @@
-/* globals GBX, MNU, JSZip, showdown, divContents, aViewSource, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
+/* globals GBX, JSZip, showdown, divContents, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
 // jshint esversion: 6
 /* jshint loopfunc: true */
 
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-06-22",
+	"date": "2019-06-26",
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/README.md",
-	"version": "0.14.1-7",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-2/fob-file-open-basic/fob-file-open-basic.js",
+	"version": "0.14.1-7fob",
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-03/fob-file-open-basic/fob-file-open-basic.js",
 	"users": ["spider-gbxml-fixer", "add-a-line-bookmarks"]
 };
 
@@ -146,8 +146,6 @@ FOB.requestFileDecider = function( url ) { // from a button
 	if ( !url ) { return; }
 
 	FOB.name = url.split( '/').pop();
-
-	//aViewSource.href = MNU.urlSourceCode + "blob/master/" + url;
 
 	if ( FOB.regexHtml.test( url ) ) {
 
@@ -306,7 +304,7 @@ FOB.onDrop = function( event ) {
 
 FOB.onProgress = function( size = 0, note = '' ) {
 
-	const targetProgress = document.body.querySelectorAll( "#FOBdivProgress" )
+	const targetProgress = document.body.querySelectorAll( "#FOBdivProgress" );
 	//console.log( 'targetProgress', targetProgress);
 
 	if ( targetProgress.length === 0 ) { return; }

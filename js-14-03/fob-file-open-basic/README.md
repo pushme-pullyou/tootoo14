@@ -1,6 +1,6 @@
-# TooToo File Open Basic (FOB) V 0.14.1
+# TooToo File Open Basic (FOB) v0.14.03
 
-[Source code]( https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/fob-file-open-basic/fob-file-open-basic.js )
+[Source code]( https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-03/fob-file-open-basic/fob-file-open-basic.js )
 
 
 <details open >
@@ -12,6 +12,7 @@
 * Converts Markdown to HTML
 * Un-compresses ZIP files and creates custom event
 * Displays images as images
+* Saves edits as files or as ZIP files
 
 <details>
 
@@ -19,8 +20,6 @@
 
 * 2019-06-10 ~ Theo ~ Add display PDF files
 * 2019-06-10 ~ Theo ~ Add new file capability
-* 2019-05-17 ~ Add create onload event
-* 2019-01-15 ~ Theo ~ file save to file & save to ZIP module
 
 
 </details>
@@ -29,6 +28,15 @@
 
 <summary>Change log</summary>
 
+### 2019-06-26 ~ Theo
+
+* C - FOB.js: Update parameters
+* R - FOB.js: remove not-used commented code
+
+Dealt with
+
+* 2019-05-17 ~ Add create onload event
+* 2019-01-15 ~ Theo ~ file save to file & save to ZIP module
 
 ### 2019-06-01 ~ Theo
 
