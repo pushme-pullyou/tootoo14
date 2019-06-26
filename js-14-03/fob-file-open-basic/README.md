@@ -32,6 +32,7 @@
 
 * C - FOB.js: Update parameters
 * R - FOB.js: remove not-used commented code
+* F - FOB.js: add FOBdivAppStats div to stats output
 
 Dealt with
 

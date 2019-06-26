@@ -74,6 +74,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 				<div id=FOBdivProgress ></div>
 
+				<div id=FOBdivAppStats ></div>
+
 			</details>
 
 		</details>
