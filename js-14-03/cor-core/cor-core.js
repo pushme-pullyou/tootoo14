@@ -25,7 +25,7 @@ FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 
 // For main menu header
 MNU.title = "TooToo14"
-POP.version = MNU.version = "0.14.03-2" //document.head.querySelector( '[ name=version ]' ).content || "";
+POP.version = MNU.version = "0.14.03-4" //document.head.querySelector( '[ name=version ]' ).content || "";
 POP.date = MNU.date = "2019-06-27";
 
 MNU.helpFile = "../README.md";

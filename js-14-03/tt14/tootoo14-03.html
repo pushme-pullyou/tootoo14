@@ -7,13 +7,14 @@
 <meta name = "date" content = "2019-06-25" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.03-3" >
+<meta name = "version" content = "0.14.03-4" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
 
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
+<link rel = "license" href = "https://opensource.org/licenses/MIT" >
 <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Inconsolata"  >
 <link rel = "stylesheet" href = "https://pushme-pullyou.github.io/tootoo14/js-14-03/style.css" >
 
@@ -176,6 +177,8 @@ function init() {
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	POPdivPopup.innerHTML = POP.getMenuDivPopup();
+
+	COR.init();
 
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
