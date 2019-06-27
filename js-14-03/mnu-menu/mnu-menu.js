@@ -1,4 +1,4 @@
-/* global Stats, MNUbutRateLimits, navPopup, MNUdivPopupData, divContents, showdown */
+/* global POP, Stats */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -18,7 +18,7 @@ const MNU = {
 
 MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
 MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
-MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/mnu-menu`
+MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/mnu-menu`;
 
 MNU.title = document.title;
 MNU.version = document.head.querySelector( '[ name=version ]' ).content || "";

@@ -1,4 +1,4 @@
-/* global Stats, POPbutRateLimits, navPopup, POPdivPopupData, main, showdown */
+/* global POPdivPopup, navPopup, POPdivPopupData, POPdivFooter, main, showdown */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 

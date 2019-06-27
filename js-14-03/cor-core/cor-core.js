@@ -1,4 +1,4 @@
-/* globals FIL */
+/* globals FOB, MNU, POP */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -7,10 +7,10 @@ const COR = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-06-22",
+		"date": "2019-06-27",
 		"description": "core - contains local overrides",
 		"helpFile": "cor-core/README.md",
-		"release": "0.14.03-1cor",
+		"release": "0.14.03-2cor",
 	}
 };
 
@@ -24,14 +24,16 @@ FOB.urlDefaultFile = "../README.md";
 FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 
 // For main menu header
-MNU.title = "TooToo14"
-POP.version = MNU.version = "0.14.03-4" //document.head.querySelector( '[ name=version ]' ).content || "";
+MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/`;
+
+MNU.title = "TooToo14";
+POP.version = MNU.version = "0.14.03-4"; //document.head.querySelector( '[ name=version ]' ).content || "";
 POP.date = MNU.date = "2019-06-27";
 
 MNU.helpFile = "../README.md";
 
 //MNU.description = document.head.querySelector( '[ name=description ]' ).content;
-//MNU.description = `Very simple JavaScript files to help you explore and build new tools on <a href="https://github.com" target="_blank">GitHub</a>.`;
+MNU.description = `Very simple JavaScript files to help you explore and build new tools on <a href="https://github.com" target="_blank">GitHub</a>.`;
 
 MNU.homeText  = "pushMe-pullYou";
 MNU.homeTitle = "Very simple JavaScript files to help you explore and build new tools on GitHub.";
@@ -55,5 +57,4 @@ COR.init = function() {
 	COR.css = document.body.appendChild( document.createElement('style') );
 	COR.css.innerHTML = "#POPdivFooter { color: #f00; }";
 
-}
-
+};
