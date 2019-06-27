@@ -5,10 +5,10 @@
 const THM = {
 
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-23",
+	"date": "2019-06-27",
 
-	"helpFile": "thm-theme/README.md",
-	"version": "0.14.03-1",
+	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-03/thm-theme/README.md",
+	"version": "0.14.03-2",
 };
 
 THM.description =
@@ -30,7 +30,7 @@ THM.init = function() {
 
 	THM.themeUrl = localStorage.getItem( THM.themeUrlStorage ) || THM.cssBasic;
 	THMcssCurrent.value = THM.themeUrl;
-	console.log( "THM.themeUrl", THM.themeUrl );
+	//console.log( "THM.themeUrl", THM.themeUrl );
 
 	 if ( THM.themeUrl.includes( "w3schools" ) ) {
 
