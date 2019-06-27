@@ -4,12 +4,17 @@
 
 
 const POP = {
-	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-25",
-	"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
-	"helpFile": "README.md",
-	"version": "0.14.03-1pop",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
+	"script": {
+
+		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
+		"date": "2019-06-25",
+		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
+		"helpFile": "README.md",
+		"version": "0.14.03-1pop",
+		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
+	},
+	"version": document.head.querySelector( '[ name=version ]' ).content,
+	"date": document.head.querySelector( '[ name=date ]' ).content
 };
 
 
@@ -20,10 +25,7 @@ POP.getMenuDivPopup = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
-	POP.appVersion = document.head.querySelector( '[ name=version ]' ).content;
-	POP.appDate = document.head.querySelector( '[ name=date ]' ).content;
-
-	POP.footer = `v${ POP.appVersion } - ${ POP.appDate }`;
+	POP.footer = `<p style=text-align:right;font-style:italic; >v${ POP.version } - ${ POP.date }</p>`;
 
 	const htm =
 	`
@@ -31,7 +33,7 @@ POP.getMenuDivPopup = function() {
 
 		<div id="POPdivPopupData" ></div>
 
-		<div id="POPdivMessage" ></div>
+		<div id="POPdivFooter" ></div>
 	`;
 
 	return htm;
@@ -40,7 +42,7 @@ POP.getMenuDivPopup = function() {
 
 
 
-POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
+POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.footer ) {
 	//console.log( 'id', id );
 
 	POP.popupId = id;
@@ -55,7 +57,6 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
 
 			POP.requestFile( text, POPdivPopupData );
 
-
 		} else if ( text ) {
 
 			POPdivPopupData.innerHTML = text;
@@ -68,7 +69,7 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = "" ) {
 
 		}
 
-		POPdivMessage.innerHTML = footer || POP.footer;
+		POPdivFooter.innerHTML = footer;
 
 		//main.addEventListener( 'click', POP.onClickClose, false );
 		//main.addEventListener( 'touchstart', POP.onClickClose, false );

@@ -178,6 +178,8 @@ function init() {
 
 	POPdivPopup.innerHTML = POP.getMenuDivPopup();
 
+	COR.init();
+
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
@@ -185,6 +187,7 @@ function init() {
 	aViewSource.href = MNU.urlSourceCode;
 
 	POP.setPopupShowHide( butPopClose, "../popup.md" );
+
 
 }
 

@@ -4,20 +4,30 @@
 
 
 const MNU = {
-	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-23",
-	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
-	"helpFile": "README.md",
-	"version": "0.14.03-4",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/mnu-menu"
+	"script": {
+
+		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
+		"scriptDate": "2019-06-27",
+		"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
+		"helpFile": "README.md",
+		"scriptVersion": "0.14.03-5mnu",
+	}
 };
-
-
 
 ////////// boilerplate for downstream users
 
 MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
 MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
+MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/mnu-menu`
+
+MNU.title = document.title;
+MNU.version = document.head.querySelector( '[ name=version ]' ).content || "";
+MNU.date = "2019-06-27";
+
+//MNU.description = ZZZ.description
+MNU.description = document.head.querySelector( '[ name=description ]' ).content;
+
+MNU.target	= ""; //"target=_blank";
 
 MNU.descriptionTooToo =
 	`
@@ -63,11 +73,9 @@ MNU.appUrl   = "";
 
 MNU.footerUrl		= "#tootoo14/";
 MNU.footerPopupUrl	= "tootoo14/";
-MNU.footerTarget	= ""; //"target=_blank";
 MNU.footerIssues	= "https://github.com/pushme-pullyou/tootoo14/issues";
 
-//MNU.description = ZZZ.description
-MNU.description = document.head.querySelector( '[ name=description ]' ).content;
+
 
 //////////
 
@@ -93,11 +101,11 @@ MNU.getNavHeader = function() {
 
 		<h2>
 
-			<a href=${ MNU.urlSourceCode } ${ MNU.footerTarget } title="Source code on GitHub" >
+			<a href=${ MNU.urlSourceCode } ${ MNU.target } title="Source code on GitHub" >
 			${ MNU.urlSourceCodeIcon }
 			</a>
 
-			<a href="" title="Click to reload this page" >${ document.title } <span id=titleRelease >v${ ( document.head.querySelector( '[ name=version ]' ) || "" ).content }</span></a>
+			<a href="" title="Click to reload this page" >${ MNU.title } <span id=titleRelease >v${ MNU.version }</span></a>
 
 			<button class=butHelp id=butTitle onclick="POP.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
@@ -119,7 +127,7 @@ MNU.getNavHeader = function() {
 
 
 
-MNU.getNavFooter = function() {
+MNU.getNavFooter = function() { // deprecate??
 
 	const htm  =
 	`
@@ -129,13 +137,13 @@ MNU.getNavFooter = function() {
 				<button id=MNUbutFooter class=butHelp onclick="POP.setPopupShowHide(MNUbutFooter,MNU.descriptionTooToo);" style=float:right; >?</button>
 			</summary>
 
-			<div><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.footerTarget } >About TooToo</a></div>
-			<div><a href=${ MNU.footerUrl }pages/credits.md ${ MNU.footerTarget } >Credits</a></div>
-			<div><a href=${ MNU.footerUrl }pages/code-of-conduct.md ${ MNU.footerTarget } >Code of conduct</a></div>
-			<div><a href=${ MNU.footerUrl }pages/contributing.md ${ MNU.footerTarget } >Contributing via GitHub</a></div>
-			<div><a href=${ MNU.footerUrl }pages/license.md ${ MNU.footerTarget } >MIT License</a></div>
-			<div><a href=${ MNU.footerUrl }pages/markdown-help.md ${ MNU.footerTarget } >Markdown help</a></div>
-			<div><a href=${ MNU.footerUrl }pages/themes.md ${ MNU.footerTarget } >Themes help</a></div>
+			<div><a href=${ MNU.footerUrl }pages/about-tootoo.md ${ MNU.target } >About TooToo</a></div>
+			<div><a href=${ MNU.footerUrl }pages/credits.md ${ MNU.target } >Credits</a></div>
+			<div><a href=${ MNU.footerUrl }pages/code-of-conduct.md ${ MNU.target } >Code of conduct</a></div>
+			<div><a href=${ MNU.footerUrl }pages/contributing.md ${ MNU.target } >Contributing via GitHub</a></div>
+			<div><a href=${ MNU.footerUrl }pages/license.md ${ MNU.target } >MIT License</a></div>
+			<div><a href=${ MNU.footerUrl }pages/markdown-help.md ${ MNU.target } >Markdown help</a></div>
+			<div><a href=${ MNU.footerUrl }pages/themes.md ${ MNU.target } >Themes help</a></div>
 			<div>&raquo; <a title='Need help' href=${ MNU.footerIssues } target=_blank >${ MNU.repoText } GitHub Issues</a></div>
 			<div><button onclick=MNU.showFps() >Show frames/second statistics</button></div>
 			<div><button id=MNUbutRateLimits onclick=MNU.rateLimits(MNUbutRateLimits); >View GitHub API rate limits</button>
@@ -239,7 +247,7 @@ MNU.rateLimits = function( button ) {
 
 //////////
 
-MNU.getDivPopup = function() {
+MNU.nnngetDivPopup = function() {
 
 	const version = document.head.querySelector( '[ name=version ]' ).content;
 
