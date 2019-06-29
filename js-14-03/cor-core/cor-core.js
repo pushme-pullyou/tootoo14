@@ -30,7 +30,6 @@ MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-1
 
 MNU.title = "TooToo14";
 
-
 MNU.helpFile = "../README.md";
 
 //MNU.description = document.head.querySelector( '[ name=description ]' ).content;

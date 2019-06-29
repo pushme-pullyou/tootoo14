@@ -2,9 +2,9 @@
 <html lang = "en" >
 <head>
 
-<meta charset = "utf-8">
+<meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-06-11" >
+<meta name = "date" content = "2019-06-12" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "Three.js,WebGL,JavaScript,GitHub,FOSS" >
 <meta name = "version" content = "0.16.0-0dev" >
@@ -214,9 +214,15 @@ button.active { border-color: black; font-style: italic; font-weight: bold; marg
 
 			<div id="MNUdivPopup" ></div>
 
+<<<<<<< HEAD
 			<div id="divPopUpData" ></div>
 
 			<div id="divMessage" >ccc</div>
+=======
+			<div id="divPopupData" ></div>
+
+			<div id="divMessage" ></div>
+>>>>>>> 39931897a1aa7be402eb50d0247fb026f705417e
 
 		</section>
 
@@ -271,6 +277,10 @@ MNU.footerUrl = "https://ladybug-tools.github.io/spider/#";
 MNU.footerTarget = "target=_blank";
 MNU.footerIssues = "https://github.com/ladybug-tools/spider-gbxml-tools/issues";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 39931897a1aa7be402eb50d0247fb026f705417e
 init();
 THR.animate();
 
@@ -334,6 +344,11 @@ function init() {
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
+<<<<<<< HEAD
+=======
+	MNUdivPopup.innerHTML = MNU.getDivPopup();
+
+>>>>>>> 39931897a1aa7be402eb50d0247fb026f705417e
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
 
@@ -349,6 +364,11 @@ function init() {
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
 
+<<<<<<< HEAD
+=======
+	MNU.requestFile( "popup.md", MNUdivPopupData );
+
+>>>>>>> 39931897a1aa7be402eb50d0247fb026f705417e
 }
 
 

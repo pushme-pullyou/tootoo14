@@ -68,7 +68,6 @@ TMP.updatePopupFooter = function() {
 	`;
 
 	POPdivFooter.innerHTML = htm + POPdivFooter.innerHTML;
-
 };
 
 
