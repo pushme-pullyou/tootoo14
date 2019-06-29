@@ -71,6 +71,9 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 		POPdivFooter.innerHTML = footer;
 
+		//main.addEventListener( 'click', POP.onClickClose, false );
+		//main.addEventListener( 'touchstart', POP.onClickClose, false );
+
 	} else {
 
 		POP.onClickClose();

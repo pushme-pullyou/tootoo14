@@ -4,16 +4,17 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-06-23" >
+<meta name = "date" content = "2019-06-27" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.03-1" >
+<meta name = "version" content = "0.14.03-4" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
 
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
+<link rel = "license" href = "https://opensource.org/licenses/MIT" >
 <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Inconsolata"  >
 <link rel = "stylesheet" href = "https://pushme-pullyou.github.io/tootoo14/js-14-03/style.css" >
 
@@ -95,7 +96,7 @@
 					<div id="MNUdivFooterPopup" ></div>
 
 				</details>
-				
+
 				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
 					❦
 				</h1>
@@ -116,7 +117,7 @@
 
 	<nav id="navPopup" hidden >
 
-		<section class="secContent" >
+		<section class="secPOP" >
 
 			<div id="POPdivPopup" ></div>
 
@@ -177,6 +178,8 @@ function init() {
 
 	POPdivPopup.innerHTML = POP.getMenuDivPopup();
 
+	COR.init();
+
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
@@ -184,11 +187,6 @@ function init() {
 	aViewSource.href = MNU.urlSourceCode;
 
 	POP.setPopupShowHide( butPopClose, "https://pushme-pullyou.github.io/tootoo14/js-14-03/popup.md" );
-
-	// move to js?
-	butPopClose.classList.remove( 'active' );
-	main.addEventListener( 'click', POP.onClickClose, false );
-	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
 }
 

@@ -575,7 +575,6 @@ FOB.fileOpenZip = function( files ) {
 
 		document.body.dispatchEvent( event );
 
-
 	} );
 
 };
