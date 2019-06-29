@@ -418,6 +418,7 @@ FOB.setTargetWithMarkdownAsHtml = function( markdown ) {
 //////////
 
 FOB.xhrRequestFileZip = function( url ) {
+	//console.log( 'url', url );
 
 	FOB.timeStart = performance.now();
 
@@ -500,10 +501,11 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 		function success( text) {
 
 			FOB.text = text;
+			//console.log( '', FOB.text );
 
-			const event = new Event( 'onZipFileParse' );
+			const event = new Event( 'FOBonZipFileLoad' );
 
-			//document.body.addEventListener( 'onZipFileParse', FOB.onFileZipLoad, false );
+			//document.body.addEventListener( 'FOBonZipFileLoad', FOB.onFileZipLoad, false );
 
 			document.body.dispatchEvent( event );
 
