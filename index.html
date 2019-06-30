@@ -7,7 +7,7 @@
 <meta name = "date" content = "2019-06-27" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.03-4" >
+<meta name = "version" content = "0.14.03-5" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -76,7 +76,7 @@
 			</details>
 
 
-			<details>
+			<details open>
 
 				<summary class=sumMenuTitle >Settings menu</summary>
 
@@ -108,9 +108,9 @@
 	</nav>
 
 
-	<main id=main >
+	<main id="main" >
 
-		<div id=divContents ></div>
+		<div id="divContents" ></div>
 
 	</main>
 
@@ -186,8 +186,19 @@ function init() {
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
 
-	POP.setPopupShowHide( butPopClose, "https://pushme-pullyou.github.io/tootoo14/js-14-03/popup.md" );
+	POP.setPopupShowHide( butPopupClose, "https://pushme-pullyou.github.io/tootoo14/js-14-03/popup.md" );
 
+	if ( window.innerWidth < 640 ) { toggleNavPanel(); }
+
+
+	POPdivHeader.addEventListener( "touchstart", POP.dragStart, false );
+	POPdivHeader.addEventListener( "touchend", POP.dragEnd, false );
+	POPdivHeader.addEventListener( "touchmove", POP.drag, false );
+
+
+	POPdivHeader.addEventListener( "mousedown", POP.dragStart, false );
+	POPdivHeader.addEventListener( "mouseup", POP.dragEnd, false );
+	POPdivHeader.addEventListener( "mousemove", POP.drag, false );
 }
 
 
