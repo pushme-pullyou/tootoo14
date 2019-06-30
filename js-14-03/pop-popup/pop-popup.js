@@ -28,8 +28,16 @@ POP.getMenuDivPopup = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
-	POP.footer = `<div style=text-align:right;font-style:italic; >v${ POP.version } - ${ POP.date } -
-		<button onclick=POP.setNextPopup(-1); >&laquo;</button> <button onclick=POP.setNextPopup(0); >&#x2302;</button> <button onclick=POP.setNextPopup(); >&raquo;</button></div>`;
+	POP.footer =
+
+		`<div style=text-align:right;font-style:italic; >
+			v${ POP.version } - ${ POP.date }
+			<div style=display:inline-block; >
+				<button onclick=POP.setNextPopup(-1); >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); >&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); >&raquo;</button>
+			</div>
+		</div>`;
+
+
 
 	const txt = "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?";
 
