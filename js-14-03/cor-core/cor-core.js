@@ -59,11 +59,11 @@ COR.init = function() {
 	`
 		#POPdivHeader {
 			background-color: rgb(245, 230, 99);
-			bbborder: 2px solid rgba(136, 136, 136, .5);
 			border-radius: 5%;
 			padding: 0.5rem;
 			touch-action: none;
 			user-select: none;
+
 		}
 
 		#POPdivHeader:active { background-color: rgba( 168, 218, 220, 1.00 ); }

@@ -16,10 +16,10 @@ const POP = {
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,
 
-	page: 0
+	page: 0,
+	listenersLoaded: false
 
 };
-
 
 
 
@@ -36,7 +36,7 @@ POP.getMenuDivPopup = function() {
 	const htm =
 	`
 		<div id=POPdivHeader>
-		<span title="${ txt }" >&#x2766;</span>
+			<span title="${ txt }" >&#x2766;</span>
 			<div style=float:right; ><button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button></div>
 		</div>
 
@@ -51,10 +51,28 @@ POP.getMenuDivPopup = function() {
 
 
 
+POP.init = function() {
+
+	POPdivHeader.addEventListener( "touchstart", POP.dragStart, false );
+	POPdivHeader.addEventListener( "touchend", POP.dragEnd, false );
+	POPdivHeader.addEventListener( "touchmove", POP.drag, false );
+
+	POPdivHeader.addEventListener( "mousedown", POP.dragStart, false );
+	POPdivHeader.addEventListener( "mouseup", POP.dragEnd, false );
+	POPdivHeader.addEventListener( "mousemove", POP.drag, false );
+
+	POP.listenersLoaded = true;
+
+};
+
+
+
 POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.footer ) {
 	//console.log( 'id', id );
 
 	POP.popupId = id;
+
+	if ( POP.listenersLoaded === false ) { POP.init(); }
 
 	POP.popupId.classList.toggle( "active" );
 

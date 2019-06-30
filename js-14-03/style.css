@@ -89,12 +89,24 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 	resize: both; left: 50%;  top: 8%; z-index: 10;
 	box-shadow: 10px 10px 25px rgba(0,0,0,0.3), 6px 6px 6px rgba(0,0,0,0.5); }
 
-/*
-#navPopUp { background-color: #eee; border-radius: 8px; display: block; max-height: 95%; max-width: 25%;
-	opacity: 0.95;  overflow: auto; padding: 0 5px 10px 5px; position: fixed; resize: both; right: 1rem;
-	top: 1rem; z-index: 10; }
+#POPdivHeader {
+	background-color: rgb(245, 230, 99);
+	border-radius: 5%;
+	padding: 0.5rem;
+	touch-action: none;
+	user-select: none;
 
-*/
+}
+
+#POPdivHeader:active { background-color: rgba( 168, 218, 220, 1.00 ); }
+
+#POPdivHeader:hover { cursor: pointer; border-width: 5px; }
+
+#POPdivMain { height: 100%; margin: 0.5rem; }
+
+#POPdivFooter { border-top: 1px solid #555; color: #f00; font: italic 0.5rem; margin: 0.5rem;
+	text-align: right; width: 95%; }
+
 
 #expandButton.collapsed { left: 0; }
 #navPanel.collapsed { left: calc( var( --mnu-width ) * -1 ); padding: 0; }
