@@ -506,7 +506,7 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 		function success( text ) {
 
 			FOB.text = text;
-			console.log( '', FOB.text );
+			//console.log( '', FOB.text );
 
 			const event = new Event( 'FOBonZipFileLoad' );
 
