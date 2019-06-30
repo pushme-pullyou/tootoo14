@@ -57,24 +57,6 @@ COR.init = function() {
 	COR.css = document.body.appendChild( document.createElement('style') );
 	COR.css.innerHTML =
 	`
-		#POPdivHeader {
-			background-color: rgb(245, 230, 99);
-			border-radius: 5%;
-			padding: 0.5rem;
-			touch-action: none;
-			user-select: none;
-
-		}
-
-		#POPdivHeader:active { background-color: rgba( 168, 218, 220, 1.00 ); }
-
-		#POPdivHeader:hover { cursor: pointer; border-width: 5px; }
-
-		#POPdivMain { height: 100%; margin: 0.5rem; }
-
-		#POPdivFooter { border-top: 1px solid #555; color: #f00; font: italic 0.5rem; margin: 0.5rem;
-			text-align: right; width: 95%; }
-
 	`;
 
 };
