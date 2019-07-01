@@ -7,10 +7,10 @@ const POP = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-06-29",
+		"date": "2019-06-30",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "README.md",
-		"version": "0.14.03-2pop",
+		"version": "0.14.03-3pop",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
@@ -33,7 +33,7 @@ POP.getMenuDivPopup = function() {
 		`<div style=text-align:right;font-style:italic; >
 			v${ POP.version } - ${ POP.date }
 			<div style=display:inline-block; >
-				<button onclick=POP.setNextPopup(-1); >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); >&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); >&raquo;</button>
+				<button onclick=POP.setNextPopup(-1); style=width:2rem;background:#edd; >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); style=width:2rem;background:#ded;>&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); style=width:2rem;background:#dde;>&raquo;</button>
 			</div>
 		</div>`;
 
@@ -43,7 +43,7 @@ POP.getMenuDivPopup = function() {
 
 	const htm =
 	`
-		<div id=POPdivHeader>
+		<div id=POPdivHeader >
 			<span title="${ txt }" >&#x2766;</span>
 			<div style=float:right; ><button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button></div>
 		</div>
