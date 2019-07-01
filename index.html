@@ -4,10 +4,10 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-06-27" >
+<meta name = "date" content = "2019-06-30" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.03-5" >
+<meta name = "version" content = "0.14.03-6" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -190,15 +190,6 @@ function init() {
 
 	if ( window.innerWidth < 640 ) { toggleNavPanel(); }
 
-
-	POPdivHeader.addEventListener( "touchstart", POP.dragStart, false );
-	POPdivHeader.addEventListener( "touchend", POP.dragEnd, false );
-	POPdivHeader.addEventListener( "touchmove", POP.drag, false );
-
-
-	POPdivHeader.addEventListener( "mousedown", POP.dragStart, false );
-	POPdivHeader.addEventListener( "mouseup", POP.dragEnd, false );
-	POPdivHeader.addEventListener( "mousemove", POP.drag, false );
 }
 
 

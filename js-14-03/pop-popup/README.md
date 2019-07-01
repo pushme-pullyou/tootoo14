@@ -34,7 +34,7 @@ TooToo Menu (POP) generates standard HTML popup menu code and content and code t
 
 POP 0.14.03-3pop
 
-* F - POP.js: footer butons have color and width
+* F - POP.js: footer buttons have color and width
 * F - POP.js: Add slideshow
 
 ### 2019-06-29 ~ Theo
