@@ -68,7 +68,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 			</div>
 
-			<details open >
+			<details >
 
 				<summary>File open statistics</summary>
 
