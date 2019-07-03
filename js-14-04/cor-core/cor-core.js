@@ -7,15 +7,15 @@ const COR = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-06-28",
+		"date": "2019-07-03",
 		"description": "core - contains local overrides",
 		"helpFile": "cor-core/README.md",
-		"release": "0.14.03-3cor",
+		"release": "0.14.04-0cor",
 	}
 };
 
-POP.version = MNU.version = "0.14.03-5"; //document.head.querySelector( '[ name=version ]' ).content || "";
-POP.date = MNU.date = "2019-06-29";
+POP.version = MNU.version = "0.14.04-0dev"; //document.head.querySelector( '[ name=version ]' ).content || "";
+POP.date = MNU.date = "2019-07-03";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
 THM.cssBasic = "../style.css";
@@ -28,7 +28,7 @@ FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 // For main menu header
 MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/`;
 
-MNU.title = "TooToo14-01";
+MNU.title = "TooToo14";
 
 MNU.helpFile = "../README.md";
 

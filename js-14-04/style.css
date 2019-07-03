@@ -4,16 +4,14 @@
 
 * { box-sizing: border-box; }
 
-:root { --mnu-width: 22rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
+:root { font-size: 100%; --mnu-width: 22rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
 
 html { height: 100%; }
 
 /* font-family: 'inconsolata'; */
 
 body { background-color: #ffffff; color: #555;  font-size: 15px; font: 12pt monospace; height: 100%;
-	line-height: 18px; margin: 0px; /* overflow: hidden; */
-
-	max-width: 800px;}
+	line-height: 18px; margin: 0px; /* overflow: hidden; */ }
 
 a { color: rgb(206, 33, 33); text-decoration: none; }
 a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
@@ -50,8 +48,6 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 .sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
 
 .secContent { padding: 0px 8px 20px 20px; }
-//.secPOP { margin: 0 0rem; }
-
 .sumHeader { font-size:1.3rem; }
 
 
@@ -71,11 +67,9 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 #navPanel { height: 100%; left: 0px; overflow: auto; position: fixed;
 	transition: left 0.5s; width: var( --mnu-width ); z-index: 1; }
 
-/*
 #navPanel h1 { margin-top: 30px; margin-bottom: 5px; font-size: 25px; font-weight: normal; }
 
 #navPanel h2 { font-size: 20px; font-weight: normal; }
-*/
 
 #navPanel #secContent a { color: #2194CE; text-decoration: none; cursor: pointer; }
 
@@ -86,123 +80,66 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 
 
-#navPopup { background-color: #eee; border: 1px solid #aaa;
-
-	/*
-
-	border-radius: 8px;
-	max-height: 90%; max-width: 45%; opacity: 0.95; overflow: auto;
-	position: fixed;
-	resize: both; left: 50%;  top: 8%; z-index: 10;
-	box-shadow: 10px 10px 25px rgba(0,0,0,0.3), 6px 6px 6px rgba(0,0,0,0.5);
-	*/
-	left: calc( 100% - 500px );
+#navDragMove {
+	background-color: #f1f1f1;
+	border: 1px solid #aaa;
+	left: 75%;
 	overflow: auto;
-	height: 50%;
-	max-width: 30%;
+	height: 60%;
+	max-width: 40%;
 	position: absolute;
 	right: 1rem;
 	top: 1rem;
 	resize: both;
 }
 
-
-#secPOP {
+#secDragMove {
 	border: 1px solid green;
 	height: calc( 100% - 1rem );
 	overflow: hidden;
+	position: relative;
 }
 
-
-#POPdivHeader {
-	/*
-	background-color: rgb(245, 230, 99);
-	border-radius: 5%;
-	padding: 0.5rem;
-	touch-action: none;
-	user-select: none;
-	*/
-
+#divDragMoveHeader {
 	background-color: #2196F3;
 	color: #fff;
 	cursor: move;
 	padding: 0.5rem;
-
 }
 
-/*
-#POPdivHeader:active { background-color: rgba( 168, 218, 220, 1.00 ); }
-
-#POPdivHeader:hover { cursor: pointer; border-width: 5px; }
-*/
-
-
-#POPdivMain {
-
+#divDragMoveContent {
 	border: 1px solid red;
 	height: calc( 100% - 4rem );
+	max-height: calc( 100% - 4rem );
 	overflow: auto;
 	padding: 0.5rem;
-
+	width: 100%;
 }
 
-#POPdivFooter {
-	/*border-top: 1px solid #555; color: #f00; font: italic 0.5rem; margin: 0.5rem;
-	text-align: right; width: 95%; */
-/*
+#divDragMoveFooter {
+	height: 1.5rem;
 	text-align: right;
+	position: absolute;
+	bottom: 0rem;
+	overflow: hidden;
+	right: 0;
 }
 
-*/
 
-	/*
-	#navDraggable {
-		background-color: #f1f1f1;
-		border: 1px solid #aaa;
-		left: calc( 100% - 300px );
-		overflow: auto;
-		height: 50%;
-		max-width: 30%;
-		position: absolute;
-		right: 1rem;
-		top: 1rem;
-		resize: both;
-	}
-
-	#secDraggable {
-		border: 1px solid green;
-		height: calc( 100% - 1rem );
-		overflow: hidden;
-	}
-
-	#divDraggableHeader {
-		background-color: #2196F3;
-		color: #fff;
-		cursor: move;
-		padding: 0.5rem;
-
-	}
-
-	#divDraggableContent {
-		border: 1px solid red;
-		height: calc( 100% - 4rem );
-		overflow: auto;
-		padding: 0.5rem;
-	}
-
-	#divDraggableFooter {
-		text-align: right;
-	}
-
-	*/
 
 #expandButton.collapsed { left: 0; }
 #navPanel.collapsed { left: calc( var( --mnu-width ) * -1 ); padding: 0; }
 #main.collapsed { left: 0; width: 100%; }
 
 
+
+
 @media all and ( max-width: 640px ) {
 
 	#main { left: 0; padding: 1rem; width: 100%; }
 
+	#navDragMove { left: 60%; height: 80%; max-width: 55%; right: 0.2rem; }
+	#POPspanFooter { display: none; }
+
 }
+

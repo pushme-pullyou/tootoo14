@@ -1,4 +1,4 @@
-/* global POPdivPopup, navDragMove, POPdivHeader, divDragMoveContent, POPdivFooter, main, showdown */
+/* global POPdivPopup, navPopup, POPdivHeader, POPdivMain, POPdivFooter, main, showdown */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -30,27 +30,46 @@ POP.getMenuDivPopup = function() {
 
 	POP.footer =
 
-		`<div ><span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span><button onclick=POP.setNextPopup(-1); style=width:2rem;background:#edd; >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); style=width:2rem;background:#ded;>&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); style=width:2rem;background:#dde;>&raquo;</button>
+		`<div style=text-align:right;font-style:italic; >
+			v${ POP.version } - ${ POP.date }
+			<div style=display:inline-block; >
+				<button onclick=POP.setNextPopup(-1); style=width:2rem;background:#edd; >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); style=width:2rem;background:#ded;>&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); style=width:2rem;background:#dde;>&raquo;</button>
+			</div>
 		</div>`;
 
 
 
 	const txt = "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?";
 
-	const htm = ""
+	const htm =
+	`
+		<div id=POPdivHeader >
+			<span title="${ txt }" >&#x2766;</span>
+			<div style=float:right; ><button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button></div>
+		</div>
 
-	// `
-	// 	<div id=divDragMoveHeader >
-	// 		<span title="${ txt }" >&#x2766;</span>
-	// 		<div style=float:right; ><button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button></div>
-	// 	</div>
+		<div id="POPdivMain" ></div>
 
-	// 	<div id="divDragMoveContent" ></div>
-
-	// 	<div id="divDragMoveFooter" ></div>
-	//`;
+		<div id="POPdivFooter" ></div>
+	`;
 
 	return htm;
+
+};
+
+
+
+POP.init = function() {
+
+	POPdivHeader.addEventListener( "touchstart", POP.dragStart, false );
+	POPdivHeader.addEventListener( "touchend", POP.dragEnd, false );
+	POPdivHeader.addEventListener( "touchmove", POP.drag, false );
+
+	POPdivHeader.addEventListener( "mousedown", POP.dragStart, false );
+	POPdivHeader.addEventListener( "mouseup", POP.dragEnd, false );
+	POPdivHeader.addEventListener( "mousemove", POP.drag, false );
+
+	POP.listenersLoaded = true;
 
 };
 
@@ -61,31 +80,31 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 	POP.popupId = id;
 
-	//if ( POP.listenersLoaded === false ) { POP.init(); }
+	if ( POP.listenersLoaded === false ) { POP.init(); }
 
 	POP.popupId.classList.toggle( "active" );
 
 	if ( POP.popupId.classList.contains( 'active' ) ) {
 
-		if ( divDragMoveContent.innerHTML === "" ) { divDragMoveContent.innerHTML = POP.getMenuDivPopup(); }
+		if ( POPdivPopup.innerHTML === "" ) { POPdivPopup.innerHTML = POP.getMenuDivPopup(); }
 
 		if ( text &&  text.toLowerCase().endsWith( ".md" ) ) {
 
-			POP.requestFile( text, divDragMoveContent );
+			POP.requestFile( text, POPdivMain );
 
 		} else if ( text ) {
 
-			divDragMoveContent.innerHTML = text;
-			navDragMove.hidden = false;
+			POPdivMain.innerHTML = text;
+			navPopup.hidden = false;
 
 		} else {
 
-			divDragMoveContent.innerHTML = text;
-			navDragMove.hidden = true;
+			POPdivMain.innerHTML = text;
+			navPopup.hidden = true;
 
 		}
 
-		divDragMoveFooter.innerHTML = footer;
+		POPdivFooter.innerHTML = footer;
 
 	} else {
 
@@ -99,9 +118,9 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 POP.onClickClose = function() {
 
-	navDragMove.hidden = true;
+	navPopup.hidden = true;
 	POP.popupId.classList.remove( "active" );
-	divDragMoveContent.innerHTML = "";
+	POPdivMain.innerHTML = "";
 	main.removeEventListener( 'click', POP.onClickClose );
 	main.removeEventListener( 'touchstart', POP.onClickClose );
 
@@ -129,10 +148,10 @@ POP.callbackMarkdown = function( markdown, target ) {
 	const converter = new showdown.Converter();
 	const html = converter.makeHtml( markdown );
 
-	target.innerHTML = html + html;
+	target.innerHTML = html;
 	//console.log( 'html', html );
 
-	navDragMove.hidden = false; // wait until loaded before showing
+	navPopup.hidden = false; // wait until loaded before showing
 
 };
 
@@ -158,10 +177,76 @@ POP.setNextPopup = function( x = 1 ){
 		url = "https://pushme-pullyou.github.io/tootoo14/pages/" + page;
 	}
 
-	POP.requestFile( url, divDragMoveContent );
+	POP.requestFile( url, POPdivMain );
 
 };
 
 
 
 
+POP.active = false;
+POP.xOffset = 0;
+POP.yOffset = 0;
+
+POP.dragStart = function ( e ) {
+
+	if ( e.type === "touchstart" ) {
+
+		POP.initialX = e.touches[0].clientX - POP.xOffset;
+		POP.initialY = e.touches[0].clientY - POP.yOffset;
+
+	} else {
+
+		POP.initialX = e.clientX - POP.xOffset;
+		POP.initialY = e.clientY - POP.yOffset;
+
+	}
+
+	if ( e.target === POPdivHeader ) { POP.active = true; }
+
+};
+
+
+POP.dragEnd = function( e ) {
+
+	POP.initialX = POP.currentX;
+	POP.initialY = POP.currentY;
+
+	POP.active = false;
+
+};
+
+
+POP.drag = function( e ) {
+
+	if ( POP.active ) {
+
+		e.preventDefault();
+
+		if ( e.type === "touchmove" ) {
+
+			POP.currentX = e.touches[0].clientX - POP.initialX;
+			POP.currentY = e.touches[0].clientY - POP.initialY;
+
+		} else {
+
+			POP.currentX = e.clientX - POP.initialX;
+			POP.currentY = e.clientY - POP.initialY;
+
+		}
+
+		POP.xOffset = POP.currentX;
+		POP.yOffset = POP.currentY;
+
+		POP.setTranslate( navPopup, POP.currentX, POP.currentY  );
+
+	}
+
+};
+
+
+POP.setTranslate = function( element, xPos, yPos ) {
+
+	element.style.transform = `translate3d( ${xPos }px, ${ yPos }px, 0 )`;
+
+};

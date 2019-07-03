@@ -7,10 +7,10 @@ const POP = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-06-30",
+		"date": "2019-07-03",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "README.md",
-		"version": "0.14.03-3pop",
+		"version": "0.14.04-0pop",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
@@ -28,26 +28,25 @@ POP.getMenuDivPopup = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
+	divDragMoveHeader.addEventListener( 'mousedown', DMV.onMouseDown, false );
+	window.addEventListener( 'mouseup', DMV.onMouseUp, false );
+
+	divDragMoveHeader.addEventListener( 'touchstart', DMV.onTouchStart, false );
+	divDragMoveHeader.addEventListener( 'touchmove', DMV.onTouchMove, false );
+
+
 	POP.footer =
 
-		`<div ><span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span><button onclick=POP.setNextPopup(-1); style=width:2rem;background:#edd; >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); style=width:2rem;background:#ded;>&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); style=width:2rem;background:#dde;>&raquo;</button>
+		`<div >
+			<button onclick=POP.setNextPopup(-1); style=width:2rem;background:#edd; >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); style=width:2rem;background:#ded;>&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); style=width:2rem;background:#dde;>&raquo;</button>
+			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span
 		</div>`;
+
 
 
 	const txt = "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?";
 
-	const htm = ""
-
-	// `
-	// 	<div id=divDragMoveHeader >
-	// 		<span title="${ txt }" >&#x2766;</span>
-	// 		<div style=float:right; ><button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button></div>
-	// 	</div>
-
-	// 	<div id="divDragMoveContent" ></div>
-
-	// 	<div id="divDragMoveFooter" ></div>
-	//`;
+	const htm = "vv";
 
 	return htm;
 
@@ -128,7 +127,7 @@ POP.callbackMarkdown = function( markdown, target ) {
 	const converter = new showdown.Converter();
 	const html = converter.makeHtml( markdown );
 
-	target.innerHTML = html + html;
+	target.innerHTML = html;
 	//console.log( 'html', html );
 
 	navDragMove.hidden = false; // wait until loaded before showing
@@ -164,6 +163,8 @@ POP.setNextPopup = function( x = 1 ){
 
 
 
+
+
 const DMV = {
 
 	draggableLeft: 0,
@@ -172,81 +173,74 @@ const DMV = {
 	draggableStartX: 0,
 	draggableStartY: 0
 
-
-	}
-
-
-	let txt;
+};
 
 
 
+DMV.onMouseDown = function( event ) {
 
-	DMV.onMouseDown = function( event ) {
+	console.log( '', 23 );
+	DMV.draggableTop = event.clientY - navDragMove.offsetTop;
+	DMV.draggableLeft = event.clientX - navDragMove.offsetLeft;
 
-		console.log( '', 23 );
-		DMV.draggableTop = event.clientY - navDragMove.offsetTop;
-		DMV.draggableLeft = event.clientX - navDragMove.offsetLeft;
+	window.addEventListener('mousemove', DMV.onMouseMove, true );
 
-		window.addEventListener('mousemove', DMV.onMouseMove, true );
-
-	}
-
-
-
-	DMV.onMouseMove = function( event ){
-
-		navDragMove.style.top = ( event.clientY - DMV.draggableTop ) + 'px';
-		navDragMove.style.left = ( event.clientX - DMV.draggableLeft ) + 'px';
-
-	}
+};
 
 
 
-	DMV.onMouseUp = function() {
+DMV.onMouseMove = function( event ){
 
-		window.removeEventListener( 'mousemove', DMV.onMouseMove, true );
+	navDragMove.style.top = ( event.clientY - DMV.draggableTop ) + 'px';
+	navDragMove.style.left = ( event.clientX - DMV.draggableLeft ) + 'px';
 
-	}
-
-
-
-	DMV.onTouchStart = function( event ){
-
-		DMV.draggableLeft = navDragMove.offsetLeft;
-		DMV.draggableStartX = event.changedTouches[ 0 ].clientX;
-		DMV.draggableTop = navDragMove.offsetTop;
-		DMV.draggableStartY = event.changedTouches[ 0 ].clientY;
-		//console.log( 'draggableTop', draggableTop, draggableStartY );
-		event.preventDefault();
-
-		console.log ('Status: touchstart', 'ClientX: ' + DMV.draggableStartX + 'px' );
-
-	}
+};
 
 
 
-	DMV.onTouchMove = function( event ){
+DMV.onMouseUp = function() {
 
-		const distX = event.changedTouches[ 0 ].clientX - DMV.draggableStartX;
-		let left = DMV.draggableLeft + distX > document.body.clientWidth - 100 ?
-			document.body.clientWidth - 100 : DMV.draggableLeft + distX;
-		left = DMV.draggableLeft + distX < 0 ? 0 : left;
-		//console.log( 'left2', left  );
+	window.removeEventListener( 'mousemove', DMV.onMouseMove, true );
 
-		navDragMove.style.left = left + 'px';
-
-		const distY = event.changedTouches[ 0 ].clientY - DMV.draggableStartY;
-		// top is a reserved word
-
-		let ttop = DMV.draggableTop + distY > window.innerHeight - 100 ?
-			window.innerHeight - 100 : DMV.draggableTop + distY;
-		ttop = DMV.draggableTop + distY < 0 ? 0 : ttop;
-		//console.log( 'ttop', ttop  );
-
-		navDragMove.style.top = ttop + 'px';
-
-		event.preventDefault();
-
-	};
+};
 
 
+
+DMV.onTouchStart = function( event ){
+
+	DMV.draggableLeft = navDragMove.offsetLeft;
+	DMV.draggableStartX = event.changedTouches[ 0 ].clientX;
+	DMV.draggableTop = navDragMove.offsetTop;
+	DMV.draggableStartY = event.changedTouches[ 0 ].clientY;
+	//console.log( 'draggableTop', draggableTop, draggableStartY );
+	event.preventDefault();
+
+	console.log ('Status: touchstart', 'ClientX: ' + DMV.draggableStartX + 'px' );
+
+};
+
+
+
+DMV.onTouchMove = function( event ){
+
+	const distX = event.changedTouches[ 0 ].clientX - DMV.draggableStartX;
+	let left = DMV.draggableLeft + distX > document.body.clientWidth - 100 ?
+		document.body.clientWidth - 100 : DMV.draggableLeft + distX;
+	left = DMV.draggableLeft + distX < 0 ? 0 : left;
+	//console.log( 'left2', left  );
+
+	navDragMove.style.left = left + 'px';
+
+	const distY = event.changedTouches[ 0 ].clientY - DMV.draggableStartY;
+	// top is a reserved word
+
+	let ttop = DMV.draggableTop + distY > window.innerHeight - 100 ?
+		window.innerHeight - 100 : DMV.draggableTop + distY;
+	ttop = DMV.draggableTop + distY < 0 ? 0 : ttop;
+	//console.log( 'ttop', ttop  );
+
+	navDragMove.style.top = ttop + 'px';
+
+	event.preventDefault();
+
+};

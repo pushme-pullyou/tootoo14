@@ -28,7 +28,7 @@ FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 // For main menu header
 MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/`;
 
-MNU.title = "TooToo14-01";
+MNU.title = "TooToo14";
 
 MNU.helpFile = "../README.md";
 
