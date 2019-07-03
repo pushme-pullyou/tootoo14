@@ -94,7 +94,7 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 }
 
 #secDragMove {
-	border: 1px solid green;
+	border: 0px solid green;
 	height: calc( 100% - 1rem );
 	overflow: hidden;
 	position: relative;
@@ -108,7 +108,7 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 }
 
 #divDragMoveContent {
-	border: 1px solid red;
+	border: 0px solid red;
 	height: calc( 100% - 4rem );
 	max-height: calc( 100% - 4rem );
 	overflow: auto;
