@@ -14,7 +14,7 @@ const COR = {
 	}
 };
 
-POP.version = MNU.version = "0.14.04-0dev"; //document.head.querySelector( '[ name=version ]' ).content || "";
+POP.version = MNU.version = "0.14.04-0"; //document.head.querySelector( '[ name=version ]' ).content || "";
 POP.date = MNU.date = "2019-07-03";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
