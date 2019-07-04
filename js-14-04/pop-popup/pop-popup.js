@@ -38,7 +38,8 @@ POP.getMenuDivPopup = function() {
 	POP.footer =
 
 		`<div >
-			<button onclick=POP.setNextPopup(-1); style=width:2rem;background:#edd; >&laquo;</button>&nbsp;<button onclick=POP.setNextPopup(0); style=width:2rem;background:#ded;>&#x2302;</button>&nbsp;<button onclick=POP.setNextPopup(); style=width:2rem;background:#dde;>&raquo;</button>
+			<button onclick=POP.requestFile("../popup-dev.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
+			<button onclick=POP.requestFile("https://pushme-pullyou.github.io/pages/license.md",divDragMoveContent);; style=width:2rem;background:#dde;>⚖️</button>
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span
 		</div>`;
 
@@ -46,7 +47,7 @@ POP.getMenuDivPopup = function() {
 
 	const txt = "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?";
 
-	const htm = "vv";
+	const htm = "";
 
 	return htm;
 
