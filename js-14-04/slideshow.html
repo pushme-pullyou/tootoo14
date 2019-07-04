@@ -3,10 +3,10 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "description" content = "Show HTML slides" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-06-30" >
-<meta name = "version" content = "01" >
+<meta name = "date" content = "2019-07-03" >
+<meta name = "version" content = "02" >
 <title></title>
 <style>
 
@@ -43,8 +43,6 @@ main { border: 0px solid maroon; height: 100%; overflow: hidden; position: relat
 .rem3 { font-size: 10vw; }
 
 
-
-
 @media all and ( max-width: 640px ) {
 
 }
@@ -60,7 +58,7 @@ main { border: 0px solid maroon; height: 100%; overflow: hidden; position: relat
 
 		<div id="divContents" >
 
-			<img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height="48" style=position:absolute; >
+			<img src="https://pushme-pullyou.github.io/favicon.ico" height="48" style=position:absolute; >
 
 			<div id=divGraphics ></div>
 
@@ -84,9 +82,6 @@ main { border: 0px solid maroon; height: 100%; overflow: hidden; position: relat
 
 <script>
 
-const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
-const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
-
 
 const TTS = {
 
@@ -96,7 +91,7 @@ const TTS = {
 	"playing": false,
 	"slides": [
 		{ "utterance": "",
-			"text": "Enjoy the 90 seconds show!", "classes": "red rem2" },
+			"text": "Enjoy the 90 second 'TooToo' overview", "classes": "red rem2" },
 		{ "utterance": "Oak is strong and also gives shade.",
 			"text": "Oak is strong and also gives shade", "classes": "red rem1"},
 		{ "utterance": "Cats and dogs each hate the other.",
@@ -142,7 +137,8 @@ TTS.playSlides = function() {
 		TTS.playing = false;
 	}
 
-}
+};
+
 
 
 TTS.showSlide = function( index = 1 ) {
@@ -169,7 +165,7 @@ TTS.sayThis = function( text ) {
 
 		const voice = TTS.voices.find( item => item.name === "Google UK English Female" );
 
-		theDefault =  TTS.voices.find( item => item.default === true );
+		const theDefault =  TTS.voices.find( item => item.default === true );
 
 		//console.log( '', voice );
 
