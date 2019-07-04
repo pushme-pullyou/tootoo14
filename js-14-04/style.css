@@ -117,12 +117,13 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 }
 
 #divDragMoveFooter {
-	height: 1.5rem;
-	text-align: right;
-	position: absolute;
 	bottom: 0rem;
-	overflow: hidden;
+	height: 2rem;
+	text-align: right;
+	overflow: auto;
+	position: absolute;
 	right: 0;
+	width: 100%;
 }
 
 
