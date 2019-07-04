@@ -70,11 +70,13 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 		if ( text &&  text.toLowerCase().endsWith( ".md" ) ) {
 
+			navDragMove.style.height = "60%";
 			POP.requestFile( text, divDragMoveContent );
 
 		} else if ( text ) {
 
 			divDragMoveContent.innerHTML = text;
+			navDragMove.style.height = "60%";
 			navDragMove.hidden = false;
 
 		} else {
