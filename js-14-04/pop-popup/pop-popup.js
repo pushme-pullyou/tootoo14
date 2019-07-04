@@ -38,7 +38,7 @@ POP.getMenuDivPopup = function() {
 	POP.footer =
 
 		`<div >
-			<button onclick=POP.requestFile("../popup-dev.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
+			<button onclick=POP.requestFile("../popup.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
 			<button onclick=POP.requestFile("${ MNU.footerPopupUrl }pages/license.md",divDragMoveContent);; style=width:2rem;background:#dde;>⚖️</button>
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span
 		</div>`;
