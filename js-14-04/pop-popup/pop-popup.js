@@ -39,7 +39,7 @@ POP.getMenuDivPopup = function() {
 
 		`<div >
 			<button onclick=POP.requestFile("../popup-dev.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
-			<button onclick=POP.requestFile("https://pushme-pullyou.github.io/pages/license.md",divDragMoveContent);; style=width:2rem;background:#dde;>⚖️</button>
+			<button onclick=POP.requestFile("${ MNU.footerPopupUrl }pages/license.md",divDragMoveContent);; style=width:2rem;background:#dde;>⚖️</button>
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span
 		</div>`;
 
