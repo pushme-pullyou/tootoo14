@@ -3,7 +3,7 @@
 [Hello, World!]( https://en.wikipedia.org/wiki/%22Hello,_World!%22_program )
 <script>console.log( '', ( new Date(), 23 )</script>
 
-<iframe srcdoc="<script>document.write( new Date() )</script>" ></iframe>
+<iframe srcdoc="<script>document.write( new Date().toLocaleString() )</script>" height=50></iframe>
 
 This is a Markdown file in a DIV element that you may drag around and risize.
 

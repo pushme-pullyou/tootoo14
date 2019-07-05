@@ -2,7 +2,7 @@
 
 [Hello, World!]( https://en.wikipedia.org/wiki/%22Hello,_World!%22_program )
 
-This is a Markdown file in a DIV element that you may drag around and risize.
+This is a Markdown file in a DIV element that you may drag around and resize.
 
 Press Control-Shift-J|Command-Option-J to see if the JavaScript console reports any errors
 
