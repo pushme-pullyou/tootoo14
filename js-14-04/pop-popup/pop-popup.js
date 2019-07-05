@@ -35,7 +35,6 @@ POP.getMenuDivPopup = function() {
 	divDragMoveHeader.addEventListener( 'touchmove', DMV.onTouchMove, false );
 
 // 			<button onclick=POP.requestFile("${ MNU.footerPopupUrl }pages/license.md",divDragMoveContent);; style=width:2rem;background:#dde;>⚖️</button>
--
 	POP.footer =
 
 		`<div >
