@@ -14,6 +14,7 @@ TooToo Menu (POP) generates standard HTML popup menu code and content and code t
 
 <summary>To Do / Wish List</summary>
 
+* 2019-07-05 ~ Theo ~ More interactive popup
 * 2019-06-25 ~ Theo ~ On close, remove class active from all buttons???
 
 </details>
@@ -28,6 +29,13 @@ TooToo Menu (POP) generates standard HTML popup menu code and content and code t
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-07-05 ~ Theo
+
+POP 0.14.04-1pop
+
+* B - POP.js: better license.md link
+* F - POP: popup with iframe with date
 
 ### 2019-06-30 ~ Theo
 

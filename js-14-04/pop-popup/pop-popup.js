@@ -7,10 +7,10 @@ const POP = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-03",
+		"date": "2019-07-05",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "README.md",
-		"version": "0.14.04-0pop",
+		"version": "0.14.04-1pop",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
@@ -34,11 +34,11 @@ POP.getMenuDivPopup = function() {
 	divDragMoveHeader.addEventListener( 'touchstart', DMV.onTouchStart, false );
 	divDragMoveHeader.addEventListener( 'touchmove', DMV.onTouchMove, false );
 
-// 			<button onclick=POP.requestFile("${ MNU.footerPopupUrl }pages/license.md",divDragMoveContent);; style=width:2rem;background:#dde;>⚖️</button>
 	POP.footer =
 
 		`<div >
 			<button onclick=POP.requestFile("../popup.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
+			<button onclick=POP.requestFile("../../pages/license.md",divDragMoveContent); style=width:2rem;background:#ded;>⚖️</button>&nbsp;
 
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span
 		</div>`;
@@ -160,9 +160,6 @@ POP.setNextPopup = function( x = 1 ){
 	POP.requestFile( url, divDragMoveContent );
 
 };
-
-
-
 
 
 
