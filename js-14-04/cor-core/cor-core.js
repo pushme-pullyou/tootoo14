@@ -7,15 +7,15 @@ const COR = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-03",
+		"date": "2019-07-05",
 		"description": "core - contains local overrides",
 		"helpFile": "cor-core/README.md",
-		"release": "0.14.04-0cor",
+		"release": "0.14.04-1cor",
 	}
 };
 
-POP.version = MNU.version = "0.14.04-0"; //document.head.querySelector( '[ name=version ]' ).content || "";
-POP.date = MNU.date = "2019-07-03";
+POP.version = MNU.version = "0.14.04-1"; //document.head.querySelector( '[ name=version ]' ).content || "";
+POP.date = MNU.date = "2019-07-05";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
 THM.cssBasic = "../style.css";
