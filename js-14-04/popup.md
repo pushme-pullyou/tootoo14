@@ -1,7 +1,6 @@
 ### Popup Div as draggable and resizable as splash screen / menu
 
 [Hello, World!]( https://en.wikipedia.org/wiki/%22Hello,_World!%22_program )
-<script>(new Date() )</script>
 
 This is a Markdown file in a DIV element that you may drag around and risize.
 
