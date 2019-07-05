@@ -40,7 +40,6 @@ POP.getMenuDivPopup = function() {
 
 		`<div >
 			<button onclick=POP.requestFile("../popup.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
-
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span>
 		</div>`;
 
