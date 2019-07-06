@@ -52,7 +52,7 @@ POP.init = function() {
 
 
 POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.footer ) {
-	//console.log( 'id', id );
+	//console.log( 'text', text );
 
 	POP.popupId = id;
 
@@ -60,7 +60,7 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 	if ( POP.popupId.classList.contains( 'active' ) ) {
 
-		//if ( divDragMoveContent.innerHTML === "" ) { POP.init(); }
+		if ( divDragMoveContent.innerHTML === "" ) { POP.init(); }
 
 		if ( text &&  text.toLowerCase().endsWith( ".md" ) ) {
 
