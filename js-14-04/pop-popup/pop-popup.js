@@ -15,15 +15,15 @@ const POP = {
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,
-
-	page: 0,
-	listenersLoaded: false
+	popup: "../popup.md",
+	license: "../../pages/license.md",
+	txt: "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?"
 
 };
 
 
 
-POP.getMenuDivPopup = function() {
+POP.init = function() {
 
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
@@ -34,16 +34,14 @@ POP.getMenuDivPopup = function() {
 	divDragMoveHeader.addEventListener( 'touchstart', DMV.onTouchStart, false );
 	divDragMoveHeader.addEventListener( 'touchmove', DMV.onTouchMove, false );
 
-	//<button onclick=POP.requestFile("../../pages/license.md",divDragMoveContent); style=width:2rem;background:#ded;>⚖️</button>&nbsp;
-
 	POP.footer =
 
 		`<div >
-			<button onclick=POP.requestFile("../popup.md",divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
+			<button onclick=POP.requestFile(POP.popup,divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
+			<button onclick=POP.requestFile(POP.license,divDragMoveContent); style=width:2rem;background:#ded;>⚖️</button>&nbsp;
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span>
 		</div>`;
 
-	const txt = "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?";
 
 	const htm = "";
 
@@ -58,13 +56,11 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 	POP.popupId = id;
 
-	//if ( POP.listenersLoaded === false ) { POP.init(); }
-
 	POP.popupId.classList.toggle( "active" );
 
 	if ( POP.popupId.classList.contains( 'active' ) ) {
 
-		if ( divDragMoveContent.innerHTML === "" ) { divDragMoveContent.innerHTML = POP.getMenuDivPopup(); }
+		//if ( divDragMoveContent.innerHTML === "" ) { POP.init(); }
 
 		if ( text &&  text.toLowerCase().endsWith( ".md" ) ) {
 
@@ -135,33 +131,9 @@ POP.callbackMarkdown = function( markdown, target ) {
 
 };
 
+
+
 //////////
-
-POP.setNextPopup = function( x = 1 ){
-
-	let url;
-
-	if ( x === 0 ) {
-
-		url = "../popup.md";
-
-	} else {
-
-		const pages = [ "about-tootoo.md", "license.md", "contributing.md", "coding-style.md" ];
-		POP.page += x;
-		POP.page = POP.page >= pages.length ? 0 : POP.page;
-		POP.page = POP.page < 0 ? pages.length - 1 : POP.page;
-
-		const page = pages[ POP.page ];
-
-		url = "https://pushme-pullyou.github.io/tootoo14/pages/" + page;
-	}
-
-	POP.requestFile( url, divDragMoveContent );
-
-};
-
-
 
 const DMV = {
 
@@ -213,7 +185,7 @@ DMV.onTouchStart = function( event ){
 	//console.log( 'draggableTop', draggableTop, draggableStartY );
 	event.preventDefault();
 
-	console.log ('Status: touchstart', 'ClientX: ' + DMV.draggableStartX + 'px' );
+	//console.log ('Status: touchstart', 'ClientX: ' + DMV.draggableStartX + 'px' );
 
 };
 
