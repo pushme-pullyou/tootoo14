@@ -17,6 +17,9 @@ const COR = {
 POP.version = MNU.version = "0.14.04-1"; //document.head.querySelector( '[ name=version ]' ).content || "";
 POP.date = MNU.date = "2019-07-05";
 
+POP.popup = "https://pushme-pullyou.github.io/tootoo14/js-14-04/popup.md";
+POP.license = "https://pushme-pullyou.github.io/tootoo14/pages/license.md";
+
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
 THM.cssBasic = "../style.css";
 //THM.cssBasic = "https://www.w3schools.com/lib/w3-theme-red.css";

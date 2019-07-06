@@ -11,11 +11,11 @@ const POP = {
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "README.md",
 		"version": "0.14.04-1pop",
-		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-03/pop-popup"
+		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-04/pop-popup"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,
-	popup: "../popup.md",
+	popup: "../popup.md", //
 	license: "../../pages/license.md",
 	txt: "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?"
 
