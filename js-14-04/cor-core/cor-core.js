@@ -7,15 +7,15 @@ const COR = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-05",
+		"date": "2019-07-07",
 		"description": "core - contains local overrides",
 		"helpFile": "cor-core/README.md",
-		"release": "0.14.04-1cor",
+		"version": "0.14.04-2cor",
 	}
 };
 
-POP.version = MNU.version = "0.14.04-1"; //document.head.querySelector( '[ name=version ]' ).content || "";
-POP.date = MNU.date = "2019-07-05";
+POP.version = MNU.version = "0.14.04-2"; //document.head.querySelector( '[ name=version ]' ).content || "";
+POP.date = MNU.date = "2019-07-07";
 
 POP.popup = "https://pushme-pullyou.github.io/tootoo14/js-14-04/popup.md";
 POP.license = "https://pushme-pullyou.github.io/tootoo14/pages/license.md";
