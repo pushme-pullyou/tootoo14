@@ -7,10 +7,10 @@ const POP = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-05",
+		"date": "2019-07-07",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "README.md",
-		"version": "0.14.04-1pop",
+		"version": "0.14.04-2pop",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-04/pop-popup"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
@@ -28,6 +28,9 @@ POP.init = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
+	navPanel.addEventListener( 'click', POP.onClickClose, false );
+	navPanel.addEventListener( 'touchstart', POP.onClickClose, false );
+
 	divDragMoveHeader.addEventListener( 'mousedown', DMV.onMouseDown, false );
 	window.addEventListener( 'mouseup', DMV.onMouseUp, false );
 
@@ -42,17 +45,12 @@ POP.init = function() {
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span>
 		</div>`;
 
-
-	const htm = "";
-
-	return htm;
-
 };
 
 
 
 POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.footer ) {
-	//console.log( 'text', text );
+	//console.log( 'text',id, text );
 
 	POP.popupId = id;
 
@@ -60,9 +58,9 @@ POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.foote
 
 	if ( POP.popupId.classList.contains( 'active' ) ) {
 
-		if ( divDragMoveContent.innerHTML === "" ) { POP.init(); }
+		//if ( divDragMoveContent.innerHTML === "" ) { POP.init(); }
 
-		if ( text &&  text.toLowerCase().endsWith( ".md" ) ) {
+		if ( text && text.toLowerCase().endsWith( ".md" ) ) {
 
 			navDragMove.style.height = "60%";
 			POP.requestFile( text, divDragMoveContent );
@@ -97,14 +95,19 @@ POP.onClickClose = function() {
 	navDragMove.hidden = true;
 	POP.popupId.classList.remove( "active" );
 	divDragMoveContent.innerHTML = "";
+
 	main.removeEventListener( 'click', POP.onClickClose );
 	main.removeEventListener( 'touchstart', POP.onClickClose );
+
+	navPanel.removeEventListener( 'click', POP.onClickClose);
+	navPanel.removeEventListener( 'touchstart', POP.onClickClose );
 
 };
 
 
 
 POP.requestFile = function( url, target ) {
+	//console.log( '', url, target  );
 
 	const xhr = new XMLHttpRequest();
 	xhr.open( 'GET', url, true );
@@ -118,7 +121,7 @@ POP.requestFile = function( url, target ) {
 
 
 POP.callbackMarkdown = function( markdown, target ) {
-	//console.log( '', markdown );
+	//console.log( 'markdown', markdown, target );
 
 	showdown.setFlavor('github');
 	const converter = new showdown.Converter();

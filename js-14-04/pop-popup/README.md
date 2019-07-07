@@ -32,6 +32,14 @@ TooToo Menu (POP) generates standard HTML popup menu code and content and code t
 
 <summary>Change Log</summary>
 
+
+### 2019-07-07 ~ Theo
+
+POP 0.14.04-2pop
+
+* F - POP.js: Add event listen navPanel and close popup
+
+
 ### 2019-07-05 ~ Theo
 
 POP 0.14.04-1pop
