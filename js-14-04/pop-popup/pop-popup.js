@@ -28,8 +28,8 @@ POP.init = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
-	navPanel.addEventListener( 'click', POP.onClickClose, false );
-	navPanel.addEventListener( 'touchstart', POP.onClickClose, false );
+	//navPanel.addEventListener( 'click', POP.onClickClose, false );
+	//navPanel.addEventListener( 'touchstart', POP.onClickClose, false );
 
 	divDragMoveHeader.addEventListener( 'mousedown', DMV.onMouseDown, false );
 	window.addEventListener( 'mouseup', DMV.onMouseUp, false );
@@ -99,8 +99,8 @@ POP.onClickClose = function() {
 	main.removeEventListener( 'click', POP.onClickClose );
 	main.removeEventListener( 'touchstart', POP.onClickClose );
 
-	navPanel.removeEventListener( 'click', POP.onClickClose);
-	navPanel.removeEventListener( 'touchstart', POP.onClickClose );
+	//navPanel.removeEventListener( 'click', POP.onClickClose);
+	//navPanel.removeEventListener( 'touchstart', POP.onClickClose );
 
 };
 
