@@ -4,10 +4,10 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-07-07" >
+<meta name = "date" content = "2019-07-08" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.04-2dev" >
+<meta name = "version" content = "0.14.04-3dev" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -40,6 +40,7 @@
 <script src = "../thm-theme/thm-theme.js" ></script>
 <script src = "../tmp-template/tmp-template.js" ></script>
 <script src = "../cor-core/cor-core.js" ></script>
+
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
@@ -120,8 +121,13 @@
 		<section id="secDragMove" >
 
 			<div id=divDragMoveHeader >
+
 				<span title="Move and resize me" >&#x2766;</span>
-					<div style=float:right; ><button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button></div>
+
+				<div style=float:right; >
+					<button id=butPopupClose onclick="POP.setPopupShowHide(butPopupClose);" >&times;</button>
+				</div>
+
 			</div>
 
 			<div id="divDragMoveContent" ></div>
@@ -191,7 +197,7 @@ function init() {
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
 
-	POP.setPopupShowHide( butPopupClose, "../popup-dev.md" );
+	POP.setPopupShowHide( butPopupClose, POP.popup );
 
 	if ( window.innerWidth < 640 ) { toggleNavPanel(); }
 
