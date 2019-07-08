@@ -28,7 +28,7 @@ POP.init = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
-	panel = document.body.querySelectorAll( "#navPanel");
+	const panel = document.body.querySelectorAll( "#navPanel");
 
 	if ( panel && panel.length ) {
 
@@ -108,7 +108,7 @@ POP.onClickClose = function() {
 
 	const panel = document.body.querySelectorAll( "#navPanel");
 
-	if ( panel ) {
+	if ( panel && panel.length ) {
 
 		navPanel.removeEventListener( 'click', POP.onClickClose);
 		navPanel.removeEventListener( 'touchstart', POP.onClickClose );
