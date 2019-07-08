@@ -28,9 +28,9 @@ POP.init = function() {
 	main.addEventListener( 'click', POP.onClickClose, false );
 	main.addEventListener( 'touchstart', POP.onClickClose, false );
 
-	const panel = document.body.querySelectorAll( "#navPanel");
+	panel = document.body.querySelectorAll( "#navPanel");
 
-	if ( panel ) {
+	if ( panel && panel.length ) {
 
 		navPanel.addEventListener( 'click', POP.onClickClose, false );
 		navPanel.addEventListener( 'touchstart', POP.onClickClose, false );
