@@ -1,4 +1,4 @@
-# ZZZZZ Read Me
+# Memento Vivo Read Me
 
 [Source Code ]()
 
@@ -27,7 +27,7 @@
 
 <summary>Change Log</summary>
 
-### XXX
+### 2019-07-14 ~ Theo
 
 * First commit
 
