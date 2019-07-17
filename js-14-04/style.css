@@ -108,30 +108,31 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 }
 
 #divDragMoveContent {
-	border: 0px solid red;
+	border: 0px solid blue;
 	height: calc( 100% - 4rem );
-	max-height: calc( 100% - 4rem );
+	max-height: calc( 100% - 4.5rem );
 	overflow: auto;
 	padding: 0.5rem;
 	width: 100%;
 }
 
 #divDragMoveFooter {
+	border: 0px solid red;
 	bottom: 0rem;
-	height: 2rem;
-	text-align: right;
-	overflow: auto;
+	height: 1.8rem;
+	xxtext-align: right;
+	xxoverflow-x: auto;
+	xxoverflow-y: hidden;
+	padding: 0 0.5rem;
 	position: absolute;
 	right: 0;
-	width: 100%;
+	xxwidth: 500px;
 }
-
 
 
 #expandButton.collapsed { left: 0; }
 #navPanel.collapsed { left: calc( var( --mnu-width ) * -1 ); padding: 0; }
 #main.collapsed { left: 0; width: 100%; }
-
 
 
 

@@ -48,8 +48,8 @@ POP.init = function() {
 	POP.footer =
 
 		`<div >
-			<button onclick=POP.requestFile(POP.popup,divDragMoveContent); style=width:2rem;background:#ded;>🏠</button>&nbsp;
-			<button onclick=POP.requestFile(POP.license,divDragMoveContent); style=width:2rem;background:#ded;>⚖️</button>&nbsp;
+			<button onclick=POP.requestFile(POP.popup,divDragMoveContent); >🏠</button>&nbsp;
+			<button onclick=POP.requestFile(POP.license,divDragMoveContent); >⚖️</button>&nbsp;
 			<span id=POPspanFooter >v${ POP.version } - ${ POP.date } </span>
 		</div>`;
 
@@ -58,7 +58,7 @@ POP.init = function() {
 
 
 POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.footer ) {
-	//console.log( 'text',id, text );
+	console.log( 'text',id, text );
 
 	POP.popupId = id;
 
@@ -166,7 +166,6 @@ const DMV = {
 
 DMV.onMouseDown = function( event ) {
 
-	console.log( '', 23 );
 	DMV.draggableTop = event.clientY - navDragMove.offsetTop;
 	DMV.draggableLeft = event.clientX - navDragMove.offsetLeft;
 
