@@ -32,6 +32,11 @@ TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code 
 
 <summary>Change Log</summary>
 
+### 2019-07-17 ~ Theo
+
+* R - MNU.js: set title href using location
+	* May help with using base in html files
+
 ## 2019-05-28 ~ Theo
 
 * B - MNU.js: Fix rate limits not appearing

@@ -105,7 +105,7 @@ MNU.getNavHeader = function() {
 			${ MNU.urlSourceCodeIcon }
 			</a>
 
-			<a href="" title="Click to reload this page" >${ MNU.title } <span id=titleRelease >v${ MNU.version }</span></a>
+			<a href="${ location.href.replace( location.hash, "" ) }" title="Click to reload this page" >${ MNU.title } <span id=titleRelease >v${ MNU.version }</span></a>
 
 			<button class=butHelp id=butTitle onclick="POP.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
 
