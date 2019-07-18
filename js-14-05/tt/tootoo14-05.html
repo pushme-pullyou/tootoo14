@@ -11,14 +11,12 @@
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
+<base href = "https://pushme-pullyou.github.io/tootoo14/js-14-05/" >
 
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
 <link rel = "license" href = "https://opensource.org/licenses/MIT" >
-<link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Inconsolata"  >
-<link rel = "stylesheet" href = "../style.css" >
-
-<base href = "https://pushme-pullyou.github.io/tootoo14/js-14-05/" >
+<link rel = "stylesheet" href = "style.css" >
 
 </head>
 
@@ -153,14 +151,6 @@
 
 // cor-core.js for many init values
 
-//THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
-//THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-04/style.css";
-
-//FOB.urlDefaultFile = "README.md";
-
-//FGA.urlGitHubPage = "../../";
-//FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
-
 init();
 
 
@@ -203,7 +193,7 @@ function init() {
 
 	aViewSource.href = MNU.urlSourceCode;
 
-	POP.setPopupShowHide( butPopupClose );
+	POP.setPopupShowHide();
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) { toggleNavPanel(); }
 

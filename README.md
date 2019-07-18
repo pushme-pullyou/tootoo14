@@ -1,6 +1,5 @@
 # [TooToo14 Repo Read Me]( #README.md )
 
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://pushme-pullyou.github.io/tootoo14/ "View file as a web page." ) </span>
 
 ### Stable Release: https://pushme-pullyou.github.io/tootoo14/
 

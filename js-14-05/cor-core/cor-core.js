@@ -21,7 +21,7 @@ POP.date = MNU.date = document.head.querySelector( '[ name=date ]' ).content || 
 POP.license = "https://pushme-pullyou.github.io/tootoo14/pages/license.md";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
-THM.cssBasic = "style.css";
+//THM.cssBasic = "style.css";
 //THM.cssBasic = "https://www.w3schools.com/lib/w3-theme-red.css";
 
 FOB.urlDefaultFile = "README.md";
