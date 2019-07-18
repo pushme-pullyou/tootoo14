@@ -125,7 +125,7 @@
 				<span title="Move and resize me" >&#x2766;</span>
 
 				<div style=float:right; >
-					<button id=butPopupClose ontouch="POP.setPopupShowHide(butPopupClose);" onclick="POP.onClickClose(butPopupClose);" >&times;</button>
+					<button id=butPopupClose onclick="POP.onClickClose(butPopupClose);" >&times;</button>
 				</div>
 
 			</div>
@@ -141,7 +141,7 @@
 
 	<nav>
 
-		<a href="" id="aViewSource" target="_blank"; hidden >view source</a>
+		<a href="" id="aViewSource" target="_blank" >view source</a>
 
 	</nav>
 
@@ -194,7 +194,7 @@ function init() {
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
-	aViewSource.style.display = "block";
+	//aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
 
 	POP.setPopupShowHide( butPopupClose, POP.popup );
