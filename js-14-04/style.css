@@ -114,8 +114,8 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 }
 
 #divDragMoveFooter {
-	border: 0px solid red;
-	padding: 1rem;
+	border: 1px solid red;
+	padding: 0.5rem;
 }
 
 
