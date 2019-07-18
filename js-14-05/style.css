@@ -128,7 +128,7 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 	#main { left: 0; padding: 0; width: 100%; }
 
-	#navDragMove { left: 60%; height: 70%; max-width: 55%; right: 0.2rem; }
+	#navDragMove { left: 60%; height: 70%; max-width: 70%; right: 0.2rem; }
 
 	#POPspanFooter { display: none; }
 
