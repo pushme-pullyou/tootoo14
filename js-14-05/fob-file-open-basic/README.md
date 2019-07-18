@@ -1,6 +1,6 @@
-# TooToo File Open Basic (FOB) v0.14.1-8fob
+# TooToo File Open Basic (FOB) v0.14.05-0fob
 
-[Source code]( https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-03/fob-file-open-basic/fob-file-open-basic.js )
+[Source code]( https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-05/fob-file-open-basic/fob-file-open-basic.js )
 
 
 <details open >
@@ -27,6 +27,14 @@
 <details>
 
 <summary>Change log</summary>
+
+
+### 2019-07-18 ~ Theo
+
+FOB 0.14.05-0fob
+
+* F - FOB.js: Add alert to Reload file
+	* if no file previously loaded
 
 FOB 0.14.1-8fob
 
@@ -57,10 +65,11 @@ Dealt with
 * C - FOB: Update readme / description
 * F - FOB.js: Add unzip to text
 
-Dealt wih
+Dealt with
+
 * 2019-01-15 ~ Theo ~ file open ZIP, select and display contents module
 
-### Previuosly
+### Previously
 
 * 2019-02-07 ~ Simplify: remove content editable / save file - will re-add elsewhere
 * 2019-01-15 ~ Add FOB.description variable and text

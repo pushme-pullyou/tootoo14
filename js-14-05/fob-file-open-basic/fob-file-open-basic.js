@@ -55,7 +55,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 					<input type=file id=inpOpenFile onchange=FOB.onInputFileOpen(this);  >
 				</p>
 				<p>
-					<button onclick=FOB.reloadFile(); >reload file</button>
+					<button onclick=FOB.reloadFile(); >Reload  previously opened file</button>
 				</p>
 				<p>
 					or drag & drop files here
@@ -274,7 +274,15 @@ FOB.fileOpenXml = function( text ) {
 
 FOB.reloadFile = function() {
 
-	FOB.onInputFileOpen( FOB.files );
+	if ( FOB.files ) {
+
+		FOB.onInputFileOpen( FOB.files );
+
+	} else {
+
+		alert( "First open a file.\nThen come back here to reopen a file with just one click" );
+
+	}
 
 };
 
@@ -368,6 +376,7 @@ FOB.callbackXml = function( text ) {
 
 	const eventLoad = new Event( 'FOBonXmlFileLoad' );
 	//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
+	
 	document.body.dispatchEvent( eventLoad );
 
 
