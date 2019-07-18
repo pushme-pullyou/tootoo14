@@ -84,9 +84,9 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 	background-color: #f1f1f1;
 	border: 1px solid #aaa;
 	left: 80%;
-	overflow: auto;
-	height: 60vh;
+	max-height: 90vh;
 	max-width: 40%;
+	overflow: auto;
 	position: absolute;
 	right: 1rem;
 	top: 1rem;
@@ -95,7 +95,7 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 #secDragMove {
 	border: 0px solid green;
-	height: calc( 100% - 1rem );
+	nnheight: calc( 100% - 1rem );
 	overflow: hidden;
 	position: relative;
 }
@@ -109,8 +109,8 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 #divDragMoveContent {
 	border: 0px solid blue;
-	height: calc( 100% - 4rem );
-	max-height: calc( 100% - 4.5rem );
+	//height: calc( 100% - 4rem );
+	//max-height: calc( 100% - 4.5rem );
 	overflow: auto;
 	padding: 0.5rem;
 	width: 100%;
@@ -118,14 +118,14 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 
 #divDragMoveFooter {
 	border: 0px solid red;
-	bottom: 0rem;
-	height: 1.8rem;
+	nnbottom: 0rem;
+	bbheight: 1.8rem;
 	xxtext-align: right;
 	xxoverflow-x: auto;
 	xxoverflow-y: hidden;
-	padding: 0 0.5rem;
-	position: absolute;
-	right: 0;
+	padding: 1rem;
+	llposition: absolute;
+	mmright: 0;
 	xxwidth: 500px;
 }
 
