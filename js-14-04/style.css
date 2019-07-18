@@ -103,7 +103,7 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 	color: #fff;
 	cursor: move;
 	padding: 0.5rem;
-	xxposition: fixed;
+	xxposition: fixed; /* Wish list */
 
 }
 
@@ -111,7 +111,6 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 	border: 0px solid blue;
 	overflow: auto;
 	padding: 0.5rem;
-
 }
 
 #divDragMoveFooter {
@@ -125,7 +124,6 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 #main.collapsed { left: 0; width: 100%; }
 
 
-
 @media all and ( max-width: 640px ) {
 
 	#main { left: 0; padding: 0; width: 100%; }
@@ -137,7 +135,6 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 	#aViewSource { display: none; }
 
 }
-
 
 
 @media all and ( max-height: 640px ) {
