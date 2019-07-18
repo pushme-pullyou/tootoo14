@@ -16,13 +16,15 @@ const POP = {
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,
-	popup: "../popup.md", //
+
+
 	license: "../../pages/license.md",
 	txt: "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?"
 
 };
 
 
+POP.popup = "popup.md";
 
 POP.init = function() {
 
@@ -57,8 +59,8 @@ POP.init = function() {
 
 
 
-POP.setPopupShowHide = function( id = POP.popupId, text = "", footer = POP.footer ) {
-	//console.log( 'text',id, text );
+POP.setPopupShowHide = function( id = butPopupClose, text = POP.popup, footer = POP.footer ) {
+	console.log( 'text',id, text );
 
 	POP.popupId = id;
 

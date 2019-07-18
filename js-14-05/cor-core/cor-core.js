@@ -17,7 +17,7 @@ const COR = {
 POP.version = MNU.version = document.head.querySelector( '[ name=version ]' ).content || "";
 POP.date = MNU.date = document.head.querySelector( '[ name=date ]' ).content || "";
 
-POP.popup = "popup.md";
+//POP.popup = "../popup.md";
 POP.license = "https://pushme-pullyou.github.io/tootoo14/pages/license.md";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
