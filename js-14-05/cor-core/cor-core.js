@@ -32,7 +32,6 @@ FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 
 //MNU.helpFile = "README.md";
 
-//MNU.description = document.head.querySelector( '[ name=description ]' ).content;
 MNU.description = `Very simple JavaScript files to help you explore and build new tools on <a href="https://github.com" target="_blank">GitHub</a>.`;
 
 MNU.homeText  = "pushMe-pullYou";

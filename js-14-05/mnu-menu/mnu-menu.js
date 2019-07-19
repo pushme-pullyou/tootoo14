@@ -18,14 +18,15 @@ const MNU = {
 
 MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
 MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
-MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-05/mnu-menu`;
+MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-05/`;
 
 MNU.title = document.title;
-MNU.helpFile = "README.md";
 
 MNU.version = document.head.querySelector( '[ name=version ]' ).content || "";
 MNU.date = document.head.querySelector( '[ name=date ]' ).content || "";
 MNU.description = document.head.querySelector( '[ name=description ]' ).content || "";
+
+MNU.helpFile = "README.md";
 
 MNU.target	= ""; //"target=_blank";
 
