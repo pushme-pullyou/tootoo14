@@ -1,19 +1,30 @@
-/* global THREE */
+/* global THREE, divContents */
 // jshint esversion: 6
-
-// Copyright 2018 Ladybug Tools authors. MIT License
-
-var THR = { release: "R7.1", date: "2018-11-18" };
+// jshint loopfunc: true
 
 
-THR.getThreejs = function( target ) {
+var THR = {
+
+	copyright: "Copyright 2019 Ladybug Tools authors. MIT License",
+	date: "2019-07-10",
+	description: "Three.js core - the basic function to bring up Three.js",
+	helpFile: "../js-view-threejs/thr-threejs.md",
+	license: "MIT License",
+	urlSourceCode: "https://github.com/ladybug-tools/spider-gbxml-tools/tree/master/spider-gbxml-viewer/v-0-17-00/js-core-threejs",
+	version: "0.17.00-1thr"
+
+};
+
+
+THR.getThreejs = function ( target = divContents ) {
 
 	THR.renderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true } );
 	THR.renderer.setPixelRatio( window.devicePixelRatio );
-	THR.renderer.setSize( divContents.clientWidth, divContents.clientHeight );
-	divContents.appendChild( THR.renderer.domElement );
+	THR.renderer.setSize( target.clientWidth, target.clientHeight );
 
-	THR.camera = new THREE.PerspectiveCamera( 40, divContents.clientWidth / divContents.clientHeight, 0.1, 1000 );
+	target.appendChild( THR.renderer.domElement );
+
+	THR.camera = new THREE.PerspectiveCamera( 40, target.clientWidth / target.clientHeight, 0.1, 1000 );
 	THR.camera.position.set( - 100, - 100, 100 );
 	THR.camera.up.set( 0, 0, 1 );
 
@@ -21,21 +32,21 @@ THR.getThreejs = function( target ) {
 
 	THR.scene = new THREE.Scene();
 
-	window.addEventListener( 'resize', THR.onWindowResize, false );
-	window.addEventListener( 'orientationchange', THR.onWindowResize, false );
+	window.addEventListener( 'resize', () => THR.onWindowResize( target ), false );
+	window.addEventListener( 'orientationchange', () => THR.onWindowResize( target ), false );
 
-}
+};
 
 
 
-THR.onWindowResize = function() {
+THR.onWindowResize = function( target = divContents ) {
 
-	THR.camera.aspect = divContents.clientWidth / divContents.clientHeight;
+	THR.camera.aspect = target.clientWidth / target.clientHeight;
 	THR.camera.updateProjectionMatrix();
-	THR.renderer.setSize( divContents.clientWidth, divContents.clientHeight );
+	THR.renderer.setSize( target.clientWidth, target.clientHeight );
 	//THR.controls.handleResize(); // trackball only
 
-	console.log( 'onWindowResize  window.innerWidth', window.innerWidth );
+	//console.log( 'onWindowResize  target.innerWidth', target.innerWidth );
 
 };
 
@@ -48,4 +59,3 @@ THR.animate = function() {
 	THR.controls.update();
 
 };
-

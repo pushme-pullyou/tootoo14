@@ -1,355 +1,87 @@
-// Copyright 2018 Ladybug Tools authors. MIT License
-/* global THREE, THR, GBX, rngOpacity, outOpacity */
+/* global THREE, THR, Stats, rngOpacity, outOpacity */
 // jshint esversion: 6
+// jshint loopfunc: true
+
+
+let THRU = {
+
+	copyright: "Copyright 2019 Ladybug Tools authors. MIT License",
+	date: "2019-07-15",
+	description: "Three.js Utilities: all this is a bit idiosyncratic / a random collection of stuff",
+	helpFile: "../js-core/thru-threejs-utilities.md",
+	license: "MIT License",
+	urlSourceCode: "https://github.com/ladybug-tools/spider-gbxml-tools/tree/master/spider-gbxml-viewer/v-0-17-00/js-core",
+	version: "0.17.00-4thru"
+
+};
 
 
 
-let THRU = { "release": "R7.1" };
+THRU.init= function( radius = 50 ) {
 
-THRU.radius = 1;
+	//console.log( '', THRU );
 
-var GBX = GBX || {};
-
-THRU.setHelpers = function( radius = 50 ) {
+	// called from main html / assumes three.js is loaded
 
 	THRU.radius = radius;
 
-	THRU.toggleAxesHelper();
+	//THRU.toggleAxesHelper();
 
-	window.addEventListener( 'keyup', () => THRU.sceneRotation = 0, false );
-	THR.renderer.domElement.addEventListener( 'click', () => THR.controls.autoRotate=false, false );
-	THR.renderer.domElement.addEventListener( 'touchstart', () => THR.controls.autoRotate=false, false );
+	//THRU.toggleGroundHelper();
 
-	if ( window.self === window.top ) { // don't rotate if in an iframe
+	//THRU.toggleEdges();
 
-		THR.controls.autoRotate = true;
+	THRU.addSomeLights2();
 
-	} else {
-
-		THR.controls.enableZoom = false;
-
-	}
+	window.addEventListener( 'keyup', THRU.onSetRotate , false );
+	THR.renderer.domElement.addEventListener( 'click', THRU.onSetRotate, false );
+	THR.renderer.domElement.addEventListener( 'touchstart', THRU.onSetRotate, false );
 
 };
 
 
 
-THRU.getGeometry = function() {
+THRU.onSetRotate = function() {
 
-	// useful debug snippet
-	const geometry = new THREE.TorusKnotBufferGeometry( 10, 3, 100, 16 );
-	//const geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-	const material = new THREE.MeshNormalMaterial();
-	const mesh = new THREE.Mesh( geometry, material );
+	THR.controls.autoRotate = false;
 
-	const edgesGeometry = new THREE.EdgesGeometry( geometry );
-	const edgesMaterial = new THREE.LineBasicMaterial( { color: 0x000000 } );
-	const surfaceEdge = new THREE.LineSegments( edgesGeometry, edgesMaterial );
-
-	mesh.add( surfaceEdge );
-
-	return mesh;
-
-	// add to HTML file:
-	//mesh = THRU.getGeometry();
-	//THR.scene.add( mesh );
-};
-
-
-
-THRU.getCurrentStatus = function() {
-
-	const htm =
-	`
-		<details>
-
-			<summary>2018-10-31 ~ Current Status ${ THRU.release }</summary>
-
-			<p>Three.js Utilities: all this is a bit idiosyncratic / a random collection of stuff</p>
-
-		</details>
-	`;
-
-	return htm;
+	window.removeEventListener( 'keyup', THRU.onSetRotate );
+	THR.renderer.domElement.removeEventListener( 'click', THRU.onSetRotate );
+	THR.renderer.domElement.removeEventListener( 'touchstart', THRU.onSetRotate );
 
 };
 
 
 
-////////// Settings
+////////// Scene
 
-THRU.getSettings = function() {
+THRU.setSceneDispose = function( objArr = [] ) {
+	// console.log( 'THR.scene', THR.scene );
 
+	THR.scene.traverse( child => {
 
-	let htm =
-	`
-		<p><i>Update display parameters</i>
-			<a title="View the Three.js Utilities Read Me" href="https://github.com/ladybug-tools/spider-gbxml-tools/tree/master/cookbook/spider-viewer-threejs-utilities/" target="_blank">?</a></p>
+		if ( child.isMesh || child.isLine || child.isSprite ) {
 
-		<p>
-			<button onclick="THR.controls.autoRotate = !THR.controls.autoRotate;" >toggle rotation</button>
-
-			<button onclick=THRU.toggleAxesHelper(); >toggle axes</button>
-		</p>
-
-		<p>
-			<button onclick=THRU.toggleSurfaces(); >toggle surfaces</button>
-
-			<button onclick=THRU.toggleEdges(); >toggle edges</button>
-		</p>
-
-
-		<p>
-			<button onclick=THRU.toggleWireframe(); >toggle wireframe</button>
-
-			<button onclick=THRU.toggleSurfaceNormals(); title="All Three.js triangles have a normal. See them here." > toggle surface normals </button>
-		</p>
-
-		<p title="opacity: 0 to 100%" >opacity
-			<output id=outOpacity class=floatRight >85%</output><br>
-
-			<input type="range" id="rngOpacity" min=0 max=100 step=1 value=85 oninput=THRU.updateOpacity(); >
-		</p>
-
-		<p>
-			<button onclick=THRU.zoomObjectBoundingSphere(GBX.surfaceMeshes);>zoom all</button>
-
-			<button accesskey="z" onclick=THR.controls.screenSpacePanning=!THR.controls.screenSpacePanning; title="Access key + B: Up/down curser kes to forward/backward or up/down" >toggle cursor keys</button>
-		</p>
-
-		<div>  </div>
-
-	`;
-
-	return htm;
-
-};
-
-
-
-
-THRU.toggleAxesHelper = function() {
-
-	if ( !THRU.axesHelper ) {
-
-		THRU.axesHelper = new THREE.AxesHelper( THRU.radius );
-		THR.scene.add( THRU.axesHelper );
-
-		return;
-
-	 }
-
-	THRU.axesHelper.visible = !THRU.axesHelper.visible;
-
-};
-
-
-
-
-
-THRU.toggleSurfaces = function() {
-
-	THR.scene.traverse( function ( child ) {
-
-		if ( child instanceof THREE.Mesh ) {
-
-			child.visible = !child.visible;
+			child.geometry.dispose();
+			child.material.dispose();
 
 		}
 
 	} );
 
-};
+	objArr = Array.isArray( objArr ) ? objArr : [ objArr ];
 
+	THR.scene.remove( ...objArr );
 
+	objArr.forEach( obj => obj = undefined );
 
-THRU.toggleEdges = function() {
-
-	if ( GBX.surfaceEdges && GBX.surfaceEdges.length === 0 ) {
-
-		GBX.surfaceEdges= new THREE.Group();
-		GBX.surfaceEdges.name = 'GBX.surfaceEdges';
-		GBX.surfaceEdges = GBX.getSurfaceEdgesGbxml();
-
-		//THR.scene.add( GBX.surfaceEdges );
-
-		return;
-
-	}
-
-
-	THR.scene.traverse( function ( child ) {
-
-		if ( child instanceof THREE.Line ) {
-
-			child.visible = !child.visible;
-
-		}
-
-	} );
+	//divRendererInfo.innerHTML = THRU.getRendererInfo();
 
 };
 
 
 
-THRU.toggleWireframe = function() {
-
-	THR.scene.traverse( function ( child ) {
-
-		if ( child instanceof THREE.Mesh ) {
-
-			child.material.wireframe = !child.material.wireframe;
-
-		}
-
-	} );
-
-};
-
-
-
-THRU.toggleSurfaceNormals = function() {
-
-	let material = new THREE.MeshNormalMaterial();
-
-	const types = [ 'BoxBufferGeometry', 'BufferGeometry', 'ConeBufferGeometry', 'CylinderBufferGeometry',
-		'ShapeBufferGeometry', 'SphereBufferGeometry' ];
-
-	if ( THRU.helperNormalsFaces === undefined ) {
-
-		THRU.helperNormalsFaces = new THREE.Group();
-
-		THR.scene.traverse( function ( child ) {
-
-			if ( child instanceof THREE.Mesh && child.visible ) {
-
-				if ( child.geometry.type === 'Geometry' ) {
-
-					child.geometry.computeFaceNormals();
-
-					const helperNormalsFace = new THREE.FaceNormalsHelper( child, 2, 0xff00ff, 3 );
-					THRU.helperNormalsFaces.add( helperNormalsFace );
-					THRU.helperNormalsFaces.visible = false;
-					//console.log( 'helperNormalsFace', helperNormalsFace );
-
-				} else if ( types.includes( child.geometry.type ) === true ) {
-
-					//console.log( 'child', child.position, child.rotation );
-
-					const geometry = new THREE.Geometry();
-					const geo = geometry.fromBufferGeometry( child.geometry );
-					const mesh = new THREE.Mesh( geo, material );
-					mesh.rotation.copy( child.rotation );
-					mesh.position.copy( child.position );
-					const helperNormalsFace = new THREE.FaceNormalsHelper( mesh, 0.05 * THRU.radius, 0xff00ff, 3 );
-
-					THRU.helperNormalsFaces.add( helperNormalsFace );
-					THRU.helperNormalsFaces.visible = false;
-
-				} else {
-
-					//console.log( 'child.geometry.type', child.geometry.type );
-
-				}
-
-			}
-
-		} );
-
-		THRU.helperNormalsFaces.name = 'helperNormalsFaces';
-		THR.scene.add( THRU.helperNormalsFaces );
-		THRU.helperNormalsFaces.visible = false;
-
-	}
-
-	THRU.helperNormalsFaces.visible = !THRU.helperNormalsFaces.visible;
-
-};
-
-
-
-THRU.updateOpacity = function() {
-
-	const opacity = parseInt( rngOpacity.value, 10 );
-	outOpacity.value = opacity + '%';
-
-	THR.scene.traverse( function ( child ) {
-
-		if ( child instanceof THREE.Mesh ) {
-
-			child.material.opacity = opacity / 100;
-
-		}
-
-	} );
-
-};
-
-
-
-THRU.zoomObjectBoundingSphere = function( obj = THR.scene ) {
-	//console.log( 'obj', obj );
-
-	const bbox = new THREE.Box3().setFromObject( obj );
-	//console.log( 'bbox', bbox );
-
-	THRU.boundingBox = bbox;
-
-	if ( bbox.isEmpty() === true ) { return; }
-
-	//if ( isNaN( bbox.max.x - bbox.min.x ) ) { console.log( 'zoom fail', {obj},{bbox} ); return; } // is there a better way of seeing if we have a good bbox?
-
-	const sphere = bbox.getBoundingSphere( new THREE.Sphere() );
-	const center = sphere.center;
-	const radius = sphere.radius;
-
-	//THR.controls.reset();
-	THR.controls.target.copy( center ); // needed because model may be far from origin
-	THR.controls.maxDistance = 5 * radius;
-
-	THR.camera.position.copy( center.clone().add( new THREE.Vector3( 1.5 * radius, 1.5 * radius, 1.5 * radius ) ) );
-	THR.camera.near = 0.001 * radius; //2 * camera.position.length();
-	THR.camera.far = 10 * radius; //2 * camera.position.length();
-	THR.camera.updateProjectionMatrix();
-
-	if ( THRU.axesHelper ) {
-
-		THRU.axesHelper.scale.set( radius, radius, radius );
-		THRU.axesHelper.position.copy( center);
-
-	}
-
-	if ( THRU.lightDirectional ) {
-
-		THRU.lightDirectional.position.copy( center.clone().add( new THREE.Vector3( 1.5 * radius, -1.5 * radius, 1.5 * radius ) ) );
-		THRU.lightDirectional.shadow.camera.scale.set( 0.2 * radius, 0.2 * radius, 0.01 * radius );
-
-		THRU.targetObject.position.copy( center );
-
-		//THR.scene.remove( THRU.cameraHelper );
-		//THRU.cameraHelper = new THREE.CameraHelper( THRU.lightDirectional.shadow.camera );
-		//THR.scene.add( THRU.cameraHelper );
-
-	}
-
-	THRU.center = center;
-	THRU.radius = radius;
-
-	THRU.onThreejsSceneLoaded();
-
-};
-
-
-
-////////// Info
-
-THRU.onThreejsSceneLoaded = function() {
-
-	return THR.scene;
-
-};
-
-
+////////// Info / move to a view menu??
 
 
 THRU.getRendererInfo = function() {
@@ -413,27 +145,308 @@ THRU.setStats = function() {
 
 
 
-THRU.getSceneInfo = function() {
+////////// Camera and Controls
 
-	let htm
+THRU.zoomObjectBoundingSphere = function( obj = THR.scene ) {
+	//console.log( 'obj', obj );
 
-	htm = GBX.count3 ?
+	const bbox = new THREE.Box3().setFromObject( obj );
+	// console.log( 'bbox', bbox )
 
-		`<p>
-		<div>triangles: ${ GBX.count3.toLocaleString() }</div>
-		<div>quads: ${ GBX.count4.toLocaleString() }</div>
-		<div>five+: ${ GBX.count5plus.toLocaleString() }</div>
-		<div>openings: ${ GBX.countOpenings.toLocaleString() }</div>
-		</p>`
-	:
-	`
-		To be added
-	`;
+	if ( bbox.isEmpty() === true ) { return; }
 
-	return htm;
+	const sphere = bbox.getBoundingSphere( new THREE.Sphere() );
+	THRU.center = sphere.center;
+	THRU.radius = sphere.radius;
+
+	THR.controls.target.copy( THRU.center ); // needed because model may be far from origin
+	THR.controls.maxDistance = 5 * THRU.radius;
+
+	THR.camera.position.copy( THRU.center.clone().add( new THREE.Vector3( 1.5 * THRU.radius, 1.5 * THRU.radius, 1.5 * THRU.radius ) ) );
+	THR.camera.near = 0.001 * THRU.radius; //2 * camera.position.length();
+	THR.camera.far = 10 * THRU.radius; //2 * camera.position.length();
+	THR.camera.updateProjectionMatrix();
+
+	if ( THRU.lightDirectional ) {
+
+		THRU.lightDirectional.position.copy( THRU.center.clone().add( new THREE.Vector3( 1.5 * THRU.radius, -1.5 * THRU.radius, 1.5 * THRU.radius ) ) );
+		THRU.lightDirectional.shadow.camera.scale.set( 0.2 * THRU.radius, 0.2 * THRU.radius, 0.01 * THRU.radius );
+
+		THRU.targetObject.position.copy( THRU.center );
+
+		//THR.scene.remove( THRU.cameraHelper );
+		//THRU.cameraHelper = new THREE.CameraHelper( THRU.lightDirectional.shadow.camera );
+		//THR.scene.add( THRU.cameraHelper );
+
+	}
 
 };
 
+
+
+////////// Visibility
+
+
+THRU.getMeshesVisible = function ( objThree = THR.scene ) { // not??
+	//console.log( '', objThree );
+
+	THRU.meshGroupVisible = new THREE.Object3D();
+
+	const arr = objThree.children.filter( mesh => mesh.visible ).map ( mesh => mesh.clone() );
+	THRU.meshGroupVisible.add( ...arr );
+
+	//console.log( 'THRU.meshGroupVisible', THRU.meshGroupVisible );
+
+
+	return THRU.meshGroupVisible;
+
+};
+
+
+
+
+THRU.toggleSurfaces = function( obj = THR.scene ) {
+
+	obj.traverse( function ( child ) {
+
+		if ( child instanceof THREE.Mesh ) {
+
+			child.visible = !child.visible;
+
+		}
+
+	} );
+
+};
+
+
+
+THRU.toggleWireframe = function( obj = THR.scene ) {
+
+	obj.traverse( function ( child ) {
+
+		if ( child instanceof THREE.Mesh ) {
+
+			child.material.wireframe = !child.material.wireframe;
+
+		}
+
+	} );
+
+};
+
+
+
+THRU.toggleSurfaceNormals = function( obj = THR.scene ) {
+	//
+
+	let material = new THREE.MeshNormalMaterial();
+
+	const types = [ 'BoxBufferGeometry', 'BufferGeometry', 'ConeBufferGeometry', 'CylinderBufferGeometry',
+		'ShapeBufferGeometry', 'SphereBufferGeometry' ];
+
+	if ( THRU.helperNormalsFaces === undefined ) {
+
+		THRU.helperNormalsFaces = new THREE.Group();
+
+		obj.traverse( function ( child ) {
+
+			if ( child instanceof THREE.Mesh && child.visible ) {
+
+				if ( child.geometry.type === 'Geometry' ) {
+
+					child.geometry.computeFaceNormals();
+
+					const helperNormalsFace = new THREE.FaceNormalsHelper( child, 2, 0xff00ff, 3 );
+					THRU.helperNormalsFaces.add( helperNormalsFace );
+					//THRU.helperNormalsFaces.visible = false;
+					//console.log( 'helperNormalsFace', helperNormalsFace );
+
+				} else if ( types.includes( child.geometry.type ) === true ) {
+
+					const geometry = new THREE.Geometry();
+					const geo = geometry.fromBufferGeometry( child.geometry );
+					const mesh = new THREE.Mesh( geo, material );
+					mesh.rotation.copy( child.rotation );
+					mesh.position.copy( child.position );
+					const helperNormalsFace = new THREE.FaceNormalsHelper( mesh, 0.05 * THRU.radius, 0xff00ff, 3 );
+
+					THRU.helperNormalsFaces.add( helperNormalsFace );
+					//THRU.helperNormalsFaces.visible = false;
+
+				} else {
+
+					//console.log( 'child.geometry.type', child.geometry.type );
+
+				}
+
+			}
+
+		} );
+
+		THRU.helperNormalsFaces.name = 'helperNormalsFaces';
+		obj.add( THRU.helperNormalsFaces );
+
+		THRU.helperNormalsFaces.visible = false;
+
+	}
+
+	THRU.helperNormalsFaces.visible = !THRU.helperNormalsFaces.visible;
+
+};
+
+
+
+THRU.setObjectOpacity = function( obj = THR.scene, range = rngOpacity ) {
+
+	const opacity = parseInt( range.value, 10 );
+	outOpacity.value = opacity + '%';
+
+	obj.traverse( function ( child ) {
+
+		if ( child instanceof THREE.Mesh ) {
+
+			child.material.opacity = opacity / 100;
+
+		}
+
+	} );
+
+};
+
+
+////////// Helpers in the scene
+
+THRU.toggleAxesHelper = function() {
+
+	if ( !THRU.axesHelper ) {
+
+		THRU.axesHelper = new THREE.AxesHelper();
+		THR.scene.add( THRU.axesHelper );
+
+	 } else {
+
+		THRU.axesHelper.visible = !THRU.axesHelper.visible;
+
+	}
+
+	THRU.axesHelper.scale.set( THRU.radius, THRU.radius, THRU.radius );
+	THRU.axesHelper.name = "axesHelper";
+	THRU.axesHelper.position.copy( THRU.center );
+
+};
+
+
+
+THRU.toggleBoundingBoxHelper = function( objThree = THR.scene ){
+
+	if ( !THRU.boundingBoxHelper ) {
+
+		const bbox = new THREE.Box3().setFromObject( objThree );
+
+
+		THRU.boundingBoxHelper = new THREE.Box3Helper( bbox, 0xff0000 );
+		THRU.boundingBoxHelper.geometry.computeBoundingBox();
+		THRU.boundingBoxHelper.name = "boundingBoxHelper";
+		THR.scene.add( THRU.boundingBoxHelper );
+
+	 } else {
+
+		THRU.boundingBoxHelper.visible = !THRU.boundingBoxHelper.visible;
+
+	}
+
+}
+
+
+
+THRU.toggleGroundHelper = function( position = THR.scene.position.clone(), elevation = 0 ) {
+
+	// move to THRU but z min should be zero
+
+	if ( !THRU.groundHelper ) {
+
+		//const reElevation = /<Elevation>(.*?)<\/Elevation>/i;
+		//GBX.elevation = GBX.text.match( reElevation )[ 1 ];
+		//console.log( 'elevation', GBX.elevation );
+
+		//elevation = GBX.boundingBox.box.min.z - 0.001 * THRU.radius;
+		//elevation = 0;
+
+		const geometry = new THREE.PlaneGeometry( 2 * THRU.radius, 2 * THRU.radius);
+		const material = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.5, side: 2 } );
+		THRU.groundHelper = new THREE.Mesh( geometry, material );
+		THRU.groundHelper.receiveShadow = true;
+
+		THRU.groundHelper.position.set( position.x, position.y, parseFloat( elevation ) );
+		THRU.groundHelper.name = "groundHelper";
+
+		THR.scene.add( THRU.groundHelper );
+
+		return;
+
+	}
+
+	THRU.groundHelper.visible = !THRU.groundHelper.visible;
+
+};
+
+
+
+THRU.getMeshEdges = function( obj = THR.scene ) {
+
+	const meshEdges = [];
+	const lineMaterial = new THREE.LineBasicMaterial( { color: 0x888888 } );
+
+	for ( let mesh of obj.children ) {
+
+		if ( !mesh.geometry ) { continue; }
+
+		const edgesGeometry = new THREE.EdgesGeometry( mesh.geometry );
+		const surfaceEdge = new THREE.LineSegments( edgesGeometry, lineMaterial );
+		surfaceEdge.rotation.copy( mesh.rotation );
+		surfaceEdge.position.copy( mesh.position );
+		meshEdges.push( surfaceEdge );
+
+	}
+	//console.log( 'meshEdges', meshEdges );
+
+	return meshEdges;
+
+};
+
+
+
+THRU.toggleEdges = function( obj = THR.scene ) {
+
+	if ( THRU.edgeGroup && THRU.edgeGroup.length === 0 ) {
+
+		THRU.edgeGroup = new THREE.Group();
+		THRU.edgeGroup.name = "edgeGroup";
+
+		const edgeGroup = THRU.getMeshEdges( obj );
+		//console.log( 'edgeGroup', edgeGroup );
+
+		THRU.edgeGroup.add( ...edgeGroup );
+
+		THR.scene.add( THRU.edgeGroup );
+
+		return;
+
+	}
+
+
+	THRU.edgeGroup.traverse( child => {
+
+		//if ( child instanceof THREE.Line ) {
+
+			child.visible = !child.visible;
+
+		//}
+
+	} );
+
+};
 
 
 ////////// Lights
@@ -489,45 +502,28 @@ THRU.addSomeLights2 = function() {
 
 
 
-//////////
+////////// Get some meshes and stuff for testing or annotating
 
+THRU.getGeometry = function() {
 
-THRU.setSceneDispose = function( obj = THR.scene.children ) {
-	//console.log( 'THR.scene', THR.scene );
+	// useful debug snippet
+	const geometry = new THREE.TorusKnotBufferGeometry( 10, 3, 100, 16 );
+	//const geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
 
-	THR.scene.traverse( function ( child ) {
+	const material = new THREE.MeshNormalMaterial();
+	const mesh = new THREE.Mesh( geometry, material );
 
-		if ( child instanceof THREE.Mesh ) {
+	const edgesGeometry = new THREE.EdgesGeometry( geometry );
+	const edgesMaterial = new THREE.LineBasicMaterial( { color: 0x000000 } );
+	const surfaceEdge = new THREE.LineSegments( edgesGeometry, edgesMaterial );
 
-			child.geometry.dispose();
-			child.material.dispose();
+	mesh.add( surfaceEdge );
 
-			//THR.scene.remove( child );
+	return mesh;
 
-		} else if ( ( child instanceof THREE.LineSegments )  ) {
-
-			child.geometry.dispose();
-			child.material.dispose();
-
-		}
-
-	} );
-
-	if ( Array.isArray( obj ) ) {
-
-		THR.scene.remove( ...obj );
-
-	} else {
-
-		THR.scene.remove( obj );
-
-	}
-
-
-	THR.axesHelper = undefined;
-	THRU.helperNormalsFaces = undefined;
-
-	//divRendererInfo.innerHTML = THRU.getRendererInfo();
+	// add to HTML file:
+	// mesh = THRU.getGeometry();
+	// THR.scene.add( mesh );
 
 };
 
@@ -566,10 +562,9 @@ THRU.getSomeBoxes = function( count = 500, size = 10, material = new THREE.MeshN
 THRU.drawPlacard = function( text = 'abc', scale = 0.05, color = Math.floor( Math.random() * 255 ), x = 0, y = 0, z = 10 ) {
 
 	// add update
-	// 2016-02-27 ~ https://github.com/jaanga/jaanga.github.io/tree/master/cookbook-threejs/examples/placards
+	// 2019-07-12 ~ https://github.com/jaanga/jaanga.github.io/tree/master/cookbook-threejs/examples/placards
 
 	const placard = new THREE.Object3D();
-	const v = function( x, y, z ){ return new THREE.Vector3( x, y, z ); };
 
 	const texture = canvasMultilineText( text, { backgroundColor: color }   );
 	const spriteMaterial = new THREE.SpriteMaterial( { map: texture, opacity: 0.9, transparent: true } );
@@ -578,12 +573,14 @@ THRU.drawPlacard = function( text = 'abc', scale = 0.05, color = Math.floor( Mat
 	sprite.scale.set( scale * texture.image.width, scale * texture.image.height );
 
 	//const geometry = new THREE.Geometry();
+	//const v = function( x, y, z ){ return new THREE.Vector3( x, y, z ); };
 	//geometry.vertices = [ v( 0, 0, 0 ),  v( x, y, z ) ];
 	//const material = new THREE.LineBasicMaterial( { color: 0xaaaaaa } );
 	//const line = new THREE.Line( geometry, material );
 	//placard.add( sprite, line );
 
 	placard.add( sprite );
+
 	return placard;
 
 
@@ -620,7 +617,7 @@ THRU.drawPlacard = function( text = 'abc', scale = 0.05, color = Math.floor( Mat
 		context.fillStyle = '#000' ;
 		context.font = font;
 
-		for ( i = 0; i < textArray.length; i++) {
+		for ( let i = 0; i < textArray.length; i++) {
 
 			context.fillText( textArray[ i ], 10, 48  + i * 60 );
 
@@ -635,4 +632,3 @@ THRU.drawPlacard = function( text = 'abc', scale = 0.05, color = Math.floor( Mat
 	}
 
 };
-
