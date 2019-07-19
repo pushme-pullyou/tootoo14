@@ -194,9 +194,9 @@ function init() {
 	THR.getThreejs();
 
 	THRU.init();
-	THRU.setHelpers();
 
 	const mesh = THRU.getGeometry();
+
 	THR.scene.add( mesh );
 	THRU.addSomeLights2();
 
@@ -221,13 +221,12 @@ function init() {
 
 	POP.init();
 
-	POPX.init();
+	//POPX.init();
 
 	COR.init();
 
 	// let's go / FOB to load default and fire onload events
 	//if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
-
 
 	POP.setPopupShowHide();
 

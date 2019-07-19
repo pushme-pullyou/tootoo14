@@ -17,23 +17,20 @@ const COR = {
 POP.version = MNU.version = document.head.querySelector( '[ name=version ]' ).content || "";
 POP.date = MNU.date = document.head.querySelector( '[ name=date ]' ).content || "";
 
-//POP.popup = "../popup.md";
 POP.license = "https://pushme-pullyou.github.io/tootoo14/pages/license.md";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
-//THM.cssBasic = "style.css";
-//THM.cssBasic = "https://www.w3schools.com/lib/w3-theme-red.css";
 
-FOB.urlDefaultFile = "README.md";
+FOB.urlDefaultFile = "../README.md";
 
 FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
 
 // For main menu header
-MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-04/`;
+//MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-05/`;
 
-MNU.title = "TooToo";
+//MNU.title = "TooToo";
 
-MNU.helpFile = "../README.md";
+//MNU.helpFile = "README.md";
 
 //MNU.description = document.head.querySelector( '[ name=description ]' ).content;
 MNU.description = `Very simple JavaScript files to help you explore and build new tools on <a href="https://github.com" target="_blank">GitHub</a>.`;
