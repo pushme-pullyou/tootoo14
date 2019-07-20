@@ -5,11 +5,11 @@
 const FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-06-29",
+	"date": "2019-07-20",
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/README.md",
 	"license": "MIT License",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-03/fob-file-open-basic/fob-file-open-basic.js",
-	"version": "0.14.03-0fob"
+	"version": "0.14.05-0fob"
 };
 
 FOB.urlDefaultFile = "README.md";
@@ -321,7 +321,7 @@ FOB.onProgress = function( size = 0, note = '' ) {
 
 	const timeToLoad = ( performance.now() - FOB.timeStart ).toLocaleString();
 
-	let htm =
+	FOB.fileInfo =
 	`
 		<div style="padding: 1rem 0;" >
 			<div style=padding:0; >File name:</div>
@@ -331,9 +331,8 @@ FOB.onProgress = function( size = 0, note = '' ) {
 			${ note }
 		</div>
 	`;
-	//console.log( 'htm', htm );
 
-	targetProgress[ 0 ].innerHTML = htm;
+	targetProgress[ 0 ].innerHTML = FOB.fileInfo;
 
 };
 
@@ -376,7 +375,7 @@ FOB.callbackXml = function( text ) {
 
 	const eventLoad = new Event( 'FOBonXmlFileLoad' );
 	//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
-	
+
 	document.body.dispatchEvent( eventLoad );
 
 

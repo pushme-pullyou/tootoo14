@@ -28,6 +28,12 @@
 
 <summary>Change log</summary>
 
+### 2019-07-20 ~ Theo
+
+FOB 0.14.05-0fob
+
+* F - FOB.js: Add FOB.fileInfo
+
 
 ### 2019-07-18 ~ Theo
 
@@ -37,7 +43,6 @@ FOB 0.14.05-0fob
 	* if no file previously loaded
 
 FOB 0.14.1-8fob
-
 * Add event listeners for zip and json for testing and comment out
 
 
