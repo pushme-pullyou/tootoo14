@@ -324,10 +324,10 @@ FOB.onProgress = function( size = 0, note = '' ) {
 	FOB.fileInfo =
 	`
 		<div style="padding: 1rem 0;" >
-			<div style=padding:0; >File name:</div>
-			<div style=color:blue;padding:0; >${ FOB.name }</div>
-			<div style=padding:0; >bytes loaded: ${ size.toLocaleString() }</div>
-			<div style=padding:0; >time to load: ${ timeToLoad }ms</div>
+			<div class=attributeTitle >File name:</div>
+			<div class=attributeValue >${ FOB.name }</div>
+			<div><span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></div>
+			<div><span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ timeToLoad } ms</span></div>
 			${ note }
 		</div>
 	`;
