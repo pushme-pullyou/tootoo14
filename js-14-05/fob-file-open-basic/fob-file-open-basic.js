@@ -1,4 +1,4 @@
-/* globals GBX, JSZip, showdown, divContents, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
+/* globals JSZip, showdown, divContents, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
 // jshint esversion: 6
 /* jshint loopfunc: true */
 
@@ -143,7 +143,7 @@ FOB.onHashChange = function() {
 
 
 FOB.requestFileDecider = function( url ) { // from a button
-	//console.log( 'url', url );
+	console.log( 'url', url );
 
 	if ( !url ) { return; }
 
@@ -613,12 +613,12 @@ FOB.onFileZipLoad = function() {
 
 ////////// File Save
 
-// better way than using GBX.text?
+// better way than using text?
 
 FOB.butSaveFile = function() {
 
 	const name = FOB.name.replace( /\.xml/i, "-spifix.xml" );
-	const blob = new Blob( [ GBX.text ] );
+	const blob = new Blob( [ text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
 	a.download = name;
@@ -634,7 +634,7 @@ FOB.butSaveFileZip = function() {
 	const name = FOB.name.replace( /\.xml/i, "-spifix.zip" );
 	const zip = new JSZip();
 
-	zip.file( FOB.name, GBX.text );
+	zip.file( FOB.name, text );
 
 	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
 
