@@ -12,12 +12,12 @@ _TooToo is a collection of very simple, plain-vanilla JavaScript scripts and tes
 _The collection title is a play on the [Dr Dolittle]( https://en.wikipedia.org/wiki/Doctor_Dolittle ) naming style. Too-Too is the name of the good doctor's talking pet owl. See also, heh-heh, [pushMe-pullYou]( https://pushme-pullyou.github.io ). Do you git it?_
 
 Current set of modules:
-
-* **[Files GitHub API (FGA)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#fga-files-github-api/README.md )** Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files
+* **[Core (COR)]( https://pushme-pullyou.github.io/tootoo14/#js-14-05/cor-core/README.md)** core - contains local overrides
+* **[Files GitHub API (FGA)]( https://pushme-pullyou.github.io/tootoo14/#fga-files-github-api/README.md )** Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files
 * **[File Open Basic (FOB)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/fob-file-open-basic/README.md )** provides HTML and JavaScript to select, open and display local files using the file dialog box, drag and drop or URL
 * **[GitHub Access Token (GAT)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/gat-github-access-token/README.md )** gets GitHub API Access Token / overcomes the sixty requests per hour rate limit
 * **[Menu (MNU)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/mnu-menu/README.md )** generates standard HTML TooToo header and footer menu panel code and content and code that works on computers, tablets and phones <!-- * **[TooToo Selected Files Markdown (SFM)]( https://pushme-pullyou.github.io/tootoo13/tootoo13.html#cookbook/sfrm-selected-files-markdown/README.md )** provides HTML and JavaScript to open and read a Markdown file given an URL, convert the markdown to HTML and return the result to the calling function -->
-* **[Popup POP]( https://pushme-pullyou.github.io/tootoo14/#js-14-04/pop-popup/README.md )** TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones
+* **[Popup (POP)]( https://pushme-pullyou.github.io/tootoo14/#js-14-04/pop-popup/README.md )** TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones
 * **[Theme Select (THM)]( https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/thm-theme/README.md )** creates HTML menus and provides JavaScript code to add, select and load themes based on industry-standard CSS stylesheets
 * **[Template (TMP)](https://pushme-pullyou.github.io/tootoo14/js-14-1/tootoo14-1.html#../js-14-1/tmp-template/README.md )** provides HTML and JavaScript 'boilerplate' to create a typical TooToo menus
 
