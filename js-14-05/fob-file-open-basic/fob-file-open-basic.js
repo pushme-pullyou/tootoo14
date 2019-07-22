@@ -143,7 +143,7 @@ FOB.onHashChange = function() {
 
 
 FOB.requestFileDecider = function( url ) { // from a button
-	console.log( 'url', url );
+	//console.log( 'url', url );
 
 	if ( !url ) { return; }
 
