@@ -8,7 +8,7 @@ const TMP = {
 	"date": "2019-06-29",
 	"description": "template",
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-03/tmp-template/README.md",
-	"version": "0.14.03-1tmp",
+	"version": "0.14.06-0tmp",
 };
 
 

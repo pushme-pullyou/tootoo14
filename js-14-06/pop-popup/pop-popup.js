@@ -12,7 +12,7 @@ const POP = {
 		"helpFile": "README.md",
 		license: "MIT License",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-04/pop-popup",
-		"version": "0.14.04-2pop"
+		"version": "0.14.06-0pop"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,

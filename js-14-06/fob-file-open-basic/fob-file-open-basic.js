@@ -9,7 +9,7 @@ const FOB = {
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/README.md",
 	"license": "MIT License",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-03/fob-file-open-basic/fob-file-open-basic.js",
-	"version": "0.14.05-0fob"
+	"version": "0.14.06-0fob"
 };
 
 FOB.urlDefaultFile = "README.md";

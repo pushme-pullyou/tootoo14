@@ -8,7 +8,7 @@ const THM = {
 	"date": "2019-06-27",
 
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-03/thm-theme/README.md",
-	"version": "0.14.03-2",
+	"version": "0.14.06-0",
 };
 
 THM.description =
