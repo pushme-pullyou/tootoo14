@@ -314,6 +314,7 @@ FOB.onDrop = function( event ) {
 
 FOB.onProgress = function( size = 0, note = '' ) {
 
+	// we can do better than this
 	const targetProgress = document.body.querySelectorAll( "#FOBdivProgress" );
 	//console.log( 'targetProgress', targetProgress);
 
