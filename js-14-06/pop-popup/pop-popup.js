@@ -62,7 +62,7 @@ POP.init = function() {
 
 
 POP.setPopupShowHide = function( id = butPopupClose, text = POP.popup, footer = POP.footer, info ) {
-	console.log( 'info', info );
+	//console.log( 'info', info );
 
 	POP.popupId = id;
 

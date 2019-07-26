@@ -1,14 +1,21 @@
 /* globals FOB, FGAdivMenuItems, FGAdivBreadcrumbs */
-/* jshint esversion: 6 */
-/* jshint loopfunc: true */
+// jshint esversion: 6
+// jshint loopfunc: true
 
 
 const FGA = {
-	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-06-08",
-	"description": "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
-	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fga-files-github-api/README.md",
-	"version": "0.14.1-5"
+
+	script: {
+
+		copyright: "Copyright 2019 pushMe pullYou authors",
+		date: "2019-07-25",
+		description: "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
+		helpFile: "fga-files-github-api/README.md",
+		license: " MIT License",
+		version: "0.14.06-0fga"
+
+	}
+
 };
 
 
@@ -31,6 +38,7 @@ FGA.regexHtml = /\.(htm?l)$/i;
 
 FGA.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
+const source = `<a href=${ MNU.urlSourceCode + FGA.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
 
 FGA.getMenuFilesGithubApi = function() {
 
@@ -46,9 +54,9 @@ FGA.getMenuFilesGithubApi = function() {
 		`
 			<details open >
 
-				<summary id=FGAsumSurfaces  >All folders and files
-					<button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.helpFile);" style=float:right; >?</button>
-				</summary>
+				<summary id=FGAsumSurfaces  >All folders and files</summary>
+
+				<button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.script.helpFile,POP.footer,'${ source}');" style=float:right; >?</button>
 
 				<div id = "FGAdivFilesGithubApi" ></div>
 

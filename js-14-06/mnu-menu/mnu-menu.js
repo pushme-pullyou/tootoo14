@@ -83,6 +83,7 @@ MNU.footerIssues	= "https://github.com/pushme-pullyou/tootoo14/issues";
 MNU.getNavHeader = function() {
 
 	const source = `<a href=${ MNU.urlSourceCode + MNU.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
+
 	const htm  =
 	`
 	<div>

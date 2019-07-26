@@ -1,4 +1,4 @@
-# [Menu (MNU) Read Me]( #js-14-0/mnu-menu/README.md )
+# Menu (MNU) Read Me
 
 
 [Source code]( https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-1/mnu-menu/mnu-menu.js )
@@ -7,9 +7,10 @@
 
 <summary>Concept</summary>
 
-Build useful menu headers and footers
-
 TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones
+
+* Build useful menu headers and footers
+* Provide utilities to assist menu experience
 
 </details>
 
