@@ -1,24 +1,24 @@
-/* global POP, Stats */
-/* jshint esversion: 6 */
-/* jshint loopfunc: true */
+/* global POP, Stats, navPanel */
+// jshint esversion: 6
+// jshint loopfunc: true
 
 
 const MNU = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"scriptDate": "2019-07-18",
+		"scriptDate": "2019-07-26",
 		"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
-		"helpFile": "README.md",
-		"scriptVersion": "0.14.05-0mnu",
+		"helpFile": "mnu-menu/README.md",
+		"version": "0.14.06-0mnu",
 	}
 };
 
 ////////// boilerplate for downstream users
 
 MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
-MNU.urlSourceCodeIcon = `<img src="${ MNU.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
-MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-05/`;
+MNU.urlSourceCodeIcon = `<img src=${ MNU.urlSourceCodeImage } height=18 style=opacity:0.5 >`;
+MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-06/`;
 
 MNU.title = document.title;
 
@@ -43,16 +43,16 @@ MNU.descriptionTooToo =
 		<p>
 			<ul>
 				<li>TooToo is a collection of JavaScript scripts to help you browse and view the contents of many files on <a href="https://github.com">GitHub</a> with remarkable ease</li>
-				<li>View HTML, <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, images and many other file types as rendered web pages or as source code</li>
-				<li>Traverse a tree menu, select and display folder and file names in  with single clicks</li>
-				<li>Open local files with OS file dialog or by drag and drop and open remote files with a URL</li>
-				<li>Access files quickly and then edit and commit changes to source using the GitHub interface</li>
+				<li>View HTML, <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, images and many other file types either as rendered web pages or as source code</li>
+				<li>Traverse a tree menu, select and display folder and file names with single clicks</li>
+				<li>Open local files with OS file dialog or by drag & drop. Open remote files with a URL</li>
+				<li>Note: you may access files quickly and then edit and commit changes to source using the GitHub interface</li>
 				<li>Web app with sliding menu that works on computer, tablet or phone</li>
-				<li>Written in plain-vanilla JavaScript / Uses the <a href="https://developer.github.com/v3/">GitHub Developer API</a> / Hosting with <a href="https://pages.github.com/">GitHub Pages</a> / Simple CSS theme selection</li>
+				<li>Enjoy: All written in plain-vanilla JavaScript / Uses the <a href="https://developer.github.com/v3/">GitHub Developer API</a> / Hosting with <a href="https://pages.github.com/">GitHub Pages</a> / Simple CSS theme selection</li>
 			</ul>
 		</p>
 
-		<p>TooToo is is one of several apps in the <a href="https://pushme-pullyou.github.io" target="_blank">pushMe-pullYou</a> GitHub organization</p>
+		<p>TooToo is is one of several apps in the <a href="https://pushme-pullyou.github.io" target="_blank">pushMe-pullYou</a> GitHub organization.</p>
 	`;
 
 
@@ -82,6 +82,7 @@ MNU.footerIssues	= "https://github.com/pushme-pullyou/tootoo14/issues";
 
 MNU.getNavHeader = function() {
 
+	const source = `<a href=${ MNU.urlSourceCode + MNU.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
 	const htm  =
 	`
 	<div>
@@ -115,8 +116,13 @@ MNU.getNavHeader = function() {
 		<p>
 			${ MNU.description }
 
-			<button class=butHelp id=butMenu onclick="POP.setPopupShowHide(butMenu,MNU.descriptionTooToo);" style=float:right; >?</button>
 
+			</p>
+
+			<p>
+			<button onclick=MNU.toggleDetailsOpen() >Close all menus</button>
+
+			<button class=butHelp id=butMenu onclick="POP.setPopupShowHide(butMenu,MNU.descriptionTooToo,POP.footer,'${ source }');" >?</button>
 		</p>
 
 	</div>
@@ -186,6 +192,18 @@ MNU.getNavFooterPopup = function() {
 
 
 
+MNU.toggleDetailsOpen = function( target = navPanel ) {
+
+	const details = target.querySelectorAll( "details" );
+
+	details.forEach( element => element.open = false );
+
+};
+
+
+
+//////////
+
 MNU.showFps = function(){
 
 	const script = document.body.appendChild( document.createElement('script') );
@@ -241,28 +259,5 @@ MNU.rateLimits = function( button ) {
 		POP.setPopupShowHide( button, text );
 
 	}
-
-};
-
-
-
-//////////
-
-MNU.nnngetDivPopup = function() {
-
-	const version = document.head.querySelector( '[ name=version ]' ).content;
-
-	const date = document.head.querySelector( '[ name=date ]' ).content;
-
-	const htm =
-	`
-		<div style=text-align:right; ><button onclick="POP.setPopupShowHide();" >×</button></div>
-
-		<div id="MNUdivPopupData" ></div>
-
-		<div id="MNUdivMessage" ><p>R${ version } - ${ date }</p></div>
-	`;
-
-	return htm;
 
 };

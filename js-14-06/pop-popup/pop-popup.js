@@ -11,7 +11,7 @@ const POP = {
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "README.md",
 		license: "MIT License",
-		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-04/pop-popup",
+		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-06/pop-popup",
 		"version": "0.14.06-0pop"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
@@ -62,7 +62,7 @@ POP.init = function() {
 
 
 POP.setPopupShowHide = function( id = butPopupClose, text = POP.popup, footer = POP.footer, info ) {
-	//console.log( 'text',id, text );
+	console.log( 'info', info );
 
 	POP.popupId = id;
 
@@ -92,7 +92,7 @@ POP.setPopupShowHide = function( id = butPopupClose, text = POP.popup, footer = 
 
 		divDragMoveFooter.innerHTML = footer;
 
-		if ( info ) { POPspanInfo.innerHTML = info }
+		if ( info ) { console.log( '', footer, info );POPspanInfo.innerHTML = info }
 
 	} else {
 
