@@ -52,6 +52,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages ) {  /
 
 				<summary>File statistics</summary>
 
+				<div id=FILdivProgress ></div>
+
 				<div id=FOBdivInfo ></div>
 
 			</details>
