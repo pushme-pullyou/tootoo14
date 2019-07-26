@@ -31,15 +31,19 @@ FOB.regexHtml = /\.(htm?l)$/i;
 FOB.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
 
-FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages = FOBdivMessages) {  // called from main HTML file
-
-	FOB.target = target;
-	FOB.divMessages = targetMessages;
+FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from main HTML file
 
 	window.addEventListener ( 'hashchange', FOB.onHashChange, false );
-
+	
 	FOBdivFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
 	FOBdivFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
+
+	FOB.target = target;
+
+	const messages = document.body.querySelector( "#FOBdivMessages" )
+	FOB.divMessages = messages;
+
+
 
 
 	if ( FOB.divMessages ) {
