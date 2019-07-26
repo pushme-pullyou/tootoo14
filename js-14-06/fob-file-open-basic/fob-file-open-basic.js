@@ -52,7 +52,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages ) {  /
 
 				<summary>File statistics</summary>
 
-				<div id=FOBdivInfo >vvv</div>
+				<div id=FOBdivInfo ></div>
 
 			</details>
 		`;
@@ -79,7 +79,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages ) {  /
 					or drag & drop files here
 					or enter a default file path <a class=helpItem href=https://www.ladybug.tools/spider/#pages/file-open.md title="Learn how to speed up your testing" target=-blank >?</a>
 					<!--
-						try this: 	https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml
+						try this: https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml
 					-->
 					<input id=FOBinpFilePath onchange=FOB.updateDefaultFilePath(); style=width:95%; title='paste a file path or URL here then press Enter' >
 				</p>
@@ -325,10 +325,9 @@ FOB.onProgress = function( size = 0, note = '' ) {
 	FOB.fileInfo =
 	`
 		<div style="padding: 1rem 0;" >
-			<div class=attributeTitle >File name:</div>
-			<div class=attributeValue >${ FOB.name }</div>
-			<div><span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></div>
-			<div><span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ timeToLoad } ms</span></div>
+			<div><span class=attributeTitle >Name: <span class=attributeValue >${ FOB.name }</span></div>
+			<div><span class=attributeTitle >Bytes loaded: </span>: <span class=attributeValue >${ size.toLocaleString() }</span></div>
+			<div><span class=attributeTitle >Time to load: </span>: <span class=attributeValue>${ timeToLoad } ms</span></div>
 			${ note }
 		</div>
 	`;
