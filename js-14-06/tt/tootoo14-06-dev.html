@@ -82,6 +82,8 @@
 
 				<div id=FOBdivFileSaveBasic ></div>
 
+				<div id=FOBdivMessages >messages here</div>
+
 			</details>
 
 
@@ -187,7 +189,7 @@ function init() {
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
-	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic( divContents, FOBdivMessages );
 
 	FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
 

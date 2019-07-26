@@ -31,15 +31,33 @@ FOB.regexHtml = /\.(htm?l)$/i;
 FOB.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
 
-FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from main HTML file
+FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages ) {  // called from main HTML file
 
 	FOB.target = target;
+	FOB.divMessages = targetMessages;
 
 	window.addEventListener ( 'hashchange', FOB.onHashChange, false );
 
 	FOBdivFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
 	FOBdivFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
 
+
+	if ( FOB.divMessages ) {
+
+		FOB.divMessages.innerHTML =
+		`
+			<br><hr>
+
+			<details >
+
+				<summary>File statistics</summary>
+
+				<div id=FOBdivInfo >vvv</div>
+
+			</details>
+		`;
+
+	}
 
 	const htm =
 	`
@@ -68,16 +86,6 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 			</div>
 
-			<details >
-
-				<summary>File open statistics</summary>
-
-				<div id=FOBdivProgress ></div>
-
-				<div id=FOBdivAppStats ></div>
-
-			</details>
-
 		</details>
 	`;
 
@@ -103,8 +111,6 @@ FOB.getMenuFileSaveBasic = function() {
 		<p>
 			<button onclick=FOB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
 		</p>
-
-		<hr>
 
 	</details>
 
@@ -314,12 +320,6 @@ FOB.onDrop = function( event ) {
 
 FOB.onProgress = function( size = 0, note = '' ) {
 
-	// we can do better than this
-	const targetProgress = document.body.querySelectorAll( "#FOBdivProgress" );
-	//console.log( 'targetProgress', targetProgress);
-
-	if ( targetProgress.length === 0 ) { return; }
-
 	const timeToLoad = ( performance.now() - FOB.timeStart ).toLocaleString();
 
 	FOB.fileInfo =
@@ -333,7 +333,7 @@ FOB.onProgress = function( size = 0, note = '' ) {
 		</div>
 	`;
 
-	targetProgress[ 0 ].innerHTML = FOB.fileInfo;
+	if ( FOB.divMessages ) { FOBdivInfo.innerHTML = FOB.fileInfo; }
 
 };
 

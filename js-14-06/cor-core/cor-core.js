@@ -1,13 +1,13 @@
 /* globals FOB, MNU, POP */
-/* jshint esversion: 6 */
-/* jshint loopfunc: true */
+// jshint esversion: 6
+// jshint loopfunc: true
 
 const COR = {
 
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-18",
+		"date": "2019-07-25",
 		"description": "core - contains local overrides",
 		"helpFile": "cor-core/README.md",
 		"version": "0.14.06-0cor",
