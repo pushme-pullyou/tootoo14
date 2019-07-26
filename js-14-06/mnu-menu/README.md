@@ -32,29 +32,9 @@ TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code 
 
 <summary>Change Log</summary>
 
-### 2019-07-17 ~ Theo
+### 2019-07-25 ~ Theo
 
-* R - MNU.js: set title href using location
-	* May help with using base in html files
+MNU 0.14.06-0mnu
 
-## 2019-05-28 ~ Theo
-
-* B - MNU.js: Fix rate limits not appearing
-* C - MNU: Update readme
-
-Dealt with
-* 2019-05-13 ~ Add getNavPopup function that builds help popup in MNU.js rather than in every HTML
-
-## 2019-05-13 ~ Theo
-
-* Many updates / see commit messages
-
-Dealt with
-* 2019-05-11 ~ Add menu footer popup url var
-* 2019-05-11 ~ Add link to this readme in mnu-menu.html
-
-## 2019-05-11 ~ Theo
-
-* First commit
-
-</details>
+* F: Add MNU.toggleDetailsOpen
+* F: Add link to source param in footer
