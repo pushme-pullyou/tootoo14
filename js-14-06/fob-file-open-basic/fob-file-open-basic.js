@@ -31,7 +31,7 @@ FOB.regexHtml = /\.(htm?l)$/i;
 FOB.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
 
-FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages ) {  // called from main HTML file
+FOB.getMenuFileOpenBasic = function( target = divContents, targetMessages = FOBdivMessages) {  // called from main HTML file
 
 	FOB.target = target;
 	FOB.divMessages = targetMessages;
