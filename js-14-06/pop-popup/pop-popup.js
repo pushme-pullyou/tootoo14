@@ -92,7 +92,8 @@ POP.setPopupShowHide = function( id = butPopupClose, text = POP.popup, footer = 
 
 		divDragMoveFooter.innerHTML = footer;
 
-		if ( info ) { console.log( '', footer, info );POPspanInfo.innerHTML = info }
+		POPspanInfo.innerHTML = info ? info : `v${ POP.version } - ${ POP.date }`;
+
 
 	} else {
 
