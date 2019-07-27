@@ -1,6 +1,6 @@
 # github-access-token (GAT) Read Me
 
-[Source code]( https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1 )
+[Source code]( https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-06 )
 
 <details open >
 
@@ -10,22 +10,13 @@
 
 This script uses the GitHub API to obtain the names of folders and files displayed in this menu.
 
-In rare circumstances your usage may push the requests over the sixty requests per hour limit,
-no list of files will appear and this script will display an error message.
-After an or so so, the rates limit is automatically reset and menus will again display as expected.
+In rare circumstances your usage may push the requests over the sixty requests per hour limit, no list of files will appear and this script will display an error message. After an hour or so, the rates limit is automatically reset and menus will again display as expected.
 
+If you are testing or building new menus or whatever and the menus stop working, you may obtain access tokens from GitHub at no charge and enter the token into the text box. This will raise your limit to 5,000 requests per hour.
 
-<p>
-If you are testing or building new menus or whatever,
-you may obtain access tokens from GitHub at no charge and enter the token into the text box.
-This will raise your limit to 5,000 requests per hour.
-</p>
-<p>
 See <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">developer.github.com/v3</a>.
-</p>
-<p>
-<button id=butGATpop onclick=MNU.rateLimits(butGATpop); title='If files and folder stop appearing, it is likely due to too many API calls' >View GitHub API rate limits</button>
-</p>
+
+<button id=butGATpop onclick=MNU.rateLimits(butGATpop); title='If files and folder stop appearing, it is likely due to too many API calls' >View your current GitHub API rate limits</button>
 
 </details>
 
