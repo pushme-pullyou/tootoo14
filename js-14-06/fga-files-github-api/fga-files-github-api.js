@@ -8,11 +8,11 @@ const FGA = {
 	script: {
 
 		copyright: "Copyright 2019 pushMe pullYou authors",
-		date: "2019-07-25",
+		date: "2019-08-03",
 		description: "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
-		helpFile: "fga-files-github-api/README.md",
+		helpFile: "https://pushme-pullyou.github.io/tootoo14/js-14-06/fga-files-github-api/README.md",
 		license: " MIT License",
-		version: "0.14.06-0fga"
+		version: "0.14.06-1fga"
 
 	}
 

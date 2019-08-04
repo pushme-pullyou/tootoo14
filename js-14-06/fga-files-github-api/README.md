@@ -34,9 +34,17 @@ The script makes an API call and reads the data one folder at a time. This may b
 
 <summary>Change Log</summary>
 
+### 2019-08-03 ~ Theo
+
+
+FGS.js 0.14.06-1fgs
+
+* B: Fix helpfile link
+
+
 ### 2019-07-25 ~ Theo
 
-FGS.js 0.14.06-0fgs
+FGA.js 0.14.06-0fga
 
 * F: Add link to source in help footer
 
