@@ -11,7 +11,7 @@ html { height: 100%; }
 /* font-family: 'inconsolata'; */
 
 body { background-color: #ffffff; color: #555; font: 12pt monospace; height: 100%;
-	line-height: 18px; margin: 0px; /* overflow: hidden; */ }
+	 margin: 0px; /* overflow: hidden; */ }
 
 a { color: rgb(206, 33, 33); text-decoration: none; }
 a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
@@ -36,7 +36,7 @@ input[ type = range ]::-moz-range-thumb { background-color: rgb(228, 225, 225); 
 input[ type = range ]::-webkit-slider-thumb { -webkit-appearance: none; background-color: #888; height: 20px; width: 10px; }
 
 main { border: 0px; height: 100%; left: var( --mnu-width ); margin: 0; /* overflow: hidden; */
-	position: absolute; width: calc(100% - var( --mnu-width ) );  }
+	position: absolute; width: calc( 100% - var( --mnu-width ) );  }
 
 
 summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
