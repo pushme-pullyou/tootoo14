@@ -7,7 +7,7 @@ const GAT = {
 	"copyright": "Copyright 2019 PushMe-PullYou authors",
 	"date": "2019-06-08",
 	"description": "GitHub access token",
-	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/gat-github-access-token/README.md",
+	"helpFile": "../gat-github-access-token/README.md",
 	"license": "MIT License",
 	"version": "0.14.06-0gat",
 };
@@ -25,18 +25,21 @@ GAT.getMenuGitHubAccessToken = function() {
 	`
 		<details>
 
-			<summary>GitHub API Access Token
-				<button id=butGAT class=butHelp onclick="POP.setPopupShowHide(butGAT,GAT.helpFile);" style=float:right; >?</button>
-			</summary>
+			<summary>GitHub API Access Token </summary>
+
+			<div>
+				<button id=butGAT class=butHelp onclick="GAT.setViewHelp(butGAT,GAT.helpFile);" >?</button>
+			</div>
 
 			<p>
 				<div>Access token</div>
-				<input value="${ GAT.accessToken }" id=GATinpGitHubApiKey  onclick=this.select(); onblur=GAT.setGitHubAccessToken(this.value); title="Obtain API Access Token" style=width:100%; >
+				<input value="${ GAT.accessToken }" id=GATinpGitHubApiKey onclick=this.select(); onblur=GAT.setGitHubAccessToken(this.value); title="Obtain API Access Token" style=width:100%; >
 			</p>
 
 			<p>
-				<button id=GATbutRateLimits onclick=MNU.rateLimits(GATbutRateLimits); title='If files and folder stop appearing, it is likely due to too many API calls' >
-					View GitHub API rate limits</button>
+				<button id=GATbutRateLimits onclick=GAT.setViewRateLimits(GATbutRateLimits); title='If files and folder stop appearing, it is likely due to too many API calls' >
+					View GitHub API rate limits
+				</button>
 			</p>
 
 
@@ -45,7 +48,23 @@ GAT.getMenuGitHubAccessToken = function() {
 
 	return htm;
 
-}
+};
+
+
+
+GAT.setViewHelp = function () {
+
+
+	if ( window.POP ) {
+
+		POP.setPopupShowHide(butGAT,GAT.helpFile);
+
+	} else {
+
+
+	}
+
+};
 
 GAT.setGitHubAccessToken = function( accessToken ) {
 
@@ -61,7 +80,7 @@ GAT.setGitHubAccessToken = function( accessToken ) {
 
 
 
-GAT.rateLimits = function( button, target ) {
+GAT.setViewRateLimits = function( button, target = divContents ) {
 	//console.log( 'button', button );
 
 	const url = "https://api.github.com/rate_limit";
@@ -86,7 +105,7 @@ GAT.rateLimits = function( button, target ) {
 			<pre> ${ xhr.target.response } </pre>
 		`;
 
-		target.innerHTML = htm;
+		target.innerHTML += htm;
 
 	}
 
