@@ -34,7 +34,7 @@ FOB.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ wi
 FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from main HTML file
 
 	window.addEventListener ( 'hashchange', FOB.onHashChange, false );
-	
+
 	FOBdivFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
 	FOBdivFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
 
@@ -42,9 +42,6 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	const messages = document.body.querySelector( "#FOBdivMessages" )
 	FOB.divMessages = messages;
-
-
-
 
 	if ( FOB.divMessages ) {
 

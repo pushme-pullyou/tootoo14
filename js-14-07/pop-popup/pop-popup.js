@@ -6,17 +6,16 @@
 const POP = {
 	"script": {
 
-		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-07",
+		"copyright": "Copyright 2019 pushMe-pullYou authors",
+		"date": "2019-08-12",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
-		"helpFile": "README.md",
+		"helpFile": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/README.md",
 		license: "MIT License",
-		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-06/pop-popup",
-		"version": "0.14.06-0pop"
+		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/pop-popup",
+		"version": "0.14.07-0pop"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,
-
 
 	license: "../../pages/license.md",
 	txt: "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?"
