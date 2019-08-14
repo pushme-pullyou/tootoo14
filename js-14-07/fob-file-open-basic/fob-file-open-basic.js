@@ -207,7 +207,7 @@ FOB.onInputFileOpen = function( files ) {
 
 	const file = files.files[ 0 ];
 	const type = file.type;
-	console.log( 'type', type );
+	//console.log( 'type', type );
 	FOB.name = file.name;
 
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
@@ -282,8 +282,6 @@ FOB.fileOpenXml = function( text ) {
 
 
 FOB.reloadFile = function() {
-
-	console.log( '', 23 );
 
 	if ( FOB.files ) {
 
