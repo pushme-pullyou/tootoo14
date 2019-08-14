@@ -29,6 +29,13 @@
 
 <summary>Change log</summary>
 
+### 2019-08-14 ~ Theo
+
+FOB 0.14.06-1fob
+
+* B: Fix reload zip?
+
+
 ### 2019-07-26 ~ Theo
 
 FOB 0.14.06-0fob

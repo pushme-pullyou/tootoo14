@@ -207,7 +207,7 @@ FOB.onInputFileOpen = function( files ) {
 
 	const file = files.files[ 0 ];
 	const type = file.type;
-	//console.log( 'type', type );
+	console.log( 'type', type );
 	FOB.name = file.name;
 
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
@@ -283,7 +283,22 @@ FOB.fileOpenXml = function( text ) {
 
 FOB.reloadFile = function() {
 
+	console.log( '', 23 );
+
 	if ( FOB.files ) {
+
+		//console.log( 'FOB.files', FOB.files );
+
+		//const file = FOB.files.files[ 0 ];
+
+		//console.log( 'file', file );
+
+		//const type = file.type;
+		//console.log( 'type', type );
+
+		//FOB.name = file.name;
+
+		//console.log( 'FOB.name', FOB.name );
 
 		FOB.onInputFileOpen( FOB.files );
 
@@ -553,10 +568,10 @@ FOB.fileOpenZip = function( files ) {
 		//console.log( 'zip', zip );
 
 		zip.forEach( ( relativePath, zipEntry ) => names.push( zipEntry.name ) );
-		FOB.name = names[ 0 ];
-		console.log( 'FOB.name', FOB.name );
+		FOB.fileName = names[ 0 ];
+		console.log( 'FOB.fileName', FOB.fileName );
 
-		const arrTemp = zip.files[ FOB.name].async(
+		const arrTemp = zip.files[ FOB.fileName].async(
 			"uint8array",
 			metadata => FOB.onProgress( metadata.percent.toFixed(2) + '%', FOB.note )
 		);
@@ -595,7 +610,7 @@ FOB.fileOpenZip = function( files ) {
 		//document.body.addEventListener( 'FOBonZipFileLoad', FOB.onFileZipLoad, false );
 
 		// document.body.addEventListener( 'FOBonZipFileLoad', () => {
-		// 	console.log( 'loaded', FOB.name )
+		// 	console.log( 'loaded', FOB.fileName )
 		// 	FOB.target.innerHTML = `<div style="${ FOB.contentsCss }" >${ FOB.text }</div>`;
 		// }, false );
 

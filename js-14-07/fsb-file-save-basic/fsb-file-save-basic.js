@@ -105,14 +105,14 @@ FSB.butSaveFileZip = function( text ) {
 
 	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
 
-	.then( function( blob ) {
+		.then( function( blob ) {
 
-		let a = document.body.appendChild( document.createElement( 'a' ) );
-		a.href = window.URL.createObjectURL( blob );
-		a.download = name;
-		a.click();
-		a = null;
+			let a = document.body.appendChild( document.createElement( 'a' ) );
+			a.href = window.URL.createObjectURL( blob );
+			a.download = name;
+			a.click();
+			a = null;
 
-	});
+	} );
 
 };
