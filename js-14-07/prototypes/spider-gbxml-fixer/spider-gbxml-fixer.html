@@ -5,14 +5,12 @@
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="Ladybug Tools authors" >
 <meta name = "date" content = "2019-08-26" >
-<meta name = "description" content = "Spider gbXML Tools" >
+<meta name = "description" content = "Spider gbXML Fixer" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "version" content = "0.0.00" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
-<title>Spider gbXML Tools</title>
-
-<base href = "" >
+<title>Spider gbXML Fixer</title>
 
 <link rel = "canonical" href = "https://www.ladybug.tools/spider-gbxml-tools" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
@@ -27,12 +25,16 @@
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
+<!-- Spider gbXML -->
+<script src = "js-core-gbxml/gbx-gbxml-parser.js" ></script>
+
 <!-- Menus generally -->
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-07/mnu-menu/mnu-menu.js" ></script>
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-07/pop-popup/pop-popup.js" ></script>
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-07/gat-github-access-token/gat-github-access-token.js" ></script>
 
 <!-- File menu panel -->
+<script src = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-17-03/js-menu/gff-github-folder-files.js" ></script>
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-07/fga-files-github-api/fga-files-github-api.js" ></script>
 <script src = "https://pushme-pullyou.github.io/tootoo14/js-14-07/fob-file-open-basic/fob-file-open-basic.js" ></script>
 
@@ -69,6 +71,10 @@
 				<summary class="sumMenuTitle" >GitHub folders & files</summary>
 
 				<div id="FGAdivMenuRepoFilesFolders" ></div>
+
+				<div id=GFFdivGithubFoldersFiles ></div>
+
+				<div id=GFFdivFileInfo></div>
 
 				<div id="GATdivGithubAccessToken" ></div>
 
@@ -162,12 +168,12 @@ MNU.description =
 	`
 		Scripts to help you view and manage <a href="http://gbxml.org" target="_blank">gbXML</a> files
 	`;
-
+3
 POP.version = document.head.querySelector( '[ name=version ]' ).content || "";
 MNU.version = "";
 POP.date = MNU.date = document.head.querySelector( '[ name=date ]' ).content || "";
 
-POP.popup = "spider-gbxml-viewer/v-0-17-01/popup.md";
+POP.popup = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/v-0-17-03/popup.md";
 POP.license = "https://www.ladybug.tools/spider/pages/license.md";
 
 FOB.urlDefaultFile = "README.md";
@@ -194,9 +200,9 @@ MNU.repoText="<img src='https://ladybug.tools/artwork/icons_bugs/ico/spider.ico'
 MNU.repoTitle="Spider: 3D interactive analysis in your browser mostly written around the Three.js JavaScript library";
 MNU.repoUrl="https://www.ladybug.tools/spider/";
 
-MNU.appText= ""; //"gbXML Tools";
-MNU.appTitle = ""; //"Tools to help you find, load, examine and edit gbXML files - in large numbers and sizes";
-MNU.appUrl = ""; //"https://www.ladybug.tools/spider-gbxml-tools/";
+MNU.appText= "gbXML Tools";
+MNU.appTitle = "Tools to help you find, load, examine and edit gbXML files - in large numbers and sizes";
+MNU.appUrl = "https://www.ladybug.tools/spider-gbxml-tools/";
 
 //MNU.urlSourceCodeImage="https://pushme-pullyou.github.io/github-mark-64.png";
 //MNU.urlSourceCodeIcon=`<img src="${ MNU.urlSourceCodeImage }" height=18 >`;
@@ -224,11 +230,16 @@ function init() {
 
 	THM.init();
 
+	GBX.init( GBXdivMessage ); // gets things going
+
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
 
-	FGA.getFiles(); // move to js?
+
+	//FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+
+	//FGA.getFiles(); // move to js?
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
@@ -247,10 +258,12 @@ function init() {
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
+	
+
 	aViewSource.href = MNU.urlSourceCode;
 
-	//POP.setPopupShowHide();
-	POP.popupId = butPopupClose;
+	POP.setPopupShowHide();
+	//POP.popupId = butPopupClose;
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) { toggleNavPanel(); }
 

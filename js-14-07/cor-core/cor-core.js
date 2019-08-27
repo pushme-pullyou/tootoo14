@@ -7,10 +7,10 @@ const COR = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-		"date": "2019-07-25",
+		"date": "2019-08-26",
 		"description": "core - contains local overrides",
 		"helpFile": "cor-core/README.md",
-		"version": "0.14.06-0cor",
+		"version": "0.14.07-0cor",
 	}
 };
 

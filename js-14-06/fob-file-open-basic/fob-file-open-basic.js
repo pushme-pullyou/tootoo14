@@ -34,7 +34,7 @@ FOB.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ wi
 FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from main HTML file
 
 	window.addEventListener ( 'hashchange', FOB.onHashChange, false );
-	
+
 	FOBdivFileOpenBasic.addEventListener( "dragover", function( event ){ event.preventDefault(); }, true );
 	FOBdivFileOpenBasic.addEventListener( 'drop', FOB.onDrop, false );
 
@@ -624,7 +624,7 @@ FOB.onFileZipLoad = function() {
 FOB.butSaveFile = function() {
 
 	const name = FOB.name.replace( /\.xml/i, "-spifix.xml" );
-	const blob = new Blob( [ text ] );
+	const blob = new Blob( [ GBX.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
 	a.download = name;
@@ -640,7 +640,7 @@ FOB.butSaveFileZip = function() {
 	const name = FOB.name.replace( /\.xml/i, "-spifix.zip" );
 	const zip = new JSZip();
 
-	zip.file( FOB.name, text );
+	zip.file( FOB.name, GBX.text );
 
 	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
 

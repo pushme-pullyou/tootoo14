@@ -10,7 +10,7 @@ const POP = {
 		"date": "2019-08-12",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/README.md",
-		license: "MIT License",
+		"license": "MIT License",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/pop-popup",
 		"version": "0.14.07-0pop"
 	},
