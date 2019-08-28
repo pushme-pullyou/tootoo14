@@ -14,16 +14,15 @@ const FSB = {
 		"description": "Save data to text file or compressed in a ZIP file using the file save dialog box. Uses pkZip.js.",
 		"license": "MIT License",
 		"title": "File save basic FSB",
-		"urlHelpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-07/fSb-file-open-basic/README.md",
-		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-07/" +
-			"fSb-file-open-basic/fSb-file-open-basic.js",
+		"urlHelpFile":
+"https://pushme-pullyou.github.io/tootoo14/js-14-07/fsb-file-save-basic/fsb-file-save-basic.md",
+		"urlSourceCode":
+"https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-07/fsb-file-save-basic/fsb-file-save-basic.js",
 		"version": "0.14.07-0fSb"
 
 	}
 
 };
-
-
 
 
 
@@ -82,7 +81,7 @@ FSB.getHelp = function() {
 
 	//FSB.target.innerHTML = htm;
 
-	const info = `${ "source code".link( FSB.urlSourceCode ) } - v${ FSB.script.version } - ${ FSB.script.date }`;
+	const info = `${ "source code".link( FSB.script.urlSourceCode ) } - v${ FSB.script.version } - ${ FSB.script.date }`;
 
 	POP.setPopupShowHide(FSBbutHelp,`${ FSB.script.urlHelpFile }`,POP.footer,info);
 
