@@ -285,19 +285,6 @@ FOB.reloadFile = function() {
 
 	if ( FOB.files ) {
 
-		//console.log( 'FOB.files', FOB.files );
-
-		//const file = FOB.files.files[ 0 ];
-
-		//console.log( 'file', file );
-
-		//const type = file.type;
-		//console.log( 'type', type );
-
-		//FOB.name = file.name;
-
-		//console.log( 'FOB.name', FOB.name );
-
 		FOB.onInputFileOpen( FOB.files );
 
 	} else {
@@ -359,6 +346,8 @@ FOB.onProgress = function( size = 0, note = '' ) {
 FOB.callbackDecider = function ( xhr ) {
 	//console.log( 'xhr', xhr );
 
+	FOB.text = xhr.target.response;
+	
 	const ulc = xhr.target.responseURL.toLowerCase();
 
 	if ( ulc.endsWith( '.md' ) ) {

@@ -35,6 +35,7 @@
 <!-- File menu panel -->
 <script src = "fga-files-github-api/fga-files-github-api.js" ></script>
 <script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
+<script src = "fsb-file-save-basic/fsb-file-save-basic.js" ></script>
 
 <!-- Edit Menu -->
 
@@ -80,7 +81,7 @@
 
 				<div id=FOBdivFileOpenBasic ></div>
 
-				<div id=FOBdivFileSaveBasic ></div>
+				<div id=FSBdivFileSaveBasic ></div>
 
 				<div id=FOBdivMessages ></div>
 
@@ -191,7 +192,7 @@ function init() {
 
 	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
 
-	//FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic(GBX.gbxml);
+	FSBdivFileSaveBasic.innerHTML = FSB.getMenuFileSaveBasic();
 
 	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 

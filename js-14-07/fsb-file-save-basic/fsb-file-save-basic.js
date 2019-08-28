@@ -7,18 +7,23 @@
 
 const FSB = {
 
-	"copyright": "Copyright 2019 pushMe pullYou authors",
-	"date": "2019-08-12",
-	"description": "Save data to text file or compressed in a ZIP file using the file save dialog box. Uses pkZip.js.",
-	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-07/fSb-file-open-basic/README.md",
-	"license": "MIT License",
-	"title": "Fils save basic FSB",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-07/fSb-file-open-basic/fSb-file-open-basic.js",
-	"version": "0.14.07-0fSb"
+	"script": {
+
+		"copyright": "Copyright 2019 pushMe pullYou authors",
+		"date": "2019-08-12",
+		"description": "Save data to text file or compressed in a ZIP file using the file save dialog box. Uses pkZip.js.",
+		"license": "MIT License",
+		"title": "File save basic FSB",
+		"urlHelpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-07/fSb-file-open-basic/README.md",
+		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-07/" +
+			"fSb-file-open-basic/fSb-file-open-basic.js",
+		"version": "0.14.07-0fSb"
+
+	}
 
 };
 
-FSB.name = "test.txt";
+
 
 
 
@@ -31,7 +36,9 @@ FSB.getMenuFileSaveBasic = function( sourceContents, targetHelpFile ) {
 
 	}
 
-	FSB.sourceContents = sourceContents;
+	FSB.name = FOB.name || "test.txt";
+
+	FSB.sourceContents = FOB.text || "Hello, World!";
 
 	FSB.target = targetHelpFile || document.body.appendChild( document.createElement( 'div' ) );
 
@@ -41,14 +48,14 @@ FSB.getMenuFileSaveBasic = function( sourceContents, targetHelpFile ) {
 
 		<summary>Save data to file</summary>
 
-		<button id=butFILSave class=butHelp onclick="FSB.getHelp();" >?</button>
+		<button id=FSBbutHelp class=butHelp onclick="FSB.getHelp();" >?</button>
 
 		<p>
-			<button onclick=FSB.butSaveFile(FSB.sourceContents.value); >Save file as text</button>
+			<button onclick=FSB.butSaveFile(); >Save file as text</button>
 		</p>
 
 		<p>
-			<button onclick=FSB.butSaveFileZip(FSB.sourceContents.value); >Save file as gbXML in ZIP</button>
+			<button onclick=FSB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
 		</p>
 
 	</details>
@@ -65,30 +72,37 @@ FSB.getHelp = function() {
 
 	const htm =
 	`
-		<h3>${ FSB.title }</h3>
+		<h3>${ FSB.script.title }</h3>
 
-		<p>${ FSB.description }</p>
+		<p>${ FSB.script.description }</p>
 
-		<p>${ FSB.copyright }. ${ FSB.license }.</p>
-
-		<p>${ "source code".link( FSB.urlSourceCode ) } - v${ FSB.version } - ${ FSB.date }</p>
 	`;
 
-	FSB.target.innerHTML = htm;
+	// <p>${ FSB.script.copyright }. ${ FSB.script.license }.</p>
+
+	//FSB.target.innerHTML = htm;
+
+	const info = `${ "source code".link( FSB.urlSourceCode ) } - v${ FSB.script.version } - ${ FSB.script.date }`;
+
+	POP.setPopupShowHide(FSBbutHelp,`${ FSB.script.urlHelpFile }`,POP.footer,info);
 
 };
 
 
 
-FSB.butSaveFile = function( text ) {
+FSB.butSaveFile = function() {
 
 	//console.log( 'text', text );
 
-	const blob = new Blob( [ text ] );
+	FSB.name = FOB.name || "test.txt";
+
+	FSB.sourceContents = FOB.text || "Hello, World!";
+
+	const blob = new Blob( [ FSB.sourceContents ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
 
-	a.download = "test.txt";
+	a.download = FSB.name;
 	a.click();
 	a = null;
 
@@ -98,10 +112,14 @@ FSB.butSaveFile = function( text ) {
 
 FSB.butSaveFileZip = function( text ) {
 
+	FSB.name = FOB.name || "test.txt";
+
+	FSB.sourceContents = FOB.text || "Hello, World!";
+
 	const name = FSB.name.replace( /\.txt/i, ".zip" );
 	const zip = new JSZip();
 
-	zip.file( FSB.name, text );
+	zip.file( FSB.name, FSB.sourceContents );
 
 	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
 

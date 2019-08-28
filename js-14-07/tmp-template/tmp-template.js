@@ -60,6 +60,9 @@ TMP.getTemplate = function() {
 };
 
 
+
+
+
 TMP.updatePopupFooter = function() {
 
 	const htm=
