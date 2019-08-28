@@ -26,7 +26,7 @@ const FSB = {
 
 
 
-FSB.getMenuFileSaveBasic = function( sourceContents, targetHelpFile ) {
+FSB.getMenuFileSaveBasic = function() {
 
 	if ( !FSB.zip ) {
 
@@ -39,7 +39,7 @@ FSB.getMenuFileSaveBasic = function( sourceContents, targetHelpFile ) {
 
 	FSB.sourceContents = FOB.text || "Hello, World!";
 
-	FSB.target = targetHelpFile || document.body.appendChild( document.createElement( 'div' ) );
+	//FSB.target = targetHelpFile || document.body.appendChild( document.createElement( 'div' ) );
 
 	const htm =
 	`
@@ -83,7 +83,7 @@ FSB.getHelp = function() {
 
 	const info = `${ "source code".link( FSB.script.urlSourceCode ) } - v${ FSB.script.version } - ${ FSB.script.date }`;
 
-	POP.setPopupShowHide(FSBbutHelp,`${ FSB.script.urlHelpFile }`,POP.footer,info);
+	POP.setPopupShowHide( FSBbutHelp,`${ FSB.script.urlHelpFile }`, POP.footer, info );
 
 };
 
