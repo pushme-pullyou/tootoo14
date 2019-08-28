@@ -33,6 +33,7 @@
 <script src = "gat-github-access-token/gat-github-access-token.js" ></script>
 
 <!-- File menu panel -->
+<script src = "rga-repo-github-api/rga-repo-github-api.js" ></script>
 <script src = "fga-files-github-api/fga-files-github-api.js" ></script>
 <script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
 <script src = "fsb-file-save-basic/fsb-file-save-basic.js" ></script>
@@ -68,6 +69,8 @@
 			<details open>
 
 				<summary class="sumMenuTitle" >GitHub folders & files</summary>
+
+				<div id="RGAdivMenuReposUser" ></div>
 
 				<div id="FGAdivMenuRepoFilesFolders" ></div>
 
@@ -183,6 +186,8 @@ function init() {
 	THM.init();
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	RGAdivMenuReposUser.innerHTML = RGA.getMenuReposUser();
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
 
