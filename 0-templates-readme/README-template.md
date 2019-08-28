@@ -1,9 +1,14 @@
 # ZZZZZ Read Me
 
 
-## Concept
-
 <details open >
+<summary>Concept</summary>
+
+
+</details>
+
+
+<details>
 <summary>To Do / Wish List</summary>
 
 
@@ -29,4 +34,3 @@
 ***
 
 # <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > ❦ </a></center>
-

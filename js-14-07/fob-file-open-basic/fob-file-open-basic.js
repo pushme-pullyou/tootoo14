@@ -4,12 +4,12 @@
 
 const FOB = {
 
-	"copyright": "Copyright 2019 pushMe pullYou authors. MIT License",
-	"date": "2019-07-20",
-	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-1/fob-file-open-basic/README.md",
+	"copyright": "Copyright 2019 pushMe pullYou authors",
+	"date": "2019-08-27",
+	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-07/fob-file-open-basic/README.md",
 	"license": "MIT License",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-06/fob-file-open-basic/fob-file-open-basic.js",
-	"version": "0.14.06-0fob"
+	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-07/fob-file-open-basic/fob-file-open-basic.js",
+	"version": "0.14.07-0fob"
 };
 
 FOB.urlDefaultFile = "README.md";
@@ -347,7 +347,7 @@ FOB.callbackDecider = function ( xhr ) {
 	//console.log( 'xhr', xhr );
 
 	FOB.text = xhr.target.response;
-	
+
 	const ulc = xhr.target.responseURL.toLowerCase();
 
 	if ( ulc.endsWith( '.md' ) ) {
@@ -612,45 +612,5 @@ FOB.fileOpenZip = function( files ) {
 FOB.onFileZipLoad = function() {
 
 	console.log( 'bytes', FOB.text.length );
-
-};
-
-
-////////// File Save
-
-// better way than using text?
-
-FOB.butSaveFile = function() {
-
-	const name = FOB.name.replace( /\.xml/i, "-spifix.xml" );
-	const blob = new Blob( [ GBX.text ] );
-	let a = document.body.appendChild( document.createElement( 'a' ) );
-	a.href = window.URL.createObjectURL( blob );
-	a.download = name;
-	a.click();
-	a = null;
-
-};
-
-
-
-FOB.butSaveFileZip = function() {
-
-	const name = FOB.name.replace( /\.xml/i, "-spifix.zip" );
-	const zip = new JSZip();
-
-	zip.file( FOB.name, GBX.text );
-
-	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
-
-	.then( function( blob ) {
-
-		let a = document.body.appendChild( document.createElement( 'a' ) );
-		a.href = window.URL.createObjectURL( blob );
-		a.download = name;
-		a.click();
-		a = null;
-
-	});
 
 };

@@ -4,11 +4,22 @@
 
 
 const TMP = {
-	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
-	"date": "2019-06-29",
-	"description": "template",
-	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-03/tmp-template/README.md",
-	"version": "0.14.06-0tmp",
+
+	"script": {
+
+		"copyright": "Copyright 2019 pushMe-pullYou authors.",
+		"date": "2019-08-27",
+		"description": "template",
+		"license": "MIT License",
+		"title": "Template TMP",
+		"urlHelpFile":
+			"https://pushme-pullyou.github.io/tootoo14/js-14-07/tmp-template/tmp-template.md",
+		"urlSourceCode":
+			"https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-06/tmp-template",
+		"version": "0.14.07-0tmp"
+
+	}
+
 };
 
 
@@ -17,13 +28,13 @@ TMP.getMenuTemplate = function() {
 
 	const htm =
 		`
-			<details ontoggle="TMPdivTmp1.innerHTML=TMP.getTemplate();" >
+			<details ontoggle="TMPdivTemplateMore.innerHTML=TMP.getTemplate();" >
 
-				<summary id=TMPsumSurfaces >Template
-					<button id=butTemplate class=butHelp onclick="POP.setPopupShowHide(butTemplate,TMP.helpFile);" style=float:right; >?</button>
-				</summary>
+				<summary id=TMPsumSurfaces >Template</summary>
 
-				<div id=TMPdivTmp1 ></div>
+				<button id=butTemplate class=butHelp onclick="POP.setPopupShowHide(butTemplate,TMP.script.urlHelpFile);" >?</button>
+
+				<div id=TMPdivTemplateMore ></div>
 
 			</details>
 

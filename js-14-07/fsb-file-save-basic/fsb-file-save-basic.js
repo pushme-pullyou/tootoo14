@@ -10,7 +10,7 @@ const FSB = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe pullYou authors",
-		"date": "2019-08-12",
+		"date": "2019-08-27",
 		"description": "Save data to text file or compressed in a ZIP file using the file save dialog box. Uses pkZip.js.",
 		"license": "MIT License",
 		"title": "File save basic FSB",
