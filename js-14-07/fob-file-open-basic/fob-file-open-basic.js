@@ -40,7 +40,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	FOB.target = target;
 
-	const messages = document.body.querySelector( "#FOBdivMessages" )
+	const messages = document.body.querySelector( "#FOBdivMessages" );
+
 	FOB.divMessages = messages;
 
 	if ( FOB.divMessages ) {
@@ -49,7 +50,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		`
 			<br><hr>
 
-			<details >
+			<details id=FOBdet >
 
 				<summary>File statistics</summary>
 
@@ -95,34 +96,6 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 	return htm;
 
 };
-
-
-
-FOB.getMenuFileSaveBasic = function() {
-
-	const htm =
-	`
-	<details>
-
-		<summary>Save file
-			<button id=butFILSave class=butHelp onclick="POP.setPopupShowHide(butFILSave,FOB.helpFile);" >?</button>
-		</summary>
-
-		<p>
-			<button onclick=FOB.butSaveFile(); >Save file as gbXML</button>
-		</p>
-		<p>
-			<button onclick=FOB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
-		</p>
-
-	</details>
-
-	`;
-
-	return htm;
-
-};
-
 
 //////////
 
