@@ -535,7 +535,7 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 
 		},
 
-		function error( e ) { FILdivProgress.append( `error ${ e } ` ); }
+		function error( e ) { FOB.divMessages.append( `error ${ e } ` ); }
 
 	);
 
