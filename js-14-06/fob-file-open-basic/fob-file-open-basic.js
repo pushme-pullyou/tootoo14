@@ -40,7 +40,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	FOB.target = target;
 
-	const messages = document.body.querySelector( "#FOBdivMessages" )
+	const messages = document.body.querySelector( "#FOBdivMessages" );
+
 	FOB.divMessages = messages;
 
 

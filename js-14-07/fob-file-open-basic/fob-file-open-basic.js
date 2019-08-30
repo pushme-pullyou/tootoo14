@@ -97,6 +97,34 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 };
 
+
+
+FOB.getMenuFileSaveBasic = function() {
+
+	const htm =
+	`
+	<details>
+
+		<summary>Save file
+			<button id=butFILSave class=butHelp onclick="POP.setPopupShowHide(butFILSave,FOB.helpFile);" >?</button>
+		</summary>
+
+		<p>
+			<button onclick=FOB.butSaveFile(); >Save file as gbXML</button>
+		</p>
+		<p>
+			<button onclick=FOB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
+		</p>
+
+	</details>
+
+	`;
+
+	return htm;
+
+};
+
+
 //////////
 
 FOB.updateDefaultFilePath = function() {
@@ -585,5 +613,45 @@ FOB.fileOpenZip = function( files ) {
 FOB.onFileZipLoad = function() {
 
 	console.log( 'bytes', FOB.text.length );
+
+};
+
+
+////////// File Save
+
+// better way than using text?
+
+FOB.butSaveFile = function() {
+
+	const name = FOB.fileName.replace( /\.xml/i, "-spifix.xml" );
+	const blob = new Blob( [ GBX.text ] );
+	let a = document.body.appendChild( document.createElement( 'a' ) );
+	a.href = window.URL.createObjectURL( blob );
+	a.download = name;
+	a.click();
+	a = null;
+
+};
+
+
+
+FOB.butSaveFileZip = function() {
+
+	const name = FOB.fileName.replace( /\.xml/i, "-spifix.zip" );
+	const zip = new JSZip();
+
+	zip.file( FOB.fileName, GBX.text );
+
+	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
+
+	.then( function( blob ) {
+
+		let a = document.body.appendChild( document.createElement( 'a' ) );
+		a.href = window.URL.createObjectURL( blob );
+		a.download = name;
+		a.click();
+		a = null;
+
+	});
 
 };
