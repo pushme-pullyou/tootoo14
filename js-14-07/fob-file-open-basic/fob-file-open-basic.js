@@ -2,7 +2,7 @@
 // jshint esversion: 6
 /* jshint loopfunc: true */
 
-const FOB = {
+var FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors",
 	"date": "2019-08-27",
