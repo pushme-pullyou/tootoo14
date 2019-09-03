@@ -3,7 +3,7 @@
 /* jshint loopfunc: true */
 
 
-const POP = {
+var POP = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors",
