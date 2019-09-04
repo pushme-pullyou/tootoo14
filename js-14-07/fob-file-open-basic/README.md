@@ -29,6 +29,12 @@
 
 <summary>Change log</summary>
 
+### 2019-09-04 ~ Theo
+
+FOB 0.14.07-0fob
+
+* R: Set file stats details to open
+
 ### 2019-08-14 ~ Theo
 
 FOB 0.14.06-1fob

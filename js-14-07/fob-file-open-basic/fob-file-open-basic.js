@@ -42,6 +42,8 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	const messages = document.body.querySelector( "#FOBdivMessages" );
 
+	console.log( '', messages );
+
 	FOB.divMessages = messages;
 
 	if ( FOB.divMessages ) {
@@ -50,7 +52,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		`
 			<br><hr>
 
-			<details id=FOBdet >
+			<details id=FOBdet open>
 
 				<summary>File statistics</summary>
 
