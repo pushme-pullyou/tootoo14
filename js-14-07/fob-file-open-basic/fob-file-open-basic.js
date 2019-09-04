@@ -50,7 +50,6 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 		FOB.divMessages.innerHTML =
 		`
-			<br><hr>
 
 			<details id=FOBdet open>
 
