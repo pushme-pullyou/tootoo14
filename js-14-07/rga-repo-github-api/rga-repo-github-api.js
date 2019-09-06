@@ -15,7 +15,7 @@ const RGA = {
 		"urlHelpFile":
 			"https://pushme-pullyou.github.io/tootoo14/js-14-07/tmp-template/tmp-template.md",
 		"urlSourceCode":
-			"https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-06/tmp-template",
+			"https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/tmp-template",
 		"version": "0.14.07-0tmp"
 
 	}
