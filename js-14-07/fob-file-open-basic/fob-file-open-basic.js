@@ -209,12 +209,15 @@ FOB.onInputFileOpen = function( files ) {
 
 	const file = files.files[ 0 ];
 	console.log( 'file', file );
+
 	const type = file.type;
 	//console.log( 'type', type );
 
 	FOB.fileName = file.name;
 
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
+
+	FOB.reader.onprogress = function( event ) { FOB.onProgress( event.loaded ); };
 
 	FOB.reader.onload = function( event ) {
 		//console.log( 'FOB.reader', FOB.reader );
@@ -626,7 +629,7 @@ FOB.onFileZipLoad = function() {
 
 FOB.butSaveFile = function( text ) {
 
-	console.log( 'FOB.fileName', FOB.fileName );
+	//console.log( 'FOB.fileName', FOB.fileName );
 
 	const name = FOB.fileName ? FOB.fileName : "test.txt" ;
 
