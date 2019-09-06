@@ -42,7 +42,7 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	const messages = document.body.querySelector( "#FOBdivMessages" );
 
-	console.log( '', messages );
+	//console.log( '', messages );
 
 	FOB.divMessages = messages;
 
@@ -208,6 +208,7 @@ FOB.onInputFileOpen = function( files ) {
 	FOB.files = files;
 
 	const file = files.files[ 0 ];
+	console.log( 'file', file );
 	const type = file.type;
 	//console.log( 'type', type );
 	FOB.name = file.name;
