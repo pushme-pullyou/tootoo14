@@ -211,6 +211,7 @@ FOB.onInputFileOpen = function( files ) {
 	console.log( 'file', file );
 	const type = file.type;
 	//console.log( 'type', type );
+
 	FOB.name = file.name;
 
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
@@ -559,7 +560,7 @@ FOB.fileOpenZip = function( files ) {
 
 		zip.forEach( ( relativePath, zipEntry ) => names.push( zipEntry.name ) );
 		FOB.fileName = names[ 0 ];
-		console.log( 'FOB.fileName', FOB.fileName );
+		//console.log( 'FOB.fileName', FOB.fileName );
 
 		const arrTemp = zip.files[ FOB.fileName].async(
 			"uint8array",
@@ -639,7 +640,8 @@ FOB.butSaveFile = function() {
 
 FOB.butSaveFileZip = function() {
 
-	const name = FOB.fileName.replace( /\.xml/i, "-spifix.zip" );
+	let name = FOB.fileName ? FOB.fileName.replace( /\.xml/i, "-spifix.zip" ) : "spider.xml";
+	
 	const zip = new JSZip();
 
 	zip.file( FOB.fileName, GBX.text );
