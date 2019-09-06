@@ -111,10 +111,10 @@ FOB.getMenuFileSaveBasic = function() {
 		</summary>
 
 		<p>
-			<button onclick=FOB.butSaveFile(); >Save file as gbXML</button>
+			<button onclick=FOB.butSaveFile(); >Save file</button>
 		</p>
 		<p>
-			<button onclick=FOB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
+			<button onclick=FOB.butSaveFileZip(); >Save file in ZIP</button>
 		</p>
 
 	</details>
@@ -158,7 +158,7 @@ FOB.requestFileDecider = function( url ) { // from a button
 
 	if ( !url ) { return; }
 
-	FOB.name = url.split( '/').pop();
+	FOB.fileName = url.split( '/').pop();
 
 	if ( FOB.regexHtml.test( url ) ) {
 
@@ -168,7 +168,7 @@ FOB.requestFileDecider = function( url ) { // from a button
 
 		FOB.target.innerHTML = `<img src=${ url } >`;
 
-	} else if ( FOB.name.toLowerCase().endsWith( '.zip' )) {
+	} else if ( FOB.fileName.toLowerCase().endsWith( '.zip' )) {
 
 		FOB.xhrRequestFileZip( url, FOB.callbackUrlUtf16 );
 
@@ -212,7 +212,7 @@ FOB.onInputFileOpen = function( files ) {
 	const type = file.type;
 	//console.log( 'type', type );
 
-	FOB.name = file.name;
+	FOB.fileName = file.name;
 
 	//FOB.reader.addEventListener( 'load', FOB.onReaderResult, false );
 
@@ -332,7 +332,7 @@ FOB.onProgress = function( size = 0, note = '' ) {
 	FOB.fileInfo =
 	`
 		<div>
-			<div><span class=attributeTitle >Name: <span class=attributeValue >${ FOB.name }</span></div>
+			<div><span class=attributeTitle >Name: <span class=attributeValue >${ FOB.fileName }</span></div>
 			<div><span class=attributeTitle >Bytes loaded: </span>: <span class=attributeValue >${ size.toLocaleString() }</span></div>
 			<div><span class=attributeTitle >Time to load: </span>: <span class=attributeValue>${ timeToLoad } ms</span></div>
 			${ note }
@@ -406,7 +406,7 @@ FOB.callbackJson = function( text ) {
 	const eventLoad = new Event( 'FOBonJsonFileLoad' );
 
 	// document.body.addEventListener( 'FOBonJsonFileLoad', () => {
-	// 	console.log( 'loaded', FOB.name )
+	// 	console.log( 'loaded', FOB.fileName )
 	// 	FOB.target.innerHTML = `<div style="${ FOB.contentsCss }" >${ text }</div>`;
 	// }, false );
 
@@ -475,7 +475,7 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 		const uint8array = zip.file( names[ 0 ] ).async( "uint8array" );
 		//console.log( 'names[ 0 ]', names[ 0 ] );
 
-		FOB.name = names[ 0 ];
+		FOB.fileName = names[ 0 ];
 
 		return uint8array;
 
@@ -528,7 +528,7 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 			const event = new Event( 'FOBonZipFileLoad' );
 
 			// document.body.addEventListener( 'FOBonZipFileLoad', () => {
-			// 	console.log( 'loaded', FOB.name )
+			// 	console.log( 'loaded', FOB.fileName )
 			// 	FOB.target.innerHTML = `<div style="${ FOB.contentsCss }" >${ FOB.text }</div>`;
 			// }, false );
 
@@ -624,11 +624,15 @@ FOB.onFileZipLoad = function() {
 
 // better way than using text?
 
-FOB.butSaveFile = function() {
+FOB.butSaveFile = function( text ) {
 
-	const name = FOB.fileName ? FOB.fileName : "spider.txt" ;
-	
-	const blob = new Blob( [ GBX.text ] );
+	console.log( 'FOB.fileName', FOB.fileName );
+
+	const name = FOB.fileName ? FOB.fileName : "test.txt" ;
+
+	FOB.text = FOB.text || "Hello, World!";
+
+	const blob = new Blob( [ FOB.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
 	a.download = name;
@@ -641,7 +645,7 @@ FOB.butSaveFile = function() {
 
 FOB.butSaveFileZip = function() {
 
-	let name = FOB.fileName ? FOB.fileName.replace( /\.xml/i, "-spifix.zip" ) : "spider.zip";
+	let name = FOB.fileName ? FOB.fileName.replace( /\.xml/i, ".zip" ) : "test.zip";
 
 	const zip = new JSZip();
 
