@@ -5,11 +5,11 @@
 var FOB = {
 
 	"copyright": "Copyright 2019 pushMe pullYou authors",
-	"date": "2019-08-27",
+	"date": "2019-09-06",
 	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-07/fob-file-open-basic/README.md",
 	"license": "MIT License",
 	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-07/fob-file-open-basic/fob-file-open-basic.js",
-	"version": "0.14.07-0fob"
+	"version": "0.14.07-1fob"
 };
 
 FOB.urlDefaultFile = "README.md";
@@ -641,7 +641,7 @@ FOB.butSaveFile = function() {
 FOB.butSaveFileZip = function() {
 
 	let name = FOB.fileName ? FOB.fileName.replace( /\.xml/i, "-spifix.zip" ) : "spider.xml";
-	
+
 	const zip = new JSZip();
 
 	zip.file( FOB.fileName, GBX.text );
