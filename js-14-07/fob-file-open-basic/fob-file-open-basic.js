@@ -626,7 +626,8 @@ FOB.onFileZipLoad = function() {
 
 FOB.butSaveFile = function() {
 
-	const name = FOB.fileName.replace( /\.xml/i, "-spifix.xml" );
+	const name = FOB.fileName ? FOB.fileName : "spider.txt" ;
+	
 	const blob = new Blob( [ GBX.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
@@ -640,7 +641,7 @@ FOB.butSaveFile = function() {
 
 FOB.butSaveFileZip = function() {
 
-	let name = FOB.fileName ? FOB.fileName.replace( /\.xml/i, "-spifix.zip" ) : "spider.xml";
+	let name = FOB.fileName ? FOB.fileName.replace( /\.xml/i, "-spifix.zip" ) : "spider.zip";
 
 	const zip = new JSZip();
 
