@@ -39,6 +39,8 @@
 </style>
 </head>
 <body>
+	<script src=https://pushme-pullyou.github.io/tootoo14/js-14-07/pop-popup/pop-popup.js ></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 	<script src=fsb-file-save-basic.js ></script>
 
 
@@ -48,20 +50,50 @@
 		<div id="divTitle" ></div>
 
 		<p>
-			<button id=but onclick=setIt(); accessKey= 'z' title='access key: z '>add text</button>
+			<button id=but onclick=addText(); >add text</button>
+
+			<button id=but onclick=updateText(); >update text</button>
 		</p>
 
 		<textarea id=textArea style=height:8rem;width:100%; ></textarea>
 
 	</nav>
 
-	<main>
+	<main id=main >
 
 		<div id="divContents" ></div>
 
 		<div id="divHelp" ></div>
 
 	</main>
+
+	<br>
+
+	<hr>
+
+	<nav id="navDragMove"  hidden style="background-color:#ddd;" ">
+
+			<section id="secDragMove" >
+
+				<div id=divDragMoveHeader >
+
+					<span title="Move and resize me" >&#x2766;</span>
+
+					<div style=float:right; >
+						<button id=butPopupClose onclick="POP.onClickClose(butPopupClose);" >
+							&times;
+						</button>
+					</div>
+
+				</div>
+
+				<div id="divDragMoveContent" ></div>
+
+				<div id="divDragMoveFooter" ></div>
+
+			</section>
+
+		</nav>
 
 
 <script>
@@ -79,18 +111,28 @@ function init() {
 
 	const helpFileTarget = divHelp;
 
-	divContents.innerHTML = FSB.getMenuFileSaveBasic( sourceContents, helpFileTarget );
+	divContents.innerHTML = FSB.getMenuFileSaveBasic();
 
 }
 
 
 
-function setIt() {
+function addText() {
 
 	textArea.value += `${ ( new Date().toLocaleString() ) } - Howdy! \n\n`;
 
+	window.FOB = {};
+
+	FOB.text = textArea.value;
+
 }
 
+
+function updateText() {
+
+	FOB.text = textArea.value;
+
+}
 
 
 function getTitle() {

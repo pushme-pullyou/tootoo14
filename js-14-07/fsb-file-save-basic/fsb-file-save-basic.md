@@ -10,6 +10,7 @@ Save data to text file or compressed in a ZIP file using the file save dialog bo
 <details>
 <summary>To Do / Wish List</summary>
 
+* 2019-09-07 ~ Theo ~ Is suggested text OK
 
 </details>
 
@@ -22,6 +23,12 @@ Save data to text file or compressed in a ZIP file using the file save dialog bo
 <details>
 <summary>Change Log</summary>
 
+### 2019-09-07 ~ Theo
+
+0.14.07-1fsb
+
+* F: Many fixes
+
 ### 2019-08-27 ~ Theo
 
 0.14.07-0fsb
@@ -29,8 +36,3 @@ Save data to text file or compressed in a ZIP file using the file save dialog bo
 * First commit
 
 </details>
-
-***
-
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > ❦ </a></center>
-
