@@ -5,6 +5,7 @@
 
 Save data to text file or compressed in a ZIP file using the file save dialog box. Uses pkZip.js.
 
+Seems to be working well with text and xml fies as well as various types of images.
 </details>
 
 <details>
