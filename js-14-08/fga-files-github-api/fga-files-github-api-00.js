@@ -8,11 +8,11 @@ const FGA = {
 	script: {
 
 		copyright: "Copyright 2019 pushMe pullYou authors",
-		date: "2019-09-08",
+		date: "2019-08-03",
 		description: "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
 		helpFile: "https://pushme-pullyou.github.io/tootoo14/js-14-08/fga-files-github-api/README.md",
 		license: " MIT License",
-		version: "0.14.08-0fga"
+		version: "0.14.06-1fga"
 
 	}
 
@@ -23,15 +23,13 @@ FGA.branch = '/master/';
 FGA.user = 'pushme-pullyou';
 FGA.repo = 'tootoo14';
 FGA.pathRepo = '';
-
-//FGA.urlGitHubPage = "../../";
-FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
+FGA.urlGitHubPage = "../../";
 
 FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ];
 
-FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 
-FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-32.png";
+FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
+FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
 FGA.iconInfo = `<img src="${ FGA.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
 FGA.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
@@ -40,7 +38,7 @@ FGA.regexHtml = /\.(htm?l)$/i;
 
 FGA.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
-const source = ""; //`<a href=${ MNU.urlSourceCode + FGA.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
+const source = `<a href=${ MNU.urlSourceCode + FGA.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
 
 FGA.getMenuFilesGithubApi = function() {
 
@@ -48,20 +46,26 @@ FGA.getMenuFilesGithubApi = function() {
 	FGA.urlGitHubApiContents = 'https://api.github.com/repos/' + FGA.user + "/" + FGA.repo + '/contents/' + FGA.pathRepo;
 	FGA.accessToken = localStorage.getItem( 'githubAccessToken' ) || '';
 
-	//FOB.xhr.addEventListener( 'load', FGA.onLoadFile, false );
-	//FOB.reader.addEventListener( 'load', FGA.onLoadFile, false );
-	//document.body.addEventListener( 'onZipFileParse', FGA.onLoadFile, false );
+	FOB.xhr.addEventListener( 'load', FGA.onLoadFile, false );
+	FOB.reader.addEventListener( 'load', FGA.onLoadFile, false );
+	document.body.addEventListener( 'onZipFileParse', FGA.onLoadFile, false );
 
-	// <button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.script.helpFile,POP.footer,'${ source}');" style=float:right; >?</button>
 	const htm =
 		`
+			<details open >
+
+				<summary id=FGAsumSurfaces  >All folders and files</summary>
+
+				<button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.script.helpFile,POP.footer,'${ source}');" style=float:right; >?</button>
+
 				<div id = "FGAdivFilesGithubApi" ></div>
 
 				<div id = "FGAdivBreadcrumbs" ></div>
 
-				<br>
-
 				<div id = "FGAdivMenuItems" ></div>
+
+			</details>
+
 		`;
 
 	return htm;
@@ -242,7 +246,7 @@ FGA.onLoadFile = function() {
 
 	const tables = FGAdivMenuItems.querySelectorAll( "table" );
 
-	tables.forEach( table => table.style.backgroundColor = table.id === FOH.fileName ? "yellow" : "" );
+	tables.forEach( table => table.style.backgroundColor = table.id === FOB.name ? "yellow" : "" );
 
 };
 
@@ -265,13 +269,13 @@ FGA.setBreadcrumbs = function( path ) {
 	}
 
 	FGAdivBreadcrumbs.innerHTML =
-	`<div>
+	`<p>
 		<b>
 			<a href=JavaScript:FGA.setMenuGitHubPathFileNames(); title="home folder" >
 				${ ( FGA.pathRepo ? FGA.pathRepo : "<span style=font-size:28px >&#x2302</span>" ) }
 			</a> &raquo;
 		</b>
 		${ htmFolders }
-	</div>`;
+	</p>`;
 
 };
