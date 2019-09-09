@@ -188,7 +188,7 @@ FGA.getFilesFromContents = function( items ) {
 
 	const len = FGA.pathRepo.length;
 
-	const ignoreFiles = [ ".gitattributes", ".gitignore", ".nojekyll", "404.html" ];
+	const ignoreFiles = [ ".gitattributes", ".gitignore", ".nojekyll", "404.html", "index.html" ];
 
 	const name = FGA.url.split( "/" ).pop();
 
