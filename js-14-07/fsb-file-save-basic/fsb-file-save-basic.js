@@ -94,6 +94,8 @@ FSB.butSaveFile = function() {
 
 	FSB.fileName = window.FOB && FOB.fileName ? FOB.fileName : "test.txt";
 
+	console.log( 'save FOB.text', FOB.text.length );
+
 	FSB.text = window.FOB && FOB.text ? FOB.text : "Hello, World!";
 
 	const blob = new Blob( [ FSB.text ] );
