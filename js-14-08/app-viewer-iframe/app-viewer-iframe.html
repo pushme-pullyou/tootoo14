@@ -1,0 +1,162 @@
+
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "get repos" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "date" content = "2019-09-17" >
+<meta name = "version" content = "0.01.0" >
+<title></title>
+<style>
+
+	* { box-sizing: border-box; }
+
+	:root { --mnu-width: 22rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
+
+	html { height: 100%; }
+
+	body { font: 12pt monospace; margin: 0 auto; max-width: 800px; padding: 0 0.5rem; }
+
+	a { color: crimson; text-decoration: none; }
+	a:hover, a:focus, a:active { background-color: yellow; color: #aaa; text-decoration: underline }
+
+	button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
+	button:hover { background: #ccc; color: #fff }
+
+
+	main { border: 0px; height: 100%; left: var( --mnu-width ); margin: 0;
+		padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
+
+	#navMenu { background-color: #eee; height: 100%; left: 0; margin: 0; overflow: auto; padding: 0 1rem;
+		position: absolute; top: 0; width: var( --mnu-width ); }
+
+
+</style>
+</head>
+<body>
+
+	<nav id="navMenu" >
+
+		<div id="divTitle" ></div>
+
+		<p>
+			<a id=aRepo href = 'JavaScript:( () => {
+
+				const script = document.head.appendChild( document.createElement( "script" ) );
+
+				script.onload = () => {
+
+					RGA.user = "greenbuildingxml";
+					RGA.urlGitHubApiRepos = "https://api.github.com/users/" + RGA.user + "/repos";
+
+					divMenu.innerHTML = RGA.getMenuReposUser( doIt );
+
+					detRGA.open = true;
+
+				};
+
+				script.src ="../rga-repo-github-api/v-0-01/rga-repo-github-api.js";
+
+				const scriptFGA = document.head.appendChild( document.createElement( "script" ) );
+				scriptFGA.src ="../fga-files-github-api/v-0-01/fga-files-github-api.js";
+
+			} )()' >
+				repo get api
+			</a>
+		</p>
+
+		<div id=divMenu ></div>
+
+		<div id="divRepos" ></div>
+		<div id="divFiles" ></div>
+	</nav>
+
+	<main>
+
+		<div id="divContents" style=height:600px;overflow:hidden;resize:both;width:100%; >
+			<iframe id=ifr src="../../../spider-gbxml-tools/spider-gbxml-viewer/v-0-17-03/app-popup/spider-gbxml-viewer-popup.html" style=height:100%;width:100%; ></iframe>
+		</div>
+
+
+
+	</main>
+
+
+<script>
+// https://www.ladybug.tools
+const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
+const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-32.png";
+
+
+init();
+
+
+function init() {
+
+	divTitle.innerHTML = getTitle();
+
+	window.addEventListener ( 'hashchange', onHashChange, false );
+
+
+	aRepo.click();
+
+}
+
+
+function doIt( repo ) {
+
+	divRepos.innerHTML = `<p>${ repo }</p>` ;
+
+	FGA.user = RGA.user
+	FGA.repo = repo;
+
+	FGA.urlGitHubPage = `https://greenbuildingxml.github.io/${ repo }/`;
+	divFiles.innerHTML = FGA.getMenuFilesGithubApi();
+
+	//FGA.url = url;
+
+	FGA.getFiles();
+
+	//FGA.requestFile( url )
+
+
+}
+
+
+function onHashChange() {
+
+
+	console.log( '', location.hash );
+	ifr.contentWindow.location.hash = location.hash;
+
+}
+
+
+function getTitle() {
+
+	document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
+	const version = document.head.querySelector( "[ name=version ]" ).content;
+
+	const htm =
+	`
+		<h2>
+			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
+				<img src=${ urlSourceCodeIcon } height=18 style=opacity:0.5; >
+			</a>
+			<a href="" title="Click to reload this page" >${ document.title } ${ version }</a>
+		</h2>
+
+		<p>
+			${ document.head.querySelector( "[ name=description ]" ).content }
+		</p>
+	`;
+
+	return htm;
+
+}
+
+</script>
+</body>
+</html>
