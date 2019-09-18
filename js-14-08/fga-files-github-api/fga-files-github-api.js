@@ -55,13 +55,13 @@ FGA.getMenuFilesGithubApi = function() {
 	// <button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.script.helpFile,POP.footer,'${ source}');" style=float:right; >?</button>
 	const htm =
 		`
-				<div id = "FGAdivFilesGithubApi" ></div>
+			<div id = "FGAdivFilesGithubApi" ></div>
 
-				<div id = "FGAdivBreadcrumbs" ></div>
+			<div id = "FGAdivBreadcrumbs" ></div>
 
-				<br>
+			<br>
 
-				<div id = "FGAdivMenuItems" ></div>
+			<div id = "FGAdivMenuItems" ></div>
 		`;
 
 	return htm;
@@ -91,7 +91,6 @@ FGA.getFiles = function() {
 
 
 FGA.setMenuGitHubPathFileNames = function( path = '' ) {
-
 	//console.log( 'path', path );
 
 	const str = FGA.accessToken ? "?access_token=" + FGA.accessToken : "";
@@ -140,11 +139,10 @@ FGA.callbackGitHubPathFileNames = function( xhr ) {
 	`
 		<p>Click any <a href=${ FGA.urlSourceCode } >${ FGA.iconInfo }</a> icon to view source code on GitHub.
 
+		<p>Click any &#x2750; icon to go full screen & obtain a link to the individual file.</p>
 
 		<p>Tooltips provide file size.</p>
-		`;
-
-		//<p>Click any &#x2750; icon to go full screen & obtain a link to the individual file.</p>
+	`;
 
 	FGAdivMenuItems.innerHTML = htmFolders + htmFiles + htmHelp;
 
@@ -260,7 +258,10 @@ FGA.setBreadcrumbs = function( path ) {
 
 		str += `${ folder }/`;
 
-		htmFolders += `<b><a href=JavaScript:FGA.setMenuGitHubPathFileNames("${ str.slice( 0, -1 ) }"); >${ folder }</a> &raquo; </b>`;
+		htmFolders +=
+		`<b><a href=JavaScript:FGA.setMenuGitHubPathFileNames("${ str.slice( 0, -1 ) }"); >
+			${ folder }
+		</a> &raquo; </b>`;
 
 	}
 
