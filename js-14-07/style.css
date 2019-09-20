@@ -63,7 +63,8 @@ summary { cursor: pointer; font-size: 1rem; font-weight: bold; outline: none; }
 #divContents { border: 0px solid red; margin: 0 auto; max-width: 40rem; }
 
 
-#expandButton { height: 32px; position: absolute; left: var( --mnu-width ); width: 32px; transition: left 0.5s; z-index: 1; }
+#expandButton { height: 32px; position: absolute; left: var( --mnu-width ); width: 32px;
+	transition: left 0.5s; z-index: 1; }
 
 
 #navPanel { height: 100%; left: 0px; overflow: auto; position: fixed;
