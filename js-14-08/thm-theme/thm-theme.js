@@ -28,27 +28,27 @@ THM.themeBootswatch = "https://bootswatch.com/_vendor/bootstrap/dist/css/bootstr
 
 THM.init = function() {
 
-	THM.themeUrl = localStorage.getItem( THM.themeUrlStorage ) || THM.cssBasic;
-	THMcssCurrent.value = THM.themeUrl;
+	THM.themeUrl = THM.cssBasic; //localStorage.getItem( THM.themeUrlStorage ) || THM.cssBasic;
+	//THMcssCurrent.value = THM.themeUrl;
 	//console.log( "THM.themeUrl", THM.themeUrl );
 
-	 if ( THM.themeUrl.includes( "w3schools" ) ) {
+	//  if ( THM.themeUrl.includes( "w3schools" ) ) {
 
-		THM.loadCssW3schools();
+	// 	THM.loadCssW3schools();
 
-	} else if ( THM.themeUrl.includes( "bootstrap" ) ) {
+	// } else if ( THM.themeUrl.includes( "bootstrap" ) ) {
 
-		THM.loadCssBootswatch();
+	// 	THM.loadCssBootswatch();
 
-	} else if ( THM.themeUrl === THM.cssBasic ) {
+	// } else if ( THM.themeUrl === THM.cssBasic ) {
 
-		THM.loadCssBasic();
+		//THM.loadCssBasic();
 
-	} else {
+	// } else {
 
-		THM.loadCssBootswatch();
+	// 	THM.loadCssBootswatch();
 
-	}
+	// }
 
 };
 
