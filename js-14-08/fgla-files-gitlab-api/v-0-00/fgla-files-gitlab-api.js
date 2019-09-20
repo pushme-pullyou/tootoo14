@@ -36,7 +36,7 @@ FGA.urlGitHubPage = `https://${ FGA.user }.github.io/${ FGA.repo }/`;
 FGA.ignoreFolders = [ ".gitlab" ];
 FGA.ignoreFiles = [ ".gitattributes", ".gitignore", ".gitlab-ci.yml" ]
 
-FGA.urlSourceCodeImage = "gitlab-solid-red.svg";
+FGA.urlSourceCodeImage = "https://evereverland.gitlab.io/images/gitlab-solid-red.svg";
 FGA.iconInfo = `<img src="${ FGA.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
 const source = ""; //`<a href=${ MNU.urlSourceCode + FGA.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
