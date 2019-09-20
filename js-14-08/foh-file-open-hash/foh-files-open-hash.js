@@ -100,7 +100,7 @@ FOH.onProgress = function( size = 0, note = '' ) {
 		</div>
 	`;
 
-	if ( FOH.divMessages ) { FOBdivInfo.innerHTML = FOH.fileInfo; }
+	//if ( FOH.divMessages ) { FOBdivInfo.innerHTML = FOH.fileInfo; }
 
 };
 

@@ -8,56 +8,76 @@ const FGA = {
 	script: {
 
 		copyright: "Copyright 2019 pushMe pullYou authors",
-		date: "2019-09-08",
+		date: "2019-09-18",
 		description: "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
 		helpFile: "https://pushme-pullyou.github.io/tootoo14/js-14-08/fga-files-github-api/README.md",
 		license: " MIT License",
-		version: "0.14.08-0fga"
+		version: "0.14.08-0fgla"
 
 	}
 
 };
 
 
-FGA.branch = '/master/';
-FGA.user = 'pushme-pullyou';
-FGA.repo = 'tootoo14';
-FGA.pathRepo = '';
+FGA.user = "443787";
+FGA.user = "14344097";
+
+FGA.repo = "";
+FGA.pathRepo = "";
+FGA.branch = "/master/";
 
 //FGA.urlGitHubPage = "../../";
-FGA.urlGitHubPage = "https://pushme-pullyou.github.io/tootoo14/";
+FGA.urlGitHubPage = `https://${ FGA.user }.github.io/${ FGA.repo }/`;
 
-FGA.ignoreFolders = [ "0-templates-readme","archive","data",".github" ];
+//////////
 
-FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 
-FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-32.png";
+
+FGA.ignoreFolders = [ ".gitlab" ];
+FGA.ignoreFiles = [ ".gitattributes", ".gitignore", ".gitlab-ci.yml" ]
+
+FGA.urlSourceCodeImage = "gitlab-solid-red.svg";
 FGA.iconInfo = `<img src="${ FGA.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
-
-
-FGA.regexImages = /\.(jpe?g|png|gif|webp|ico|svg|bmp)$/i;
-FGA.regexHtml = /\.(htm?l)$/i;
-
-FGA.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
 const source = ""; //`<a href=${ MNU.urlSourceCode + FGA.script.helpFile } target=_blank >${ MNU.urlSourceCodeIcon } source code</a>`;
 
 FGA.getMenuFilesGithubApi = function() {
 
+	FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 	FGA.urlGitHubSource = "https://github.com/" + FGA.user + "/" + FGA.repo;
 	FGA.urlGitHubApiContents = 'https://api.github.com/repos/' + FGA.user + "/" + FGA.repo + '/contents/' + FGA.pathRepo;
 	FGA.accessToken = localStorage.getItem( 'githubAccessToken' ) || '';
 
 	// <button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.script.helpFile,POP.footer,'${ source}');" style=float:right; >?</button>
+
 	const htm =
 		`
 			<div id = "FGAdivFilesGithubApi" ></div>
 
 			<div id = "FGAdivBreadcrumbs" ></div>
 
-			<br>
+			<details open style=margin-top:1rem; >
 
-			<div id = "FGAdivMenuItems" ></div>
+				<summary>Folders</summary>
+
+				<div id = "FGAdivFolders" ></div>
+
+			</details>
+
+
+			<details open style=margin-top:1rem; >
+
+				<summary>Files</summary>
+
+				<div id = "FGAdivFiles" ></div>
+
+				<div id = "FGAdivFooter" ></div>
+
+			</details>
+
+			<h1 onclick="navPanel.scrollTop=0;" style="color:#888;cursor:pointer;text-align:center;" title="go to top of menu">
+				❦
+			</h1>
 		`;
 
 	return htm;
@@ -75,7 +95,9 @@ FGA.getFiles = function() {
 
 	const pathCurrent = crumbs.lastIndexOf( '/' ) > 0 ? crumbs.slice( 0, crumbs.lastIndexOf( '/' ) ) : '';
 
-	if ( FGA.urlGitHubApiContents ){ FGA.setMenuGitHubPathFileNames( pathCurrent ); }
+	if ( FGA.urlGitHubApiContents ) {
+		FGA.setMenuGitHubPathFileNames( pathCurrent );
+	}
 
 };
 
@@ -83,33 +105,29 @@ FGA.getFiles = function() {
 
 FGA.setMenuGitHubPathFileNames = function( path = '' ) {
 
-	const str = FGA.accessToken ? "?access_token=" + FGA.accessToken : "";
+	//const str = FGA.accessToken ? "?access_token=" + FGA.accessToken : "";
 
-	FGA.urlGitHubApiContents = `https://api.github.com/repos/${ FGA.user }/${ FGA.repo }/contents/${FGA.pathRepo }`;
+	FGA.urlGitHubApiContents = `https://gitlab.com/api/v4/projects/${ FGA.user }/repository/tree?path=public`
 
 	FGA.setBreadcrumbs( path );
 
-	const url = FGA.urlGitHubApiContents + path + str;
+	const url = FGA.urlGitHubApiContents + ( path ? "?path=" + path : "" );
 
 	fetch( new Request( url ) )
-	.then( response => response.text() )
-	.then( text => FGA.callbackGitHubPathFileNames( text ) );
+		.then( response => response.json() )
+		.then( json => FGA.callbackGitHubPathFileNames( json ) );
 
 };
 
 
-FGA.callbackGitHubPathFileNames = function( response ) {
+FGA.callbackGitHubPathFileNames = function( json ) {
 
-	const items = JSON.parse( response );
+	FGAdivFolders.innerHTML = FGA.getFolders( json );
 
-	if ( items.message ) { console.log( 'error', items.message ); return; } //breadcrumbs??
+	FGAdivFiles.innerHTML = FGA.getFilesFromContents( json );
 
-	const htmFolders = FGA.getFoldersFromContents( items );
-
-	const htmFiles = FGA.getFilesFromContents( items );
-
-	const htmHelp =
-	`
+	FGAdivFooter.innerHTML =
+		`
 		<p>Click any <a href=${ FGA.urlSourceCode } >${ FGA.iconInfo }</a> icon to view source code on GitHub.
 
 		<p>Click any &#x2750; icon to go full screen & obtain a link to the individual file.</p>
@@ -117,35 +135,22 @@ FGA.callbackGitHubPathFileNames = function( response ) {
 		<p>Tooltips provide file size.</p>
 	`;
 
-	FGAdivMenuItems.innerHTML = htmFolders + htmFiles + htmHelp;
-
 };
 
 
+FGA.getFolders = function( items ) {
 
-FGA.getFoldersFromContents = function( items ) {
-
-	let htm = "";
-
-	const len = FGA.pathRepo.length;
-
-	for ( let item of items ) {
-
-		if ( item.type === "dir" && !FGA.ignoreFolders.includes( item.name ) ) {
-
-			// why does this not work? item.path.split( "/" ).pop()
-			htm +=
-			`
-				<div style=margin-bottom:8px;padding:0; >
-					<a href=JavaScript:FGA.setMenuGitHubPathFileNames("${ item.path.slice( len ) }"); >
-						&#x1f4c1; ${ item.name }
-					</a>
-				</div>
-			`;
-
-		}
-
-	}
+	htm = items.filter( item => item.type === "tree" &&
+		!FGA.ignoreFolders.includes( item.name )
+	).map( item =>
+		`
+			<div style=margin-top:0.2rem; >
+				<a href=JavaScript:FGA.setMenuGitHubPathFileNames("${ item.path }"); >
+					&#x1f4c1; ${ item.name }
+				</a>
+			</div>
+		`
+	).join( "" );
 
 	return htm;
 
@@ -155,55 +160,51 @@ FGA.getFoldersFromContents = function( items ) {
 
 FGA.getFilesFromContents = function( items ) {
 
-	let htm = "";
-
 	const len = FGA.pathRepo.length;
-
-	const ignoreFiles = [ ".gitattributes", ".gitignore", ".nojekyll", "404.html", "index.html" ];
 
 	const name = FGA.url.split( "/" ).pop();
 
-	for ( let item of items ) {
+	htm = items.filter( item => item.type === "blob" &&
+		!FGA.ignoreFiles.includes( item.name )
+	).map( item => {
 
-		if ( item.type === "file" && !ignoreFiles.includes( item.name ) ) {
-
+		console.log( 'pa', item.path );
 			const itemPath = encodeURI( item.path.slice( len ) );
 
 			const str = item.path.endsWith( "html" ) ? `<a href="${ FGA.urlGitHubPage }${ FGA.pathRepo }${ itemPath }" title="Open file in new tab" >&#x2750;</a>` : "";
 
 			const stl = item.name === name ? "yellow" : "";
 
-			FGA.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + FGA.user + '/' + FGA.repo + '@master/' + item.path;
+//			FGA.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + FGA.user + '/' + FGA.repo + '@master/' + item.path;
+			FGA.urlGitHubPage = `https://evereverland.gitlab.io/${ item.path.replace( /public\//, "" ) }`;
 
-			htm += // try grid or flexbox??
-			`
-				<table id=${ item.name } style=background-color:${ stl }; ><tr>
-					<td>
+			return `
+				<div style=margin-top:0.5rem; >
+					<div style=display:inline-block; >
 						<a href="${ FGA.urlGitHubSource }/blob${ FGA.branch }${ itemPath }" target=_top title="View or edit source code" >
 							${ FGA.iconInfo }
 						</a>
-					</td>
-					<td>
-						<a href=${ location.href.replace( location.hash, "" ) }#${ FGA.urlGitHubPage } title="${ item.size.toLocaleString() } bytes" >
+					</div>
+					<div style=display:inline-block; >
+						<a href=${ location.href.replace( location.hash, "" ) }#${ FGA.urlGitHubPage } title="${ item.size } bytes" >
 							${ item.name }
 						</a>
 						${ str }
-					</td>
-				</tr></table>
+					</div>
+				</div>
 			`;
 
 			// how to simplify
-/* 			if ( ( !location.hash || location.hash.toLowerCase().endsWith( 'readme.md' ) )
+			/* 			if ( ( !location.hash || location.hash.toLowerCase().endsWith( 'readme.md' ) )
 
-				&& ( item.name.toLowerCase() === 'readme.md' ) ) {
+							&& ( item.name.toLowerCase() === 'readme.md' ) ) {
 
-				//location.hash = FGA.urlGitHubPage + FGA.pathRepo + itemPath;
+							//location.hash = FGA.urlGitHubPage + FGA.pathRepo + itemPath;
 
-			} */
+						}
+			*/
 
-		}
-
-	}
+		} ).join( "" );
 
 	return htm;
 
@@ -223,7 +224,7 @@ FGA.onLoadFile = function() {
 
 FGA.setBreadcrumbs = function( path ) {
 
-	const folders = path ? path.split( '/' ) : [] ;
+	const folders = path ? path.split( '/' ) : [];
 
 	let htmFolders = "";
 	let str = "";
@@ -233,7 +234,7 @@ FGA.setBreadcrumbs = function( path ) {
 		str += `${ folder }/`;
 
 		htmFolders +=
-		`<b><a href=JavaScript:FGA.setMenuGitHubPathFileNames("${ str.slice( 0, -1 ) }"); >
+			`<b><a href=JavaScript:FGA.setMenuGitHubPathFileNames("${ str.slice( 0, -1 ) }"); >
 			${ folder }
 		</a> &raquo; </b>`;
 

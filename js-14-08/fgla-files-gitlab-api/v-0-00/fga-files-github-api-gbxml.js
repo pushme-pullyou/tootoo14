@@ -34,7 +34,7 @@ FGA.urlSourceCode = `https://github.com/${ FGA.user}/${ FGA.repo }/`;
 FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-32.png";
 FGA.iconInfo = `<img src="${ FGA.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
-
+FGA.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
 FGA.regexImages = /\.(jpe?g|png|gif|webp|ico|svg|bmp)$/i;
 FGA.regexHtml = /\.(htm?l)$/i;
 
@@ -47,6 +47,10 @@ FGA.getMenuFilesGithubApi = function() {
 	FGA.urlGitHubSource = "https://github.com/" + FGA.user + "/" + FGA.repo;
 	FGA.urlGitHubApiContents = 'https://api.github.com/repos/' + FGA.user + "/" + FGA.repo + '/contents/' + FGA.pathRepo;
 	FGA.accessToken = localStorage.getItem( 'githubAccessToken' ) || '';
+
+	//FOB.xhr.addEventListener( 'load', FGA.onLoadFile, false );
+	//FOB.reader.addEventListener( 'load', FGA.onLoadFile, false );
+	//document.body.addEventListener( 'onZipFileParse', FGA.onLoadFile, false );
 
 	// <button id=butFGA class=butHelp onclick="POP.setPopupShowHide(butFGA,FGA.script.helpFile,POP.footer,'${ source}');" style=float:right; >?</button>
 	const htm =
@@ -68,12 +72,17 @@ FGA.getMenuFilesGithubApi = function() {
 
 FGA.getFiles = function() {
 
+	//const timeStart = performance.now();
+
 	const url = ""; //!location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
 	FGA.url = url;
+
+	//const ulc = url.toLowerCase();
 
 	const crumbs = url.slice( FGA.urlGitHubPage.length );
 
 	const pathCurrent = crumbs.lastIndexOf( '/' ) > 0 ? crumbs.slice( 0, crumbs.lastIndexOf( '/' ) ) : '';
+	//console.log( 'pathCurrent', pathCurrent );
 
 	if ( FGA.urlGitHubApiContents ){ FGA.setMenuGitHubPathFileNames( pathCurrent ); }
 
@@ -82,20 +91,37 @@ FGA.getFiles = function() {
 
 
 FGA.setMenuGitHubPathFileNames = function( path = '' ) {
+	//console.log( 'path', path );
 
 	const str = FGA.accessToken ? "?access_token=" + FGA.accessToken : "";
 
 	FGA.urlGitHubApiContents = `https://api.github.com/repos/${ FGA.user }/${ FGA.repo }/contents/${FGA.pathRepo }`;
 
+	const url = FGA.urlGitHubApiContents + path + str;
+
+	//FGA.requestFile( url ); // to do: make request only once and triage thereafter
+
 	FGA.setBreadcrumbs( path );
 
-	const url = FGA.urlGitHubApiContents + path + str;
 
 	fetch( new Request( url ) )
 	.then( response => response.text() )
 	.then( text => FGA.callbackGitHubPathFileNames( text ) );
+};
+
+
+
+FGA.requestFile = function( url ) {
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( 'GET', url, true );
+	xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
+	//xhr.onprogress = function( xhr ) { console.log(  'bytes loaded: ' + xhr.loaded.toLocaleString() ) }; /// or something
+	xhr.onload = FGA.callbackGitHubPathFileNames;
+	xhr.send( null );
 
 };
+
 
 
 FGA.callbackGitHubPathFileNames = function( response ) {
@@ -222,6 +248,7 @@ FGA.onLoadFile = function() {
 
 
 FGA.setBreadcrumbs = function( path ) {
+	//console.log( 'path', path );
 
 	const folders = path ? path.split( '/' ) : [] ;
 
