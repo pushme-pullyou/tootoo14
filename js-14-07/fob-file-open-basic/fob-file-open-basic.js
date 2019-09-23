@@ -208,7 +208,7 @@ FOB.onInputFileOpen = function( files ) {
 	FOB.files = files;
 
 	const file = files.files[ 0 ];
-	console.log( 'file', file );
+	//console.log( 'file', file );
 
 	const type = file.type;
 	//console.log( 'type', type );
