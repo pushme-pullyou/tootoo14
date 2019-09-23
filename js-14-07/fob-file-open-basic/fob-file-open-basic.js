@@ -635,6 +635,8 @@ FOB.butSaveFile = function( text ) {
 
 	FOB.text = FOB.text || "Hello, World!";
 
+	FOB.text = FOB.text.replace ( /encoding="UTF-16"/, "")
+
 	const blob = new Blob( [ FOB.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );

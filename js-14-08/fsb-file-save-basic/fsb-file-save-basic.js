@@ -61,7 +61,6 @@ FSB.getMenuFileSaveBasic = function() {
 
 	}
 
-
 	return FSB.initializeMenuHtml();
 
 };
