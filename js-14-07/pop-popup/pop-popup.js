@@ -7,12 +7,12 @@ var POP = {
 	"script": {
 
 		"copyright": "Copyright 2019 pushMe-pullYou authors",
-		"date": "2019-08-12",
+		"date": "2019-09-26",
 		"description": "TooToo Menu (POP) generates standard HTML popup menu code and content and code that works on computers, tablets and phones",
 		"helpFile": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/README.md",
 		"license": "MIT License",
 		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-07/pop-popup",
-		"version": "0.14.07-0pop"
+		"version": "0.14.07-1pop"
 	},
 	"version": document.head.querySelector( '[ name=version ]' ).content,
 	"date": document.head.querySelector( '[ name=date ]' ).content,
@@ -25,10 +25,10 @@ var POP = {
 
 POP.footer =
 
-	`<div >
+	`<div id=POPdivFooter >
 		<button onclick=POP.requestFile(POP.popup,divDragMoveContent); >🏠</button>&nbsp;
 		<button onclick=POP.requestFile(POP.license,divDragMoveContent); >⚖️</button>&nbsp;
-		<span id=POPspanInfo >v${ POP.version } - ${ POP.date }</span>
+		<span id=POPspanInfo >v${ POP.version } ${ POP.date }</span>
 	</div>`;
 
 
@@ -205,7 +205,7 @@ DMV.onTouchStart = function( event ){
 	DMV.draggableTop = navDragMove.offsetTop;
 	DMV.draggableStartY = event.changedTouches[ 0 ].clientY;
 	//console.log( 'draggableTop', draggableTop, draggableStartY );
-	event.preventDefault();
+	//event.preventDefault();
 
 	//console.log ('Status: touchstart', 'ClientX: ' + DMV.draggableStartX + 'px' );
 

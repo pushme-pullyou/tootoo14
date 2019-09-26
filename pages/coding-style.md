@@ -1,15 +1,12 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view the home page]( https://pushme-pullyou.github.io/tootoo13/index.html#pages/coding-style.md "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view the home page]( https://pushme-pullyou.github.io/tootoo14/index.html#pages/coding-style.md "View file as a web page." ) </span>
 
-<div><input type=button  class="btn btn-secondary btn-sm" onclick=window.location.href='https://github.com/pushme-pullyou/tootoo13/blob/master/pages/coding-style.md';
-value='You are now in the home page view - Click this button to view the read me file and the source code' ></div>
 
-<br>
-
-#  Coding Style
+# Coding Style
 
 ## Mission
 
 <!-- * Fabricate free, fast, fun fantasies -->
+
 * Write cookbook scripts that are ready to use, cut and paste
 * Build engineering tools built to solve specific problems
 * Develop skills you can use everywhere

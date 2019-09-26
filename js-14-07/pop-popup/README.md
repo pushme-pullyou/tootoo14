@@ -33,6 +33,13 @@ TooToo Menu (POP) generates standard HTML popup menu code and content and code t
 <summary>Change Log</summary>
 
 
+### 2019-09-26 ~ Theo
+
+0.14.07-1pop
+
+* B: L208 event.preventDefault() stopped buttons from working
+
+
 ### 2019-07-07 ~ Theo
 
 POP 0.14.04-2pop
