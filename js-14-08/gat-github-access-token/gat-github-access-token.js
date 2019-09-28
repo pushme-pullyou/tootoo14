@@ -38,7 +38,7 @@ GAT.getMenuGitHubAccessToken = function() {
 
 			<p>
 				<button id=GATbutRateLimits onclick=GAT.setViewRateLimits(GATbutRateLimits); title='If files and folder stop appearing, it is likely due to too many API calls' >
-					View GitHub API rate limits
+					View your current GitHub API usage & rate limits
 				</button>
 			</p>
 
@@ -54,7 +54,6 @@ GAT.getMenuGitHubAccessToken = function() {
 
 GAT.setViewHelp = function () {
 
-
 	if ( window.POP ) {
 
 		POP.setPopupShowHide(butGAT,GAT.helpFile);
@@ -65,6 +64,7 @@ GAT.setViewHelp = function () {
 	}
 
 };
+
 
 GAT.setGitHubAccessToken = function( accessToken ) {
 
@@ -97,10 +97,10 @@ GAT.setViewRateLimits = function( button, target = divContents ) {
 			<h3>GitHub rate limits status</h3>
 
 			<p>
-				Some TooToo scripts use the GitHub Developer API which has rate limits.
+				Some of the scripts in this app use the GitHub Developer API.
+				The API which has rate limits that reset every hour.
+				See <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">developer.github.com/v3</a>.
 			</p>
-
-			<p>See <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">developer.github.com/v3</a>.</p>
 
 			<pre> ${ xhr.target.response } </pre>
 		`;
