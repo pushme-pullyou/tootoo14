@@ -26,7 +26,7 @@ GFF.items = [
 			`Files from the
 		<a href="https://github.com/GreenBuildingXML/Sample_gbXML_Files" target="_blank">gbXML.org Sample Files</a>
 		repository on GitHub.
-		Includes a wide variety of gbXML files from different vendors and organizations.`
+		Includes a variety of gbXML files from various vendors and organizations.`
 	},
 	{
 		"user": "ladybug-tools",

@@ -205,7 +205,7 @@ DMV.onTouchStart = function( event ){
 	DMV.draggableTop = navDragMove.offsetTop;
 	DMV.draggableStartY = event.changedTouches[ 0 ].clientY;
 	//console.log( 'draggableTop', draggableTop, draggableStartY );
-	event.preventDefault();
+	//event.preventDefault();
 
 	//console.log ('Status: touchstart', 'ClientX: ' + DMV.draggableStartX + 'px' );
 

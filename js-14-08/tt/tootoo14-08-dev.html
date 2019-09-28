@@ -103,7 +103,6 @@
 
 			</details>
 
-
 			<footer>
 
 				<details>
@@ -140,11 +139,9 @@
 
 				<span title="Move and resize me" >&#x2766;</span>
 
-				<div style=float:right; >
-					<button id=butPopupClose onclick="POP.onClickClose(butPopupClose);" >
-						&times;
-					</button>
-				</div>
+				<span>aa bb cc</span>
+
+				<button id=butPopupClose onclick="POP.onClickClose(butPopupClose);" >&times;</button>
 
 			</div>
 
@@ -217,11 +214,12 @@ function init() {
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
 		toggleNavPanel();
+		POP.setPopupShowHide( butPopupClose, ' ', POP.footer );
 
 	} else {
 
 		POP.setPopupShowHide();
-
+		
 	}
 
 }
