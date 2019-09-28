@@ -12,12 +12,20 @@ Help you navigate through a number of folders in a GitHub repo, view the names o
 
 The script makes an API call and reads the data one folder at a time. This may be considered a feature or an issue.
 
+Used by
+
+* GitLab evereverland
+* SGV for OS SGG
+
+
 </details>
 
 <details>
 
 <summary>To Do / Wish List</summary>
 
+* 2019-09-27 ~ Theo ~ Highlight folder and file when file reloaded
+* 2019-09-27 ~ Theo ~ Rename functions so GH and GL sync more easily
 * 2019-05-11 ~ Menu title updates to repo name?
 
 </details>
@@ -26,7 +34,6 @@ The script makes an API call and reads the data one folder at a time. This may b
 
 <summary>Issues</summary>
 
-* 2019-05-11 ~ Highlights in menu not updating correctly
 
 </details>
 
@@ -34,8 +41,19 @@ The script makes an API call and reads the data one folder at a time. This may b
 
 <summary>Change Log</summary>
 
-### 2019-08-03 ~ Theo
 
+### 2019-09-27 ~ Theo
+
+
+FGS.js 0.14.08-1fgs
+
+*R: Complete refactor - based on evereverland on GitLab
+
+Done
+* 2019-05-11 ~ Highlights in menu not updating correctly
+
+
+### 2019-08-03 ~ Theo
 
 FGS.js 0.14.06-1fgs
 

@@ -220,7 +220,8 @@ MNU.showFps = function(){
 
 	};
 
-	script.src='https://rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
+	script.src = 'https://cdn.jsdelivr.net/gh/mrdoob/stats.js@master/build/stats.min.js';
+
 
 	function loop(){
 

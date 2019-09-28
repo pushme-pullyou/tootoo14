@@ -4,6 +4,8 @@
 
 <summary>Concept</summary>
 
+See GitHub version
+
 Help you navigate through a number of folders in a GitHub repo, view the names of files in each folder, allow you to view the contents of each file
 
 * Use GitHub API to obtain a list of files in a GitHub repository

@@ -103,10 +103,10 @@ FGA.setMenuGitHubPathFileNames = function( path = '' ) {
 
 	FGA.setBreadcrumbs( path );
 
-
 	fetch( new Request( url ) )
 	.then( response => response.text() )
-	.then( text => FGA.callbackGitHubPathFileNames( text ) );
+		.then( text => FGA.callbackGitHubPathFileNames( text ) );
+
 };
 
 

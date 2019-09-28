@@ -3,10 +3,10 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "description" content = "GitLab API get files" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-25" >
-<meta name = "version" content = "0.0.0" >
+<meta name = "date" content = "2019-09-26" >
+<meta name = "version" content = "0.00.01" >
 <title></title>
 <style>
 
@@ -52,7 +52,7 @@
 
 					divContents.innerHTML = FGA.getMenuFilesGithubApi();
 
-					FGA.getFiles();
+					FGA.fetchTree();
 
 				};
 
@@ -63,12 +63,18 @@
 			</a>
 		</p>
 
+
 	</nav>
 
 	<main>
 
 		<div id="divContents" ></div>
 
+		<hr>
+
+		<h1 onclick="navPanel.scrollTop=0;" style="color:#888;cursor:pointer;text-align:center;" title="go to top of menu">
+			❦
+		</h1>
 	</main>
 
 
@@ -80,6 +86,9 @@ const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-32.png";
 init();
 
 function init() {
+
+
+
 
 	divTitle.innerHTML = getTitle();
 

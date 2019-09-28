@@ -34,7 +34,7 @@
 
 <!-- File menu panel -->
 <script src = "rga-repo-github-api/v-0-00/rga-repo-github-api.js" ></script>
-<script src = "fga-files-github-api/fga-files-github-api.js" ></script>
+<script src = "fga-files-github-api/v-0-01/fga-files-github-api.js" ></script>
 <script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
 <!--
 	<script src = "fsb-file-save-basic/fsb-file-save-basic.js" ></script>
@@ -193,7 +193,7 @@ function init() {
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
 
-	FGA.getFiles(); // move to js?
+	FGA.fetchTree(); // move to js?
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
@@ -214,9 +214,15 @@ function init() {
 
 	aViewSource.href = MNU.urlSourceCode;
 
-	POP.setPopupShowHide();
+	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) { toggleNavPanel(); }
+		toggleNavPanel();
+
+	} else {
+
+		POP.setPopupShowHide();
+
+	}
 
 }
 
