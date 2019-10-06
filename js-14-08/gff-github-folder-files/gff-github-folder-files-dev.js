@@ -174,8 +174,8 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	item.urlGitHubSource = 'https://github.com/' + item.user + item.repo + '/blob/master/' + item.pathRepo;
 
-	item.threeDefaultFile = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/"
-		;
+	item.threeDefaultFile = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/";
+
 	for ( let file of files ) {
 
 		if ( file.name.toLowerCase().endsWith( '.xml' ) === false &&

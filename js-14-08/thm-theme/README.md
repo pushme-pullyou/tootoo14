@@ -35,6 +35,7 @@ Objective: make it easy for you to adapt the style of this viewer to the needs s
 
 ## To Do / Wish List
 
+* 2019-09-30 ~ Theo ~ Ways of getting to help
 * 2019-06-25 ~ Theo ~ Allow for add-on instance customization style sheet
 
 ## Issues
@@ -64,9 +65,16 @@ Objective: make it easy for you to adapt the style of this viewer to the needs s
 
 ## thm-theme-select Change Log
 
+### 2019-09-30 ~ Theo
+
+THM 0.14.08
+
+* Many fixes
+
 ### 2019-05-28 ~ Theo
 
 V 0.14
+
 * F - First commit
 
 ### 2019-01-17 ~ Theo

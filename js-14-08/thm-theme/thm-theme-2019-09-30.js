@@ -7,16 +7,16 @@ const THM = {
 	script: {
 		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
 		"date": "2019-09-30",
+
 		"helpFile": "",
 		"license": "MIT License",
-		"version": "0.14.08-0",
+		"version": "0.14.06-0",
 	},
 
 
 };
 
-THM.getHelp = function () { console.log( '', 23 ); }
-
+THM.getHelp = function () { console.log( '', 23 );}
 THM.script.description =
 	`
 		TooToo Theme Select (THM) creates HTML menus and provides JavaScript code to add, select and load themes based on industry-standard CSS stylesheets
@@ -29,6 +29,9 @@ THM.cssDefault = "style.css";
 
 THM.themeUrlStorage = "tootoo14ThemeUrl"; // set for each instance in HTML file
 
+THM.backgroundColor = '';
+
+
 THM.cssW3schools = "https://www.w3schools.com/lib/w3-theme-red.css";
 THM.themeBootswatch = "https://bootswatch.com/_vendor/bootstrap/dist/css/bootstrap.css";
 
@@ -39,7 +42,7 @@ THM.getMenuThemeSelect = function() {
 	`
 		<details>
 
-			<summary>Select theme </summary>
+			<summary>Select Theme </summary>
 
 			<div>
 
@@ -78,18 +81,18 @@ THM.getMenuThemeSelect = function() {
 
 THM.init = function() {
 
-	THM.themeUrl = localStorage.getItem( THM.themeUrlStorage ) || "";
+	THM.themeUrl = localStorage.getItem( THM.themeUrlStorage );
 
 	THMcssCurrent.value = THM.themeUrl;
 	console.log( "THM.themeUrl", THM.themeUrl );
 
 	if ( THM.themeUrl.includes( "w3schools" ) ) {
 
-		THM.loadCssW3schools();
+	// 	THM.loadCssW3schools();
 
 	} else if ( THM.themeUrl.includes( "bootstrap" ) ) {
 
-		THM.loadCssBootswatch();
+	// 	THM.loadCssBootswatch();
 
 	} else {
 
@@ -107,13 +110,18 @@ THM.init = function() {
 
 THM.linksRemove = function() {
 
-	const sheets = document.querySelectorAll( `style,[rel="stylesheet"],[type="text/css"]` );
+	
+	Array.prototype.forEach.call( document.querySelectorAll( `style,[rel="stylesheet"],[type="text/css"]` ),
 
-	Array.from( sheets ).forEach( ( element ) => {
+	function( element ){
 
-		try { element.parentNode.removeChild( element ); }
+		try {
 
-		catch ( err ) { console.log( 'error', err ); }
+			element.parentNode.removeChild( element );
+
+		}
+
+		catch( err ) {}
 
 	} );
 
@@ -136,8 +144,8 @@ THM.loadCssDefault = function() {
 	localStorage.setItem( THM.themeUrlStorage, "" );
 	THMcssCurrent.value = "";
 
-	navMenu.style.backgroundColor = "#eee";
-	//navMenu.style.padding = "0"; // why is this needed?
+	navMenu.style.backgroundColor = THM.backgroundColor;
+
 
 };
 
@@ -174,44 +182,25 @@ THM.toggleTagsClassListW3schools= function( action = "add" ) {
 	//document.body.querySelectorAll( "nav" )
 	//.forEach( item => item.classList[ action ]( "w3-theme-l5" ) );
 
-	//document.body.querySelectorAll( "a" )
-	//.forEach( item => item.classList[ action ](  "w3-text-theme", "w3-hover-shadow" ) );
+	navMenu.style.backgroundColor = THM.backgroundColor;
 
-	document.body.querySelectorAll( "h1" )
-		.forEach( item => item.classList[ action ]( "w3-theme-l1" ) );
+	document.body.querySelectorAll( "a" )
+	.forEach( item => item.classList[ action ]( "w3-text-theme", "w3-medium", "w3-hover-shadow" ) );
 
-	document.body.querySelectorAll( "h2" )
-	.forEach( item => item.classList[ action ]( "w3-theme-l2" ) );
+	navMenu.querySelectorAll( "div" )
+	.forEach( item => item.classList[ action ]( "w3-container", "w3-text-theme", "w3-small" ) );
 
-	document.body.querySelectorAll( "h3, h4, h5" )
-	.forEach( item => item.classList[ action ]( "w3-theme-l3" ) );
-
-
-	document.body.querySelectorAll( "aside, blockquote, code, input, pre" )
-	.forEach( item => item.classList[ action ]( "w3-theme-l4", "w3-small", "w3-round", "w3-border", "w3-hover-theme" ) );
+	document.body.querySelectorAll( "summary" )
+	.forEach( item => item.classList[ action ]( "w3-bar-item", "w3-theme-l2", "w3-hover-shadow"  ) );
 
 	document.body.querySelectorAll( "button" )
-	.forEach( item => item.classList[ action ]( "w3-theme-l3", "w3-small", "w3-round", "w3-hover-shadow" ) );
+	.forEach( item => item.classList[ action ]( "w3-theme-l3", "w3-small", "w3-round" ) );
+
+	document.body.querySelectorAll( "input" )
+	.forEach( item => item.classList[ action ]( "w3-input", "w3-theme-l4", "w3-small", "w3-round", "w3-border", "w3-hover-theme" ) );
 
 	document.body.querySelectorAll( "select" )
 	.forEach( item => item.classList[ action ]( "w3-select", "w3-theme-l2", "w3-round" ) );
-
-	document.body.querySelectorAll( "summary" )
-	.forEach( item => item.classList[ action ](  "w3-theme-l1", "w3-hover-shadow" ) );
-
-	document.body.querySelectorAll( ".sumMenuTitle" )
-	.forEach( item => item.classList[ action ]( "w3-bar-item", "w3-theme-l2", "w3-hover-shadow" ) );
-
-	document.body.querySelectorAll( "#navMenu" )
-		.forEach( item => item.classList[ action ]( "w3-theme-l5" ) );
-
-	document.body.querySelectorAll( ".aTitle" )
-		.forEach( item => {
-			item.style.fontSize = "2rem";
-		} );
-
-	document.body.querySelectorAll( ".dingbat" )
-		.forEach( item => item.classList[ action ]( "w3-text-theme" ) );
 
 	THM.toggleTHMDivW3schools( action );
 
@@ -248,6 +237,7 @@ THM.toggleTHMDivW3schools = function( action = "add" ) {
 };
 
 
+
 THM.setCssW3schools = function( color ) {
 
 	THMcssW3schools.href = "https://www.w3schools.com/lib/w3-theme-" + color + ".css";
@@ -258,11 +248,14 @@ THM.setCssW3schools = function( color ) {
 };
 
 
+
 //////////
 
 THM.loadCssBootswatch = function() {
 
 	THM.linksRemove();
+
+	//THM.themeUrl = THM.themeUrl.includes( "bootswatch" ) ? THM.themeUrl : THM.themeBootswatch;
 
 	THM.themeUrl = THMcssCurrent.value;
 
@@ -273,25 +266,29 @@ THM.loadCssBootswatch = function() {
 	//console.log( "cssBootswatch", cssBootswatch );
 
 	THM.toggleTagsClassListBootswatch();
-	//localStorage.setItem( THM.themeUrlStorage, THM.themeUrl);
+	localStorage.setItem( THM.themeUrlStorage, THM.themeUrl);
 	//THMcssCurrent.value = THM.themeUrl;
 
 };
 
 
-THM.toggleTagsClassListBootswatch = function ( action = "add" ) {
 
-	navMenu.style.backgroundColor = "initial";
-	navMenu.classList[ action ]( "bg-light" );
+THM.toggleTagsClassListBootswatch = function( action = "add" ) {
 
-	document.body.querySelectorAll( "a" )
-		.forEach( item => item.classList[ action ]( "text-primary" ) );
+	document.body.querySelectorAll( "nav" )
+		.forEach( item => {
+			item.classList[ action ]( "jumbotron" );
+			item.style.backgroundColor = "";
+			item.style.padding = "0";
 
-	document.body.querySelectorAll( "h1, h2, h3, h4, h5" )
-		.forEach( item => item.classList[ action ]( "bg-primary", "text-light" ) );
+		} );
 
-	document.body.querySelectorAll( "aside, blockquote, code, input, pre" )
-	.forEach( item => item.classList[ action ]( "navbar", "navbar-light", "bg-light" ) );
+
+//	document.body.querySelectorAll( "div" )
+//		.forEach( item => item.classList[ action ]( "card-body" ) );
+
+	document.body.querySelectorAll( "summary" )
+		.forEach( item => item.classList[ action ]( "nav-link", "btn", "btn-primary" ) );
 
 	document.body.querySelectorAll( "button" )
 		.forEach( item => item.classList[ action ]( "btn", "btn-primary", "btn-sm" ) );
@@ -300,16 +297,7 @@ THM.toggleTagsClassListBootswatch = function ( action = "add" ) {
 		.forEach( item => item.classList[ action ]( "form-control" ) );
 
 	document.body.querySelectorAll( "select" )
-		.forEach( item => item.classList[ action ]( "form-control" ) );
-
-	document.body.querySelectorAll( "summary" )
-		.forEach( item => item.classList[ action ]( "nav-link", "btn", "btn-primary" ) );
-
-	document.body.querySelectorAll( ".aTitle" )
-		.forEach( item => item.classList[ action ]( "text-light" ) );
-
-	document.body.querySelectorAll( ".dingbat" )
-		.forEach( item => item.classList[ action ]( "text-primary" ) );
+		.forEach( item => item.classList[ action ]( "form-control") );
 
 	THM.toggleDivBootswatch( action );
 
