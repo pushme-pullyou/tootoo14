@@ -489,7 +489,7 @@ FOB.callbackUrlUtf16 = function( xhr ) {
 
 		let text = '';
 
-		if ( uint8array[ 0 ] !== 255 ||  uint8array[ 0 ] === 239 || uint8array[ 0 ] === 60 ) {
+		if ( uint8array[ 0 ] !== 255 || uint8array[ 0 ] === 239 || uint8array[ 0 ] === 60 ) {
 
 			text = new TextDecoder( "utf-8" ).decode( uint8array );
 			//console.log( 'text', text );
