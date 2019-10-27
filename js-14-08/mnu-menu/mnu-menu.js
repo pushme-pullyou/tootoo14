@@ -16,7 +16,7 @@ const MNU = {
 
 ////////// boilerplate for downstream users
 
-MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-64.png";
+MNU.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-32.png";
 MNU.urlSourceCodeIcon = `<img src=${ MNU.urlSourceCodeImage } height=18 style=opacity:0.5 >`;
 MNU.urlSourceCode = `https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-08/`;
 
@@ -112,16 +112,13 @@ MNU.getNavHeader = function() {
 				<span id=titleRelease >${ MNU.version }</span></a>
 
 			<button class=butHelp id=butTitle onclick="POP.setPopupShowHide(butTitle,MNU.helpFile);" title="Click me!" >?</button>
-
 		</h2>
 
 		<p>
 			${ MNU.description }
+		</p>
 
-
-			</p>
-
-			<p>
+		<p>
 			<button onclick=MNU.toggleDetailsOpen() >Close all menus</button>
 
 			<button class=butHelp id=butMenu onclick="POP.setPopupShowHide(butMenu,MNU.descriptionTooToo,POP.footer,'${ source }');" >?</button>
@@ -194,7 +191,7 @@ MNU.getNavFooterPopup = function() {
 
 
 
-MNU.toggleDetailsOpen = function( target = navPanel ) {
+MNU.toggleDetailsOpen = function( target = navMenu ) {
 
 	const details = target.querySelectorAll( "details" );
 

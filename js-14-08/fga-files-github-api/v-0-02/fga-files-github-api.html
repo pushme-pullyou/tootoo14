@@ -24,21 +24,24 @@
 	button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
 	button:hover { background: #ccc; color: #fff }
 
-	/*
+
 	main { border: 0px; height: 100%; left: var( --mnu-width ); margin: 0;
 		padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
 
 	#navMenu { background-color: #eee; left: 0; margin: 0; padding: 0 1rem;
 		position: absolute; top: 0; width: var( --mnu-width ); }
-	*/
+
 
 </style>
 </head>
 <body>
 <script src="fga-files-github-api.js" ></script>
+
 	<nav id="navMenu" >
 
 		<div id="divTitle" ></div>
+
+		<div id=FGAdivMenuFilesGithubApi></div>
 
 	</nav>
 
@@ -67,10 +70,11 @@ function init() {
 
 	FGA.user = "theo-armour";
 	FGA.repo = "theo-armour.github.io";
+	FGA.urlGitHubPage = "https://theo-armour.github.io/#https://theo-armour.github.io/";
 
-	divContents.innerHTML = FGA.getMenuFilesGithubApi();
+	FGAdivMenuFilesGithubApi.innerHTML = FGA.getMenuFilesGithubApi();
 
-	FGA.fetchTree();
+	FGA.onHashChange();
 
 }
 

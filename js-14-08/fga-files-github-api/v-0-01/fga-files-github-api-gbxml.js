@@ -267,13 +267,15 @@ FGA.setBreadcrumbs = function( path ) {
 	}
 
 	FGAdivBreadcrumbs.innerHTML =
-	`<div>
+	`
+	<div>
 		<b>
 			<a href=JavaScript:FGA.setMenuGitHubPathFileNames(); title="home folder" >
 				${ ( FGA.pathRepo ? FGA.pathRepo : "<span style=font-size:28px >&#x2302</span>" ) }
 			</a> &raquo;
 		</b>
 		${ htmFolders }
-	</div>`;
+	</div>
+	`;
 
 };

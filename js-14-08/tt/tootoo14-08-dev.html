@@ -17,7 +17,7 @@
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
 <link rel = "license" href = "https://opensource.org/licenses/MIT" >
-<link rel = "stylesheet" href = "style.css" >
+<link rel = "stylesheet" href = "thm-theme/style.css" >
 
 
 </head>
@@ -34,7 +34,7 @@
 
 <!-- File menu panel -->
 <script src = "rga-repo-github-api/v-0-00/rga-repo-github-api.js" ></script>
-<script src = "fga-files-github-api/v-0-01/fga-files-github-api.js" ></script>
+<script src = "fga-files-github-api/v-0-02/fga-files-github-api.js" ></script>
 <script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
 <!--
 	<script src = "fsb-file-save-basic/fsb-file-save-basic.js" ></script>
@@ -50,9 +50,9 @@
 <script src = "cor-core/cor-core.js" ></script>
 
 
-	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
+	<button id="expandButton" onclick="toggleNavMenu();" >☰</button>
 
-	<nav id="navPanel" >
+	<nav id="navMenu" >
 
 		<section class="secContent" >
 
@@ -113,7 +113,7 @@
 
 				</details>
 
-				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
+				<h1 onclick="navMenu.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
 					❦
 				</h1>
 
@@ -126,7 +126,11 @@
 
 	<main id="main" >
 
-		<div id="divContents" ></div>
+		<section class="secContents">
+
+			<div id="divContents" ></div>
+
+		</section>
 
 	</main>
 
@@ -165,7 +169,7 @@
 
 // see cor-core.js for many init values
 
-FGA.urlGitHubPage = "../";
+THM.cssDefault = "thm-theme/style.css";
 
 init();
 
@@ -188,9 +192,7 @@ function init() {
 
 	RGAdivMenuReposUser.innerHTML = RGA.getMenuReposUser();
 
-	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
 
-	FGA.fetchTree(); // move to js?
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
@@ -206,6 +208,17 @@ function init() {
 
 	COR.init();
 
+	//FGA.fetchTree();
+
+	FGA.user = "theo-armour";
+	FGA.repo = "theo-armour.github.io";
+	//FGA.urlGitHubPage = "https://theo-armour.github.io/#https://theo-armour.github.io/";
+
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+
+	FGA.onHashChange();
+
+
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
@@ -213,23 +226,23 @@ function init() {
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
-		toggleNavPanel();
+		toggleNavMenu();
 		POP.setPopupShowHide( butPopupClose, ' ', POP.footer );
 
 	} else {
 
 		POP.setPopupShowHide();
-		
+
 	}
 
 }
 
 
 
-function toggleNavPanel() {// move to COR??
+function toggleNavMenu() {// move to COR??
 
 	expandButton.classList.toggle( 'collapsed' );
-	navPanel.classList.toggle( 'collapsed' );
+	navMenu.classList.toggle( 'collapsed' );
 	main.classList.toggle( 'collapsed' );
 
 }

@@ -5,11 +5,11 @@
 const THM = {
 
 	script: {
-		"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-		"date": "2019-10-22",
+		"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
+		"date": "2019-09-30",
 		"helpFile": "",
 		"license": "MIT License",
-		"version": "0.17.06-1thhm",
+		"version": "0.14.08-0",
 	},
 
 
@@ -81,7 +81,7 @@ THM.init = function() {
 	THM.themeUrl = localStorage.getItem( THM.themeUrlStorage ) || "";
 
 	THMcssCurrent.value = THM.themeUrl;
-	//console.log( "THM.themeUrl", THM.themeUrl );
+	console.log( "THM.themeUrl", THM.themeUrl );
 
 	if ( THM.themeUrl.includes( "w3schools" ) ) {
 
@@ -136,15 +136,14 @@ THM.loadCssDefault = function() {
 	localStorage.setItem( THM.themeUrlStorage, "" );
 	THMcssCurrent.value = "";
 
-	//navMenu.style.backgroundColor = "rgb(244, 250, 244)"; // "#eee";
-	navMenu.style.backgroundColor = "var( --secondary-color"; /* "#eee"; */
+	navMenu.style.backgroundColor = "#eee";
 	//navMenu.style.padding = "0"; // why is this needed?
 
 };
 
 
 
-////////// https://www.w3schools.com/w3css/
+//////////
 
 THM.loadCssW3schools = function() {
 
@@ -178,7 +177,7 @@ THM.toggleTagsClassListW3schools= function( action = "add" ) {
 	//document.body.querySelectorAll( "a" )
 	//.forEach( item => item.classList[ action ](  "w3-text-theme", "w3-hover-shadow" ) );
 
-	document.body.querySelectorAll( "h1, #divDragMoveHeader, .sumMenuTitle" )
+	document.body.querySelectorAll( "h1" )
 		.forEach( item => item.classList[ action ]( "w3-theme-l1" ) );
 
 	document.body.querySelectorAll( "h2" )
@@ -186,6 +185,7 @@ THM.toggleTagsClassListW3schools= function( action = "add" ) {
 
 	document.body.querySelectorAll( "h3, h4, h5" )
 	.forEach( item => item.classList[ action ]( "w3-theme-l3" ) );
+
 
 	document.body.querySelectorAll( "aside, blockquote, code, input, pre" )
 	.forEach( item => item.classList[ action ]( "w3-theme-l4", "w3-small", "w3-round", "w3-border", "w3-hover-theme" ) );
@@ -287,7 +287,7 @@ THM.toggleTagsClassListBootswatch = function ( action = "add" ) {
 	document.body.querySelectorAll( "a" )
 		.forEach( item => item.classList[ action ]( "text-primary" ) );
 
-	document.body.querySelectorAll( "h1, h2, h3, h4, h5, #divDragMoveHeader, .sumMenuTitle" )
+	document.body.querySelectorAll( "h1, h2, h3, h4, h5" )
 		.forEach( item => item.classList[ action ]( "bg-primary", "text-light" ) );
 
 	document.body.querySelectorAll( "aside, blockquote, code, input, pre" )
@@ -304,13 +304,6 @@ THM.toggleTagsClassListBootswatch = function ( action = "add" ) {
 
 	document.body.querySelectorAll( "summary" )
 		.forEach( item => item.classList[ action ]( "nav-link", "btn", "btn-primary" ) );
-
-
-	document.body.querySelectorAll( ".sumMenuTitle" )
-		.forEach( item => item.classList[ action ]( "bg-primary", "text-light" ) );
-
-	document.body.querySelectorAll( "#navMenu" )
-		.forEach( item => item.classList[ action ]( "w3-theme-l5" ) );
 
 	document.body.querySelectorAll( ".aTitle" )
 		.forEach( item => item.classList[ action ]( "text-light" ) );

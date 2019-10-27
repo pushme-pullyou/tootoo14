@@ -24,9 +24,9 @@ GAT.getMenuGitHubAccessToken = function () {
 
 			<summary>GitHub API Personal Access Token </summary>
 
-			<div>
+			<!-- <div>
 				<button id=butGAT class=butHelp onclick="GATdiaHelp.open=!GATdiaHelp.open;" >?</button>
-			</div>
+			</div> -->
 
 			<p>
 				<div>Access token</div>
@@ -41,7 +41,7 @@ GAT.getMenuGitHubAccessToken = function () {
 
 		</details>
 
-		<dialog id=GATdiaHelp onclick=GATdiaHelp.close() >
+		<dialog id=GATdiaHelp onclick=this.close() >
 
 			<h1>GitHub API Personal Access Token</h1>
 
@@ -89,9 +89,10 @@ GAT.setViewRateLimits = function ( button, target = divContents ) {
 
 	function callback ( xhr ) {
 
+
 		const htm =
 			`
-			<dialog open onclick=this.close(); style="max-height: 50%; overflow: auto;">
+			<!-- <dialog open onclick=this.close(); style="max-height: 50%; overflow: auto;"> -->
 
 				<h1>GitHub rate limits status</h1>
 
@@ -106,7 +107,7 @@ GAT.setViewRateLimits = function ( button, target = divContents ) {
 
 				</div>
 
-			</dialog>
+			<!-- </dialog> -->
 		`;
 
 		target.innerHTML += htm;
