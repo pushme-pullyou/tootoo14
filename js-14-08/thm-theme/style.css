@@ -26,7 +26,6 @@ html {
 
 body {
 	margin: 0;
-
 	background: var(--background-color);
 
 }
@@ -69,7 +68,7 @@ input[type=button] {
 	background-color: var(--colorLight );
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 1px 5px 0 rgba(0,0,0,.12);
 	border: none;
-	color: #322;
+	color: var( --color );
 	cursor: pointer;
 	padding: 3px 5px;
 }
@@ -116,6 +115,18 @@ input[ type=range]::-webkit-slider-thumb {
 	width: 10px;
 }
 
+option:nth-child( odd ) {
+	background-color: #ddd;
+}
+
+.scrollable-element::-webkit-scrollbar {
+
+}
+
+.scrollable-element::-webkit-scrollbar-thumb {
+	background-color: var(--color );
+
+}
 
 summary {
 	background-color: var(--colorLight );
@@ -228,6 +239,7 @@ h1, h2, h3, h4, h5 {
 	transition: left 0.5s;
 	width: var(--mnu-width);
 	z-index: 10;
+	overflow:scroll;
 }
 
 #navMenu p {

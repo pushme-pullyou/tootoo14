@@ -61,7 +61,7 @@ Objective: make it easy for you to adapt the style of this viewer to the needs s
 
 ## Links of Interest
 
-
+* https://www.sitepoint.com/css-theming-custom-properties-javascript/
 
 ## thm-theme-select Change Log
 

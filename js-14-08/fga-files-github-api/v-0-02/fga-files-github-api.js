@@ -84,7 +84,7 @@ FGA.onHashChange = function () {
 
 	const url = !location.hash ? "": location.hash.slice( 1 );
 
-	FGA.path = url.lastIndexOf( '/' ) > 0 ? url.slice( 0, url.lastIndexOf( '/' ) ) : '';
+	FGA.path = ""; //url.lastIndexOf( '/' ) > 0 ? url.slice( 0, url.lastIndexOf( '/' ) ) : '';
 
 	FGA.fetchTree( FGA.path );
 

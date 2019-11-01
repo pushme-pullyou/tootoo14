@@ -21,7 +21,7 @@ POP.license = "https://pushme-pullyou.github.io/tootoo14/pages/license.md";
 
 THM.themeUrlStorage = 'tootoo14ThemeUrl'; // set for each instance in HTML file
 
-FOB.urlDefaultFile = "../README.md";
+FOB.urlDefaultFile = "README.md";
 
 FGA.urlGitHubPage = "../"; //"https://pushme-pullyou.github.io/tootoo14/";
 

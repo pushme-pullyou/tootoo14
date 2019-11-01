@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Basic TooToo HTML template with sliding menu">
+	<meta name="keywords" content="JavaScript,GitHub,FOSS">
+	<meta name="date" content="2019-09-30">
+	<meta name="version" content="0.017.06-0thm">
+	<title></title>
+
+	<link id="styleCss" rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+	<script src="thm-theme.js"></script>
+	<script src="../../tmp-template/tmp-template.js"></script>
+
+
+	<nav class=nav-expand >
+
+		<button id="hamburgerButton" class=hamburger-button onclick="toggleNavMenu();">☰</button>
+
+	</nav>
+
+
+	<nav id=navMenu class=nav-menu >
+
+		<header id=menuHeader class=menu-header ></header>
+
+		<section class=menu-body >
+
+			<p>
+
+				<button onclick=setIt();>set it</button> - aaa -
+
+				<a href="" target="_blank">a link to nowhere</a>
+
+			</p>
+
+			<details class=details__primary open>
+
+				<summary class=summary__primary >Settings menu</summary>
+
+				<details class=details__secondary open>
+
+					<summary class=summary__secondary >theme</summary>
+
+					<p>
+						<button id="btnRed" class=button >red</button>
+						<button id="btnBlue" class=button >blue</button>
+						<button id="btnGreen" class=button >green</button>
+					</p>
+
+					<p>
+						hue <output id=outHue class=menu__output ></output>
+						<input type="range" id="inpHue" class=menu__input value="90" />
+					</p>
+					<p>
+						saturation <output id=outSaturation class=menu__output ></output>
+						<input type="range" id="inpSaturation" class=menu__input value="50" />
+					</p>
+					<p>
+						lightness <output id=outLightness class=menu__output ></output>
+						<input type="range" id="inpLightness" class=menu__input value="50" />
+					</p>
+
+				</details>
+
+
+				<div class=menuInset  id=THMdivMenuThemeSelect></div>
+
+				<div class=menuInset id=TMPdivTemplate></div>
+
+
+
+				<details class=details__secondary >
+
+					<summary class=summary__secondary >title</summary>
+
+					<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>
+
+					<h3>title</h3>
+
+					<p>
+						ggggg
+					</p>
+
+				</details>
+
+				<details class=details__secondary >
+
+					<summary class=summary__secondary >title</summary>
+
+					<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>
+
+				</details>
+
+			</details>
+
+		</section>
+
+		<footer class=menu-footer >
+
+			<div class=dingbat onclick="navMenu.scrollTop=0;" title="go to top of menu">❦</div>
+
+		</footer>
+
+
+	</nav>
+
+	<main id=main class=main >
+
+		<section class="main-section">
+
+			<header id=mainTitle class=main-header >
+
+				<div id="divMainTitle"></div>
+
+			</header>
+
+			<article class=main-article >
+
+				<div id="divContent">
+
+					<h1>Title H1 ABC DEF HIG JKL MNO </h1>
+
+					<h2>Title H2</h2>
+
+					<h3>Title H3</h3>
+
+					<h4>Title H4 ABC DEF HIG JKL MNO </h4>
+
+					<h5>Title H5 ABC DEF HIG JKL MNO </h5>
+
+					<aside>aside aside </aside>
+
+					<p><a href="" >This is a link</a> in front of some text.</p>
+
+					<p>
+						<button id=but onclick=`function(){but.parentNode.innerHTML+="OK";}` >button 1</button>
+
+						<button>button 2</button>
+					</p>
+
+					<p>
+						<select size=5 >
+							<option>abc 123 def 456 def 456</option>
+							<option>abc 123 def 456</option>
+							<option>abc 123 def 456</option>
+							<option>abc 123 def 456</option>
+							<option>abc 123 def 456</option>
+							<option>abc 123 def 456</option>
+							<option>abc 123 def 456</option>
+							<option>abc 123 def 456</option>
+						</select>
+					</p>
+
+					<p>
+						<input value="aaa 123 bbb">
+					</p>
+
+					<p>
+						<input type=range>
+					</p>
+
+					<blockquote>
+						blockquote blockquote<br>
+						abc 123
+					</blockquote>
+
+					<code>
+						code code code
+						123 abc
+					</code>
+
+					<pre>
+	code code code
+	123 abc
+					</pre>
+
+					<p>
+						<mark>mark mark mark bark mark</mark>
+					</p>
+
+					<div>
+						<ul>
+							<li>aaa</li>
+							<li>bbb</li>
+							<li>ccc</li>
+						</ul></u>
+					</div>
+
+				</div>
+
+				<details class=details__primary open>
+
+					<summary class=summary__primary >sumMenuHeader</summary>
+
+					<p><a href="">breadcrumb</a> &raquo; </p>
+
+					<h2><a href="">Title H2</a></h2>
+
+					<div id=divMenuHeader>
+						<p><i>111 222 333 444 555</i></p>
+						aaa bbb ccc ddd eee fff
+					</div>
+
+
+				</details>
+
+			</article>
+
+			<footer class=main-footer >
+
+				<div class=dingbat onclick="window.scrollTo( { top: 100,left: 100, behavior: 'smooth' } );" title="go to top of page">❦</div>
+
+			</footer>
+
+		</section>
+
+	</main>
+
+	<nav id=navSource class=nav-source >
+
+		<button class=nav-source__button >source</button>
+
+	</nav>
+
+
+	<script>
+
+		const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
+		const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
+
+
+		init();
+
+
+		function init() {
+
+			mainTitle.innerHTML = menuHeader.innerHTML = getTitle();
+
+			//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+
+			//THM.init();
+
+			//mainContents.innerHTML += `${( new Date )}<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>`;
+
+			if ( window.innerWidth < 640 || window.innerHeight < 640 ) { toggleNavMenu(); }
+
+			const txt = localStorage.getItem("theme") || "[]";
+			const theme = JSON.parse(txt).forEach(item => {
+				const key = Object.keys(item)[0];
+				const input = (document.querySelectorAll("#" + key)[0].value = item[key]);
+			});
+
+			inpHue.oninput = onInput;
+			inpSaturation.oninput = onInput;
+			inpLightness.oninput = onInput;
+
+			onInput();
+
+			btnRed.onclick = () => {
+				inpHue.value = 100;
+				inpSaturation.value = 50;
+				inpLightness.value = 50;
+				onInput();
+			};
+
+			btnBlue.onclick = () => {
+				inpHue.value = 66;
+				inpSaturation.value = 50;
+				inpLightness.value = 50;
+				onInput();
+			};
+
+			btnGreen.onclick = () => {
+				inpHue.value = 33;
+				inpSaturation.value = 50;
+				inpLightness.value = 50;
+				onInput();
+			};
+		}
+
+		function onInput() {
+
+			document.documentElement.style.setProperty(
+				"--main-hue",
+				3.6 * parseFloat(inpHue.value)
+			);
+
+			document.documentElement.style.setProperty(
+				"--saturation",
+				inpSaturation.value + "%"
+			);
+
+			document.documentElement.style.setProperty(
+				"--theme-darkness",
+				0.5 + inpLightness.value / 100 // set lower limit to prevent from going too dark
+			);
+
+			outHue.innerHTML = ( 3.6 * inpHue.value).toFixed();
+			outSaturation.innerHTML = inpSaturation.value + "%";
+			outLightness.innerHTML = ( 0.5 + inpLightness.value / 100 ).toLocaleString();
+
+			setStorageHsl();
+
+		}
+
+		function setStorageHsl() {
+
+			const inputs = Array.from(document.querySelectorAll("details p input"));
+			const theme = inputs.map(item => {
+				return JSON.parse(`{ "${item.id}": ${item.value} }`);
+			});
+
+			localStorage.setItem("theme", JSON.stringify(theme));
+		}
+
+
+		function setIt() {
+
+			mainContents.innerHTML += `<p>${( performance.now() )} - Howdy! </p>`;
+
+		}
+
+
+
+		function getTitle() {
+
+			document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, -5 ).replace( /-/g, ' ' );
+			const version = document.head.querySelector( "[ name=version ]" ).content;
+			const description = document.head.querySelector( "[ name=description ]" ).content;
+
+			const htm =
+				`
+				<h1 class=primary >
+					<a href=${ urlSourceCode} target=_top title="Source code on GitHub" >
+						<img src=${ urlSourceCodeIcon} height=24 style=opacity:0.5; >
+					</a>
+
+					<a href="" class=aTitle title="Click to reload this page" >${ document.title} ${version}</a>
+				</h1>
+
+				<aside class=secondary >${ description}</aside>
+			`;
+
+			return htm;
+
+		}
+
+
+		function toggleNavMenu() { // move to COR??
+
+			hamburgerButton.classList.toggle( 'collapsed' );
+			navMenu.classList.toggle( 'collapsed' );
+			main.classList.toggle( 'collapsed' );
+
+		}
+
+
+	</script>
+</body>
+
+</html>

@@ -26,14 +26,13 @@ var POP = {
 POP.footer =
 
 	`<div >
-		<button onclick=POP.requestFile(POP.popup,divDragMoveContent); >🏠</button>&nbsp;
-		<button onclick=POP.requestFile(POP.license,divDragMoveContent); >⚖️</button>&nbsp;
+		<button onclick=POP.requestFile(POP.popup,divDragMoveContent); title="Splash screen" >🏠</button>&nbsp;
+		<button onclick=POP.requestFile(POP.license,divDragMoveContent); title="Copyright and license" >⚖️</button>&nbsp;
 		<span id=POPspanInfo >v${ POP.version } - ${ POP.date }</span>
 	</div>`;
 
 
 POP.popup = "popup.md";
-
 
 
 POP.init = function() {
@@ -84,7 +83,7 @@ POP.setPopupShowHide = function( id = butPopupClose, text = POP.popup, footer = 
 
 		} else {
 
-			divDragMoveContent.innerHTML = text;
+			divDragMoveContent.innerHTML = "";
 			navDragMove.hidden = true;
 
 		}

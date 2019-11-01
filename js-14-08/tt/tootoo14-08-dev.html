@@ -17,7 +17,7 @@
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
 <link rel = "license" href = "https://opensource.org/licenses/MIT" >
-<link rel = "stylesheet" href = "thm-theme/style.css" >
+<link rel = "stylesheet" href = "thm-theme/v-0-01/style.css" >
 
 
 </head>
@@ -54,19 +54,20 @@
 
 	<nav id="navMenu" >
 
-		<section class="secContent" >
-
-			<details open>
+		<details open>
 
 			<summary class="sumMenuTitle" >Menu bar header</summary>
 
-				<header>
+			<header>
 
-					<div id="MNUdivHeader" ></div>
+				<div id="MNUdivHeader" ></div>
 
-				</header>
+			</header>
 
-			</details>
+		</details>
+
+		<section class="secContent" >
+
 
 			<details open>
 
@@ -103,6 +104,8 @@
 
 			</details>
 
+		</section>
+
 			<footer>
 
 				<details>
@@ -119,7 +122,6 @@
 
 			</footer>
 
-		</section>
 
 	</nav>
 
@@ -169,7 +171,7 @@
 
 // see cor-core.js for many init values
 
-THM.cssDefault = "thm-theme/style.css";
+//THM.cssDefault = "thm-theme/style.css";
 
 init();
 
@@ -186,7 +188,7 @@ function init() {
 
 	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
 
-	THM.init();
+	//THM.init();
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 

@@ -86,7 +86,7 @@ MNU.getNavHeader = function() {
 
 	const htm  =
 	`
-	<div>
+	<div class=primary >
 		<h3>
 			<a href="${ MNU.homeUrl }" title="${ MNU.homeTitle }" target="_top">
 				${ MNU.homeText }
