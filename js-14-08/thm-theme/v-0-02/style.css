@@ -4,14 +4,7 @@
 	--green-hue: 120;
 	--main-hue: var(--red-hue);
 	--saturation: 50%;
-	/* --lightness1: 90%;
-	--lightness2: 60%;
-	--lightness3: 70%;
-	--lightness4: 80%;
-	--lightness5: 90%;
-	--theme-darkness: 1;*/
 	--mnu-width: 22rem;
-/*	filter: brightness(var(--theme-darkness)); */
 	font: 1rem monospace;
 }
 * {
@@ -143,7 +136,7 @@ main {
 	overflow: auto;
 	padding: 0 1rem;
 }
-main h1, main h2, main h3 {
+main h1, main h2, main h3, main h4, main h5 {
 	padding: 0.5ch 1ch;
 
 }

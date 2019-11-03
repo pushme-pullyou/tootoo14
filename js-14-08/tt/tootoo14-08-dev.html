@@ -49,14 +49,17 @@
 
 <script src = "cor-core/cor-core.js" ></script>
 
+	<nav id=navExpand >
 
-	<button id="expandButton" onclick="toggleNavMenu();" >☰</button>
+		<button id="expandButton" onclick="toggleNavMenu();" >☰</button>
 
-	<nav id="navMenu" >
+	</nav>
 
-		<details open>
+	<nav id="navMenu" class=nav-menu >
 
-			<summary class="sumMenuTitle" >Menu bar header</summary>
+		<details class=details__primary open>
+
+			<summary class="summary__primary" >Menu bar header</summary>
 
 			<header>
 
@@ -186,7 +189,7 @@ function init() {
 
 	}
 
-	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
 
 	//THM.init();
 
