@@ -51,9 +51,9 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 		FOB.divMessages.innerHTML =
 		`
 
-			<details id=FOBdet open>
+			<details id=FOBdet class=details__secondary open>
 
-				<summary>File statistics</summary>
+				<summary class=summary__secondary >File statistics</summary>
 
 				<div id=FILdivProgress ></div>
 
@@ -66,9 +66,9 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 
 	const htm =
 	`
-		<details id=FOBdetFileOpen class=detSubMenu open >
+		<details id=FOBdetFileOpen class=details__secondary open >
 
-			<summary>Open file
+			<summary class=summary__secondary >Open file
 				<button id=butFOB class=butHelp onclick="POP.setPopupShowHide(butFOB,FOB.helpFile);" >?</button>
 			</summary>
 
@@ -104,9 +104,9 @@ FOB.getMenuFileSaveBasic = function() {
 
 	const htm =
 	`
-	<details>
+	<details class=details__secondary>
 
-		<summary>Save file
+		<summary class=summary__secondary>Save file
 			<button id=butFILSave class=butHelp onclick="POP.setPopupShowHide(butFILSave,FOB.helpFile);" >?</button>
 		</summary>
 
@@ -147,7 +147,7 @@ FOB.onHashChange = function() {
 
 	const url = !location.hash ? FOB.urlDefaultFile : location.hash.slice( 1 );
 
-	FOB.requestFileDecider( url );
+	FOB.requestFileDecider( "../" + url );
 
 };
 

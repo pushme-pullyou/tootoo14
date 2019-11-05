@@ -4,10 +4,10 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-09-04" >
+<meta name = "date" content = "2019-11-04" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.08-1dev" >
+<meta name = "version" content = "0.14.08-1fix" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -17,8 +17,8 @@
 <link rel = "canonical" href = "https://pushme-pullyou.github.io" >
 <link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
 <link rel = "license" href = "https://opensource.org/licenses/MIT" >
-<link rel = "stylesheet" href = "thm-theme/v-0-01/style.css" >
-
+<link rel = "stylesheet" href = "ttt-theme-too-too/style.css" >
+<link rel = "stylesheet" href = "dmv-div-move/dmv-div-move.css" >
 
 </head>
 
@@ -27,13 +27,17 @@
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
+<!-- Theme-->
+
+<script src = "dmv-div-move/dmv-div-move.js" ></script>
 <!-- Menus generally -->
+
 <script src = "mnu-menu/mnu-menu.js" ></script>
 <script src = "pop-popup/pop-popup.js" ></script>
 <script src = "gat-github-access-token/gat-github-access-token.js" ></script>
 
 <!-- File menu panel -->
-<script src = "rga-repo-github-api/v-0-00/rga-repo-github-api.js" ></script>
+<script src = "rga-repo-github-api/v-0-01/rga-repo-github-api.js" ></script>
 <script src = "fga-files-github-api/v-0-02/fga-files-github-api.js" ></script>
 <script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
 <!--
@@ -44,18 +48,20 @@
 
 
 <!-- Settings menu -->
-<script src = "thm-theme/thm-theme.js" ></script>
+<script src = "ttt-theme-too-too/ttt-theme-too-too.js" ></script>
 <script src = "tmp-template/tmp-template.js" ></script>
 
-<script src = "cor-core/cor-core.js" ></script>
 
-	<nav id=navExpand >
 
-		<button id="expandButton" onclick="toggleNavMenu();" >☰</button>
+
+<nav id=navExpand class=nav-expand >
+
+		<button id="hamburgerButton" onclick="toggleNavMenu();">☰</button>
 
 	</nav>
 
-	<nav id="navMenu" class=nav-menu >
+
+	<nav id=navMenu class=nav-menu >
 
 		<details class=details__primary open>
 
@@ -69,12 +75,12 @@
 
 		</details>
 
-		<section class="secContent" >
 
+		<section class=menu-body >
 
-			<details open>
+			<details class=details__primary open>
 
-				<summary class="sumMenuTitle" >GitHub folders & files</summary>
+				<summary class="summary__primary" >GitHub folders & files</summary>
 
 				<div id="RGAdivMenuReposUser" ></div>
 
@@ -84,9 +90,9 @@
 
 			</details>
 
-			<details>
+			<details class=details__primary open >
 
-				<summary class="sumMenuTitle" >File menu</summary>
+				<summary class="summary__primary"  >File menu</summary>
 
 				<div id=FOBdivFileOpenBasic ></div>
 
@@ -96,35 +102,29 @@
 
 			</details>
 
+			<details class=details__primary open>
 
-			<details>
+				<summary class=summary__primary >Settings menu</summary>
 
-				<summary class=sumMenuTitle >Settings menu</summary>
-
-				<div id=THMdivMenuThemeSelect ></div>
-
-				<div id=TMPdivTemplate ></div>
+					<div id=TTTdivMenuThemeSettings></div>
 
 			</details>
 
 		</section>
 
-			<footer>
+		<footer class=menu-footer >
 
-				<details>
+			<details class=details__primary >
 
-					<summary class=sumMenuTitle >Help menu</summary>
+				<summary class=summary__primary >Help menu</summary>
 
-					<div id="MNUdivFooterPopup" ></div>
+				<div id="MNUdivFooterPopup" ></div>
 
-				</details>
+			</details>
 
-				<h1 onclick="navMenu.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
-					❦
-				</h1>
+			<div class=dingbat onclick="navMenu.scrollTop=0;" title="go to top of menu">❦</div>
 
-			</footer>
-
+		</footer>
 
 	</nav>
 
@@ -140,27 +140,28 @@
 	</main>
 
 
-	<nav id="navDragMove"  >
+	<nav id = "navDragMove" class=nav-drag-move >
 
 		<section id="secDragMove" >
 
-			<div id=divDragMoveHeader >
-
-				<span title="Move and resize me" >&#x2766;</span>
-
-				<span>aa bb cc</span>
-
-				<button id=butPopupClose onclick="POP.onClickClose(butPopupClose);" >&times;</button>
-
+			<div id = "divDragMoveHeader" class=primary >
+				? <button onclick=navDragMove.hidden=true; style=float:right; >&times</button>
 			</div>
 
-			<div id="divDragMoveContent" ></div>
+			<div id = "divDragMoveContent" ></div>
 
-			<div id="divDragMoveFooter" ></div>
+			<div id = "divDragMoveFooter" >
+
+				<button onclick="divDragMoveContent.innerHTML +=`<p>${ txt }`;"; >🔥</button>
+				<button onclick='divDragMoveContent.innerHTML = "abc 123"'' >😃</button>
+				<button onclick="divDragMoveContent.innerHTML = `<p>${ new Date() }<br>${ txt} ${txt}</p>`;">💡</button>
+
+			</div>
 
 		</section>
 
 	</nav>
+
 
 
 	<nav>
@@ -172,30 +173,21 @@
 
 <script>
 
-// see cor-core.js for many init values
-
-//THM.cssDefault = "thm-theme/style.css";
 
 init();
 
 
 function init() {
 
-	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
+	DMV.initialize();
 
-		divContents.style.width = getComputedStyle( divContents ).width;
-		divContents.style.height = getComputedStyle( divContents ).height;
-		divContents.setAttribute( 'scrolling', 'no' );
+	TTTdivMenuThemeSettings.innerHTML = TTT.getTTTdivMenuThemeSettings()
 
-	}
-
-	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
-
-	//THM.init();
+	TTT.initialize();
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	RGAdivMenuReposUser.innerHTML = RGA.getMenuReposUser();
+	//RGAdivMenuReposUser.innerHTML = RGA.getMenuReposUser();
 
 	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
 
@@ -203,53 +195,35 @@ function init() {
 
 	FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
 
-	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
-
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	POP.init();
-
-	COR.init();
-
-	//FGA.fetchTree();
-
-	FGA.user = "theo-armour";
-	FGA.repo = "theo-armour.github.io";
-	//FGA.urlGitHubPage = "https://theo-armour.github.io/#https://theo-armour.github.io/";
+	//FGA.user = "theo-armour";
+	//FGA.repo = "theo-armour.github.io";
+	//FGA.urlGitHubPage = "../../" //"https://theo-armour.github.io/#https://theo-armour.github.io/";
 
 	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
-
-	FGA.onHashChange();
-
 
 	// let's go / FOB to load default and fire onload events
 	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
 
-	aViewSource.href = MNU.urlSourceCode;
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+	POP.init();
 
-		toggleNavMenu();
-		POP.setPopupShowHide( butPopupClose, ' ', POP.footer );
-
-	} else {
-
-		POP.setPopupShowHide();
-
-	}
+	if ( document.body.clientHeight < 640 || document.body.clientWidth < 640 ) { toggleNavMenu(); }
 
 }
 
 
 
-function toggleNavMenu() {// move to COR??
+function toggleNavMenu() {
 
-	expandButton.classList.toggle( 'collapsed' );
+	navExpand.classList.toggle( 'collapsed' );
 	navMenu.classList.toggle( 'collapsed' );
 	main.classList.toggle( 'collapsed' );
 
-}
+	if ( document.body.clientHeight < 640 || document.body.clientWidth < 640 ) { navSource.hidden=true; }
 
+}
 </script>
 </body>
 </html>

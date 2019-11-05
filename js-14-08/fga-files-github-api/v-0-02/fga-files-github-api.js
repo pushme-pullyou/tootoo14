@@ -46,19 +46,19 @@ FGA.getMenuFilesGithubApi = function () {
 	`
 		<div id = "FGAdivBreadcrumbs" ></div>
 
-		<details open style=margin-top:1rem; >
+		<details open class=details__secondary ontoggle=FGA.onHashChange(); >
 
-			<summary>Folders</summary>
+			<summary class=summary__secondary >Folders</summary>
 
-			<div id = "FGAdivFolders" ></div>
+			<div id = "FGAdivFolders" class=nav-menu-div ></div>
 
 		</details>
 
-		<details open style=margin-top:1rem; >
+		<details open  class=details__secondary >
 
-			<summary>Files</summary>
+			<summary  class=summary__secondary >Files</summary>
 
-			<div id = "FGAdivFiles" ></div>
+			<div id = "FGAdivFiles" class=nav-menu-div></div>
 
 			<div id = "FGAdivFooter" >
 
@@ -84,7 +84,7 @@ FGA.onHashChange = function () {
 
 	const url = !location.hash ? "": location.hash.slice( 1 );
 
-	FGA.path = ""; //url.lastIndexOf( '/' ) > 0 ? url.slice( 0, url.lastIndexOf( '/' ) ) : '';
+	FGA.path = url.lastIndexOf( '/' ) > 0 ? url.slice( 0, url.lastIndexOf( '/' ) ) : '';
 
 	FGA.fetchTree( FGA.path );
 
@@ -136,7 +136,7 @@ FGA.getFolders = function ( items ) {
 
 	const htm = items.filter( item => item.type === "dir" &&
 		!FGA.ignoreFolders.includes( item.name ) ).map( item => `
-			<div style=margin-top:0.2rem; >
+			<div style="margin:0.2rem 1rem;" >
 				<a href="index.html#${ item.path }/"; >
 					&#x1f4c1; ${ item.name}
 				</a>
@@ -165,7 +165,7 @@ FGA.getFiles = function ( items ) {
 			title="Open file in new tab" target="_blank" >&#x2750;</a>` : "";
 
 			return `
-				<div style=margin-top:0.5rem; >
+				<div style="margin:0.5rem 1rem"; >
 					<div style=display:inline-block; >
 						<a href="${ FGA.urlGitHubSource}"
 							target=_top title="View or edit source code" >
@@ -173,7 +173,7 @@ FGA.getFiles = function ( items ) {
 						</a>
 					</div>
 					<div style=display:inline-block; class=FGAitem >
-						<a href=./index.html#${ item.path }
+						<a href=index.html#${ item.path }
 						title="Click to view file" >${ item.name}
 						</a>
 					</div>

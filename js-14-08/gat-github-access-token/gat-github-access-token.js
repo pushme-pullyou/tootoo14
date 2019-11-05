@@ -20,9 +20,9 @@ GAT.getMenuGitHubAccessToken = function () {
 
 	const htm =
 		`
-		<details>
+		<details class=details__secondary >
 
-			<summary>GitHub API Personal Access Token </summary>
+			<summary class=summary__secondary >GitHub API Personal Access Token </summary>
 
 			<!-- <div>
 				<button id=butGAT class=butHelp onclick="GATdiaHelp.open=!GATdiaHelp.open;" >?</button>

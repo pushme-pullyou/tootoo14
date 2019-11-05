@@ -35,13 +35,13 @@ RGA.getMenuReposUser = function( method ) {
 
 	const htm =
 		`
-			<details id=detRGA ontoggle="RGA.setMenuUserRepos();" >
+			<details id=detRGA class=details__secondary ontoggle="RGA.setMenuUserRepos();" open >
 
-				<summary id=RGAsumS >${ RGA.user } Repos</summary>
+				<summary id=RGAsumS class=summary__secondary >${ RGA.user } Repos</summary>
 
 				<a href="${ RGA.urlHelpFile  }" style=float:right; >?</a>
 
-				<div id=RGAdivRepos ></div>
+				<p id=RGAdivRepos ></p>
 
 			</details>
 
