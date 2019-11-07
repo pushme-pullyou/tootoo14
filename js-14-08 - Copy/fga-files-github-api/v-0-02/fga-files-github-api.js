@@ -149,7 +149,7 @@ FGA.getFolders = function ( items ) {
 };
 
 
-FGA.getFiles = function (items = [] ) {
+FGA.getFiles = function ( items ) {
 
 	const htm = items.filter( item => item.type === "file" &&
 		!FGA.ignoreFiles.includes( item.name ) ).map( item => {

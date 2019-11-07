@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+
+<meta charset = "utf-8" >
+<meta name = "copyright" content ="PushMe-PullYou authors" >
+<meta name = "date" content = "2019-09-04" >
+<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "version" content = "0.14.08-1dev" >
+<meta name = "viewport" content = "width=device-width, initial-scale=1" >
+
+<title>TooToo</title>
+
+<base href = "../" >
+
+<link rel = "canonical" href = "https://pushme-pullyou.github.io" >
+<link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
+<link rel = "license" href = "https://opensource.org/licenses/MIT" >
+<link rel = "stylesheet" href = "thm-theme/v-0-01/style.css" >
+
+
+</head>
+
+<body>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+
+<!-- Menus generally -->
+<script src = "mnu-menu/mnu-menu.js" ></script>
+<script src = "pop-popup/pop-popup.js" ></script>
+<script src = "gat-github-access-token/gat-github-access-token.js" ></script>
+
+<!-- File menu panel -->
+<script src = "rga-repo-github-api/v-0-00/rga-repo-github-api.js" ></script>
+<script src = "fga-files-github-api/v-0-02/fga-files-github-api.js" ></script>
+<script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
+<!--
+	<script src = "fsb-file-save-basic/fsb-file-save-basic.js" ></script>
+-->
+
+<!-- Edit Menu -->
+
+
+<!-- Settings menu -->
+<script src = "thm-theme/thm-theme.js" ></script>
+<script src = "tmp-template/tmp-template.js" ></script>
+
+<script src = "cor-core/cor-core.js" ></script>
+
+	<nav id=navExpand >
+
+		<button id="expandButton" onclick="toggleNavMenu();" >☰</button>
+
+	</nav>
+
+	<nav id="navMenu" class=nav-menu >
+
+		<details class=details__primary open>
+
+			<summary class="summary__primary" >Menu bar header</summary>
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+		</details>
+
+		<section class="secContent" >
+
+
+			<details open>
+
+				<summary class="sumMenuTitle" >GitHub folders & files</summary>
+
+				<div id="RGAdivMenuReposUser" ></div>
+
+				<div id="FGAdivMenuRepoFilesFolders" ></div>
+
+				<div id="GATdivGithubAccessToken" ></div>
+
+			</details>
+
+			<details>
+
+				<summary class="sumMenuTitle" >File menu</summary>
+
+				<div id=FOBdivFileOpenBasic ></div>
+
+				<div id=FOBdivFileSaveBasic ></div>
+
+				<div id=FOBdivMessages ></div>
+
+			</details>
+
+
+			<details>
+
+				<summary class=sumMenuTitle >Settings menu</summary>
+
+				<div id=THMdivMenuThemeSelect ></div>
+
+				<div id=TMPdivTemplate ></div>
+
+			</details>
+
+		</section>
+
+			<footer>
+
+				<details>
+
+					<summary class=sumMenuTitle >Help menu</summary>
+
+					<div id="MNUdivFooterPopup" ></div>
+
+				</details>
+
+				<h1 onclick="navMenu.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
+					❦
+				</h1>
+
+			</footer>
+
+
+	</nav>
+
+
+	<main id="main" >
+
+		<section class="secContents">
+
+			<div id="divContents" ></div>
+
+		</section>
+
+	</main>
+
+
+	<nav id="navDragMove"  >
+
+		<section id="secDragMove" >
+
+			<div id=divDragMoveHeader >
+
+				<span title="Move and resize me" >&#x2766;</span>
+
+				<span>aa bb cc</span>
+
+				<button id=butPopupClose onclick="POP.onClickClose(butPopupClose);" >&times;</button>
+
+			</div>
+
+			<div id="divDragMoveContent" ></div>
+
+			<div id="divDragMoveFooter" ></div>
+
+		</section>
+
+	</nav>
+
+
+	<nav>
+
+		<a href="" id="aViewSource" target="_blank" >view source</a>
+
+	</nav>
+
+
+<script>
+
+// see cor-core.js for many init values
+
+//THM.cssDefault = "thm-theme/style.css";
+
+init();
+
+
+function init() {
+
+	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
+
+		divContents.style.width = getComputedStyle( divContents ).width;
+		divContents.style.height = getComputedStyle( divContents ).height;
+		divContents.setAttribute( 'scrolling', 'no' );
+
+	}
+
+	//THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+
+	//THM.init();
+
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	RGAdivMenuReposUser.innerHTML = RGA.getMenuReposUser();
+
+	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
+
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+
+	FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+
+	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
+
+	POP.init();
+
+	COR.init();
+
+	//FGA.fetchTree();
+
+	FGA.user = "theo-armour";
+	FGA.repo = "theo-armour.github.io";
+	//FGA.urlGitHubPage = "https://theo-armour.github.io/#https://theo-armour.github.io/";
+
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+
+	FGA.onHashChange();
+
+
+	// let's go / FOB to load default and fire onload events
+	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
+
+	aViewSource.href = MNU.urlSourceCode;
+
+	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+
+		toggleNavMenu();
+		POP.setPopupShowHide( butPopupClose, ' ', POP.footer );
+
+	} else {
+
+		POP.setPopupShowHide();
+
+	}
+
+}
+
+
+
+function toggleNavMenu() {// move to COR??
+
+	expandButton.classList.toggle( 'collapsed' );
+	navMenu.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
+
+}
+
+</script>
+</body>
+</html>

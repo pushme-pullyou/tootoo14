@@ -1,31 +1,19 @@
-/* globals FOB, FGAdivMenuItems, FGAdivBreadcrumbs */
+// Copyright pushMe-pullYou authors. MIT license.
 // jshint esversion: 6
 // jshint loopfunc: true
+/* globals FGAdivFolders, FGAdivFiles, FGAdivBreadcrumbs */
 
 
-const FGA = {
-
-	script: {
-
-		copyright: "Copyright 2019 pushMe pullYou authors",
-		date: "2019-10-26",
-		description: "Use GitHub API to obtain a list of files in a GitHub repo. Build menu to access the files",
-		helpFile: "https://pushme-pullyou.github.io/tootoo14/js-14-08/fga-files-github-api/README.md",
-		license: " MIT License",
-		version: "0.14.08-2fga"
-
-	}
-
-};
-
+const FGA = {};
 
 FGA.uriDefaultFile = "README.md";
 
-FGA.branch = 'master';
-FGA.user = 'pushme-pullyou';
-FGA.repo = 'tootoo14';
-FGA.pathRepo = '';
+FGA.branch = "master";
+FGA.user = "pushme-pullyou";
+FGA.repo = "tootoo14";
+FGA.pathRepo = "";
 
+FGA.pathPrevious = "";
 
 FGA.ignoreFolders = [ "0-templates-readme", "archive", "data", ".github" ];
 
@@ -34,11 +22,10 @@ FGA.ignoreFiles = [ ".gitattributes", ".gitignore", ".nojekyll", "404.html", "in
 FGA.urlSourceCodeImage = "https://pushme-pullyou.github.io/github-mark-32.png";
 FGA.iconInfo = `<img src="${ FGA.urlSourceCodeImage }" height=18 style=opacity:0.5 >`;
 
+
 FGA.getMenuFilesGithubApi = function () {
 
-	window.addEventListener( 'hashchange', FGA.onHashChange, false );
-
-	FGA.accessToken = localStorage.getItem( 'githubAccessToken' ) || '';
+	window.addEventListener( "hashchange", FGA.onHashChange, false );
 
 	const urlSourceCode = `https://github.com/${FGA.user}/${FGA.repo}/`;
 
@@ -46,7 +33,7 @@ FGA.getMenuFilesGithubApi = function () {
 	`
 		<div id = "FGAdivBreadcrumbs" ></div>
 
-		<details open class=details__secondary ontoggle=FGA.onHashChange(); >
+		<details open class=details__secondary >
 
 			<summary class=summary__secondary >Folders</summary>
 
@@ -82,11 +69,15 @@ FGA.getMenuFilesGithubApi = function () {
 
 FGA.onHashChange = function () {
 
-	const url = !location.hash ? "": location.hash.slice( 1 );
+	const url = !location.hash ? "" : location.hash.slice( 1 );
 
-	FGA.path = url.lastIndexOf( '/' ) > 0 ? url.slice( 0, url.lastIndexOf( '/' ) ) : '';
+	FGA.path = url.lastIndexOf("/") > 0 ? url.slice(0, url.lastIndexOf("/")) : "";
 
-	FGA.fetchTree( FGA.path );
+	if (FGA.path === FGA.pathPrevious && FGAdivFiles.innerHTML !== "" ) { return; }
+
+	FGA.fetchTree(FGA.path);
+
+	FGA.pathPrevious = FGA.path;
 
 };
 
@@ -98,7 +89,7 @@ FGA.fetchTree = function ( path = "" ) {
 
 	const url = `https://api.github.com/repos/${ FGA.user }/${ FGA.repo }/contents/${ path }`;
 
-	const accessToken = localStorage.getItem( 'githubAccessToken' ) || '';
+	const accessToken = localStorage.getItem( "githubAccessToken" ) || "";
 
 	const str = accessToken ? "?access_token=" + accessToken : "";
 
@@ -110,9 +101,9 @@ FGA.fetchTree = function ( path = "" ) {
 
 
 FGA.callbackGitHubPathFileNames = function ( items ) {
-	//console.log( 'items', items );
+	//console.log( "items", items );
 
-	if ( items.message ) { console.log( 'error', items.message ); return; } //breadcrumbs??
+	if ( items.message ) { console.log( "error", items.message ); return; } //breadcrumbs??
 
 	items = Array.isArray( items ) ? items : [ items ];
 
@@ -122,7 +113,7 @@ FGA.callbackGitHubPathFileNames = function ( items ) {
 
 	const name = location.hash ? location.hash.slice( 1 ).split( "/" )
 		.pop() : "README.md";
-	//console.log( 'name', name );
+	//console.log( "name", name );
 
 	const divs = FGAdivFiles.querySelectorAll( "div.FGAitem" );
 
@@ -137,7 +128,7 @@ FGA.getFolders = function ( items ) {
 	const htm = items.filter( item => item.type === "dir" &&
 		!FGA.ignoreFolders.includes( item.name ) ).map( item => `
 			<div style="margin:0.2rem 1rem;" >
-				<a href="index.html#${ item.path }/"; >
+				<a href="#${ item.path }/"; >
 					&#x1f4c1; ${ item.name}
 				</a>
 			</div>
@@ -173,7 +164,7 @@ FGA.getFiles = function (items = [] ) {
 						</a>
 					</div>
 					<div style=display:inline-block; class=FGAitem >
-						<a href=index.html#${ item.path }
+						<a href=#${ item.path }
 						title="Click to view file" >${ item.name}
 						</a>
 					</div>
@@ -191,8 +182,8 @@ FGA.getFiles = function (items = [] ) {
 
 FGA.setBreadcrumbs = function ( path ) {
 
-	const folders = path ? path.split( '/' ) : [];
-	//console.log( 'folders', folders );
+	const folders = path ? path.split( "/" ) : [];
+	//console.log( "folders", folders );
 
 	const htmFolders = folders.map( ( folder, i ) =>
 		`<a href=JavaScript:FGA.fetchTree("${ folders.slice( 0, i ).join( "/" ) }"); >${ folder}</a> &raquo; `

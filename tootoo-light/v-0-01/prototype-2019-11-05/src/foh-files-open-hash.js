@@ -1,47 +1,30 @@
-/* globals JSZip, showdown, divContents, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
+// copyright pushMe-pullYou authors. MIT license.
 // jshint esversion: 6
 /* jshint loopfunc: true */
+/* globals JSZip, showdown, divContents, FOBdivFileOpenBasic, FOBinpFilePath, FILdivProgress */
 
-var FOH = {
+"use strict"
 
-	"copyright": "Copyright 2019 pushMe pullYou authors",
-	"date": "2019-09-06",
-	"helpFile": "https://pushme-pullyou.github.io/tootoo14/js-14-08/FOH-file-open-basic/README.md",
-	"license": "MIT License",
-	"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/blob/master/js-14-08/FOH-file-open-basic/FOH-file-open-basic.js",
-	"version": "0.00.00-1foh"
-};
+const FOH = {};
 
 FOH.urlDefaultFile = "README.md";
-
-
-FOH.description =
-	`
-		TooToo File Open Basic (FOH) provides HTML and JavaScript to
-		select, open and display local files using the file dialog box, drag and drop or URL.
-	`;
-
-FOH.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
 
 FOH.regexImages = /\.(jpe?g|png|gif|webp|ico|svg|bmp)$/i;
 FOH.regexHtml = /\.(htm?l)$/i;
 
-FOH.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
-
 FOH.onHashChange = function() {
-	//console.log( 'FOH.urlDefaultFile', FOH.urlDefaultFile );
-	//console.log( 'location.hash', location.hash );
 
 	const url = !location.hash ? FOH.urlDefaultFile : location.hash.slice( 1 );
 
-	FOH.requestFileDecider( "../../" + url );
+	FOH.requestFileDecider( "../../../" + url );
 
 };
 
+window.addEventListener ( 'hashchange', FOH.onHashChange, false );
 
 
 FOH.requestFileDecider = function( url ) { // from a button
-	console.log( 'url', url );
+	//console.log( 'url', url );
 
 	if ( !url ) { return; }
 
@@ -77,11 +60,12 @@ FOH.requestFileText = function( url ) {
 
 	FOH.timeStart = performance.now();
 
-	FOH.xhr.open( 'GET', url, true );
-	FOH.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
-	FOH.xhr.onprogress = function( xhr ) { FOH.onProgress( xhr.loaded, FOH.note ); };
-	FOH.xhr.onload = function( xhr ) { FOH.onProgress( xhr.loaded ); FOH.callbackDecider( xhr ); };
-	FOH.xhr.send( null );
+	const xhr = new XMLHttpRequest();
+	xhr.open( 'GET', url, true );
+	xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
+	xhr.onprogress = function( xhr ) { FOH.onProgress( xhr.loaded, FOH.note ); };
+	xhr.onload = function( xhr ) { FOH.onProgress( xhr.loaded ); FOH.callbackDecider( xhr ); };
+	xhr.send( null );
 
 };
 
@@ -179,6 +163,8 @@ FOH.callbackJson = function( text ) {
 
 
 FOH.callbackOtherToTextarea = function( text ){
+
+	FOH.contentsCss = `border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
 
 	FOH.target.innerHTML = `<textarea style="${ FOH.contentsCss }" >${ text }</textarea>`;
 

@@ -14,7 +14,6 @@ var FOH = {
 
 FOH.urlDefaultFile = "README.md";
 
-
 FOH.description =
 	`
 		TooToo File Open Basic (FOH) provides HTML and JavaScript to
@@ -34,14 +33,14 @@ FOH.onHashChange = function() {
 
 	const url = !location.hash ? FOH.urlDefaultFile : location.hash.slice( 1 );
 
-	FOH.requestFileDecider( "../../" + url );
+	FOH.requestFileDecider( url );
 
 };
 
 
 
 FOH.requestFileDecider = function( url ) { // from a button
-	console.log( 'url', url );
+	//console.log( 'url', url );
 
 	if ( !url ) { return; }
 

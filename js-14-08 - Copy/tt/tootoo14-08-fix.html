@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+
+<meta charset = "utf-8" >
+<meta name = "copyright" content ="PushMe-PullYou authors" >
+<meta name = "date" content = "2019-11-04" >
+<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "version" content = "0.14.08-1fix" >
+<meta name = "viewport" content = "width=device-width, initial-scale=1" >
+
+<title>TooToo</title>
+
+<base href = "../" >
+
+<link rel = "canonical" href = "https://pushme-pullyou.github.io" >
+<link rel = "license" href = "https://creativecommons.org/licenses/by/4.0/" >
+<link rel = "license" href = "https://opensource.org/licenses/MIT" >
+<link rel = "stylesheet" href = "ttt-theme-too-too/style.css" >
+<link rel = "stylesheet" href = "dmv-div-move/dmv-div-move.css" >
+
+</head>
+
+<body>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+
+<!-- Theme-->
+
+<script src = "dmv-div-move/dmv-div-move.js" ></script>
+<!-- Menus generally -->
+
+<script src = "mnu-menu/mnu-menu.js" ></script>
+<script src = "pop-popup/pop-popup.js" ></script>
+<script src = "gat-github-access-token/gat-github-access-token.js" ></script>
+
+<!-- File menu panel -->
+<script src = "rga-repo-github-api/v-0-01/rga-repo-github-api.js" ></script>
+<script src = "fga-files-github-api/v-0-02/fga-files-github-api.js" ></script>
+<script src = "fob-file-open-basic/fob-file-open-basic.js" ></script>
+<!--
+	<script src = "fsb-file-save-basic/fsb-file-save-basic.js" ></script>
+-->
+
+<!-- Edit Menu -->
+
+
+<!-- Settings menu -->
+<script src = "ttt-theme-too-too/ttt-theme-too-too.js" ></script>
+<script src = "tmp-template/tmp-template.js" ></script>
+
+
+
+
+<nav id=navExpand class=nav-expand >
+
+		<button id="hamburgerButton" onclick="toggleNavMenu();">☰</button>
+
+	</nav>
+
+
+	<nav id=navMenu class=nav-menu >
+
+		<details class=details__primary open>
+
+			<summary class="summary__primary" >Menu bar header</summary>
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+		</details>
+
+
+		<section class=menu-body >
+
+			<details class=details__primary open>
+
+				<summary class="summary__primary" >GitHub folders & files</summary>
+
+				<div id="RGAdivMenuReposUser" ></div>
+
+				<div id="FGAdivMenuRepoFilesFolders" ></div>
+
+				<div id="GATdivGithubAccessToken" ></div>
+
+			</details>
+
+			<details class=details__primary open >
+
+				<summary class="summary__primary"  >File menu</summary>
+
+				<div id=FOBdivFileOpenBasic ></div>
+
+				<div id=FOBdivFileSaveBasic ></div>
+
+				<div id=FOBdivMessages ></div>
+
+			</details>
+
+			<details class=details__primary open>
+
+				<summary class=summary__primary >Settings menu</summary>
+
+					<div id=TTTdivMenuThemeSettings></div>
+
+			</details>
+
+		</section>
+
+		<footer class=menu-footer >
+
+			<details class=details__primary >
+
+				<summary class=summary__primary >Help menu</summary>
+
+				<div id="MNUdivFooterPopup" ></div>
+
+			</details>
+
+			<div class=dingbat onclick="navMenu.scrollTop=0;" title="go to top of menu">❦</div>
+
+		</footer>
+
+	</nav>
+
+
+	<main id="main" >
+
+		<section class="secContents">
+
+			<div id="divContents" ></div>
+
+		</section>
+
+	</main>
+
+
+	<nav id = "navDragMove" class=nav-drag-move >
+
+		<section id="secDragMove" >
+
+			<div id = "divDragMoveHeader" class=primary >
+				? <button onclick=navDragMove.hidden=true; style=float:right; >&times</button>
+			</div>
+
+			<div id = "divDragMoveContent" ></div>
+
+			<div id = "divDragMoveFooter" >
+
+				<button onclick="divDragMoveContent.innerHTML +=`<p>${ txt }`;"; >🔥</button>
+				<button onclick='divDragMoveContent.innerHTML = "abc 123"'' >😃</button>
+				<button onclick="divDragMoveContent.innerHTML = `<p>${ new Date() }<br>${ txt} ${txt}</p>`;">💡</button>
+
+			</div>
+
+		</section>
+
+	</nav>
+
+
+
+	<nav>
+
+		<a href="" id="aViewSource" target="_blank" >view source</a>
+
+	</nav>
+
+
+<script>
+
+
+init();
+
+
+function init() {
+
+	DMV.initialize();
+
+	TTTdivMenuThemeSettings.innerHTML = TTT.getTTTdivMenuThemeSettings()
+
+	TTT.initialize();
+
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	//RGAdivMenuReposUser.innerHTML = RGA.getMenuReposUser();
+
+	GATdivGithubAccessToken.innerHTML = GAT.getMenuGitHubAccessToken();
+
+	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+
+	FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
+
+	//FGA.user = "theo-armour";
+	//FGA.repo = "theo-armour.github.io";
+	//FGA.urlGitHubPage = "../../" //"https://theo-armour.github.io/#https://theo-armour.github.io/";
+
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+
+	// let's go / FOB to load default and fire onload events
+	if ( !location.hash ) { location.hash = FOB.urlDefaultFile; } else { FOB.onHashChange(); }
+
+
+	POP.init();
+
+	if ( document.body.clientHeight < 640 || document.body.clientWidth < 640 ) { toggleNavMenu(); }
+
+}
+
+
+
+function toggleNavMenu() {
+
+	navExpand.classList.toggle( 'collapsed' );
+	navMenu.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
+
+	if ( document.body.clientHeight < 640 || document.body.clientWidth < 640 ) { navSource.hidden=true; }
+
+}
+</script>
+</body>
+</html>
