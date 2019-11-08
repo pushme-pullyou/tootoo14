@@ -12,17 +12,13 @@ FOH.urlDefaultFile = "README.md";
 FOH.regexImages = /\.(jpe?g|png|gif|webp|ico|svg|bmp)$/i;
 FOH.regexHtml = /\.(htm?l)$/i;
 
-FOH.onHashChange = function() { // to be simplified
+FOH.onHashChange = function() {
 
 	const url = !location.hash ? FOH.urlDefaultFile : location.hash.slice( 1 );
 
-	//console.log('url', url);
+	FOH.urlPath = `https://${COR.repo}/`;
 
-	const file = url.endsWith("/") ? "/README.md" : "";
-
-	FOH.urlPath = "../../../"; // `https://${COR.repo}/`;
-
-	FOH.requestFileDecider( FOH.urlPath + url + file );
+	FOH.requestFileDecider( FOH.urlPath + url );
 
 };
 

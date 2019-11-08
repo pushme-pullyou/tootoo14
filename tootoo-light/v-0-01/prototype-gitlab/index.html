@@ -3,11 +3,11 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "The best is yet to be - for you and for me - yippee!" >
+<meta name = "description" content = "Tools to help you create your afterlife" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-11-07" >
 <meta name = "version" content = "0.01.0" >
-<title>oldenfit</title>
+<title>EverEverLand</title>
 
 <link href="src/style.css" rel="stylesheet" >
 
@@ -15,7 +15,7 @@
 <body>
 
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
-<script src = "src/fga-files-github-api.js" ></script>
+<script src = "src/fgla-files-gitlab-api.js" ></script>
 <script src = "src/foh-files-open-hash.js" ></script>
 
 
@@ -27,7 +27,7 @@
 
 		<details open>
 
-			<summary class="sumMenuTitle" >GitHub folders & files</summary>
+			<summary class="sumMenuTitle" >GitLab folders & files</summary>
 
 			<div id="FGAdivMenuRepoFilesFolders" ></div>
 
@@ -37,7 +37,7 @@
 
 		<footer>
 
-			<p>Click any <a href=https://github.com/theo-armour/oldenfit ><img src=src/github-mark-32.png alt="github logo" height=18 style=opacity:0.5 > </a> icon to view source code on GitHub.
+			<p>Click any <a href=https://gitlab.com/ ><img src=src/gitlab-solid-red.svg alt="GitLab logo" height=18 style=opacity:0.5 > </a> icon to view source code on GitHub.
 
 			<p>Click any &#x2750; icon to go full screen & obtain a link to the individual file.</p>
 
@@ -61,16 +61,27 @@
 
 const COR = {};
 
+
+COR.groupId = "443787";
+COR.groupId = "14344097";
+
+COR.group = "evereverland";
+COR.repo = "evereverland.gitlab.io";
 COR.branch = "master";
-COR.user = "theo-armour";
-COR.repo = "oldenfit";
-COR.pathRepo = "";
+COR.pathRepo = "public";
 
-COR.uriDefaultFile = "README.md";
+COR.urlPath = `https://${COR.repo}/`;
+//COR.path = COR.pathRepo;
 
-COR.ignoreFolders = ["0-templates-readme", "archive", "data", ".github", "src" ];
+COR.ignoreFolders = [ ".gitlab", "archive", "src" ];
+COR.ignoreFiles = [
+	".gitattributes",
+	".gitignore",
+	".gitlab-ci.yml",
+	"index.html",
+	"favicon.ico"
 
-COR.ignoreFiles = [".gitattributes", ".gitignore", ".nojekyll", "404.html", "index.html", "favicon.ico" ];
+];
 
 const urlSourceCode = `https://github.com/${ COR.user }/${ COR.repo }/tree/${ COR.branch }/${ COR.pathRepo }`;
 
@@ -84,7 +95,7 @@ function init() {
 
 	FOH.target = divContent;
 
-	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGithubApi();
+	FGAdivMenuRepoFilesFolders.innerHTML = FGA.getMenuFilesGitLabApi();
 
 	FGA.onHashChange();
 
@@ -112,13 +123,13 @@ function getTitle() {
 	`
 		<h2>
 			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
-				<img src="src/github-mark-32.png" alt="GitHub logo" height=18 style=opacity:0.5; >
+				<img src="src/gitlab-solid-red.svg" alt="GitLab logo" height=18 style=opacity:0.5; >
 			</a>
 			<a href="" title="Click to reload this page" >${ document.title } ${ version }</a>
 		</h2>
 
-		<p>
-			${ document.head.querySelector( "[ name=description ]" ).content }
+		<p title="with no expiry date"><i>
+			${ document.head.querySelector( "[ name=description ]" ).content }</i>
 		</p>
 	`;
 
