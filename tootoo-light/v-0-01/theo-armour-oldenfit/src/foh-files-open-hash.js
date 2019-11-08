@@ -18,9 +18,9 @@ FOH.onHashChange = function() { // to be simplified
 
 	//console.log('url', url);
 
-	const file = url.endsWith("/") ? "/README.md" : "";
+	const file = url.endsWith("/") ? "README.md" : "";
 
-	FOH.urlPath = "../../../"; // `https://${COR.repo}/`;
+	FOH.urlPath = "https://theo-armour.github.io/oldenfit/"; // `https://${COR.repo}/`;
 
 	FOH.requestFileDecider( FOH.urlPath + url + file );
 
