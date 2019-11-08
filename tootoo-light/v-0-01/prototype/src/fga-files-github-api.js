@@ -11,8 +11,7 @@ FGA.urlSourceCodeImage = "src/github-mark-32.png";
 FGA.iconInfo = `<img src="${FGA.urlSourceCodeImage}" alt="GitHub logo" height=18 style=opacity:0.5 >`;
 FGA.pathPrevious = "";
 
-FGA.getMenuFilesGithubApi = function () {
-
+FGA.getMenuFilesGithubApi = function() {
 	window.addEventListener("hashchange", FGA.onHashChange, false);
 
 	const htm = `
@@ -39,8 +38,7 @@ FGA.getMenuFilesGithubApi = function () {
 	return htm;
 };
 
-FGA.onHashChange = function () {
-
+FGA.onHashChange = function() {
 	const url = !location.hash ? "" : location.hash.slice(1);
 
 	FGA.path = url.lastIndexOf("/") > 0 ? url.slice(0, url.lastIndexOf("/")) : "";
@@ -52,20 +50,14 @@ FGA.onHashChange = function () {
 	FGA.fetchTree(FGA.path);
 
 	FGA.pathPrevious = FGA.path;
-
 };
 
-FGA.fetchTree = function (path = "") {
-
+FGA.fetchTree = function(path = "") {
 	FGA.setBreadcrumbs(path);
 
 	const url = `https://api.github.com/repos/${COR.user}/${COR.repo}/contents/${path}`;
 
-	const accessToken = localStorage.getItem("githubAccessToken") || "";
-
-	const str = accessToken ? "?access_token=" + accessToken : "";
-
-	fetch(new Request(url + str))
+	fetch(new Request(url))
 		.then(response => response.json())
 		.then(json => FGA.callbackGitHubPathFileNames(json));
 };
@@ -80,10 +72,9 @@ FGA.setBreadcrumbs = function(path) {
 			const str = folders.slice(0, i + 1).join("/");
 			//console.log( 'str', str );
 
-			return `<a href="#${ str }/"); >${decodeURI( folder ) }</a> &raquo; `;
-
-		} ).join("");
-
+			return `<a href="#${str}/"); >${decodeURI(folder)}</a> &raquo; `;
+		})
+		.join("");
 
 	FGAdivBreadcrumbs.innerHTML = `
 		<div style="margin:0.2rem 1rem;" >
@@ -128,6 +119,7 @@ FGA.callbackGitHubPathFileNames = function(items) {
 			(dv.parentElement.style.backgroundColor =
 				dv.innerText.trim() === name ? "lightgreen" : "")
 	);
+
 };
 
 FGA.getFolders = function(items) {
