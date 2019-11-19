@@ -7,12 +7,23 @@
 <details open >
 <summary>Concept</summary>
 
-## Two scripts
+## JavaScript
 
-* completely independent
-* no dependencies
-* event-driven
-* run locally, no server needed
+* Plain-vanilla JavaScript
+* Easy to understand code
+
+## Two scripts do the work. Both scripts:
+
+* Are completely independent
+* Have no external dependencies - ecep a markdown to HTML converter
+* Are event-driven and run independently of the other
+* Run locally, no server needed
+	* Therefore based on namespaces rather tha modules
+
+## Style.css
+
+* only the elements in use
+
 
 </details>
 
@@ -34,7 +45,7 @@
 <details>
 <summary>Change Log</summary>
 
-### XXX
+### 2019-11-07 ~ Theo
 
 * First commit
 
