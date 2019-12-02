@@ -3,10 +3,10 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Use GitHub API to gether list of files and create a menu list" >
+<meta name = "description" content = "Use GitHub API to gather list of files and create a menu list" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-09-27" >
-<meta name = "version" content = "0.00.0" >
+<meta name = "date" content = "2019-12-02" >
+<meta name = "version" content = "0.14.08-00gff" >
 <title></title>
 <style>
 
@@ -38,24 +38,15 @@
 <script src="gff-github-folder-files-dev.js" ></script>
 
 
-
 	<nav id="navMenu" >
 
 		<div id="divTitle" ></div>
 
-
-		<p>gbXML samples menu</p>
-
 		<div id=GFFdivGithubFoldersFiles ></div>
 
-		<p>file info</p>
+		<hr>
 
-		<div id=GFFdivFileInfo></div>
-
-		<div id="GATdivGithubAccessToken" ></div>
-
-		<br>
-
+		ccc
 
 	</nav>
 
@@ -63,11 +54,9 @@
 
 		<div id="divContents" >
 
-			<iframe id=ifr src=../../../spider-gbxml-tools/spider-gbxml-viewer/v-0-17-02/app-core/spider-gbxml-viewer-core.html style=height:50rem;width:100%; ></iframe>
+			<iframe id=ifr src=../../../../spider-repos/spider-gbxml-tools/spider-gbxml-viewer/v-0-17-07/app-core/spider-gbxml-viewer-core.html style=height:50rem;width:100%; ></iframe>
 
 		</div>
-
-
 
 	</main>
 
@@ -75,7 +64,7 @@
 <script>
 
 const urlSourceCode = "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-08/gff-github-folder-files";
-const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-32.png";
+const urlSourceCodeIcon = "../github-mark-32.png";
 
 init();
 
@@ -83,9 +72,7 @@ function init() {
 
 	divTitle.innerHTML = getTitle();
 
-	//divContents.innerHTML += `${ ( new Date ) }<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>`;
-
-	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
+	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenu();
 
 	window.addEventListener( 'hashchange', onHashChange, false );
 

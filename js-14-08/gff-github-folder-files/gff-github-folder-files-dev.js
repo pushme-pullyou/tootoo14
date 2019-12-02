@@ -4,16 +4,19 @@
 
 
 const GFF = {
-	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-31",
-	"description": "Get data from selected GitHub folders and files and display as links in details/summary that update location.hash",
-	"helpFile": "gff-github-folder-files/README.md",
-	"urlSourceCode": "",
-	"version": "0.14.0-1",
+
+	script: {
+		"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+		"date": "2019-12-02",
+		"description": "Get data from selected GitHub folders and files and display as links in details/summary that update location.hash",
+		"helpFile": "gff-github-folder-files/README.md",
+		"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-08/gff-github-folder-files",
+		"version": "0.14.08-00gff",
+	}
 };
 
 
-GFF.iconGitHubMark = "https://pushme-pullyou.github.io/github-mark-64.png";
+GFF.iconGitHubMark = "../github-mark-32.png";
 GFF.iconInfo = `<img src=${GFF.iconGitHubMark} height=14 style=opacity:0.5 >`;
 
 GFF.items = [
@@ -73,21 +76,47 @@ GFF.items = [
 ];
 
 
+GFF.getMenu = function() {
+
+
+	const htm =
+`
+<details  ontoggle=GFF.getMenuGithubFoldersFiles() open >
+
+	<summary class="sumMenuTitle">gbXML samples menu</summary>
+
+
+	<p><a href="https://gbxml.org" target="_blank">gbXML</a>file samples to browse, open, view and experiment with</p>
+
+	<div id=GFFdivGithubRepos></div>
+
+	<div id=GFFdivFileInfo></div>
+
+	<div id="GATdivGithubAccessToken"></div>
+
+</details>
+`;
+
+	return htm;
+
+}
+
+
 GFF.getMenuGithubFoldersFiles = function () {
 
 	const htm = GFF.items.map( ( item, index ) =>
-		`
-		<details ontoggle="GFFdivFoldersFiles${ index}.innerHTML=GFF.getGithubFoldersFiles(${index});" >
+`
+<details ontoggle="GFFdivFoldersFiles${ index}.innerHTML=GFF.getGithubFoldersFiles(${index});" >
 
-			<summary id=TMPsumSurfaces >${ index + 1} - ${item.title}</summary>
+	<summary id=TMPsumSurfaces >${ index + 1} - ${item.title}</summary>
 
-			<div id=GFFdivFoldersFiles${ index} ></div>
+	<div id=GFFdivFoldersFiles${ index} ></div>
 
-		</details>
-	`
+</details>
+`
 	).join( "" );
 
-	return htm;
+	GFFdivGithubRepos.innerHTML = htm;
 
 };
 
@@ -111,7 +140,7 @@ GFF.getGithubFoldersFiles = function ( index ) {
 
 		<p>Click any file title to view the file in this script.</p>
 
-		<p>Click any ❐ icon to go full screen & get link to individual file.</p>
+		<p>Click any ❐ icon to go full screen & obtain link to individual file.</p>
 
 		<p>Tool tips provide file size.
 
