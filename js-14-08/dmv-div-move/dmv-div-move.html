@@ -34,11 +34,11 @@
 
 </style>
 
-<link href="dmv-div-move.css" rel="stylesheet" >
+<link href="dmv-div-move-01.css" rel="stylesheet" >
 
 </head>
 <body>
-<script src="dmv-div-move.js" ></script>
+<script src="dmv-div-move-01.js" ></script>
 
 
 	<nav id="navMenu" >
@@ -49,7 +49,7 @@
 			<button id=but onclick=setIt(); >set it</button>
 		</p>
 		<p>
-				<button onclick=diaDragMove.open=!diaDragMove.open >toggle dialog</button>
+				<button onclick=navPopup.hidden=!navPopup.hidden>toggle popup</button>
 			</p>
 	</nav>
 
@@ -61,34 +61,40 @@
 
 
 
-	<nav id = "navDragMove" open>
+	<nav id = "navPopup" class=nav-popup >
 
-		<section id="secDragMove" >
+		<header id=hdrPopup >
+			???
 
-			<div id = "divDragMoveHeader" >
-				? <button onclick=navDragMove.hidden=true; style=float:right; >&times</button>
-			</div>
+			<button onclick=navPopup.hidden=true; style=float:right; >&times</button>
+		</header>
 
-			<div id = "divDragMoveContent" ></div>
+		<section id="secPopup" class=section-popup >
 
-			<div id = "divDragMoveFooter" >
-
-				<button onclick="divDragMoveContent.innerHTML +=`<p>${ txt }`;"; >🔥</button>
-				<button onclick='divDragMoveContent.innerHTML = "abc 123"'' >😃</button>
-				<button onclick="divDragMoveContent.innerHTML = `<p>${ new Date() }<br>${ txt} ${txt}</p>`;">💡</button>
-
-			</div>
+			<div id = "divPopupContent" ></div>
 
 		</section>
+
+		<footer id=ftrPopup class=footer-popup >
+
+			<button onclick="divPopupContent.innerHTML +=`<p>${ txt }`;"; >🔥</button>
+			<button onclick='divPopupContent.innerHTML = "abc 123"'' >😃</button>
+			<button onclick="divPopupContent.innerHTML = `<p>${ new Date() }<br>${ txt} ${txt}</p>`;">💡</button>
+
+		</footer>
 
 	</nav>
 
 
-
 <script>
 
-const urlSourceCode = "https://github.com/jaanga/jaanga.github.io/tree/master/cookbook-html/examples-html/ui-ue/div-draggable2";
-const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-32.png";
+//const urlSourceCode = "https://github.com/jaanga/jaanga.github.io/tree/master/cookbook-html/examples-html/ui-ue/div-draggable2";
+
+const urlSourceCode = "";
+
+const urlSourceCodeIcon = "../github-mark-32.png";
+
+const txt = "lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?";
 
 init();
 
@@ -98,7 +104,7 @@ function init() {
 
 	divContents.innerHTML += `${ ( new Date ) }<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>`;
 
-	divDragMoveContent.innerHTML = `${ ( new Date ) }<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>`;
+	divPopupContent.innerHTML = `${ ( new Date ) }<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>`;
 
 	DMV.initialize();
 

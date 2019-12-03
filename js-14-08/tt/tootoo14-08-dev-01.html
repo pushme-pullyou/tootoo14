@@ -4,10 +4,10 @@
 
 <meta charset = "utf-8" >
 <meta name = "copyright" content ="PushMe-PullYou authors" >
-<meta name = "date" content = "2019-11-04" >
+<meta name = "date" content = "2019-12-02" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.14.08-1fix" >
+<meta name = "version" content = "0.14.08-01dev" >
 <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
 <title>TooToo</title>
@@ -54,7 +54,7 @@
 
 
 
-<nav id=navExpand class=nav-expand >
+	<nav id=navExpand class=nav-expand >
 
 		<button id="hamburgerButton" onclick="toggleNavMenu();">☰</button>
 
@@ -63,20 +63,19 @@
 
 	<nav id=navMenu class=nav-menu >
 
-		<details class=details__primary open>
+		<header id=hdrMenu class=hdr-menu >
+
+			<details class=details__primary open>
 
 			<summary class="summary__primary" >Menu bar header</summary>
 
-			<header>
-
 				<div id="MNUdivHeader" ></div>
 
-			</header>
+			</details>
 
-		</details>
+		</header>
 
-
-		<section class=menu-body >
+		<section id=secMenu class=section-menu >
 
 			<details class=details__primary open>
 
@@ -112,7 +111,7 @@
 
 		</section>
 
-		<footer class=menu-footer >
+		<footer id=ftrMenu class=footer-menu >
 
 			<details class=details__primary >
 
@@ -131,45 +130,41 @@
 
 	<main id="main" >
 
-		<section class="secContents">
+		<header id="hdrMain" class="header-main" ></header>
 
-			<div id="divContents" ></div>
+		<section id="secMain" class="section-main" >
+
+			<div id="divMainContent" ></div>
 
 		</section>
+
+		<footer id="ftrMain" class="footer-main" ></footer>
 
 	</main>
 
 
-	<nav id = "navDragMove" class=nav-drag-move >
+	<nav id = "navPopup" class=nav-popup >
 
-		<section id="secDragMove" >
+		<header id=hdrPopup >
+			? <button onclick=navPopup.hidden=true; style=float:right; >&times</button>
+		</header>
 
-			<div id = "divDragMoveHeader" class=primary >
-				? <button onclick=navDragMove.hidden=true; style=float:right; >&times</button>
-			</div>
 
-			<div id = "divDragMoveContent" ></div>
+		<section id="secPopup" class=section-popup >
 
-			<div id = "divDragMoveFooter" >
-
-				<button onclick="divDragMoveContent.innerHTML +=`<p>${ txt }`;"; >🔥</button>
-				<button onclick='divDragMoveContent.innerHTML = "abc 123"'' >😃</button>
-				<button onclick="divDragMoveContent.innerHTML = `<p>${ new Date() }<br>${ txt} ${txt}</p>`;">💡</button>
-
-			</div>
+			<div id = "divPopupContent" ></div>
 
 		</section>
 
+		<footer id=ftrPopup class=footer-popup >
+
+			<button onclick="divPopupContent.innerHTML +=`<p>${ txt }`;"; >🔥</button>
+			<button onclick='divPopupContent.innerHTML = "abc 123"'' >😃</button>
+			<button onclick="divPopupContent.innerHTML = `<p>${ new Date() }<br>${ txt} ${txt}</p>`;">💡</button>
+
+		</footer>
+
 	</nav>
-
-
-
-	<nav>
-
-		<a href="" id="aViewSource" target="_blank" >view source</a>
-
-	</nav>
-
 
 <script>
 
