@@ -81,9 +81,9 @@ GFF.getMenu = function() {
 
 	const htm =
 `
-<details  ontoggle=GFF.getMenuGithubFoldersFiles() open >
+<details ontoggle=GFF.getMenuGithubFoldersFiles() open >
 
-	<summary class="sumMenuTitle">gbXML samples menu</summary>
+	<summary class="sumMenuTitle">gbXML file samples menu</summary>
 
 
 	<p><a href="https://gbxml.org" target="_blank">gbXML</a>file samples to browse, open, view and experiment with</p>
