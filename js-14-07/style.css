@@ -39,7 +39,7 @@ main { border: 0px; height: 100%; left: var( --mnu-width ); margin: 0; /* overfl
 	position: absolute; width: calc( 100% - var( --mnu-width ) );  }
 
 
-summary { cursor: pointer; font-size: 2rem; font-weight: bold; outline: none; }
+summary { cursor: pointer; font-size: 1.5rem; font-weight: bold; outline: none; }
 
 .attributeTitle { font-style: italic; }
 .attributeValue { color: blue; }
