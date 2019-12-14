@@ -1,42 +1,40 @@
+<!-- 2019-12-14 -->
 # [Markdown Cheat Sheet]( #utilities/markdown-cheat-sheet.md )
 
 Interesting things you can do with Markdown.
 
 
-## Links of Interest
+<details open>
+<summary> Links of Interest </summary>
 
-* <https://github.com/showdownjs/showdown>
-* <https://guides.github.com/features/mastering-markdown/>
-* <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
-* <https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md>
-* <https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf>
+* https://daringfireball.net/projects/markdown/ << where it all started
+* https://en.wikipedia.org/wiki/Markdown
+* https://en.wikipedia.org/wiki/Wiki#Editing
+* https://github.com/showdownjs/showdown
+* https://guides.github.com/features/mastering-markdown/
+* https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+* https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
+* https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf
+
+</details>
+
 ### Text
 
-	_italics_ *italics*
 
-_italics_ *italics*
+`_italics:_` *italics: underscore becomes `<em>`*
 
-	**bold**
+`**bold**` **bold**
 
-**bold**
+`***bold and italics***` ***bold and italics***
 
-	***bold and italics***
-
-***bold and italics***
-
-### Strike through
-
-```
-~~Strike through~~
-```
-~~Strike through~~
+`~~Strike through~~` ~~Strike through - double tilde becomes `<del>`~~
 
 ### Horizontal rules
 
 ```
-	***
-	---
-	___
+***
+---
+___
 ```
 
 ***
@@ -116,8 +114,10 @@ text [^1] not
 ``` Markdown
 text with `back quote` characters
 ```
-text `text` text
 
+text `text` text `text`
+
+_not working?_
 
 ### Quotes
 
@@ -176,3 +176,28 @@ text `text` text
 	</a>
 </figure>
 
+
+
+### Footers
+
+<br>
+
+***
+
+<center title="dingbat" >
+# <a href=javascript:window.scrollTo(0,0); >❦</a>
+</center>
+
+***
+
+<center title="dingbat" >
+# <span onclick=window.scrollTo(0,0); style=cursor:pointer; >❦</span>
+</center>
+
+<center title="dingbat" >
+## <a href=javascript:content.scrollTop=0; >❦</a>
+</center>
+
+<center title="dingbat" >
+# <a href=javascript:window.scrollTop=0; style=text-decoration:none; >❦</a>
+</center>
